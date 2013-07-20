@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/charts/iraq-android-refs/chart.js" />
+        <item url="file://$PROJECT_DIR$/app.js" />
+        <item url="file://$PROJECT_DIR$/charts/time-series-chart.js" />
+        <item url="file://$PROJECT_DIR$/routes/index.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/charts/iraq-android-refs/chart.js" />
+      <root url="file://$PROJECT_DIR$/app.js" />
+      <root url="file://$PROJECT_DIR$/charts/time-series-chart.js" />
+      <root url="file://$PROJECT_DIR$/routes/index.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
