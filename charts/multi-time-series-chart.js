@@ -4,18 +4,89 @@
 
   exports = exports != null ? exports : this;
 
-  exports.timeSeriesChart = function() {
-    var color, height, margin, width;
+  exports.multiTimeSeriesChart = function() {
+    var $svg, X, Y, chart, color, groupBy, height, line, margin, width, xAxis, xMap, xScale, yAxis, yMap, yScale;
 
     margin = {
       top: 20,
       right: 20,
       bottom: 20,
-      left: 20
+      left: 50
     };
     width = 720;
     height = 300;
-    return color = d3.scale.category10();
+    color = d3.scale.category10();
+    groupBy = function(d) {
+      return d.ref;
+    };
+    xMap = function(d) {
+      return d[0];
+    };
+    yMap = function(d) {
+      return d[1];
+    };
+    X = function(d) {
+      return xScale(xMap(d));
+    };
+    Y = function(d) {
+      return yScale(yMap(d));
+    };
+    xScale = d3.time.scale().range([0, width - margin.left - margin.right]);
+    yScale = d3.scale.linear().range([height - margin.top - margin.bottom, 0]);
+    xAxis = d3.svg.axis().scale(xScale).orient('bottom');
+    yAxis = d3.svg.axis().scale(yScale).orient('left');
+    line = d3.svg.line().interpolate('basis').x(X).y(Y);
+    $svg = d3.select('body').append('svg').attr('width', width).attr('height', height).append('g').attr('transform', "translate(" + margin.left + "," + margin.top + ")");
+    $svg.append('g').attr('class', 'x axis');
+    $svg.append('g').attr('class', 'y axis');
+    chart = function(selection) {
+      return selection.each(function(raw) {
+        var $line, data, groups, keys;
+
+        data = raw;
+        xScale.domain(d3.extent(data, xMap));
+        yScale.domain(d3.extent(data, yMap));
+        groups = _.groupBy(data, groupBy);
+        keys = d3.keys(groups);
+        color.domain(keys);
+        $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')').call(xAxis);
+        $svg.select('.y.axis').call(yAxis).append('text').attr('transform', 'rotate(0)').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'end').text('Y');
+        $line = $svg.selectAll('.group').data(keys).enter().append('g').attr('class', 'group');
+        $line.append('path').attr('class', 'line').attr('d', function(d) {
+          return line(groups[d]);
+        }).style('stroke', function(d) {
+          return color(d);
+        }).on('mousedown', function(d) {
+          return console.log('mdown ' + d);
+        });
+        return $line.append('text').data(keys.map(function(d) {
+          return {
+            name: d,
+            pos: {
+              x: X(_.last(groups[d])),
+              y: Y(_.last(groups[d]))
+            }
+          };
+        })).attr('x', function(d) {
+          return d.pos.x - 40;
+        }).attr('y', function(d) {
+          return d.pos.y;
+        }).attr('dy', '.05em').style('fill', function(d) {
+          return color(d.name);
+        }).text(function(d) {
+          return d.name;
+        });
+      });
+    };
+    chart.x = function(map) {
+      xMap = map != null ? map : xMap;
+      return chart;
+    };
+    chart.y = function(map) {
+      yMap = map != null ? map : yMap;
+      return chart;
+    };
+    return chart;
   };
 
 }).call(this);

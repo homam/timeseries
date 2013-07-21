@@ -2,6 +2,7 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/charts/multi/chart.js" />
         <item url="file://$PROJECT_DIR$/charts/complex-time-series-chart.js" />
         <item url="file://$PROJECT_DIR$/charts/simple/chart.js" />
         <item url="file://$PROJECT_DIR$/app.js" />
@@ -14,6 +15,7 @@
     <CLASSES>
       <root url="file://$PROJECT_DIR$/charts/iraq-android-refs/chart.js" />
       <root url="file://$PROJECT_DIR$/charts/iraq-android-refs/chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/multi/chart.js" />
       <root url="file://$PROJECT_DIR$/charts/simple/chart.js" />
       <root url="file://$PROJECT_DIR$/charts/complex-time-series-chart.js" />
       <root url="file://$PROJECT_DIR$/app.js" />
