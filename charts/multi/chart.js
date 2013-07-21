@@ -12,7 +12,7 @@
     };
   };
 
-  d3.csv('charts/iraq-android-refs/data/iraq-android-refs.json', function(data) {
+  d3.csv('charts/simple/data/iraq-android-refs.json', function(data) {
     var parseDate;
 
     parseDate = d3.time.format("%m/%d/%Y").parse;

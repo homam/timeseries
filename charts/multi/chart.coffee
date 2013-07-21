@@ -5,7 +5,7 @@ movingAverage = (map) ->
     sum += map(d)
     return sum / (i+1)
 
-d3.csv 'charts/iraq-android-refs/data/iraq-android-refs.json', (data) ->
+d3.csv 'charts/simple/data/iraq-android-refs.json', (data) ->
   # parse data
   parseDate = d3.time.format("%m/%d/%Y").parse;
   data = data.map (d) ->

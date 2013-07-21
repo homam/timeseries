@@ -28,7 +28,8 @@ app.use '/charts', express.static 'charts'
 app.use '/javascript', express.static 'public/javascript'
 
 
-app.get '/', (require './routes').index
+#app.get '/', (require './routes').index
+require('./routes').register(app)
 
 
 

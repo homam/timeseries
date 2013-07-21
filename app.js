@@ -43,7 +43,7 @@
 
   app.use('/javascript', express["static"]('public/javascript'));
 
-  app.get('/', (require('./routes')).index);
+  require('./routes').register(app);
 
   http.createServer(app).listen(app.get('port'), function() {
     return console.log("express started at port " + app.get('port'));
