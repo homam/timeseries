@@ -11,9 +11,14 @@
         title: 'Complex'
       });
     });
-    return app.get('/multi', function(req, res) {
+    app.get('/multi', function(req, res) {
       return res.render('../charts/multi/view', {
         title: 'Multi'
+      });
+    });
+    return app.get('/simple-updatable', function(req, res) {
+      return res.render('../charts/simple-updatable/view', {
+        title: 'simple updatable'
       });
     });
   };

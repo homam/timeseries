@@ -10,3 +10,7 @@ exports.register = (app) ->
   app.get '/multi', (req, res) ->
     res.render '../charts/multi/view',
       title: 'Multi'
+
+  app.get '/simple-updatable', (req, res) ->
+    res.render '../charts/simple-updatable/view',
+      title: 'simple updatable'

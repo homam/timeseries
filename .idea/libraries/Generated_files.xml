@@ -3,11 +3,13 @@
     <properties>
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/charts/multi/chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/complex-time-series-chart.js" />
+        <item url="file://$PROJECT_DIR$/charts/complex/complex-time-series-chart.js" />
         <item url="file://$PROJECT_DIR$/charts/simple/chart.js" />
+        <item url="file://$PROJECT_DIR$/charts/simple-updatable/simple-updatable-time-series-chart.js" />
         <item url="file://$PROJECT_DIR$/app.js" />
-        <item url="file://$PROJECT_DIR$/charts/time-series-chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/multi-time-series-chart.js" />
+        <item url="file://$PROJECT_DIR$/charts/simple/time-series-chart.js" />
+        <item url="file://$PROJECT_DIR$/charts/multi/multi-time-series-chart.js" />
+        <item url="file://$PROJECT_DIR$/charts/simple-updatable/chart.js" />
         <item url="file://$PROJECT_DIR$/charts/complex/chart.js" />
         <item url="file://$PROJECT_DIR$/routes/index.js" />
       </sourceFilesUrls>
@@ -16,11 +18,13 @@
       <root url="file://$PROJECT_DIR$/charts/iraq-android-refs/chart.js" />
       <root url="file://$PROJECT_DIR$/charts/iraq-android-refs/chart.js" />
       <root url="file://$PROJECT_DIR$/charts/multi/chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/simple-updatable/simple-updatable-time-series-chart.js" />
       <root url="file://$PROJECT_DIR$/charts/simple/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/complex-time-series-chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/complex/complex-time-series-chart.js" />
       <root url="file://$PROJECT_DIR$/app.js" />
-      <root url="file://$PROJECT_DIR$/charts/time-series-chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/multi-time-series-chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/simple/time-series-chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/multi/multi-time-series-chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/simple-updatable/chart.js" />
       <root url="file://$PROJECT_DIR$/charts/complex/chart.js" />
       <root url="file://$PROJECT_DIR$/routes/index.js" />
     </CLASSES>

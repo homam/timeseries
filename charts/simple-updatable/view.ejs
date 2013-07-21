@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <script src="javascript/libs/jquery2.js"></script>
+        <script src="javascript/libs/d3.js"></script>
+        <script src="javascript/libs/underscore.js"></script>
+        <script src="charts/simple-updatable/simple-updatable-time-series-chart.js"></script>
+        <script src="charts/simple-updatable/chart.js"></script>
+        <link href="charts/simple-updatable/chart.css" type="text/css" rel="stylesheet" />
+    </head>
+<body>
+    <h1><%= title %></h1>
+    <section id="chart1"></section>
+    <script type="text/html" id="refSelector-template">
+        <div>
+            <input type="radio" name="{{ ref }}"><label for="{{ ref }}">{{ ref }}</label>
+        </div>
+    </script>
+    <form id="refSelector">
+
+    </form>
+</body>
+</html>
