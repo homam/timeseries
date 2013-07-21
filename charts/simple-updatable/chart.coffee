@@ -18,22 +18,22 @@ d3.csv 'charts/simple/data/iraq-android-refs.json', (data) ->
   _.templateSettings = {
     interpolate : /\{\{(.+?)\}\}/g
   };
+
   groups = _(data).groupBy (d) -> d.ref
-  refs = _(groups).keys().map (ref) -> {ref: ref}
+  refs = _(groups).keys().map (ref) ->
+    ref: ref
+    visits: groups[ref].map((d) -> d.visits).reduce (a,b) -> a+b
 
-  #todo use d3 here too
-  template = refs.map (r) -> _.template document.getElementById('refSelector-template').innerHTML, r
-  document.getElementById('refSelector').innerHTML = template.reduce (a,b) -> a+b
-
-
+  refs = _.sortBy(refs, (r) -> -r.visits)
 
 
+  $ref = d3.select('#refSelector').selectAll('div.ref').data(refs)
+  $ref.enter().append('div').attr('class', 'ref').attr('data-ref', (d) -> d.ref)
+  $ref.append('input').attr('type', 'radio').attr('name', 'ref').attr('id', (d)->d.ref)
+  .on('change', (d)-> chart.addLine data.filter (a) -> d.ref == a.ref)
+  $ref.append('label').attr('for', (d)->d.ref).text((d)->d.ref)
 
+  d3.select('[data-ref="wap p155"] input').attr('checked', 'checked')
 
-
-  setTimeout ()->
-    console.log 'update'
-    chart.addLine data.filter (d) -> 'wap p11' == d.ref#, 'p11'
-  , 2000
 
   draw()

@@ -46,9 +46,9 @@
         $svg.select('.y.axis').call(yAxis).append('text').attr('transform', 'rotate(0)').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'end').text('Y');
         $svg.selectAll('path.line').data([data]).enter().append('path').attr('d', line).attr('class', 'line');
         return chart.addLine = function(newData, id) {
+          yScale.domain(d3.extent(newData, yMap));
           $svg.selectAll('path.line').data([newData]).enter().append('path');
           $svg.selectAll('path.line').transition().duration(1500).ease("sin-in-out").attr('d', line).attr('class', 'line');
-          yScale.domain(d3.extent(newData, yMap));
           return $svg.select('.y.axis').transition().duration(1500).ease("sin-in-out").call(yAxis);
         };
       });

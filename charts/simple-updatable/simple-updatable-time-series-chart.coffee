@@ -31,11 +31,11 @@ exports.simpleUpdatableTimeSeriesChart = () ->
   chart = (selection) ->
     selection.each (raw) ->
       $svg = d3.select(this).append('svg')
-        .attr('width', width).attr('height', height)
-        .append('g').attr('transform', "translate(" + margin.left + "," + margin.top + ")")
+      .attr('width', width).attr('height', height)
+      .append('g').attr('transform', "translate(" + margin.left + "," + margin.top + ")")
 
-        $svg.append('g').attr('class', 'x axis')
-        $svg.append('g').attr('class', 'y axis')
+      $svg.append('g').attr('class', 'x axis')
+      $svg.append('g').attr('class', 'y axis')
 
 
       data = raw #todo clone to data
@@ -59,9 +59,9 @@ exports.simpleUpdatableTimeSeriesChart = () ->
         #$svg.selectAll('path.line.' + id).data([newData]).enter().append('path').attr('d', line).attr('class', 'line ' + id)
 
         #code for changing the line
+        yScale.domain d3.extent newData, yMap
         $svg.selectAll('path.line').data([newData]).enter().append('path')
         $svg.selectAll('path.line').transition().duration(1500).ease("sin-in-out").attr('d', line).attr('class', 'line')
-        yScale.domain d3.extent newData, yMap
         $svg.select('.y.axis').transition().duration(1500).ease("sin-in-out").call(yAxis)
 
 
