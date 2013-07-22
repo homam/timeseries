@@ -49,7 +49,7 @@
           xScale.domain(d3.extent(newData, xMap));
           yScale.domain(d3.extent(newData, yMap));
           $svg.selectAll('path.line').data([newData]).enter().append('path');
-          $svg.selectAll('path.line').transition().duration(1500).ease("sin-in-out").attr('d', line).attr('class', 'line');
+          $svg.selectAll('path.line').transition().duration(1500).ease("sin-in-out").attr('d', line);
           $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis);
           return $svg.select('.y.axis').transition().duration(1500).ease("sin-in-out").call(yAxis);
         };

@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <script src="javascript/libs/jquery2.js"></script>
+        <script src="javascript/libs/d3.js"></script>
+        <script src="javascript/libs/underscore.js"></script>
+        <script src="charts/line-bar/line-bar-time-series-chart.js"></script>
+        <script src="charts/line-bar/chart.js"></script>
+        <link href="charts/line-bar/chart.css" type="text/css" rel="stylesheet" />
+    </head>
+<body>
+    <h1><%= title %></h1>
+    <div>
+        <input type="checkbox" id="changeScale" />
+        <label for="changeScale">Change Scales</label>
+    </div>
+    <section id="visitsChart"></section>
+    <section id="convChart"></section>
+
+    <form id="refSelector">
+
+    </form>
+</body>
+</html>

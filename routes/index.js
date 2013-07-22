@@ -16,9 +16,14 @@
         title: 'Multi'
       });
     });
-    return app.get('/simple-updatable', function(req, res) {
+    app.get('/simple-updatable', function(req, res) {
       return res.render('../charts/simple-updatable/view', {
         title: 'simple updatable'
+      });
+    });
+    return app.get('/line-bar', function(req, res) {
+      return res.render('../charts/line-bar/view', {
+        title: 'line bar'
       });
     });
   };

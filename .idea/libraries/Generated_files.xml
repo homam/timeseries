@@ -3,12 +3,15 @@
     <properties>
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/charts/multi/chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/complex/complex-time-series-chart.js" />
         <item url="file://$PROJECT_DIR$/charts/simple/chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/simple-updatable/simple-updatable-time-series-chart.js" />
-        <item url="file://$PROJECT_DIR$/app.js" />
+        <item url="file://$PROJECT_DIR$/charts/complex/complex-time-series-chart.js" />
         <item url="file://$PROJECT_DIR$/charts/simple/time-series-chart.js" />
         <item url="file://$PROJECT_DIR$/charts/multi/multi-time-series-chart.js" />
+        <item url="file://$PROJECT_DIR$/charts/line-bar/line-bar-time-series.chart.js" />
+        <item url="file://$PROJECT_DIR$/charts/line-bar/line-bar-time-series-chart.js" />
+        <item url="file://$PROJECT_DIR$/charts/line-bar/chart.js" />
+        <item url="file://$PROJECT_DIR$/charts/simple-updatable/simple-updatable-time-series-chart.js" />
+        <item url="file://$PROJECT_DIR$/app.js" />
         <item url="file://$PROJECT_DIR$/charts/simple-updatable/chart.js" />
         <item url="file://$PROJECT_DIR$/charts/complex/chart.js" />
         <item url="file://$PROJECT_DIR$/routes/index.js" />
@@ -17,13 +20,17 @@
     <CLASSES>
       <root url="file://$PROJECT_DIR$/charts/iraq-android-refs/chart.js" />
       <root url="file://$PROJECT_DIR$/charts/iraq-android-refs/chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/line-bar/line-bar-time-series.chart.js" />
       <root url="file://$PROJECT_DIR$/charts/multi/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/simple-updatable/simple-updatable-time-series-chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/simple/chart.js" />
       <root url="file://$PROJECT_DIR$/charts/complex/complex-time-series-chart.js" />
-      <root url="file://$PROJECT_DIR$/app.js" />
+      <root url="file://$PROJECT_DIR$/charts/simple/chart.js" />
       <root url="file://$PROJECT_DIR$/charts/simple/time-series-chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/line-bar/line-bar-time-series-chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/line-bar/line-bar-time-series.chart.js" />
       <root url="file://$PROJECT_DIR$/charts/multi/multi-time-series-chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/line-bar/chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/simple-updatable/simple-updatable-time-series-chart.js" />
+      <root url="file://$PROJECT_DIR$/app.js" />
       <root url="file://$PROJECT_DIR$/charts/simple-updatable/chart.js" />
       <root url="file://$PROJECT_DIR$/charts/complex/chart.js" />
       <root url="file://$PROJECT_DIR$/routes/index.js" />
