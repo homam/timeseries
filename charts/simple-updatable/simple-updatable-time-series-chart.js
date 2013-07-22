@@ -6,7 +6,6 @@
 
   exports.simpleUpdatableTimeSeriesChart = function() {
     var X, Y, chart, height, line, margin, width, xAxis, xMap, xScale, yAxis, yMap, yScale;
-
     margin = {
       top: 20,
       right: 20,
@@ -35,7 +34,6 @@
     chart = function(selection) {
       return selection.each(function(raw) {
         var $svg, data;
-
         $svg = d3.select(this).append('svg').attr('width', width).attr('height', height).append('g').attr('transform', "translate(" + margin.left + "," + margin.top + ")");
         $svg.append('g').attr('class', 'x axis');
         $svg.append('g').attr('class', 'y axis');
@@ -46,9 +44,11 @@
         $svg.select('.y.axis').call(yAxis).append('text').attr('transform', 'rotate(0)').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'end').text('Y');
         $svg.selectAll('path.line').data([data]).enter().append('path').attr('d', line).attr('class', 'line');
         return chart.addLine = function(newData, id) {
+          xScale.domain(d3.extent(newData, xMap));
           yScale.domain(d3.extent(newData, yMap));
           $svg.selectAll('path.line').data([newData]).enter().append('path');
           $svg.selectAll('path.line').transition().duration(1500).ease("sin-in-out").attr('d', line).attr('class', 'line');
+          $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis);
           return $svg.select('.y.axis').transition().duration(1500).ease("sin-in-out").call(yAxis);
         };
       });

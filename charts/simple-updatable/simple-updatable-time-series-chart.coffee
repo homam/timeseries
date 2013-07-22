@@ -59,9 +59,11 @@ exports.simpleUpdatableTimeSeriesChart = () ->
         #$svg.selectAll('path.line.' + id).data([newData]).enter().append('path').attr('d', line).attr('class', 'line ' + id)
 
         #code for changing the line
+        xScale.domain d3.extent newData, xMap
         yScale.domain d3.extent newData, yMap
         $svg.selectAll('path.line').data([newData]).enter().append('path')
         $svg.selectAll('path.line').transition().duration(1500).ease("sin-in-out").attr('d', line).attr('class', 'line')
+        $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis)
         $svg.select('.y.axis').transition().duration(1500).ease("sin-in-out").call(yAxis)
 
 
