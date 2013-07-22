@@ -22,6 +22,9 @@ textPath {
   stroke: #000;
   shape-rendering: crispEdges;
 }
+.axis .tick line {
+  stroke: rgba(0, 0, 0, 0.1);
+}
 #visitsChart path.line {
   stroke: #0e0f71;
   stroke-width: 2px;

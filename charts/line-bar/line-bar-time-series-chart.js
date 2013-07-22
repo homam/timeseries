@@ -46,16 +46,16 @@
         yScale.range([height - margin.top - margin.bottom, 0]);
         xBScale.rangeRoundBands([0, width - margin.left - margin.right], .2);
         yBScale.range([height - margin.top - margin.bottom, 0]);
-        xAxis = d3.svg.axis().scale(xScale).orient('bottom');
-        yAxis = d3.svg.axis().scale(yScale).orient('left');
+        xAxis = d3.svg.axis().scale(xScale).orient('bottom').tickSize(-height + margin.top + margin.bottom, 0, 0);
+        yAxis = d3.svg.axis().scale(yScale).orient('left').tickSize(-width + margin.left + margin.right, 0, 0);
         yBAxis = d3.svg.axis().scale(yBScale).orient('right');
         $svg = d3.select(this).append('svg').attr('width', width).attr('height', height).append('g').attr('transform', "translate(" + margin.left + "," + margin.top + ")");
         $svg.append('g').attr('class', 'x axis');
-        $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')').call(xAxis);
+        $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')');
         $svg.append('g').attr('class', 'y axis line');
-        $svg.select('.y.axis.line').call(yAxis).append('text').attr('transform', 'translate(20,0) rotate(90)').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start').text('Y');
+        $svg.select('.y.axis.line').append('text').attr('transform', 'translate(20,0) rotate(90)').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start').text('Y');
         $svg.append('g').attr('class', 'y axis bar').attr('transform', 'translate(' + (width - margin.right - margin.left) + ',0)').attr('opacity', 0);
-        $svg.select('.y.axis.bar').call(yBAxis).append('text').attr('transform', 'translate(0,0) rotate(90)').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start').text('Y');
+        $svg.select('.y.axis.bar').append('text').attr('transform', 'translate(0,0) rotate(90)').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start').text('Y');
         chart.xScale = function(extent) {
           xScale.domain(extent, xMap);
           return $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis);

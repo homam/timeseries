@@ -40,7 +40,9 @@ exports.lineBarTimeSeriesChart = () ->
       yBScale.range([height - margin.top - margin.bottom, 0])
 
       xAxis = d3.svg.axis().scale(xScale).orient('bottom')
+      .tickSize(-height+margin.top+margin.bottom,0,0)
       yAxis = d3.svg.axis().scale(yScale).orient('left')
+      .tickSize(-width+margin.left+margin.right,0,0)
       yBAxis = d3.svg.axis().scale(yBScale).orient('right')
 
 
@@ -51,18 +53,19 @@ exports.lineBarTimeSeriesChart = () ->
 
       # horizontal axis
       $svg.append('g').attr('class', 'x axis')
-      $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')').call(xAxis)
+      $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')')
+      #.call(xAxis)
 
       # line axis
       $svg.append('g').attr('class', 'y axis line')
-      $svg.select('.y.axis.line').call(yAxis)
+      $svg.select('.y.axis.line')
       .append('text').attr('transform', 'translate(20,0) rotate(90)')
       .attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start')
       .text('Y')
 
       # bar axis
       $svg.append('g').attr('class', 'y axis bar').attr('transform', 'translate(' + (width-margin.right-margin.left) + ',0)').attr('opacity', 0)
-      $svg.select('.y.axis.bar').call(yBAxis)
+      $svg.select('.y.axis.bar')
       .append('text').attr('transform', 'translate(0,0) rotate(90)')
       .attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start')
       .text('Y')
