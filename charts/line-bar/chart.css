@@ -1,7 +1,10 @@
+body {
+  font-family: Helvetica, Calibri, sans-serif;
+}
 svg {
   font: 10px sans-serif;
 }
-.line {
+path.line {
   fill: none;
   stroke: #000;
   stroke-width: 1.5px;

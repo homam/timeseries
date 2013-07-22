@@ -31,13 +31,14 @@ d3.csv 'charts/simple/data/iraq-android-refs.json', (data) ->
 
 
   visitsChart = lineBarTimeSeriesChart()
-    .x( (d) -> d.date)
-    .y( (d) -> d.visits)
-    .yB( (d) -> d.subs)
+  .x( (d) -> d.date)
+  .y( (d) -> d.visits)
+  .yB( (d) -> d.subs)
 
   convChart = lineBarTimeSeriesChart()
-    .x( (d) -> d.date)
-    .y( (d) -> d.conv)
+  .x( (d) -> d.date)
+  .y( (d) -> d.conv)
+  .height(150)
 
 
   d3.select('#visitsChart').call visitsChart
@@ -45,6 +46,7 @@ d3.csv 'charts/simple/data/iraq-android-refs.json', (data) ->
 
   changeScale = false
   chartedData = groups['wap p155']
+  d3.select('h1').text('wap p155')
 
 
   drawCharts = () ->
@@ -82,6 +84,7 @@ d3.csv 'charts/simple/data/iraq-android-refs.json', (data) ->
   .on('change',(d)->
       chartedData = groups[d.ref]
       drawCharts()
+      d3.select('h1').text(d.ref)
       #convChart.addLine groups[d.ref]
   )
   $ref.append('label').attr('for', (d)->d.ref).text((d)->d.ref)

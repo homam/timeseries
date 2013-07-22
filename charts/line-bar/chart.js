@@ -66,11 +66,12 @@
       return d.date;
     }).y(function(d) {
       return d.conv;
-    });
+    }).height(150);
     d3.select('#visitsChart').call(visitsChart);
     d3.select('#convChart').call(convChart);
     changeScale = false;
     chartedData = groups['wap p155'];
+    d3.select('h1').text('wap p155');
     drawCharts = function() {
       var scaleData;
 
@@ -112,7 +113,8 @@
       return d.ref;
     }).on('change', function(d) {
       chartedData = groups[d.ref];
-      return drawCharts();
+      drawCharts();
+      return d3.select('h1').text(d.ref);
     });
     $ref.append('label').attr('for', function(d) {
       return d.ref;
