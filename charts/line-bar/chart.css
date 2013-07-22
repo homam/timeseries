@@ -22,3 +22,23 @@ textPath {
   stroke: #000;
   shape-rendering: crispEdges;
 }
+#visitsChart path.line {
+  stroke: #0e0f71;
+  stroke-width: 2px;
+}
+#visitsChart .axis.line text {
+  fill: #0e0f71;
+}
+#visitsChart rect.bar {
+  fill: rgba(13, 118, 41, 0.33);
+}
+#visitsChart .axis.bar text {
+  fill: rgba(13, 118, 41, 0.33);
+}
+#convChart path.line {
+  stroke: #71023b;
+  stroke-width: 2px;
+}
+#convChart .axis.line text {
+  fill: #71023b;
+}

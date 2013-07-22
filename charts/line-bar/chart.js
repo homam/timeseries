@@ -81,11 +81,11 @@
       }));
       visitsChart.yScale(d3.extent(scaleData, function(d) {
         return d.visits;
-      }));
+      }), 'Visits');
       visitsChart.addLine(chartedData);
       visitsChart.yBScale(d3.extent(scaleData, function(d) {
         return d.subs;
-      }));
+      }), 'Subs');
       visitsChart.addBar(chartedData);
       convChart.xScale(d3.extent(scaleData, function(d) {
         return d.date;
@@ -94,7 +94,7 @@
         return d.visits > 100;
       }), function(d) {
         return d.conv;
-      }));
+      }), 'Conv');
       return convChart.addLine(chartedData);
     };
     drawCharts();

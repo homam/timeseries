@@ -9,7 +9,7 @@
 
     margin = {
       top: 20,
-      right: 20,
+      right: 40,
       bottom: 20,
       left: 50
     };
@@ -53,20 +53,22 @@
         $svg.append('g').attr('class', 'x axis');
         $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')').call(xAxis);
         $svg.append('g').attr('class', 'y axis line');
-        $svg.select('.y.axis.line').call(yAxis).append('text').attr('transform', 'rotate(0)').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'end').text('Y');
-        $svg.append('g').attr('class', 'y axis bar').attr('transform', 'translate(' + (width - margin.right - margin.left) + ',0)');
-        $svg.select('.y.axis.bars').call(yBAxis).append('text').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'end').text('Y');
+        $svg.select('.y.axis.line').call(yAxis).append('text').attr('transform', 'translate(20,0) rotate(90)').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start').text('Y');
+        $svg.append('g').attr('class', 'y axis bar').attr('transform', 'translate(' + (width - margin.right - margin.left) + ',0)').attr('opacity', 0);
+        $svg.select('.y.axis.bar').call(yBAxis).append('text').attr('transform', 'translate(0,0) rotate(90)').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start').text('Y');
         chart.xScale = function(extent) {
           xScale.domain(extent, xMap);
           return $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis);
         };
-        chart.yScale = function(extent) {
+        chart.yScale = function(extent, label) {
           yScale.domain(extent, yMap);
-          return $svg.select('.y.axis.line').transition().duration(1500).ease("sin-in-out").call(yAxis);
+          $svg.select('.y.axis.line').transition().duration(1500).ease("sin-in-out").call(yAxis);
+          return $svg.select('.y.axis.line > text').text(label != null ? label : '');
         };
-        chart.yBScale = function(extent) {
+        chart.yBScale = function(extent, label) {
           yBScale.domain(extent, yBMap);
-          return $svg.select('.y.axis.bar').transition().duration(1500).ease('sin-in-out').call(yBAxis);
+          $svg.select('.y.axis.bar').transition().duration(1500).ease('sin-in-out').attr('opacity', 1).call(yBAxis);
+          return $svg.select('.y.axis.bar > text').text(label != null ? label : '');
         };
         chart.addLine = function(newData) {
           $svg.selectAll('path.line').data([newData]).enter().append('path').attr('class', 'line');

@@ -54,15 +54,15 @@ d3.csv 'charts/simple/data/iraq-android-refs.json', (data) ->
     scaleData = if changeScale then chartedData else data
 
     visitsChart.xScale d3.extent scaleData, (d) -> d.date
-    visitsChart.yScale d3.extent scaleData, (d) -> d.visits
+    visitsChart.yScale (d3.extent scaleData, (d) -> d.visits), 'Visits'
     visitsChart.addLine chartedData
 
-    visitsChart.yBScale d3.extent scaleData, (d) -> d.subs
+    visitsChart.yBScale (d3.extent scaleData, (d) -> d.subs), 'Subs'
     visitsChart.addBar chartedData
 
 
     convChart.xScale d3.extent scaleData, (d) -> d.date
-    convChart.yScale d3.extent scaleData.filter((d) -> d.visits > 100), (d) -> d.conv
+    convChart.yScale (d3.extent scaleData.filter((d) -> d.visits > 100), (d) -> d.conv), 'Conv'
     convChart.addLine chartedData
 
 

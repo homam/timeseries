@@ -4,7 +4,7 @@ exports.lineBarTimeSeriesChart = () ->
   # configs
   margin =
     top: 20
-    right: 20
+    right: 40
     bottom: 20
     left: 50
   width = 720
@@ -27,11 +27,7 @@ exports.lineBarTimeSeriesChart = () ->
   Yb = (d) -> yBScale yBMap d
 
 
-
-
   line = d3.svg.line().interpolate('basis').x(X).y(Y)
-
-
 
 
   chart = (selection) ->
@@ -53,10 +49,6 @@ exports.lineBarTimeSeriesChart = () ->
       .append('g').attr('transform', "translate(" + margin.left + "," + margin.top + ")")
 
 
-
-
-      #data = raw #todo clone to data
-
       # horizontal axis
       $svg.append('g').attr('class', 'x axis')
       $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')').call(xAxis)
@@ -64,33 +56,35 @@ exports.lineBarTimeSeriesChart = () ->
       # line axis
       $svg.append('g').attr('class', 'y axis line')
       $svg.select('.y.axis.line').call(yAxis)
-      .append('text').attr('transform', 'rotate(0)')
-      .attr('y', 6).attr('dy', '.71em').style('text-anchor', 'end')
+      .append('text').attr('transform', 'translate(20,0) rotate(90)')
+      .attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start')
       .text('Y')
 
       # bar axis
-      $svg.append('g').attr('class', 'y axis bar').attr('transform', 'translate(' + (width-margin.right-margin.left) + ',0)')
-      $svg.select('.y.axis.bars').call(yBAxis)
-      .append('text')
-      .attr('y', 6).attr('dy', '.71em').style('text-anchor', 'end')
+      $svg.append('g').attr('class', 'y axis bar').attr('transform', 'translate(' + (width-margin.right-margin.left) + ',0)').attr('opacity', 0)
+      $svg.select('.y.axis.bar').call(yBAxis)
+      .append('text').attr('transform', 'translate(0,0) rotate(90)')
+      .attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start')
       .text('Y')
 
       #$svg.selectAll('path.line').data([data]).enter().append('path').attr('d', line).attr('class', 'line')
 
+      # chart api
       chart.xScale = (extent) ->
         xScale.domain extent, xMap
         $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis)
 
-      chart.yScale = (extent) ->
+      chart.yScale = (extent, label) ->
         yScale.domain extent, yMap
         $svg.select('.y.axis.line').transition().duration(1500).ease("sin-in-out").call(yAxis)
+        $svg.select('.y.axis.line > text').text(label ? '')
 
-      chart.yBScale = (extent) ->
+      chart.yBScale = (extent, label) ->
         yBScale.domain extent, yBMap
-        $svg.select('.y.axis.bar').transition().duration(1500).ease('sin-in-out').call(yBAxis)
+        $svg.select('.y.axis.bar').transition().duration(1500).ease('sin-in-out').attr('opacity', 1).call(yBAxis)
+        $svg.select('.y.axis.bar > text').text(label ? '')
 
       chart.addLine = (newData) ->
-
         $svg.selectAll('path.line').data([newData]).enter().append('path').attr('class', 'line')
         $svg.selectAll('path.line').transition().duration(1500).ease("sin-in-out").attr('d', line)
 
