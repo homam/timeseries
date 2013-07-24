@@ -18,3 +18,12 @@ exports.register = (app) ->
   app.get '/line-bar', (req, res) ->
     res.render '../charts/line-bar/view',
       title: 'line bar'
+
+  app.get '/nv-page-perf', (req, res) ->
+    res.render '../charts/nv-page-perf/view',
+      title: 'nv page perf'
+
+  app.get '/page-perf', (req, res) ->
+    res.render '../charts/page-perf/view',
+      title: 'page perf'
+

@@ -21,9 +21,19 @@
         title: 'simple updatable'
       });
     });
-    return app.get('/line-bar', function(req, res) {
+    app.get('/line-bar', function(req, res) {
       return res.render('../charts/line-bar/view', {
         title: 'line bar'
+      });
+    });
+    app.get('/nv-page-perf', function(req, res) {
+      return res.render('../charts/nv-page-perf/view', {
+        title: 'nv page perf'
+      });
+    });
+    return app.get('/page-perf', function(req, res) {
+      return res.render('../charts/page-perf/view', {
+        title: 'page perf'
       });
     });
   };
