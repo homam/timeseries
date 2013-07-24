@@ -42,11 +42,18 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
   #chart.xScale d3.extent data.map (d) -> d.day
   #chart.yScale [0, (data.map((d) -> d.visits).reduce (a,b) -> a+b)], 'Y'
 
-  chart.addStack graphData
+  chart.addStack graphData, graphData
 
-  setTimeout ()->
-    chart.addStack graphData.filter (d) -> d.sum>14000
-  ,2000
+  play = () ->
+    range = _.range(r1 = _.random(0,8), _.random(r1, 8), _.random(1,3))
+    if range.length == 0
+      play()
+      return
+    chart.addStack graphData, graphData.filter (d,i) -> range.indexOf(i)>-1
+    setTimeout ()->
+      play()
+    ,2000
+  play()
 
 
 

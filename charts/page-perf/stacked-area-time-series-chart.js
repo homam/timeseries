@@ -45,7 +45,7 @@
         $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')');
         $svg.append('g').attr('class', 'y axis line');
         $svg.select('.y.axis.line').append('text').attr('transform', 'translate(20,0) rotate(90)').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start').text('Y');
-        return chart.addStack = function(data) {
+        return chart.addStack = function(data, scaleData) {
           var $layer, $rect, layers, stack;
 
           stack = d3.layout.stack().x(function(d) {
@@ -61,7 +61,7 @@
           }));
           $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis);
           yScale.domain([
-            0, d3.max(layers, function(l) {
+            0, d3.max(stack(scaleData), function(l) {
               return d3.max(l.values, function(d) {
                 return d.y0 + d.y;
               });
@@ -71,11 +71,18 @@
           $svg.select('.y.axis.line > text').text(typeof label !== "undefined" && label !== null ? label : '');
           $layer = $svg.selectAll('.layer').data(layers);
           $layer.enter().append('g').attr('class', 'layer');
-          $layer.exit().transition().delay(1000).remove();
-          $layer.exit().selectAll('rect').transition().duration(1000).ease("sin-in-out").attr('y', height - margin.top - margin.bottom).attr('height', 0);
           $layer.style('fill', function(d, i) {
             return d.color;
+          }).transition().duration(500).ease("sin-in-out").style('opacity', function(d) {
+            if (!(scaleData.some(function(s) {
+              return s.key === d.key;
+            }))) {
+              return 0;
+            } else {
+              return 1;
+            }
           });
+          $layer.selectAll('rect').transition().duration(500).ease("sin-in-out").attr('y', height - margin.top - margin.bottom).attr('height', 0);
           $rect = $layer.selectAll('rect').data(function(d) {
             return d.values;
           });

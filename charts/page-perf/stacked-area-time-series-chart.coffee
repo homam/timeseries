@@ -57,7 +57,7 @@ exports.stackedBarTimeSeriesChart = () ->
 
 
 
-      chart.addStack = (data) ->
+      chart.addStack = (data, scaleData) ->
 
         stack = d3.layout.stack()
         .x((d) -> d.day)
@@ -69,7 +69,7 @@ exports.stackedBarTimeSeriesChart = () ->
         xScale.domain layers[0].values.map (v,i) ->v.day
         $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis)
 
-        yScale.domain [0, d3.max(layers, (l) -> d3.max(l.values, (d) -> d.y0+d.y))]
+        yScale.domain [0, d3.max(stack(scaleData), (l) -> d3.max(l.values, (d) -> d.y0+d.y))]
         $svg.select('.y.axis.line').transition().duration(1500).ease("sin-in-out").call(yAxis)
         $svg.select('.y.axis.line > text').text(label ? '')
 
@@ -77,9 +77,13 @@ exports.stackedBarTimeSeriesChart = () ->
 
         $layer = $svg.selectAll('.layer').data(layers)
         $layer.enter().append('g').attr('class', 'layer')
-        $layer.exit().transition().delay(1000).remove()
-        $layer.exit().selectAll('rect').transition().duration(1000).ease("sin-in-out").attr('y', height-margin.top-margin.bottom).attr('height', 0)
-        $layer.style('fill', (d, i) -> d.color)
+        #todo hide the elements that are not included in scaleData
+        #$layer.exit().transition().delay(1000).remove() # nothing exits
+        #$layer.exit().selectAll('rect').transition().duration(1000).ease("sin-in-out").attr('y', height-margin.top-margin.bottom).attr('height', 0)
+        $layer.style('fill', (d, i) ->d.color)
+        .transition().duration(500).ease("sin-in-out")
+        .style('opacity', (d) -> if !(scaleData.some((s) -> s.key == d.key)) then 0 else 1)
+        $layer.selectAll('rect').transition().duration(500).ease("sin-in-out").attr('y', height-margin.top-margin.bottom).attr('height', 0)
 
         $rect = $layer.selectAll('rect').data((d) -> d.values)
         $rect.enter().append('rect').attr('y', height-margin.bottom-margin.top).attr('height',0)
