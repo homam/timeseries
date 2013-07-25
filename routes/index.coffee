@@ -23,6 +23,10 @@ exports.register = (app) ->
     res.render '../charts/nv-page-perf/view',
       title: 'nv page perf'
 
+  app.get '/page-perf-bar', (req, res) ->
+    res.render '../charts/page-perf/view-bar',
+      title: 'page perf bar'
+
   app.get '/page-perf', (req, res) ->
     res.render '../charts/page-perf/view',
       title: 'page perf'

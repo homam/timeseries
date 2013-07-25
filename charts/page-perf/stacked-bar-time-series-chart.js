@@ -4,7 +4,7 @@
 
   exports = exports != null ? exports : this;
 
-  exports.stackedAreaimeSeriesChart = function() {
+  exports.stackedBarTimeSeriesChart = function() {
     var X, Y, chart, height, line, margin, width, xMap, xScale, yMap, yScale;
     margin = {
       top: 20,
@@ -20,7 +20,7 @@
     yMap = function(d) {
       return d[1];
     };
-    xScale = d3.time.scale();
+    xScale = d3.scale.ordinal();
     yScale = d3.scale.linear();
     X = function(d) {
       return xScale(d);
@@ -31,25 +31,20 @@
     line = d3.svg.line().interpolate('basis').x(X).y(Y);
     chart = function(selection) {
       return selection.each(function(raw) {
-        var $svg, area, xAxis, yAxis;
-        xScale.range([0, width - margin.left - margin.right]);
+        var $svg, xAxis, yAxis;
+        xScale.rangeRoundBands([0, width - margin.left - margin.right], .02);
         yScale.range([height - margin.top - margin.bottom, 0]);
-        xAxis = d3.svg.axis().scale(xScale).orient('bottom').tickSize(-height + margin.top + margin.bottom, 0, 0);
+        xAxis = d3.svg.axis().scale(xScale).orient('bottom').tickSize(-height + margin.top + margin.bottom, 0, 0).tickFormat(function(d) {
+          return d.getDate() + '/' + d.getMonth();
+        });
         yAxis = d3.svg.axis().scale(yScale).orient('left').tickSize(-width + margin.left + margin.right, 0, 0);
         $svg = d3.select(this).append('svg').attr('width', width).attr('height', height).append('g').attr('transform', "translate(" + margin.left + "," + margin.top + ")");
         $svg.append('g').attr('class', 'x axis');
         $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')');
         $svg.append('g').attr('class', 'y axis line');
         $svg.select('.y.axis.line').append('text').attr('transform', 'translate(20,0) rotate(90)').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start').text('Y');
-        area = d3.svg.area().x(function(d) {
-          return X(d.day);
-        }).y0(function(d) {
-          return Y(d.y0);
-        }).y1(function(d) {
-          return Y(d.y0 + d.y);
-        });
         return chart.addStack = function(data, scaleData) {
-          var $layer, $path, keys, layers, stack;
+          var $layer, $rect, layers, stack;
           stack = d3.layout.stack().x(function(d) {
             return d.day;
           }).y(function(d) {
@@ -58,22 +53,8 @@
             return d.values;
           });
           layers = stack(data);
-          keys = scaleData.map(function(d) {
-            return d.key;
-          });
-          layers = layers.map(function(layer) {
-            if (keys.indexOf(layer.key) < 0) {
-              layer.values = layer.values.map(function(d) {
-                d.y0 = 0;
-                d.y = 0;
-                return d;
-              });
-            }
-            return layer;
-          });
-          console.log(keys, layers);
-          xScale.domain(d3.extent(layers[0].values, function(d) {
-            return d.day;
+          xScale.domain(layers[0].values.map(function(v, i) {
+            return v.day;
           }));
           $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis);
           yScale.domain([
@@ -90,21 +71,25 @@
           $layer.style('fill', function(d, i) {
             return d.color;
           }).transition().duration(500).ease("sin-in-out").style('opacity', function(d) {
-            if (keys.indexOf(d.key) < 0) {
+            if (!(scaleData.some(function(s) {
+              return s.key === d.key;
+            }))) {
               return 0;
             } else {
               return 1;
             }
           });
-          $path = $layer.selectAll('path.area').data(function(d) {
-            return [d.values];
+          $layer.selectAll('rect').transition().duration(500).ease("sin-in-out").attr('y', height - margin.top - margin.bottom).attr('height', 0);
+          $rect = $layer.selectAll('rect').data(function(d) {
+            return d.values;
           });
-          $path.enter().append('path').attr('class', 'area');
-          $path.style('fill', function(d) {
-            return d.color;
-          });
-          return $path.transition().duration(1000).ease("sin-in-out").attr('d', function(d) {
-            return area(d);
+          $rect.enter().append('rect').attr('y', height - margin.bottom - margin.top).attr('height', 0);
+          return $rect.transition().duration(1000).ease("sin-in-out").attr('x', function(d, i) {
+            return X(d.day);
+          }).attr('y', function(d) {
+            return Y(d.y0 + d.y);
+          }).attr('width', xScale.rangeBand()).attr('height', function(d) {
+            return Y(d.y0) - Y(d.y0 + d.y);
           });
         };
       });

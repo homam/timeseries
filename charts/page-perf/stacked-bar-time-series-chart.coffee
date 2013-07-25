@@ -1,6 +1,6 @@
 exports = exports ? this
 
-exports.stackedAreaimeSeriesChart = () ->
+exports.stackedBarTimeSeriesChart = () ->
   # configs
   margin =
     top: 20
@@ -13,7 +13,7 @@ exports.stackedAreaimeSeriesChart = () ->
   xMap = (d) -> d[0]
   yMap = (d) -> d[1]
 
-  xScale = d3.time.scale()
+  xScale = d3.scale.ordinal()
   yScale = d3.scale.linear()
 
 
@@ -27,12 +27,12 @@ exports.stackedAreaimeSeriesChart = () ->
   chart = (selection) ->
     selection.each (raw) ->
 
-      xScale.range([0, width - margin.left - margin.right])
+      xScale.rangeRoundBands([0,width - margin.left - margin.right], .02)
       yScale.range([height - margin.top - margin.bottom, 0])
 
       xAxis = d3.svg.axis().scale(xScale).orient('bottom')
       .tickSize(-height+margin.top+margin.bottom,0,0)
-      #.tickFormat((d) -> d.getDate() + '/' + d.getMonth())
+      .tickFormat((d) -> d.getDate() + '/' + d.getMonth())
 
       yAxis = d3.svg.axis().scale(yScale).orient('left')
       .tickSize(-width+margin.left+margin.right,0,0)
@@ -55,7 +55,6 @@ exports.stackedAreaimeSeriesChart = () ->
       .attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start')
       .text('Y')
 
-      area = d3.svg.area().x((d) -> X(d.day)).y0((d) -> Y(d.y0)).y1((d) -> Y(d.y0 + d.y))
 
 
       chart.addStack = (data, scaleData) ->
@@ -67,19 +66,7 @@ exports.stackedAreaimeSeriesChart = () ->
 
         layers = stack(data)
 
-        # set the y and y0 position of filtered out keys to 0, so keep the path for animation purpose but its area will be 0
-        keys = scaleData.map((d) -> d.key)
-        layers = layers.map (layer) ->
-          if keys.indexOf(layer.key) < 0
-            layer.values = layer.values.map (d) ->
-              d.y0 = 0
-              d.y = 0
-              d
-          layer
-
-        console.log keys, layers
-
-        xScale.domain d3.extent layers[0].values, (d) -> d.day
+        xScale.domain layers[0].values.map (v,i) ->v.day
         $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis)
 
         yScale.domain [0, d3.max(stack(scaleData), (l) -> d3.max(l.values, (d) -> d.y0+d.y))]
@@ -90,17 +77,21 @@ exports.stackedAreaimeSeriesChart = () ->
 
         $layer = $svg.selectAll('.layer').data(layers)
         $layer.enter().append('g').attr('class', 'layer')
+        #todo hide the elements that are not included in scaleData
+        #$layer.exit().transition().delay(1000).remove() # nothing exits
+        #$layer.exit().selectAll('rect').transition().duration(1000).ease("sin-in-out").attr('y', height-margin.top-margin.bottom).attr('height', 0)
         $layer.style('fill', (d, i) ->d.color)
         .transition().duration(500).ease("sin-in-out")
-        .style('opacity', (d) -> if (keys.indexOf(d.key)<0) then 0 else 1)
-        #$layer.selectAll('rect').transition().duration(500).ease("sin-in-out").attr('y', height-margin.top-margin.bottom).attr('height', 0)
+        .style('opacity', (d) -> if !(scaleData.some((s) -> s.key == d.key)) then 0 else 1)
+        $layer.selectAll('rect').transition().duration(500).ease("sin-in-out").attr('y', height-margin.top-margin.bottom).attr('height', 0)
 
-        $path = $layer.selectAll('path.area').data((d) -> [d.values])
-        $path.enter().append('path').attr('class', 'area')
-        $path.style('fill', (d) -> d.color)
-        $path.transition().duration(1000).ease("sin-in-out")
-        .attr('d', (d) -> area(d))
-
+        $rect = $layer.selectAll('rect').data((d) -> d.values)
+        $rect.enter().append('rect').attr('y', height-margin.bottom-margin.top).attr('height',0)
+        $rect.transition().duration(1000).ease("sin-in-out")
+        .attr('x', (d,i) -> X(d.day))
+        .attr('y', (d) -> Y(d.y0 + d.y))
+        .attr('width', xScale.rangeBand())
+        .attr('height', (d) -> Y(d.y0)-Y(d.y0+d.y))
 
 
 
