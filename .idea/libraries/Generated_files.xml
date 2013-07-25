@@ -2,51 +2,13 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/charts/line-bar/chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/line-bar/line-bar-time-series-chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/simple-updatable/simple-updatable-time-series-chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/multi/chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/simple-updatable/chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/page-perf/stacked-area-time-series-chart.js" />
-        <item url="file://$PROJECT_DIR$/app.js" />
-        <item url="file://$PROJECT_DIR$/charts/page-perf/chart-bar.js" />
-        <item url="file://$PROJECT_DIR$/charts/complex/chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/nv-page-perf/line-bar-time-series-chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/complex/complex-time-series-chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/simple/time-series-chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/nv-page-perf/chart.js" />
         <item url="file://$PROJECT_DIR$/charts/page-perf/chart-area.js" />
-        <item url="file://$PROJECT_DIR$/charts/multi/multi-time-series-chart.js" />
-        <item url="file://$PROJECT_DIR$/routes/index.js" />
-        <item url="file://$PROJECT_DIR$/charts/page-perf/stacked-bar-time-series-chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/simple/chart.js" />
+        <item url="file://$PROJECT_DIR$/charts/page-perf/stacked-area-time-series-chart.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/charts/iraq-android-refs/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/iraq-android-refs/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/line-bar/line-bar-time-series.chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/line-bar/line-bar-time-series.chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/page-perf/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/page-perf/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/line-bar/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/simple-updatable/simple-updatable-time-series-chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/line-bar/line-bar-time-series-chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/multi/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/simple-updatable/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/page-perf/stacked-area-time-series-chart.js" />
-      <root url="file://$PROJECT_DIR$/app.js" />
-      <root url="file://$PROJECT_DIR$/charts/complex/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/page-perf/chart-bar.js" />
-      <root url="file://$PROJECT_DIR$/charts/nv-page-perf/line-bar-time-series-chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/complex/complex-time-series-chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/simple/time-series-chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/nv-page-perf/chart.js" />
       <root url="file://$PROJECT_DIR$/charts/page-perf/chart-area.js" />
-      <root url="file://$PROJECT_DIR$/routes/index.js" />
-      <root url="file://$PROJECT_DIR$/charts/multi/multi-time-series-chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/page-perf/stacked-bar-time-series-chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/simple/chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/page-perf/stacked-area-time-series-chart.js" />
     </CLASSES>
     <SOURCES />
   </library>

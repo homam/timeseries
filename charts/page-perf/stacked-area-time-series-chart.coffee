@@ -16,6 +16,11 @@ exports.stackedAreaimeSeriesChart = () ->
   xScale = d3.time.scale()
   yScale = d3.scale.linear()
 
+  keyMap = (d) -> d['key']
+  valuesMap = (d) -> d['values']
+  keyFilter = (d) -> true
+  stackOffset = 'zero'
+
 
   X = (d) -> xScale d
   Y = (d) -> yScale d
@@ -58,48 +63,47 @@ exports.stackedAreaimeSeriesChart = () ->
       area = d3.svg.area().x((d) -> X(d.day)).y0((d) -> Y(d.y0)).y1((d) -> Y(d.y0 + d.y))
 
 
-      chart.addStack = (data, scaleData) ->
+      chart.addStack = (data) ->
 
         stack = d3.layout.stack()
-        .x((d) -> d.day)
-        .y((d) -> d.visits)
-        .values((d) -> d.values) #todo get values() map in addStack param
+        .offset(stackOffset)
+        .x(xMap).y(yMap)
+        .values(valuesMap)
 
         layers = stack(data)
 
+
+        keys = data.map(keyMap).filter(keyFilter)
+
+
         # set the y and y0 position of filtered out keys to 0, so keep the path for animation purpose but its area will be 0
-        keys = scaleData.map((d) -> d.key)
         layers = layers.map (layer) ->
-          if keys.indexOf(layer.key) < 0
-            layer.values = layer.values.map (d) ->
-              d.y0 = 0
-              d.y = 0
+          if keys.indexOf(keyMap layer) < 0
+            (valuesMap layer).map (d) ->
+              d.y = d.y0 = 0
               d
           layer
 
-        #console.log keys, layers
-
-        xScale.domain d3.extent layers[0].values, (d) -> d.day
+        xScale.domain d3.extent valuesMap(layers[0]), xMap
         $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis)
 
-        yScale.domain [0, d3.max(stack(scaleData), (l) -> d3.max(l.values, (d) -> d.y0+d.y))]
+        scaleLayers = stack(data.filter (d) -> keyFilter keyMap d)
+        yScale.domain [0, d3.max(scaleLayers, (l) -> d3.max(valuesMap(l), (d) -> d.y0+d.y))]
         $svg.select('.y.axis.line').transition().duration(1500).ease("sin-in-out").call(yAxis)
         $svg.select('.y.axis.line > text').text(label ? '')
 
-        #color = d3.scale.category20()
 
         $layer = $svg.selectAll('.layer').data(layers)
         $layer.enter().append('g').attr('class', 'layer')
-        $layer.style('fill', (d, i) ->d.color)
-        .transition().duration(500).ease("sin-in-out")
-        .style('opacity', (d) -> if (keys.indexOf(d.key)<0) then 0 else 1)
-        #$layer.selectAll('rect').transition().duration(500).ease("sin-in-out").attr('y', height-margin.top-margin.bottom).attr('height', 0)
+        $layer.style('fill', (d) ->d.color)
+        .transition().duration(500).ease("sin-in-out").delay(200)
+        .style('opacity', (d) -> if (keys.indexOf(keyMap(d))<0) then 0 else 1)
 
-        $path = $layer.selectAll('path.area').data((d) -> [d.values])
+        $path = $layer.selectAll('path.area').data((d) -> [valuesMap(d)])
         $path.enter().append('path').attr('class', 'area')
         $path.style('fill', (d) -> d.color)
         $path.transition().duration(1000).ease("sin-in-out")
-        .attr('d', (d) -> area(d))
+        .attr('d', area)
 
 
 
@@ -108,8 +112,13 @@ exports.stackedAreaimeSeriesChart = () ->
 
 
 
+  chart.key = (map) -> keyMap = map ? keyMap; return chart;
+  chart.keyFilter = (filter) -> keyFilter = filter ? keyFilter; return chart;
+  chart.values = (map) -> valuesMap = map ? valuesMap; return chart;
+  chart.stackOffset = (val) -> stackOffset = val ? stackOffset; return chart;
   chart.x = (map) -> xMap = map ? xMap; return chart
   chart.y = (map) -> yMap = map ? yMap; return chart;
+
 
   chart.height = (val) -> height = val ? height; return chart;
 

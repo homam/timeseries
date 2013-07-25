@@ -29,7 +29,7 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
     graphData = _.keys(groups).map((page, i) ->
       key: page,
       name: (pages.filter (p) -> p.page == page)[0].name
-      values: groups[page]
+      valuess: groups[page]
       sum: groups[page].map((d) -> d.visits).reduce (a,b) -> a+b
       color: colors(i)
     )
@@ -39,12 +39,14 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
 
 
     chart = stackedAreaimeSeriesChart()
+    .key((g) -> g.key)
+    .values((g) -> g.valuess)
     .x((d) -> d.day)
     .y((d) -> d.visits)
 
     d3.select('#chart').call chart
 
-    chart.addStack graphData, graphData
+    draw = () -> chart.addStack graphData
 
     $li = d3.select('#pages').selectAll('li').data(graphData)
     $li.enter().append('li').style('color', (d) -> d.color)
@@ -52,23 +54,23 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
     .on('change', () ->
       selecteds = [];
       d3.selectAll('#pages li input:checked').each((d) -> selecteds.push d.key)
-      chart.addStack graphData, if !selecteds.length then graphData else graphData.filter (d,i) -> selecteds.indexOf(d.key)>-1
+      chart.keyFilter (g) -> selecteds.indexOf(g)>-1
+      draw()
     )
     $li.append('label').attr('for', (d) -> 'page-' + d.key).text((d) -> d.name)
 
 
-    play = () ->
-      range = _.range(r1 = _.random(0,8), _.random(r1, 8), _.random(1,3))
-      if range.length == 0
-        play()
-        return
-      chart.addStack graphData, graphData.filter (d,i) -> range.indexOf(i)>-1
-      setTimeout ()->
-        play()
-      ,2000
-    #play()
+    $offsets = d3.select("#chart-controls").selectAll('span.offset')
+    .data([{n: 'Comulative', v:'zero'},{n: 'Normalized', v:'expand'}]).enter().append('span').attr('class', 'offset')
+    $offsets.append('input').attr('type','radio').attr('name', 'offset').attr('id', (d) -> 'offset-' + d.v)
+    .on('change', (val) ->
+        chart.stackOffset val.v
+        draw()
+    )
+    $offsets.append('label').attr('for', (d) -> 'offset-' + d.v).text((d) -> d.n)
 
 
+    draw()
 
 
 
