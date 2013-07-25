@@ -1,0 +1,471 @@
+page,name
+0,UnKnown
+1,Animal
+2,Animal_wp
+3,Annoy
+4,AyoTech
+5,bond
+6,Camel
+8,dhoom2
+9,DHW
+10,dudu
+11,enrique
+12,extreme
+13,friends
+14,Frog
+15,funny
+16,FunnyArabic
+17,FunnyEnglish
+18,Games
+19,gamesar
+20,GamesEn
+21,golden
+22,guinness
+23,IndiaWAP_Page1
+24,IndiaWAP_Page2
+25,IndiaWeb
+26,Jodhaa
+27,KR
+28,love
+29,MI
+30,morse
+31,mozook
+32,prison
+33,razor
+34,romeo
+35,Senden
+36,shakira
+37,silent
+38,singtone
+39,specialoffer
+40,subandwin
+41,tarkan
+42,tatil
+43,umbrella
+44,video
+45,VideoTM
+46,VideoOfDay
+47,WAP_Mobily
+48,wap_turkey_conversion_pixel
+49,wap_turkey_video_cnvrsn_pxl
+50,wap_turkey_video_subs
+51,wap_turkey_video_visits
+52,wap_turkey_visit_track
+53,WAP_UAE_Video
+54,WAP_UAE_Video_smsTag
+55,Default
+56,DefaultGames
+57,DefaultVideos
+58,bean
+59,mvideo
+60,mbean
+61,heart
+62,rabbit
+63,chicken
+64,chickvid
+65,jungle
+66,Jurassic
+67,Bug
+68,scary
+69,nancy
+70,sixdownloads
+71,chicken3d
+72,scaryvideo
+73,sixdownloads2
+74,cold
+75,FreeTrial
+76,fun
+77,sixdownloads3
+78,sixdownloads4
+79,100Kontor
+80,sixdownloads5
+81,100kontor2
+82,xray
+83,sheep
+84,radar
+85,clubir
+86,FastAndSerious
+87,IQtest
+88,IQRussia
+89,ScaryRussia
+90,CrazyChickenRussia
+91,mobvideo320
+92,mobvideo
+93,MobileTricks
+94,MobileTricksRussia
+95,ScaryIraq
+96,alien
+97,AlienRussia
+98,baby
+99,LoveTest
+100,LoveTestRussia
+101,Chicken2
+102,Valentine
+103,RussiaGames
+104,IQService
+105,button
+106,eggs
+107,rolegs
+108,AzherbaijaniMozookFunClub
+109,Frogs
+110,mysterious
+111,b2t
+112,LoveCalculator
+113,energy
+114,vuvuzela
+115,cars
+116,PersonalityTest
+117,Mozook Video wap
+118,Ninja
+119,vipgames
+120,vipgames-trial
+121,Download2PC
+123,AzherbaijaniFreeTrial
+124,FunClub
+125,wabits
+126,samba
+127,pharaohs
+128,MoxiTalk
+129,WallPapersMozookWeb
+131,CountrySelect
+132,countryselectmob
+134,Index
+135,AzerSupport
+136,tricks2
+137,vipgames-quicktaxi
+138,vipgames-mobilestyle
+139,Mozook Xray wap
+140,Mozook Ringtone wap
+141,Greetings
+142,Mozook Video wap
+143,vipgames-ipad
+144,Mozook Video wap
+145,Mozook Video wap
+146,SheepSong
+147,Mozook Video wap
+148,IQ_ru_test
+149,PuzzleMania
+150,GangWars
+151,MovieStar
+152,vipgames-mbstylefb
+153,Bear
+154,Robot
+155,termsandconditionmoxi24
+156,contactmoxi24
+157,Faq24
+158,WallpapersMoxiWeb
+161,WapHtmlMoxi24_R
+162,Moxi_Html_Video
+163,WapCtMoxi24_R
+164,WapCtMoxi24_V
+165,vipgames-ipad2
+166,Video2
+167,Brain2Train wap
+168,golden-fb
+169,MobileTricks-fb
+170,LoveTest-fb
+171,Chicken2-fb
+172,WallPaper-fb
+173,tricks2-fb
+174,silent-fb
+175,xray-fb
+176,Brain2Train wap
+177,pirates
+178,lovetest2
+179,Mozook Video wap
+180,Wap_Moxi_Mozook
+181,Mozook Video wap
+182,eyes
+183,ringtones
+184,hot_wallpaper
+185,Brain2Train wap
+186,vipgames-p1 wap
+187,vipgames-p1-nokia wap
+188,Mozook Wallpaper wap
+189,winIPhone
+190,WAP_AdmobPage
+191,Babelbay wap
+192,goldenvideo
+193,lovetest3
+194,Brain2Train wap
+195,play.vipgames.ipad2
+196,Babelbay wap
+197,b2t
+198,B2THomePage
+199,Brain2Train wap
+200,babelbay
+201,Mozook Golden wap
+202,Mozook Mobile Tricks wap
+203,Mozook_VOD wap
+204,m.rumabila wap
+205,Interactive Banner
+206,babelbayhome
+207,vipgames-mobilestyle-rd
+208,3DRingtone
+209,vipgames-ipad-rd
+210,angryanimals
+211,MobileIllusions
+212,IndonesiaBabelbay wap
+213,IndonesiaB2t wap
+214,VipGames wap
+215,b2tbirds
+216,uksmart wap
+217,grsmart wap
+218,RingtoneComposer
+219,Babelbay Iphone Wap
+220,Babelbay M.W.
+221,me4mobile
+222,M.W. - RingTone - Purple
+223,MobileFun
+224,Mozook Iraq Nokia6120
+225,M.W. - Video - Purple
+226,Mozook Sudan Nokia6120
+227,Wap_me4mobile
+228,M.W. - BBay - DBL-Opt
+231,EpicCat
+232,MindReader
+233,M.W. - Brain2Train (alt)
+234,M.W. - Brain2Train
+235,M.W. - FunClub
+236,M.W. - Me4Mobile
+237,M.W. - RingTone - Classic Dark
+238,M.W. - Video - Classic Dark
+239,M.W. - RingTone - Classic White
+240,M.W. - Video - Classic White
+241,M.W. - RingTone - Awesome
+242,M.W. - Video - Awesome
+243,M.W. - WallPaper - Amazing
+244,M.W. - BBay - EnAr
+245,M.W. - VGames - Classic White
+246,M.W. - B2T - Purpule
+247,M.W. - B2T - Black
+248,M.W. - RingTone - Cool Blue
+249,M.W. - Video - Solid White
+250,M.W. - Video - Cool Blue
+251,M.W. - WallPaper - AmazingBlue
+252,zombie
+253,Reflex Test
+254,M.W. - RingTone - Valentine
+255,M.W. - Video - Valentine
+256,getupringtone
+257,M.W. - Fun Club - Valentine
+258,M.W. - Fun Club - Cricket
+259,zombie
+260,getupringtone
+261,BabelbayTalk
+263,me4mobile_mozook
+264,xray_b2t
+265,M.W Video – Red – iPhone
+266,me4mobile_babelbay
+267,me4mobile_b2t
+268,me4mobile_vipgame
+269,funringtones
+270,coolvideos
+271,lovetest_me4mobile
+272,M.W. - MoxiRingtone
+273,M.W. - MoxiVideo
+274,MissingObjects
+275,M.W. Moxi RingVideo
+276,me4mobile_mozook_indirect
+277,play.vipgames.fruitslasher
+278,me4mobile_mozook_indirect-fb
+279,lovetest_me4mobile-fb
+280,me4mobile_mozook-fb
+281,M.W. - Brain2train - LinkClick
+282,IQ_test
+283,BabelbayTourist
+284,M.W. Moxi Ringtones
+285,CupSpirit
+286,M.W. Model Club
+287,B2TGameShow
+288,M.W - Ringtone - Euro
+289,M.W - Video - Euro
+290,M.W - MoxiRingtones - Euro
+291,EuroCup2012
+292,play.vipgames.arcade
+293,M.W Moxi CoolRingtones
+294,coolringtones
+295,VideosBlue
+296,azringtones
+297,M.W VIPGames
+298,M.W. - MoxiWallpaper
+299,M.W B2t Qustion - Asgard - HTML5 only
+300,M.W B2t Qustion - Penguin - HTML5 only
+301,M.W B2t Qustion - Solar System - HTML5 only
+302,M.W B2t Qustion - Titanic - HTML5 only
+303,B2TRamadan
+304,MobileTricks_vipgames
+305,b2t_winiphone
+306,xray2
+307,M.W. - Mozook - WinIphone
+308,xray_Zoottoo
+309,xray2
+310,xray2
+311,xray2
+312,xray2
+313,xray2
+314,xray2
+315,palm ringtone
+316,xray-google
+317,besthits
+318,M.W - Sexy IPhone
+319,babelbay-google
+320,videocomposer
+321,moxibestvideos
+322,M.W. - Video - Cool Blue – Top Price
+323,lovesmenot
+324,M.W. - Video - CoolBlue Top Price Stat
+325,M.W. - Video - CoolBlue Inside Price Stat
+326,M.W. - Fingerprint - Ringtone
+327,M.W. - BBay - MultiOC
+328,M.W. - BBay - MultiOC DU
+329,M.W. - Video - MultiOC
+330,M.W. - Video - MultiOC Etisalat
+331,M.W. - WallPaper - Amazing
+332,M.W. - Fingerprint_Stats - Ringtone
+333,M.W. - Video_Stats - Purple
+334,M.W. - RingTone - Awesome_Stats
+335,M.W. - RingTone - Classic White_Stats
+336,M.W. - RingTone - Purple_Stats
+337,M.W. - Video - MultiOC Du
+338,M.W. - Video - MultiOC Etisalat
+339,fruitslasher-google
+340,gameshow-google
+341,me4mobile_b2t-google
+342,xray2 opereator PreSelectedBelow
+343,gumgum
+344,bbaymobile
+345,MovieMaster
+346,MovieMaster Wap
+347,babelbay-fb
+348,oman_mozookvip
+349,BBay single opt
+350,SmartVideo
+351,funringtones-google
+352,VideosBlue-google
+353,coolringtones-google
+354,coolvideos-google
+355,"M.W. FingerPrint, Test #LinkPIN ^LinkPIN"
+356,M.W Video - Red
+357,M.W. BBay- TestID-2 Dbl-opt
+358,M.W BBay- TedID-2 Sing-opt
+359,"M.W. Purple Ringtone, Test #LinkPIN ^LinkPIN"
+360,"M.W. CoolBlue Video, Test #LinkPIN ^LinkPIN"
+361,"M.W. Orange B2T, Test #LinkPIN ^LinkPIN"
+363,"M.W. Penguin, Test #LinkPIN ^LinkPIN"
+364,M.W B2t Qustion - Solar System- LinkPIN
+365,"M.W. Titanic, Test #LinkPIN ^LinkPIN"
+366,M.W. Vietnam Video MultiOC
+367,"M.W. Orange B2T, Test #LinkPIN ^PIN"
+368,"M.W. Purple Ringtone, Test #LinkPIN ^PIN"
+369,"M.W. CoolBlue Video, Test #LinkPIN ^PIN"
+370,"M.W. Penguin, Test #LinkPIN ^PIN"
+371,"M.W. Titanic, Test #LinkPIN ^PIN"
+372,"M.W. FingerPrint, Test #LinkPIN ^PIN"
+373,MovieMaster Wap - II
+374,MovieMaster Wap - III
+375,besthits-moxi24
+376,Wedding Clock - DropDown
+377,Wedding Clocks
+378,Awesome Ring
+379,M.W. Video_Party
+381,M.W. CoolVideo_Iraq
+385,M.W. - Mozook - WinIphoneTest #3
+386,M.W B2t Qustion - Solar System Test #4
+387,M.W B2t Qustion - Titanic Test #4
+388,"MovieMaster Wap,AutoScroll "
+389,"MovieMaster Wap,No AutoScroll "
+390,"M.W. - Video - Purple , AutoScroll"
+391,"M.W. - Video - Purple ,No AutoScroll"
+392,"M.W. - Video - CoolBlue,Scroll"
+393,"M.W. - Video - CoolBlue,NO Scroll"
+394,"MovieMaster Wap,AutoScroll  Test #5"
+395,"MovieMaster Wap,No AutoScroll  Test #5"
+396,"M.W. - Video - Purple , AutoScroll Test #6"
+397,"M.W. - Video - Purple ,No AutoScroll Test #6"
+398,"MovieMaster Wap,AutoScroll  Test #7"
+399,"MovieMaster Wap,No AutoScroll  Test #7"
+400,"MovieMaster Wap,AutoScroll  Test #8"
+401,"MovieMaster Wap,No AutoScroll  Test #8"
+411,"M.W. - Video - CoolBlue,Scroll Test #15"
+412,"M.W. - Video - CoolBlue,NO Scroll Test #15"
+413,VideosBlue_Dropdown
+414,Dreamvideo
+415,Babelbay-Chat
+416,M.W. Video_Party-Button Flashing
+417,M.W. Video_Party-NO Button Flashing
+418,IQ_test_vn_test
+419,lovesmenot_vn_test
+420,M.W. - RingTone - MoxiBlue
+421,Smartvideos
+422,M.W. - Video - Purple
+423,M.W. - Video - Purple
+424,M.W. - Video - Purple
+425,M.W. - Video - Classic White
+426,"M.W. Purple Ringtone, Test #LinkPIN ^PIN"
+427,M.W. - Video - Classic Dark
+428,M.W. - Video - Classic White
+429,M.W.- Harlem Shake
+430,M.W. - Video - Classic Dark Test #16
+431,M.W. - Video - Purple Test #16
+432,M.W. - Video - Purple Test #17
+433,M.W. - Video - Classic White Test #17
+434,M.W. - Video - Purple Test #18
+435,M.W. - Video - Classic White Test #18
+436,M.W. - Video - Classic White Test #19
+437,M.W. - Video - Purple Test #19
+438,M.W. - RingTone - Purple Test #20
+439,M.W. - RingTone - Classic White Test #20
+440,lovetest3 - Normal
+441,lovetest3 - Logos
+442,lovetest3 - Logo submit
+443,HarlemShake
+444,VideosBlueOperatorsLogo
+445,M.W. - RingTone - Classic White Test #20 Test #21
+446,M.W. - RingTone - Purple Test #20 Test #21
+447,M.W. - Video - Classic White Test #18 Test #22
+448,M.W. - Video - Purple Test #18 Test #22
+449,M.W. - Video - Classic White Test #19 Test #23
+450,M.W. - Video - Purple Test #19 Test #23
+451,Test-x
+452,M.W.- Harlem Shake - 2
+454,M.W. - Video - Purple KSA Test
+456,M.W. - Mozook - WinIphone2
+457,BurgerBite
+458,MobileAcademy Landing Page
+459,MobileAcademy-Default
+463,M.W. - RingTone - Awesome_Letters
+464,M.W. - RingTone - Awesome_Numbers
+465,M.W. - RingTone - Awesome Test #24
+466,M.W. - RingTone - Awesome_Letters Test #24
+467,M.W. - RingTone - Awesome_Numbers Test #25
+468,M.W. - RingTone - Awesome_Letters Test #25
+471,B2T_IQTest
+472,M.W. - Video - Purple - PriceTest- Numbers
+473,M.W. - Video - Purple - Price Test -Letters
+474,M.W. - Video - Purple -PriceTest-Numbers
+475,M.W. Video_Party-Button Flashing Price -Letters
+476,M.W. Video_Party-Button Flashing Price -Numbers
+477,M.W.- Harlem Shake-PriceTest-numbers
+478,M.W.- Harlem Shake-PriceTest-letters
+479,MovieMaster_Gameshow
+480,BodyAge
+481,GetTheBestVideos
+483,BestRingtones
+484,M.W MA Mobile Photography
+485,M.W MA Mobile Learning
+486,Loading
+487,RamadanQuiz
+488,GrumpyKat
+489,GrumpyKatVideo
+490,M.W IOS ClickTag
+491,AcademyM
+492,M.W. - Video - Ramadan
+493,MobileAcademy-Generic
+494,MA Body Language Page
+495,iPadSuperVideos
+496,M.W. - Brain2Train Nokia
+497,BahrainSplit
+498,MA Tame Your Temper Page
+499,Win_iPhone
+500,KSASplitPage

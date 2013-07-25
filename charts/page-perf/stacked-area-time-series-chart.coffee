@@ -77,7 +77,7 @@ exports.stackedAreaimeSeriesChart = () ->
               d
           layer
 
-        console.log keys, layers
+        #console.log keys, layers
 
         xScale.domain d3.extent layers[0].values, (d) -> d.day
         $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis)

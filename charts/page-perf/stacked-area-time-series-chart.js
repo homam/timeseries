@@ -71,7 +71,6 @@
             }
             return layer;
           });
-          console.log(keys, layers);
           xScale.domain(d3.extent(layers[0].values, function(d) {
             return d.day;
           }));
