@@ -1,12 +1,3 @@
-movingAverage = (map, size) ->
-  arr = []
-  return (d, i) ->
-    if arr.length >= size
-      arr = arr.slice 1
-    arr.push map(d)
-    val = (arr.reduce (a,b) -> a+b) / (arr.length)
-    return val
-
 d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
   # parse data
   parseDate = d3.time.format("%m/%d/%Y").parse;
@@ -17,12 +8,9 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
     d.conv = if d.visits > 0 then  d.subs/d.visits else 0
     d
 
-  hahaha = data.map( (d, i) ->
-    howMany = if i > 5 then 6 else i
-    d.conv_cumlativeMovingAverage = [0..i].map((j) -> data[j].conv).reduce((a,b) ->a+b)/(i+1)
-    d.movingAverage = [0..howMany].map((j) -> data[j].conv).reduce((a,b) ->a+b)/(howMany+1)
-    d
-  )
+  #data = data.filter (d) -> d.day >= new Date(2013,6,15) && d.day <= new Date(2013,7,15)
+
+
   d3.csv 'charts/page-perf/data/pages.csv', (pages) ->
 
     # group the data by page
@@ -74,6 +62,12 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
     .x((d) -> d.day)
     .y((d) -> d.visits)
 
+    # just an example
+    filterByTime= () ->
+      chart.values((g) -> g.values.filter (d) -> d.day >= new Date(2013,6,15) && d.day <= new Date(2013,7,15))
+      convChart.values((g) -> g.values.filter (d) -> d.day >= new Date(2013,6,15) && d.day <= new Date(2013,7,15))
+      draw()
+
     d3.select('#chart').call chart
 
     convChart = multiLineTimeSeriesChart()
@@ -81,15 +75,18 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
     .values((g) -> g.values)
     .x((d) -> d.day)
     .y((d) -> d.conv)
-    .mouseover((d) -> highlightPage d)
-    .mouseout((d) -> deHighlightPage d)
+    .mouseover((key) -> highlightPage key)
+    .mouseout((key) -> deHighlightPage key)
 
     d3.select('#convChart').call convChart
 
-    pageFilter = (group) ->
-      group.sumVisits >= _.chain(graphData).map((g) ->g.sumVisits).reduce((a,b)->a+b).value()/(graphData.length+1)
 
-    selectedPages = graphData.filter(pageFilter).map (g) ->g.key
+    averageVisitsPerPage = _.chain(graphData).map((g) ->g.sumVisits).reduce((a,b)->a+b).value()/(graphData.length+1)
+    stdVisitsPerPage = graphData.map((g) ->g.sumVisits).map((v) -> Math.sqrt Math.pow (v-averageVisitsPerPage), 2).reduce((a,b) -> a+b)/(graphData.length+1+1)
+
+    # default filter = page.visit > average-std
+    selectedPages = graphData.filter((group) -> group.sumVisits > averageVisitsPerPage-stdVisitsPerPage).map (g) ->g.key
+
     chart.keyFilter (g) -> selectedPages.indexOf(g) > -1
     convChart.keyFilter (g) -> selectedPages.indexOf(g) > -1
 
