@@ -8,7 +8,7 @@
       d.day = parseDate(d.day);
       d.visits = +d.visits;
       d.subs = +d.subs;
-      d.conv = d.subs > 0 ? d.visits / d.subs : 0;
+      d.conv = d.visits > 0 ? d.subs / d.visits : 0;
       return d;
     });
     return d3.csv('charts/page-perf/data/pages.csv', function(pages) {
@@ -66,12 +66,14 @@
             return d.subs;
           }).reduce(function(a, b) {
             return a + b;
-          }),
-          color: colors(i)
+          })
         };
       });
-      window.graphData = _.sortBy(graphData, function(a) {
-        return -a.sumVisits;
+      graphData = _(graphData).sortBy(function(a) {
+        return -a.visits;
+      }).map(function(g, i) {
+        g.color = colors(i);
+        return g;
       });
       chart = stackedAreaimeSeriesChart().key(function(g) {
         return g.key;
@@ -90,25 +92,27 @@
       }).x(function(d) {
         return d.day;
       }).y(function(d) {
-        return d.visits;
+        return d.conv;
       });
       d3.select('#convChart').call(convChart);
       draw = function() {
         chart.addStack(graphData);
         return convChart.addStack(graphData);
       };
-      $li = d3.select('#pages tbody').selectAll('tr').data(graphData);
+      $li = d3.select('#pages tbody').selectAll('tr').data(_.sortBy(graphData, function(a) {
+        return -a.sumVisits;
+      }));
       $li.enter().append('tr').style('color', function(d) {
         return d.color;
       }).on('mouseover', function(g) {
-        var $g, brighter, orig, _ref;
+        var $g, orig, _ref;
 
-        $g = d3.select('[data-key="' + g.key + '"]');
+        $g = d3.selectAll('#chart [data-key="' + g.key + '"]');
         orig = d3.rgb((_ref = $g.attr('data-orig-color')) != null ? _ref : $g.style('fill'));
         $g.attr('data-orig-color', orig);
-        brighter = orig.brighter(.8);
-        $g.transition('fill').duration(200).style('fill', brighter);
-        return $g.select('path').style('stroke', orig.darker(.7).toString()).style('stroke-width', 2);
+        $g.transition('fill').duration(200).style('fill', orig.darker(.7));
+        $g.select('path').style('stroke', orig.brighter(.7)).style('stroke-width', 2);
+        return d3.selectAll('#convChart [data-key="' + g.key + '"]').transition('stroke-width').style('stroke-width', 5);
       }).on('mouseout', function(g) {
         var $g, orig;
 
@@ -117,7 +121,8 @@
         if (orig) {
           $g.transition('fill').duration(200).style('fill', orig);
         }
-        return $g.select('path').style('stroke', '');
+        $g.select('path').style('stroke', '');
+        return d3.selectAll('#convChart [data-key="' + g.key + '"]').transition('stroke-width').style('stroke-width', 2);
       });
       $td = $li.append("td");
       $td.append('input').attr('type', 'checkbox').attr('id', function(d) {
@@ -132,6 +137,9 @@
           return selecteds.push(d.key);
         });
         chart.keyFilter(function(g) {
+          return selecteds.indexOf(g) > -1;
+        });
+        convChart.keyFilter(function(g) {
           return selecteds.indexOf(g) > -1;
         });
         return draw();

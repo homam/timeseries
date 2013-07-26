@@ -5,7 +5,7 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
     d.day = parseDate(d.day)
     d.visits = +d.visits
     d.subs = +d.subs
-    d.conv = if d.subs > 0 then d.visits / d.subs else 0
+    d.conv = if d.visits > 0 then  d.subs/d.visits else 0
     d
 
   d3.csv 'charts/page-perf/data/pages.csv', (pages) ->
@@ -32,10 +32,12 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
       valuess: groups[page]
       sumVisits: groups[page].map((d) -> d.visits).reduce (a,b) -> a+b
       sumSubs: groups[page].map((d) -> d.subs).reduce (a,b) -> a+b
-      color: colors(i)
+      #color: colors(i)
     )
-
-    window.graphData =  _.sortBy graphData, (a) -> -a.sumVisits
+    graphData = _(graphData).sortBy( (a) -> -a.visits).map((g,i) ->
+      g.color = colors(i)
+      g
+    )
 
 
 
@@ -51,7 +53,7 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
     .key((g) -> g.key)
     .values((g) -> g.valuess)
     .x((d) -> d.day)
-    .y((d) -> d.visits)
+    .y((d) -> d.conv)
 
     d3.select('#convChart').call convChart
 
@@ -59,15 +61,17 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
       chart.addStack graphData
       convChart.addStack graphData
 
-    $li = d3.select('#pages tbody').selectAll('tr').data(graphData)
+    $li = d3.select('#pages tbody').selectAll('tr').data(_.sortBy graphData, (a) -> -a.sumVisits)
     $li.enter().append('tr').style('color', (d) -> d.color)
     .on('mouseover', (g) ->
-        $g = d3.select('[data-key="' +g.key+ '"]')
+        $g = d3.selectAll('#chart [data-key="' +g.key+ '"]')
         orig = d3.rgb $g.attr('data-orig-color') ?  $g.style('fill')
         $g.attr('data-orig-color', orig)
-        brighter = orig.brighter(.8)
-        $g.transition('fill').duration(200).style('fill', brighter)
-        $g.select('path').style('stroke', orig.darker(.7).toString()).style('stroke-width', 2)
+        $g.transition('fill').duration(200).style('fill', orig.darker(.7))
+        $g.select('path').style('stroke', orig.brighter(.7)).style('stroke-width', 2)
+
+        d3.selectAll('#convChart [data-key="' +g.key+ '"]')
+        .transition('stroke-width').style('stroke-width', 5)
     )
     .on('mouseout', (g) ->
         $g = d3.select('[data-key="' +g.key+ '"]')
@@ -76,6 +80,9 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
           $g.transition('fill').duration(200).style('fill', orig)
         $g.select('path').style('stroke', '')
 
+        d3.selectAll('#convChart [data-key="' +g.key+ '"]')
+        .transition('stroke-width').style('stroke-width', 2)
+
     )
     $td = $li.append("td")
     $td.append('input').attr('type', 'checkbox').attr('id', (d) -> 'page-' + d.key).attr('name', (d) -> d.key)
@@ -83,6 +90,7 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
       selecteds = [];
       d3.selectAll('#pages input:checked').each((d) -> selecteds.push d.key)
       chart.keyFilter (g) -> selecteds.indexOf(g)>-1
+      convChart.keyFilter (g) -> selecteds.indexOf(g)>-1
       draw()
     )
     $td.append('label').attr('for', (d) -> 'page-' + d.key).text((d) -> d.name)

@@ -19,14 +19,9 @@ exports.multiLineTimeSeriesChart = () ->
   keyMap = (d) -> d['key']
   valuesMap = (d) -> d['values']
   keyFilter = (d) -> true
-  stackOffset = 'zero'
 
 
-  X = (d) -> xScale d
-  Y = (d) -> yScale d
 
-
-  line = d3.svg.line().interpolate('basis').x(X).y(Y)
 
 
   chart = (selection) ->
@@ -60,44 +55,53 @@ exports.multiLineTimeSeriesChart = () ->
       .attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start')
       .text('Y')
 
-      area = d3.svg.area().x((d) -> X(d.day)).y0((d) -> Y(d.y0)).y1((d) -> Y(d.y0 + d.y))
 
 
-      chart.addStack = (data) ->
-        return
+      chart.addStack = (raw) ->
 
-        keys = data.map(keyMap).filter(keyFilter)
-        layers = data #todo clone the data
+        # clone the raw data
+        data = raw.map (g) ->
+          key: keyMap g
+          color: g.color #todo use colorMap
+          values: (valuesMap g).map (d) -> [xMap(d), yMap(d)]
 
+        keys = data.map((g) -> g.key).filter(keyFilter)
+
+        line = d3.svg.line().interpolate('basis').x((d) -> xScale d[0]).y((d) -> yScale d[1])
+
+        layers = data
 
         # set the y and y0 position of filtered out keys to 0, so keep the path for animation purpose but its area will be 0
         layers = layers.map (layer) ->
-          if keys.indexOf(keyMap layer) < 0
-            (valuesMap layer).map (d) ->
-              d.y = 0
+          if keys.indexOf(layer.key) < 0
+            layer.values.map (d) ->
+              d[1] = 0
               d
           layer
 
-        xScale.domain d3.extent valuesMap(layers[0]), xMap
+        xScale.domain d3.extent layers[0].values.map((d) -> d[0])
         $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis)
 
-        scaleLayers = stack(data.filter (d) -> keyFilter keyMap d)
-        yScale.domain [0, d3.max(scaleLayers, (l) -> d3.max(valuesMap(l), (d) -> d.y0+d.y))]
+        scaleLayers = (data.filter (g) -> keys.indexOf(g.key) >-1)
+        yScale.domain [0, d3.max(scaleLayers, (g) -> d3.max(g.values, (d) -> d[1]))]
         $svg.select('.y.axis.line').transition().duration(1500).ease("sin-in-out").call(yAxis)
         $svg.select('.y.axis.line > text').text(label ? '')
 
 
-        $layer = $svg.selectAll('.layer').data(layers)
-        $layer.enter().append('g').attr('class', 'layer')
-        $layer.attr('data-key', (d) -> keyMap d).style('fill', (d) ->d.color)
+        $line = $svg.selectAll('.line').data(layers)
+        $line.enter().append('path').attr('class', 'line')
+        $line.attr('data-key', (d) -> d.key).style('stroke', (d) ->d.color)
         .transition().duration(500).ease("sin-in-out").delay(200)
-        .style('opacity', (d) -> if (keys.indexOf(keyMap(d))<0) then 0 else 1)
+        .style('opacity', (d) ->
+            if (keys.indexOf(d.key)<0) then 0 else 1
+        )
+        $line.transition().duration(500).attr('d', (d) -> line(d.values))
 
-        $path = $layer.selectAll('path.area').data((d) -> [valuesMap(d)])
-        $path.enter().append('path').attr('class', 'area')
-        $path.style('fill', (d) -> d.color)
-        $path.transition().duration(1000).ease("sin-in-out")
-        .attr('d', area)
+#        $path = $layer.selectAll('path.area').data((d) -> [valuesMap(d)])
+#        $path.enter().append('path').attr('class', 'area')
+#        $path.style('fill', (d) -> d.color)
+#        $path.transition().duration(1000).ease("sin-in-out")
+#        .attr('d', area)
 
 
 
@@ -109,7 +113,6 @@ exports.multiLineTimeSeriesChart = () ->
   chart.key = (map) -> keyMap = map ? keyMap; return chart;
   chart.keyFilter = (filter) -> keyFilter = filter ? keyFilter; return chart;
   chart.values = (map) -> valuesMap = map ? valuesMap; return chart;
-  chart.stackOffset = (val) -> stackOffset = val ? stackOffset; return chart;
   chart.x = (map) -> xMap = map ? xMap; return chart
   chart.y = (map) -> yMap = map ? yMap; return chart;
 
