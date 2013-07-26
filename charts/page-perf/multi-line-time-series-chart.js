@@ -40,7 +40,7 @@
         xScale.range([0, width - margin.left - margin.right]);
         yScale.range([height - margin.top - margin.bottom, 0]);
         xAxis = d3.svg.axis().scale(xScale).orient('bottom').tickSize(-height + margin.top + margin.bottom, 0, 0);
-        yAxis = d3.svg.axis().scale(yScale).orient('left').tickSize(-width + margin.left + margin.right, 0, 0);
+        yAxis = d3.svg.axis().scale(yScale).orient('left').tickSize(-width + margin.left + margin.right, 0, 0).tickFormat(d3.format('.2%'));
         $svg = d3.select(this).append('svg').attr('width', width).attr('height', height).append('g').attr('transform', "translate(" + margin.left + "," + margin.top + ")");
         $svg.append('g').attr('class', 'x axis');
         $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')');

@@ -36,6 +36,7 @@ exports.multiLineTimeSeriesChart = () ->
 
       yAxis = d3.svg.axis().scale(yScale).orient('left')
       .tickSize(-width+margin.left+margin.right,0,0)
+      .tickFormat(d3.format('.2%'))
 
 
       $svg = d3.select(this).append('svg')

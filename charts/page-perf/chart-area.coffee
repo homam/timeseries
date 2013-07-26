@@ -1,3 +1,41 @@
+chartTable = () ->
+  # table is also a chart kinda
+  values = (d) -> d.values
+
+  chart = (selection) ->
+    selection.each () ->
+      $table = d3.select(this).append('tbody')
+
+      chart.draw = (graphData) ->
+        $li = $table.selectAll('tr').data(_.sortBy graphData, (a) -> -a.sumVisits)
+        $liEnter = $li.enter().append('tr').style('color', (d) -> d.color)
+        .on('mouseover', (g) -> highlightPage g.key)
+        .on('mouseout', (g) -> deHighlightPage g.key)
+        $liEnter.append('td').attr('class', 'id')
+        $liEnter.append('td').attr('class', 'input')
+        $liEnter.select('td.input').append('input').attr('type', 'checkbox')
+        .on('change', () ->
+            selecteds = [];
+            d3.selectAll('#pages input:checked').each((d) -> selecteds.push d.key)
+            selectedPages = selecteds
+            reDraw graphData
+          )
+        $liEnter.select('td.input').append('label')
+        ['td.visits', 'td.subs', 'td.conv'].forEach (t) ->
+          $liEnter.append(t.split('.')[0]).attr('class', t.split('.')[1])
+
+        $li.selectAll('td.id').text((d) -> d.key)
+        $li.selectAll('td.input input')
+        .attr('id', (d) -> 'page-' + d.key).attr('name', (d) -> d.key)
+        .attr('checked', (d) -> if _(selectedPages).contains(d.key) then 'checked' else null)
+        $li.selectAll('td.input label').text((d) -> d.name).attr('for', (d) -> 'page-' + d.key)
+
+        $li.selectAll('td.visits').text((d) -> d3.format(',') d.sumVisits)
+        $li.selectAll('td.subs').text((d) -> d3.format(',') d.sumSubs)
+        $li.selectAll('td.conv').text((d) -> d3.format('.2%') d.sumSubs/d.sumVisits)
+
+  return chart
+
 # visits chart
 chart = stackedAreaimeSeriesChart()
 .key((g) -> g.key)
@@ -18,9 +56,16 @@ convChart = multiLineTimeSeriesChart()
 
 d3.select('#convChart').call convChart
 
+table = chartTable()
+
+d3.select('#pages').call table
+
+selectedPages = []
+
 reDraw = (groupedData) ->
   chart.addStack groupedData
   convChart.addStack groupedData
+  table.draw groupedData
 
 
 highlightPage = (key) ->
@@ -41,6 +86,9 @@ deHighlightPage = (key) ->
 
   d3.selectAll('#convChart [data-key="' +key+ '"]')
   .transition('stroke-width').style('stroke-width', 2)
+
+
+
 
 d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
   # parse data
@@ -98,11 +146,15 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
       g
     )
 
+    draw = () -> reDraw graphData
+
     # just an example
     filterByTime= () ->
       chart.values((g) -> g.values.filter (d) -> d.day >= new Date(2013,6,15) && d.day <= new Date(2013,7,15))
       convChart.values((g) -> g.values.filter (d) -> d.day >= new Date(2013,6,15) && d.day <= new Date(2013,7,15))
       draw()
+
+    setTimeout filterByTime, 2000
 
 
     averageVisitsPerPage = _.chain(graphData).map((g) ->g.sumVisits).reduce((a,b)->a+b).value()/(graphData.length+1)
@@ -114,27 +166,7 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
     chart.keyFilter (g) -> selectedPages.indexOf(g) > -1
     convChart.keyFilter (g) -> selectedPages.indexOf(g) > -1
 
-    draw = () -> reDraw graphData
 
-
-    # table is also a chart kinda
-    $li = d3.select('#pages tbody').selectAll('tr').data(_.sortBy graphData, (a) -> -a.sumVisits)
-    $li.enter().append('tr').style('color', (d) -> d.color)
-    .on('mouseover', (g) -> highlightPage g.key)
-    .on('mouseout', (g) -> deHighlightPage g.key)
-    $td = $li.selectAll('td.input').data((d) -> [d]).enter().append("td").attr('class', 'input')
-    $td.append('input').attr('type', 'checkbox').attr('id', (d) -> 'page-' + d.key).attr('name', (d) -> d.key)
-    .attr('checked', (d) -> if _(selectedPages).contains(d.key) then 'checked' else null)
-    .on('change', () ->
-      selecteds = [];
-      d3.selectAll('#pages input:checked').each((d) -> selecteds.push d.key)
-      selectedPages = selecteds
-      draw()
-    )
-    $td.append('label').attr('for', (d) -> 'page-' + d.key).text((d) -> d.name)
-    $li.append('td').text((d) -> d3.format(',') d.sumVisits)
-    $li.append('td').text((d) -> d3.format(',') d.sumSubs)
-    $li.append('td').text((d) -> d3.format('.2%') d.sumSubs/d.sumVisits)
 
 
     #controls for visits chart
