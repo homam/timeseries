@@ -1,4 +1,4 @@
-body {
+body, input {
   font-family: Helvetica, Calibri, sans-serif;
 }
 svg {
@@ -34,7 +34,26 @@ text, textPath {
 
 }
 
+#overall-controls {
+  padding: 10px 0;
+  margin-bottom: 10px;
+  border-bottom: solid 1px silver;
+  border-top: solid 1px silver;
 
+  #country-controls {
+    float: left
+  }
+  #date-controls {
+    text-align: right;
+    float: right;
+  }
+
+  &:after {
+    content: ' ';
+    display: block;
+    clear: both;
+  }
+}
 #pages {
   td {
     padding-right: 20px;

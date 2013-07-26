@@ -26,11 +26,9 @@ exports.stackedAreaimeSeriesChart = () ->
   Y = (d) -> yScale d
 
 
-  line = d3.svg.line().interpolate('basis').x(X).y(Y)
-
 
   chart = (selection) ->
-    selection.each (raw) ->
+    selection.each () ->
 
       xScale.range([0, width - margin.left - margin.right])
       yScale.range([height - margin.top - margin.bottom, 0])
@@ -51,7 +49,6 @@ exports.stackedAreaimeSeriesChart = () ->
       # horizontal axis
       $svg.append('g').attr('class', 'x axis')
       $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')')
-      #.call(xAxis)
 
       # line axis
       $svg.append('g').attr('class', 'y axis line')
@@ -68,6 +65,11 @@ exports.stackedAreaimeSeriesChart = () ->
         stack = d3.layout.stack()
         .offset(stackOffset)
         .x(xMap).y(yMap)
+        .order((sdata) ->
+          m = sdata.map (d,i) -> {v: d.map((a) -> a[1]).reduce((a,b)->a+b), i:i}
+          m = _(m).sortBy (d) -> d.v
+          return _(m).map (d) -> d.i
+        )
         .values(valuesMap)
 
         layers = stack(data)

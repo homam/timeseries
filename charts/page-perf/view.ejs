@@ -11,20 +11,31 @@
     </head>
 <body>
     <h1><%= title %></h1>
-    <div id="chart-controls">
-
-    </div>
-    <section id="chart">
-
+    <section id="overall-controls">
+        <div id="country-controls">
+            <input type="text" value="Qatar"/>
+        </div>
+        <div id="date-controls">
+            <input type="date" id="fromDate"/> -
+            <input type="date" id="toDate"/>
+        </div>
     </section>
-    <div id="convChart-controls">
+    <section id="visits-chart">
+        <div class='controls'></div>
+        <div class='chart'></div>
+    </section>
 
-    </div>
-    <section id="convChart">
 
+    <section id="conv-chart">
+        <div class='controls'></div>
+        <div class='chart'></div>
     </section>
     <table id="pages">
-        <tbody></tbody>
+        <thead>
+            <tr>
+                <td>ID</td><td>Name</td><td>Visits</td><td>Subs</td><td>Conv</td>
+            </tr>
+        </thead>
     </table>
 
     <script src="charts/page-perf/chart-area.js"></script>

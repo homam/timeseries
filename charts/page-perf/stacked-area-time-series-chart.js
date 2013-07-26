@@ -5,7 +5,7 @@
   exports = exports != null ? exports : this;
 
   exports.stackedAreaimeSeriesChart = function() {
-    var X, Y, chart, height, keyFilter, keyMap, line, margin, stackOffset, valuesMap, width, xMap, xScale, yMap, yScale;
+    var X, Y, chart, height, keyFilter, keyMap, margin, stackOffset, valuesMap, width, xMap, xScale, yMap, yScale;
 
     margin = {
       top: 20,
@@ -39,9 +39,8 @@
     Y = function(d) {
       return yScale(d);
     };
-    line = d3.svg.line().interpolate('basis').x(X).y(Y);
     chart = function(selection) {
-      return selection.each(function(raw) {
+      return selection.each(function() {
         var $svg, area, xAxis, yAxis;
 
         xScale.range([0, width - margin.left - margin.right]);
@@ -63,7 +62,26 @@
         return chart.addStack = function(data) {
           var $layer, $path, keys, layers, scaleLayers, stack;
 
-          stack = d3.layout.stack().offset(stackOffset).x(xMap).y(yMap).values(valuesMap);
+          stack = d3.layout.stack().offset(stackOffset).x(xMap).y(yMap).order(function(sdata) {
+            var m;
+
+            m = sdata.map(function(d, i) {
+              return {
+                v: d.map(function(a) {
+                  return a[1];
+                }).reduce(function(a, b) {
+                  return a + b;
+                }),
+                i: i
+              };
+            });
+            m = _(m).sortBy(function(d) {
+              return d.v;
+            });
+            return _(m).map(function(d) {
+              return d.i;
+            });
+          }).values(valuesMap);
           layers = stack(data);
           keys = data.map(keyMap).filter(keyFilter);
           layers = layers.map(function(layer) {

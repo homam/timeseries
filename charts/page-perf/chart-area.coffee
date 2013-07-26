@@ -1,3 +1,5 @@
+selectedPages = []
+
 chartTable = () ->
   # table is also a chart kinda
   valuesMap = (d) -> d.values
@@ -17,7 +19,7 @@ chartTable = () ->
 
         # enter
         $li = $table.selectAll('tr').data(_.sortBy tableData, (a) -> -a.sumVisits)
-        $liEnter = $li.enter().append('tr').style('color', (d) -> d.color)
+        $liEnter = $li.enter().append('tr')
         .on('mouseover', (g) -> highlightPage g.key)
         .on('mouseout', (g) -> deHighlightPage g.key)
         $liEnter.append('td').attr('class', 'id')
@@ -34,6 +36,7 @@ chartTable = () ->
           $liEnter.append(t.split('.')[0]).attr('class', t.split('.')[1])
 
         # update
+        $li.attr('data-key',(d) -> d.key).style('color', (d) -> d.color)
         $li.select('td.id').text((d) -> d.key)
 
         $li.select('td.input input')
@@ -56,7 +59,7 @@ chart = stackedAreaimeSeriesChart()
 .x((d) -> d.day)
 .y((d) -> d.visits)
 
-d3.select('#chart').call chart
+d3.select('#visits-chart .chart').call chart
 
 # conv chart
 convChart = multiLineTimeSeriesChart()
@@ -67,13 +70,12 @@ convChart = multiLineTimeSeriesChart()
 .mouseover((key) -> highlightPage key)
 .mouseout((key) -> deHighlightPage key)
 
-d3.select('#convChart').call convChart
+d3.select('#conv-chart .chart').call convChart
 
 table = chartTable()
 
 d3.select('#pages').call table
 
-selectedPages = []
 
 reDraw = (groupedData) ->
   chart.addStack groupedData
@@ -82,14 +84,19 @@ reDraw = (groupedData) ->
 
 
 highlightPage = (key) ->
-  $g = d3.selectAll('#chart [data-key="' +key+ '"]')
+  $g = d3.selectAll('#visits-chart [data-key="' +key+ '"]')
   orig = d3.rgb $g.attr('data-orig-color') ?  $g.style('fill')
   $g.attr('data-orig-color', orig)
-  $g.transition('fill').duration(200).style('fill', orig.darker(.7))
-  $g.select('path').style('stroke', orig.brighter(.7)).style('stroke-width', 2)
+  $g.transition('fill').duration(200).style('fill', orig.brighter(.7))
+  $g.select('path').style('stroke', orig.brighter(.7)).style('stroke-width', 4)
 
-  d3.selectAll('#convChart [data-key="' +key+ '"]')
+  d3.selectAll('#conv-chart [data-key="' +key+ '"]')
   .transition('stroke-width').style('stroke-width', 5)
+
+  d3.selectAll('#pages [data-key="' +key+ '"]')
+  .style('outline', 'solid 2px')
+  .transition().duration(200).style('color', orig.darker(.1))
+
 deHighlightPage = (key) ->
   $g = d3.select('[data-key="' +key+ '"]')
   orig = $g.attr('data-orig-color')
@@ -97,8 +104,12 @@ deHighlightPage = (key) ->
     $g.transition('fill').duration(200).style('fill', orig)
   $g.select('path').style('stroke', '')
 
-  d3.selectAll('#convChart [data-key="' +key+ '"]')
+  d3.selectAll('#conv-chart [data-key="' +key+ '"]')
   .transition('stroke-width').style('stroke-width', 2)
+
+  d3.selectAll('#pages [data-key="' +key+ '"]')
+  .style('outline', 'solid 0px')
+  .transition().duration(200).style('color', orig)
 
 
 
@@ -161,15 +172,17 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
 
     draw = () -> reDraw graphData
 
+
+    chartDateRane = [null,null]
     # just an example
     filterByTime= () ->
-      map = (g) -> g.values.filter (d) -> d.day >= new Date(2013,6,15) && d.day <= new Date(2013,7,15)
+      map = (g) -> g.values.filter (d) ->
+        if !!chartDateRane[0] then d.day >= chartDateRane[0] else true &&
+        if !!chartDateRane[1] then d.day <= chartDateRane[1] else true
       chart.values map
       convChart.values map
       table.values map
       draw()
-
-    setTimeout filterByTime, 2000
 
 
     averageVisitsPerPage = _.chain(graphData).map((g) ->g.sumVisits).reduce((a,b)->a+b).value()/(graphData.length+1)
@@ -182,10 +195,22 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
     convChart.keyFilter (g) -> selectedPages.indexOf(g) > -1
 
 
-
+    # date control
+    parseHtml5Date = d3.time.format("%Y-%m-%d")
+    dateRange = [(parseHtml5Date d3.min graphData[0].values.map (d) -> d.day), parseHtml5Date d3.max graphData[0].values.map (d) -> d.day]
+    d3.select('#fromDate').datum(dateRange).attr('min', (d) -> d[0]).attr('value', (d) -> d[0]).attr('max', (d) -> d[1])
+    .on('change', () ->
+      chartDateRane[0] = parseHtml5Date.parse this.value
+      filterByTime()
+    )
+    d3.select('#toDate').datum(dateRange).attr('min', (d) -> d[0]).attr('value', (d) -> d[1]).attr('max', (d) -> d[1])
+    .on('change', () ->
+        chartDateRane[1] = parseHtml5Date.parse this.value
+        filterByTime()
+    )
 
     #controls for visits chart
-    $offsets = d3.select("#chart-controls").selectAll('span.offset')
+    $offsets = d3.select("#visits-chart .controls").selectAll('span.offset')
     .data([{n: 'Comulative', v:'zero'},{n: 'Normalized', v:'expand'}]).enter().append('span').attr('class', 'offset')
     $offsets.append('input').attr('type','radio').attr('name', 'offset').attr('id', (d) -> 'offset-' + d.v)
     .attr('checked', (d) -> if 'zero' == d.v then 'checked' else null)
@@ -197,7 +222,7 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
 
 
     #controls for visits conv chart
-    $smoothers = d3.select("#convChart-controls").selectAll('span.smoother')
+    $smoothers = d3.select("#conv-chart .controls").selectAll('span.smoother')
     .data([{n: 'Actual', v:'conv'},{n: 'Moving Average', v:'conv_ma'},{n: 'Comulative MA', v:'conv_cma'}]).enter().append('span').attr('class', 'smoother')
     $smoothers.append('input').attr('type','radio').attr('name', 'smoother').attr('id', (d) -> 'smoother-' + d.v)
     .attr('checked', (d) -> if 'conv' == d.v then 'checked' else null)

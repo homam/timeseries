@@ -1,4 +1,5 @@
-body {
+body,
+input {
   font-family: Helvetica, Calibri, sans-serif;
 }
 svg {
@@ -21,6 +22,24 @@ textPath {
 }
 .axis .tick line {
   stroke: rgba(0, 0, 0, 0.1);
+}
+#overall-controls {
+  padding: 10px 0;
+  margin-bottom: 10px;
+  border-bottom: solid 1px silver;
+  border-top: solid 1px silver;
+}
+#overall-controls #country-controls {
+  float: left;
+}
+#overall-controls #date-controls {
+  text-align: right;
+  float: right;
+}
+#overall-controls:after {
+  content: ' ';
+  display: block;
+  clear: both;
 }
 #pages td {
   padding-right: 20px;

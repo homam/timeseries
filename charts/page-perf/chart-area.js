@@ -2,6 +2,8 @@
 (function() {
   var chart, chartTable, convChart, deHighlightPage, highlightPage, reDraw, selectedPages, table;
 
+  selectedPages = [];
+
   chartTable = function() {
     var chart, valuesMap;
 
@@ -36,9 +38,7 @@
           $li = $table.selectAll('tr').data(_.sortBy(tableData, function(a) {
             return -a.sumVisits;
           }));
-          $liEnter = $li.enter().append('tr').style('color', function(d) {
-            return d.color;
-          }).on('mouseover', function(g) {
+          $liEnter = $li.enter().append('tr').on('mouseover', function(g) {
             return highlightPage(g.key);
           }).on('mouseout', function(g) {
             return deHighlightPage(g.key);
@@ -46,7 +46,7 @@
           $liEnter.append('td').attr('class', 'id');
           $liEnter.append('td').attr('class', 'input');
           $liEnter.select('td.input').append('input').attr('type', 'checkbox').on('change', function() {
-            var selectedPages, selecteds;
+            var selecteds;
 
             selecteds = [];
             d3.selectAll('#pages input:checked').each(function(d) {
@@ -58,6 +58,11 @@
           $liEnter.select('td.input').append('label');
           ['td.visits', 'td.subs', 'td.conv'].forEach(function(t) {
             return $liEnter.append(t.split('.')[0]).attr('class', t.split('.')[1]);
+          });
+          $li.attr('data-key', function(d) {
+            return d.key;
+          }).style('color', function(d) {
+            return d.color;
           });
           $li.select('td.id').text(function(d) {
             return d.key;
@@ -107,7 +112,7 @@
     return d.visits;
   });
 
-  d3.select('#chart').call(chart);
+  d3.select('#visits-chart .chart').call(chart);
 
   convChart = multiLineTimeSeriesChart().key(function(g) {
     return g.key;
@@ -123,13 +128,11 @@
     return deHighlightPage(key);
   });
 
-  d3.select('#convChart').call(convChart);
+  d3.select('#conv-chart .chart').call(convChart);
 
   table = chartTable();
 
   d3.select('#pages').call(table);
-
-  selectedPages = [];
 
   reDraw = function(groupedData) {
     chart.addStack(groupedData);
@@ -140,12 +143,13 @@
   highlightPage = function(key) {
     var $g, orig, _ref;
 
-    $g = d3.selectAll('#chart [data-key="' + key + '"]');
+    $g = d3.selectAll('#visits-chart [data-key="' + key + '"]');
     orig = d3.rgb((_ref = $g.attr('data-orig-color')) != null ? _ref : $g.style('fill'));
     $g.attr('data-orig-color', orig);
-    $g.transition('fill').duration(200).style('fill', orig.darker(.7));
-    $g.select('path').style('stroke', orig.brighter(.7)).style('stroke-width', 2);
-    return d3.selectAll('#convChart [data-key="' + key + '"]').transition('stroke-width').style('stroke-width', 5);
+    $g.transition('fill').duration(200).style('fill', orig.brighter(.7));
+    $g.select('path').style('stroke', orig.brighter(.7)).style('stroke-width', 4);
+    d3.selectAll('#conv-chart [data-key="' + key + '"]').transition('stroke-width').style('stroke-width', 5);
+    return d3.selectAll('#pages [data-key="' + key + '"]').style('outline', 'solid 2px').transition().duration(200).style('color', orig.darker(.1));
   };
 
   deHighlightPage = function(key) {
@@ -157,7 +161,8 @@
       $g.transition('fill').duration(200).style('fill', orig);
     }
     $g.select('path').style('stroke', '');
-    return d3.selectAll('#convChart [data-key="' + key + '"]').transition('stroke-width').style('stroke-width', 2);
+    d3.selectAll('#conv-chart [data-key="' + key + '"]').transition('stroke-width').style('stroke-width', 2);
+    return d3.selectAll('#pages [data-key="' + key + '"]').style('outline', 'solid 0px').transition().duration(200).style('color', orig);
   };
 
   d3.csv('charts/page-perf/data/sc50time.csv', function(data) {
@@ -172,7 +177,7 @@
       return d;
     });
     return d3.csv('charts/page-perf/data/pages.csv', function(pages) {
-      var $offsets, $smoothers, averageVisitsPerPage, colors, dateRange, draw, filterByTime, graphData, groups, msInaDay, stdVisitsPerPage;
+      var $offsets, $smoothers, averageVisitsPerPage, chartDateRane, colors, dateRange, draw, filterByTime, graphData, groups, msInaDay, parseHtml5Date, stdVisitsPerPage;
 
       groups = _(data).chain().filter(function(d) {
         return !!d.page && 'NULL' !== d.page;
@@ -257,12 +262,17 @@
       draw = function() {
         return reDraw(graphData);
       };
+      chartDateRane = [null, null];
       filterByTime = function() {
         var map;
 
         map = function(g) {
           return g.values.filter(function(d) {
-            return d.day >= new Date(2013, 6, 15) && d.day <= new Date(2013, 7, 15);
+            if (!!chartDateRane[0]) {
+              return d.day >= chartDateRane[0];
+            } else {
+              return true && (!!chartDateRane[1] ? d.day <= chartDateRane[1] : true);
+            }
           });
         };
         chart.values(map);
@@ -270,7 +280,6 @@
         table.values(map);
         return draw();
       };
-      setTimeout(filterByTime, 2000);
       averageVisitsPerPage = _.chain(graphData).map(function(g) {
         return g.sumVisits;
       }).reduce(function(a, b) {
@@ -294,7 +303,35 @@
       convChart.keyFilter(function(g) {
         return selectedPages.indexOf(g) > -1;
       });
-      $offsets = d3.select("#chart-controls").selectAll('span.offset').data([
+      parseHtml5Date = d3.time.format("%Y-%m-%d");
+      dateRange = [
+        parseHtml5Date(d3.min(graphData[0].values.map(function(d) {
+          return d.day;
+        }))), parseHtml5Date(d3.max(graphData[0].values.map(function(d) {
+          return d.day;
+        })))
+      ];
+      d3.select('#fromDate').datum(dateRange).attr('min', function(d) {
+        return d[0];
+      }).attr('value', function(d) {
+        return d[0];
+      }).attr('max', function(d) {
+        return d[1];
+      }).on('change', function() {
+        chartDateRane[0] = parseHtml5Date.parse(this.value);
+        return filterByTime();
+      });
+      d3.select('#toDate').datum(dateRange).attr('min', function(d) {
+        return d[0];
+      }).attr('value', function(d) {
+        return d[1];
+      }).attr('max', function(d) {
+        return d[1];
+      }).on('change', function() {
+        chartDateRane[1] = parseHtml5Date.parse(this.value);
+        return filterByTime();
+      });
+      $offsets = d3.select("#visits-chart .controls").selectAll('span.offset').data([
         {
           n: 'Comulative',
           v: 'zero'
@@ -320,7 +357,7 @@
       }).text(function(d) {
         return d.n;
       });
-      $smoothers = d3.select("#convChart-controls").selectAll('span.smoother').data([
+      $smoothers = d3.select("#conv-chart .controls").selectAll('span.smoother').data([
         {
           n: 'Actual',
           v: 'conv'
