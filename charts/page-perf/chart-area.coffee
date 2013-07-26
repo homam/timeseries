@@ -1,3 +1,47 @@
+# visits chart
+chart = stackedAreaimeSeriesChart()
+.key((g) -> g.key)
+.values((g) -> g.values)
+.x((d) -> d.day)
+.y((d) -> d.visits)
+
+d3.select('#chart').call chart
+
+# conv chart
+convChart = multiLineTimeSeriesChart()
+.key((g) -> g.key)
+.values((g) -> g.values)
+.x((d) -> d.day)
+.y((d) -> d.conv)
+.mouseover((key) -> highlightPage key)
+.mouseout((key) -> deHighlightPage key)
+
+d3.select('#convChart').call convChart
+
+reDraw = (groupedData) ->
+  chart.addStack groupedData
+  convChart.addStack groupedData
+
+
+highlightPage = (key) ->
+  $g = d3.selectAll('#chart [data-key="' +key+ '"]')
+  orig = d3.rgb $g.attr('data-orig-color') ?  $g.style('fill')
+  $g.attr('data-orig-color', orig)
+  $g.transition('fill').duration(200).style('fill', orig.darker(.7))
+  $g.select('path').style('stroke', orig.brighter(.7)).style('stroke-width', 2)
+
+  d3.selectAll('#convChart [data-key="' +key+ '"]')
+  .transition('stroke-width').style('stroke-width', 5)
+deHighlightPage = (key) ->
+  $g = d3.select('[data-key="' +key+ '"]')
+  orig = $g.attr('data-orig-color')
+  if(orig)
+    $g.transition('fill').duration(200).style('fill', orig)
+  $g.select('path').style('stroke', '')
+
+  d3.selectAll('#convChart [data-key="' +key+ '"]')
+  .transition('stroke-width').style('stroke-width', 2)
+
 d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
   # parse data
   parseDate = d3.time.format("%m/%d/%Y").parse;
@@ -54,31 +98,11 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
       g
     )
 
-
-
-    chart = stackedAreaimeSeriesChart()
-    .key((g) -> g.key)
-    .values((g) -> g.values)
-    .x((d) -> d.day)
-    .y((d) -> d.visits)
-
     # just an example
     filterByTime= () ->
       chart.values((g) -> g.values.filter (d) -> d.day >= new Date(2013,6,15) && d.day <= new Date(2013,7,15))
       convChart.values((g) -> g.values.filter (d) -> d.day >= new Date(2013,6,15) && d.day <= new Date(2013,7,15))
       draw()
-
-    d3.select('#chart').call chart
-
-    convChart = multiLineTimeSeriesChart()
-    .key((g) -> g.key)
-    .values((g) -> g.values)
-    .x((d) -> d.day)
-    .y((d) -> d.conv)
-    .mouseover((key) -> highlightPage key)
-    .mouseout((key) -> deHighlightPage key)
-
-    d3.select('#convChart').call convChart
 
 
     averageVisitsPerPage = _.chain(graphData).map((g) ->g.sumVisits).reduce((a,b)->a+b).value()/(graphData.length+1)
@@ -90,35 +114,15 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
     chart.keyFilter (g) -> selectedPages.indexOf(g) > -1
     convChart.keyFilter (g) -> selectedPages.indexOf(g) > -1
 
-    draw = () ->
-      chart.addStack graphData
-      convChart.addStack graphData
-
-    highlightPage = (key) ->
-      $g = d3.selectAll('#chart [data-key="' +key+ '"]')
-      orig = d3.rgb $g.attr('data-orig-color') ?  $g.style('fill')
-      $g.attr('data-orig-color', orig)
-      $g.transition('fill').duration(200).style('fill', orig.darker(.7))
-      $g.select('path').style('stroke', orig.brighter(.7)).style('stroke-width', 2)
-
-      d3.selectAll('#convChart [data-key="' +key+ '"]')
-      .transition('stroke-width').style('stroke-width', 5)
-    deHighlightPage = (key) ->
-      $g = d3.select('[data-key="' +key+ '"]')
-      orig = $g.attr('data-orig-color')
-      if(orig)
-        $g.transition('fill').duration(200).style('fill', orig)
-      $g.select('path').style('stroke', '')
-
-      d3.selectAll('#convChart [data-key="' +key+ '"]')
-      .transition('stroke-width').style('stroke-width', 2)
+    draw = () -> reDraw graphData
 
 
+    # table is also a chart kinda
     $li = d3.select('#pages tbody').selectAll('tr').data(_.sortBy graphData, (a) -> -a.sumVisits)
     $li.enter().append('tr').style('color', (d) -> d.color)
     .on('mouseover', (g) -> highlightPage g.key)
     .on('mouseout', (g) -> deHighlightPage g.key)
-    $td = $li.append("td")
+    $td = $li.selectAll('td.input').data((d) -> [d]).enter().append("td").attr('class', 'input')
     $td.append('input').attr('type', 'checkbox').attr('id', (d) -> 'page-' + d.key).attr('name', (d) -> d.key)
     .attr('checked', (d) -> if _(selectedPages).contains(d.key) then 'checked' else null)
     .on('change', () ->
