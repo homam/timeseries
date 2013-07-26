@@ -21,7 +21,7 @@ exports.multiLineTimeSeriesChart = () ->
   keyFilter = (d) -> true
 
 
-
+  mouseEvents = d3.dispatch('mouseover', 'mouseout')
 
 
   chart = (selection) ->
@@ -67,7 +67,8 @@ exports.multiLineTimeSeriesChart = () ->
 
         keys = data.map((g) -> g.key).filter(keyFilter)
 
-        line = d3.svg.line().interpolate('basis').x((d) -> xScale d[0]).y((d) -> yScale d[1])
+        line = d3.svg.line().interpolate('basis')
+        .x((d) -> xScale d[0]).y((d) -> yScale d[1])
 
         layers = data
 
@@ -88,28 +89,21 @@ exports.multiLineTimeSeriesChart = () ->
         $svg.select('.y.axis.line > text').text(label ? '')
 
 
-        $line = $svg.selectAll('.line').data(layers)
-        $line.enter().append('path').attr('class', 'line')
+        $line = $svg.selectAll('.data.line').data(layers)
+        $line.enter().append('path').attr('class', 'data line')
         $line.attr('data-key', (d) -> d.key).style('stroke', (d) ->d.color)
-        .transition().duration(500).ease("sin-in-out").delay(200)
+        .on('mouseover', (d) -> mouseEvents.mouseover d.key )
+        .on('mouseout', (d) -> mouseEvents.mouseout d.key )
+        $line.transition().duration(500).attr('d', (d) -> line(d.values))
         .style('opacity', (d) ->
             if (keys.indexOf(d.key)<0) then 0 else 1
         )
-        $line.transition().duration(500).attr('d', (d) -> line(d.values))
-
-#        $path = $layer.selectAll('path.area').data((d) -> [valuesMap(d)])
-#        $path.enter().append('path').attr('class', 'area')
-#        $path.style('fill', (d) -> d.color)
-#        $path.transition().duration(1000).ease("sin-in-out")
-#        .attr('d', area)
 
 
 
 
-
-
-
-
+  chart.mouseover = (delegate) -> mouseEvents.on('mouseover', delegate); return chart;
+  chart.mouseout = (delegate) -> mouseEvents.on('mouseout', delegate); return chart;
   chart.key = (map) -> keyMap = map ? keyMap; return chart;
   chart.keyFilter = (filter) -> keyFilter = filter ? keyFilter; return chart;
   chart.values = (map) -> valuesMap = map ? valuesMap; return chart;

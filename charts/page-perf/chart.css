@@ -9,9 +9,6 @@ path.line {
   stroke: #000;
   stroke-width: 1.5px;
 }
-.bar {
-  fill: rgba(35, 100, 19, 0.3);
-}
 text,
 textPath {
   white-space: nowrap;
@@ -24,26 +21,6 @@ textPath {
 }
 .axis .tick line {
   stroke: rgba(0, 0, 0, 0.1);
-}
-#visitsChart path.line {
-  stroke: #0e0f71;
-  stroke-width: 2px;
-}
-#visitsChart .axis.line text {
-  fill: #0e0f71;
-}
-#visitsChart rect.bar {
-  fill: rgba(13, 118, 41, 0.33);
-}
-#visitsChart .axis.bar text {
-  fill: rgba(13, 118, 41, 0.33);
-}
-#convChart path.line {
-  stroke: #71023b;
-  stroke-width: 2px;
-}
-#convChart .axis.line text {
-  fill: #71023b;
 }
 #pages td {
   padding-right: 20px;

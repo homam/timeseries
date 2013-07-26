@@ -5,7 +5,7 @@
   exports = exports != null ? exports : this;
 
   exports.multiLineTimeSeriesChart = function() {
-    var chart, height, keyFilter, keyMap, margin, valuesMap, width, xMap, xScale, yMap, yScale;
+    var chart, height, keyFilter, keyMap, margin, mouseEvents, valuesMap, width, xMap, xScale, yMap, yScale;
 
     margin = {
       top: 20,
@@ -32,6 +32,7 @@
     keyFilter = function(d) {
       return true;
     };
+    mouseEvents = d3.dispatch('mouseover', 'mouseout');
     chart = function(selection) {
       return selection.each(function(raw) {
         var $svg, xAxis, yAxis;
@@ -91,24 +92,36 @@
           ]);
           $svg.select('.y.axis.line').transition().duration(1500).ease("sin-in-out").call(yAxis);
           $svg.select('.y.axis.line > text').text(typeof label !== "undefined" && label !== null ? label : '');
-          $line = $svg.selectAll('.line').data(layers);
-          $line.enter().append('path').attr('class', 'line');
+          $line = $svg.selectAll('.data.line').data(layers);
+          $line.enter().append('path').attr('class', 'data line');
           $line.attr('data-key', function(d) {
             return d.key;
           }).style('stroke', function(d) {
             return d.color;
-          }).transition().duration(500).ease("sin-in-out").delay(200).style('opacity', function(d) {
+          }).on('mouseover', function(d) {
+            return mouseEvents.mouseover(d.key);
+          }).on('mouseout', function(d) {
+            return mouseEvents.mouseout(d.key);
+          });
+          return $line.transition().duration(500).attr('d', function(d) {
+            return line(d.values);
+          }).style('opacity', function(d) {
             if (keys.indexOf(d.key) < 0) {
               return 0;
             } else {
               return 1;
             }
           });
-          return $line.transition().duration(500).attr('d', function(d) {
-            return line(d.values);
-          });
         };
       });
+    };
+    chart.mouseover = function(delegate) {
+      mouseEvents.on('mouseover', delegate);
+      return chart;
+    };
+    chart.mouseout = function(delegate) {
+      mouseEvents.on('mouseout', delegate);
+      return chart;
     };
     chart.key = function(map) {
       keyMap = map != null ? map : keyMap;
