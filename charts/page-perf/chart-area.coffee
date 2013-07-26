@@ -1,13 +1,22 @@
 chartTable = () ->
   # table is also a chart kinda
-  values = (d) -> d.values
+  valuesMap = (d) -> d.values
 
   chart = (selection) ->
     selection.each () ->
       $table = d3.select(this).append('tbody')
 
-      chart.draw = (graphData) ->
-        $li = $table.selectAll('tr').data(_.sortBy graphData, (a) -> -a.sumVisits)
+      chart.draw = (raw) ->
+
+        tableData = raw.map (g) ->
+          sumVisits: valuesMap(g).map((d) -> d.visits).reduce((a,b)->a+b)
+          color: g.color
+          sumSubs: valuesMap(g).map((d) -> d.subs).reduce((a,b)->a+b)
+          key: g.key
+          name: g.name
+
+        # enter
+        $li = $table.selectAll('tr').data(_.sortBy tableData, (a) -> -a.sumVisits)
         $liEnter = $li.enter().append('tr').style('color', (d) -> d.color)
         .on('mouseover', (g) -> highlightPage g.key)
         .on('mouseout', (g) -> deHighlightPage g.key)
@@ -18,21 +27,25 @@ chartTable = () ->
             selecteds = [];
             d3.selectAll('#pages input:checked').each((d) -> selecteds.push d.key)
             selectedPages = selecteds
-            reDraw graphData
+            reDraw raw
           )
         $liEnter.select('td.input').append('label')
         ['td.visits', 'td.subs', 'td.conv'].forEach (t) ->
           $liEnter.append(t.split('.')[0]).attr('class', t.split('.')[1])
 
-        $li.selectAll('td.id').text((d) -> d.key)
-        $li.selectAll('td.input input')
+        # update
+        $li.select('td.id').text((d) -> d.key)
+
+        $li.select('td.input input')
         .attr('id', (d) -> 'page-' + d.key).attr('name', (d) -> d.key)
         .attr('checked', (d) -> if _(selectedPages).contains(d.key) then 'checked' else null)
-        $li.selectAll('td.input label').text((d) -> d.name).attr('for', (d) -> 'page-' + d.key)
+        $li.select('td.input label').text((d) -> d.name).attr('for', (d) -> 'page-' + d.key)
 
-        $li.selectAll('td.visits').text((d) -> d3.format(',') d.sumVisits)
-        $li.selectAll('td.subs').text((d) -> d3.format(',') d.sumSubs)
-        $li.selectAll('td.conv').text((d) -> d3.format('.2%') d.sumSubs/d.sumVisits)
+        $li.select('td.visits').text((d) -> d3.format(',') d.sumVisits)
+        $li.select('td.subs').text((d) -> d3.format(',') d.sumSubs)
+        $li.select('td.conv').text((d) -> d3.format('.2%') d.sumSubs/d.sumVisits)
+
+  chart.values = (map) -> valuesMap = map ? valuesMap; return chart;
 
   return chart
 
@@ -150,8 +163,10 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
 
     # just an example
     filterByTime= () ->
-      chart.values((g) -> g.values.filter (d) -> d.day >= new Date(2013,6,15) && d.day <= new Date(2013,7,15))
-      convChart.values((g) -> g.values.filter (d) -> d.day >= new Date(2013,6,15) && d.day <= new Date(2013,7,15))
+      map = (g) -> g.values.filter (d) -> d.day >= new Date(2013,6,15) && d.day <= new Date(2013,7,15)
+      chart.values map
+      convChart.values map
+      table.values map
       draw()
 
     setTimeout filterByTime, 2000

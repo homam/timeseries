@@ -3,9 +3,9 @@
   var chart, chartTable, convChart, deHighlightPage, highlightPage, reDraw, selectedPages, table;
 
   chartTable = function() {
-    var chart, values;
+    var chart, valuesMap;
 
-    values = function(d) {
+    valuesMap = function(d) {
       return d.values;
     };
     chart = function(selection) {
@@ -13,10 +13,27 @@
         var $table;
 
         $table = d3.select(this).append('tbody');
-        return chart.draw = function(graphData) {
-          var $li, $liEnter;
+        return chart.draw = function(raw) {
+          var $li, $liEnter, tableData;
 
-          $li = $table.selectAll('tr').data(_.sortBy(graphData, function(a) {
+          tableData = raw.map(function(g) {
+            return {
+              sumVisits: valuesMap(g).map(function(d) {
+                return d.visits;
+              }).reduce(function(a, b) {
+                return a + b;
+              }),
+              color: g.color,
+              sumSubs: valuesMap(g).map(function(d) {
+                return d.subs;
+              }).reduce(function(a, b) {
+                return a + b;
+              }),
+              key: g.key,
+              name: g.name
+            };
+          });
+          $li = $table.selectAll('tr').data(_.sortBy(tableData, function(a) {
             return -a.sumVisits;
           }));
           $liEnter = $li.enter().append('tr').style('color', function(d) {
@@ -36,16 +53,16 @@
               return selecteds.push(d.key);
             });
             selectedPages = selecteds;
-            return reDraw(graphData);
+            return reDraw(raw);
           });
           $liEnter.select('td.input').append('label');
           ['td.visits', 'td.subs', 'td.conv'].forEach(function(t) {
             return $liEnter.append(t.split('.')[0]).attr('class', t.split('.')[1]);
           });
-          $li.selectAll('td.id').text(function(d) {
+          $li.select('td.id').text(function(d) {
             return d.key;
           });
-          $li.selectAll('td.input input').attr('id', function(d) {
+          $li.select('td.input input').attr('id', function(d) {
             return 'page-' + d.key;
           }).attr('name', function(d) {
             return d.key;
@@ -56,22 +73,26 @@
               return null;
             }
           });
-          $li.selectAll('td.input label').text(function(d) {
+          $li.select('td.input label').text(function(d) {
             return d.name;
           }).attr('for', function(d) {
             return 'page-' + d.key;
           });
-          $li.selectAll('td.visits').text(function(d) {
+          $li.select('td.visits').text(function(d) {
             return d3.format(',')(d.sumVisits);
           });
-          $li.selectAll('td.subs').text(function(d) {
+          $li.select('td.subs').text(function(d) {
             return d3.format(',')(d.sumSubs);
           });
-          return $li.selectAll('td.conv').text(function(d) {
+          return $li.select('td.conv').text(function(d) {
             return d3.format('.2%')(d.sumSubs / d.sumVisits);
           });
         };
       });
+    };
+    chart.values = function(map) {
+      valuesMap = map != null ? map : valuesMap;
+      return chart;
     };
     return chart;
   };
@@ -237,16 +258,16 @@
         return reDraw(graphData);
       };
       filterByTime = function() {
-        chart.values(function(g) {
+        var map;
+
+        map = function(g) {
           return g.values.filter(function(d) {
             return d.day >= new Date(2013, 6, 15) && d.day <= new Date(2013, 7, 15);
           });
-        });
-        convChart.values(function(g) {
-          return g.values.filter(function(d) {
-            return d.day >= new Date(2013, 6, 15) && d.day <= new Date(2013, 7, 15);
-          });
-        });
+        };
+        chart.values(map);
+        convChart.values(map);
+        table.values(map);
         return draw();
       };
       setTimeout(filterByTime, 2000);
