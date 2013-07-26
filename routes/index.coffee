@@ -29,5 +29,5 @@ exports.register = (app) ->
 
   app.get '/page-perf', (req, res) ->
     res.render '../charts/page-perf/view',
-      title: 'page perf'
+      title: 'Campaign Pages Performance'
 

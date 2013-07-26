@@ -20,23 +20,30 @@
             <input type="date" id="toDate"/>
         </div>
     </section>
-    <section id="visits-chart">
+
+
+    <section class="chart-container" id="visits-chart">
+        <h2>Visits</h2>
         <div class='controls'></div>
         <div class='chart'></div>
     </section>
 
 
-    <section id="conv-chart">
+    <section class="chart-container" id="conv-chart">
+        <h2>Conversion</h2>
         <div class='controls'></div>
         <div class='chart'></div>
     </section>
-    <table id="pages">
-        <thead>
-            <tr>
-                <td>ID</td><td>Name</td><td>Visits</td><td>Subs</td><td>Conv</td>
-            </tr>
-        </thead>
-    </table>
+
+    <section class="pages-container">
+        <table id="pages">
+            <thead>
+                <tr>
+                    <td>ID</td><td>Name</td><td>Visits</td><td>Subs</td><td>Conv</td>
+                </tr>
+            </thead>
+        </table>
+    </section>
 
     <script src="charts/page-perf/chart-area.js"></script>
 </body>

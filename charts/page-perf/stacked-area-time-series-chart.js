@@ -49,8 +49,6 @@
         xAxis = d3.svg.axis().scale(xScale).orient('bottom').tickSize(-height + margin.top + margin.bottom, 0, 0);
         yAxis = d3.svg.axis().scale(yScale).orient('left').tickSize(-width + margin.left + margin.right, 0, 0);
         $svg = d3.select(this).append('svg').attr('width', width).attr('height', height).append('g').attr('transform', "translate(" + margin.left + "," + margin.top + ")");
-        $svg.append('g').attr('class', 'x axis');
-        $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')');
         $svg.append('g').attr('class', 'y axis line');
         $svg.select('.y.axis.line').append('text').attr('transform', 'translate(20,0) rotate(90)').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start').text('Y');
         area = d3.svg.area().x(function(d) {
@@ -95,7 +93,6 @@
             return layer;
           });
           xScale.domain(d3.extent(valuesMap(layers[0]), xMap));
-          $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis);
           scaleLayers = stack(data.filter(function(d) {
             return keyFilter(keyMap(d));
           }));
@@ -132,7 +129,12 @@
           $path.style('fill', function(d) {
             return d.color;
           });
-          return $path.transition().duration(1000).ease("sin-in-out").attr('d', area);
+          $path.transition().duration(1000).ease("sin-in-out").attr('d', area);
+          if ($svg.select('.x.axis').empty()) {
+            $svg.append('g').attr('class', 'x axis');
+          }
+          $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')');
+          return $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis);
         };
       });
     };

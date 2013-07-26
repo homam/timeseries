@@ -38,7 +38,7 @@
     });
     return app.get('/page-perf', function(req, res) {
       return res.render('../charts/page-perf/view', {
-        title: 'page perf'
+        title: 'Campaign Pages Performance'
       });
     });
   };

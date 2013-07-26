@@ -1,8 +1,14 @@
 body, input {
   font-family: Helvetica, Calibri, sans-serif;
 }
+body, section, svg {
+  width: 800px;
+  margin: auto;
+}
 svg {
   font: 10px sans-serif;
+  display: block;
+  width: auto;
 }
 path.line {
   fill: none;
@@ -23,16 +29,6 @@ text, textPath {
 }
 
 
-#visitsChart{
-
-
-}
-
-
-#convChart{
-
-
-}
 
 #overall-controls {
   padding: 10px 0;
@@ -54,8 +50,40 @@ text, textPath {
     clear: both;
   }
 }
-#pages {
-  td {
-    padding-right: 20px;
+
+
+.chart-container{
+
+  h2 {
+    text-align: center;
+    margin:0;padding: 0;
+    -webkit-transform: translateX(-49%) rotate(90deg) translateX(200px);
+  }
+
+  .controls, .chart {
+    -webkit-transform: translateX(10px)
+  }
+
+  .controls {
+    > span {
+      padding-right: 10px;
+      label {
+        padding-left: 4px;
+        display: inline-block;
+        -webkit-transform: translate3d(0,2px,0);
+      }
+    }
+  }
+}
+
+.pages-container {
+  margin-top: 20px;
+  text-align: center;
+  #pages {
+    display: inline-table;
+    text-align: left;
+    td {
+      padding-right: 20px;
+    }
   }
 }

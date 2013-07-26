@@ -48,9 +48,7 @@ exports.stackedAreaimeSeriesChart = () ->
       .append('g').attr('transform', "translate(" + margin.left + "," + margin.top + ")")
 
 
-      # horizontal axis
-      $svg.append('g').attr('class', 'x axis')
-      $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')')
+
 
       # line axis
       $svg.append('g').attr('class', 'y axis line')
@@ -88,7 +86,6 @@ exports.stackedAreaimeSeriesChart = () ->
           layer
 
         xScale.domain d3.extent valuesMap(layers[0]), xMap
-        $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis)
 
         scaleLayers = stack(data.filter (d) -> keyFilter keyMap d)
         yScale.domain [0, d3.max(scaleLayers, (l) -> d3.max(valuesMap(l), (d) -> d.y0+d.y))]
@@ -109,6 +106,13 @@ exports.stackedAreaimeSeriesChart = () ->
         $path.style('fill', (d) -> d.color)
         $path.transition().duration(1000).ease("sin-in-out")
         .attr('d', area)
+
+        # horizontal axis
+        if $svg.select('.x.axis').empty()
+          $svg.append('g').attr('class', 'x axis')
+        $svg.select('.x.axis').attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')')
+        $svg.select('.x.axis').transition().duration(1500).ease("sin-in-out").call(xAxis)
+
 
 
 
