@@ -5,7 +5,7 @@
   exports = exports != null ? exports : this;
 
   exports.stackedAreaimeSeriesChart = function() {
-    var X, Y, chart, height, keyFilter, keyMap, margin, stackOffset, valuesMap, width, xMap, xScale, yMap, yScale;
+    var X, Y, chart, height, keyFilter, keyMap, margin, mouseEvents, stackOffset, valuesMap, width, xMap, xScale, yMap, yScale;
 
     margin = {
       top: 20,
@@ -39,6 +39,7 @@
     Y = function(d) {
       return yScale(d);
     };
+    mouseEvents = d3.dispatch('mouseover', 'mouseout');
     chart = function(selection) {
       return selection.each(function() {
         var $svg, area, xAxis, yAxis;
@@ -108,7 +109,11 @@
           $svg.select('.y.axis.line').transition().duration(1500).ease("sin-in-out").call(yAxis);
           $svg.select('.y.axis.line > text').text(typeof label !== "undefined" && label !== null ? label : '');
           $layer = $svg.selectAll('.layer').data(layers);
-          $layer.enter().append('g').attr('class', 'layer');
+          $layer.enter().append('g').attr('class', 'layer').on('mouseover', function(d) {
+            return mouseEvents.mouseover(d.key);
+          }).on('mouseout', function(d) {
+            return mouseEvents.mouseout(d.key);
+          });
           $layer.attr('data-key', function(d) {
             return keyMap(d);
           }).style('fill', function(d) {
@@ -130,6 +135,14 @@
           return $path.transition().duration(1000).ease("sin-in-out").attr('d', area);
         };
       });
+    };
+    chart.mouseover = function(delegate) {
+      mouseEvents.on('mouseover', delegate);
+      return chart;
+    };
+    chart.mouseout = function(delegate) {
+      mouseEvents.on('mouseout', delegate);
+      return chart;
     };
     chart.key = function(map) {
       keyMap = map != null ? map : keyMap;

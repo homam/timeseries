@@ -110,6 +110,10 @@
     return d.day;
   }).y(function(d) {
     return d.visits;
+  }).mouseover(function(key) {
+    return highlightPage(key);
+  }).mouseout(function(key) {
+    return deHighlightPage(key);
   });
 
   d3.select('#visits-chart .chart').call(chart);
@@ -147,7 +151,7 @@
     orig = d3.rgb((_ref = $g.attr('data-orig-color')) != null ? _ref : $g.style('fill'));
     $g.attr('data-orig-color', orig);
     $g.transition('fill').duration(200).style('fill', orig.brighter(.7));
-    $g.select('path').style('stroke', orig.brighter(.7)).style('stroke-width', 4);
+    $g.select('path').style('stroke', orig.brighter(2)).style('stroke-width', 4);
     d3.selectAll('#conv-chart [data-key="' + key + '"]').transition('stroke-width').style('stroke-width', 5);
     return d3.selectAll('#pages [data-key="' + key + '"]').style('outline', 'solid 2px').transition().duration(200).style('color', orig.darker(.1));
   };

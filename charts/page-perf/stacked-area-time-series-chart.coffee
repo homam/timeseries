@@ -25,6 +25,8 @@ exports.stackedAreaimeSeriesChart = () ->
   X = (d) -> xScale d
   Y = (d) -> yScale d
 
+  mouseEvents = d3.dispatch('mouseover', 'mouseout')
+
 
 
   chart = (selection) ->
@@ -96,6 +98,8 @@ exports.stackedAreaimeSeriesChart = () ->
 
         $layer = $svg.selectAll('.layer').data(layers)
         $layer.enter().append('g').attr('class', 'layer')
+        .on('mouseover', (d) -> mouseEvents.mouseover d.key)
+        .on('mouseout', (d) -> mouseEvents.mouseout d.key )
         $layer.attr('data-key', (d) -> keyMap d).style('fill', (d) ->d.color)
         .transition().duration(500).ease("sin-in-out").delay(200)
         .style('opacity', (d) -> if (keys.indexOf(keyMap(d))<0) then 0 else 1)
@@ -112,7 +116,8 @@ exports.stackedAreaimeSeriesChart = () ->
 
 
 
-
+  chart.mouseover = (delegate) -> mouseEvents.on('mouseover', delegate); return chart;
+  chart.mouseout = (delegate) -> mouseEvents.on('mouseout', delegate); return chart;
   chart.key = (map) -> keyMap = map ? keyMap; return chart;
   chart.keyFilter = (filter) -> keyFilter = filter ? keyFilter; return chart;
   chart.values = (map) -> valuesMap = map ? valuesMap; return chart;
