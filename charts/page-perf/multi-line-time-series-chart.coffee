@@ -1,6 +1,6 @@
 exports = exports ? this
 
-exports.stackedAreaimeSeriesChart = () ->
+exports.multiLineTimeSeriesChart = () ->
   # configs
   margin =
     top: 20
@@ -64,22 +64,17 @@ exports.stackedAreaimeSeriesChart = () ->
 
 
       chart.addStack = (data) ->
-
-        stack = d3.layout.stack()
-        .offset(stackOffset)
-        .x(xMap).y(yMap)
-        .values(valuesMap)
-
-        layers = stack(data)
+        return
 
         keys = data.map(keyMap).filter(keyFilter)
+        layers = data #todo clone the data
 
 
         # set the y and y0 position of filtered out keys to 0, so keep the path for animation purpose but its area will be 0
         layers = layers.map (layer) ->
           if keys.indexOf(keyMap layer) < 0
             (valuesMap layer).map (d) ->
-              d.y = d.y0 = 0
+              d.y = 0
               d
           layer
 

@@ -30,11 +30,12 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
       key: page,
       name: (pages.filter (p) -> p.page == page)[0].name
       valuess: groups[page]
-      sum: groups[page].map((d) -> d.visits).reduce (a,b) -> a+b
+      sumVisits: groups[page].map((d) -> d.visits).reduce (a,b) -> a+b
+      sumSubs: groups[page].map((d) -> d.subs).reduce (a,b) -> a+b
       color: colors(i)
     )
 
-    graphData =  _.sortBy graphData, (a) -> -a.sum
+    window.graphData =  _.sortBy graphData, (a) -> -a.sumVisits
 
 
 
@@ -46,18 +47,48 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
 
     d3.select('#chart').call chart
 
-    draw = () -> chart.addStack graphData
+    convChart = multiLineTimeSeriesChart()
+    .key((g) -> g.key)
+    .values((g) -> g.valuess)
+    .x((d) -> d.day)
+    .y((d) -> d.visits)
 
-    $li = d3.select('#pages').selectAll('li').data(graphData)
-    $li.enter().append('li').style('color', (d) -> d.color)
-    .append('input').attr('type', 'checkbox').attr('id', (d) -> 'page-' + d.key).attr('name', (d) -> d.key)
+    d3.select('#convChart').call convChart
+
+    draw = () ->
+      chart.addStack graphData
+      convChart.addStack graphData
+
+    $li = d3.select('#pages tbody').selectAll('tr').data(graphData)
+    $li.enter().append('tr').style('color', (d) -> d.color)
+    .on('mouseover', (g) ->
+        $g = d3.select('[data-key="' +g.key+ '"]')
+        orig = d3.rgb $g.attr('data-orig-color') ?  $g.style('fill')
+        $g.attr('data-orig-color', orig)
+        brighter = orig.brighter(.8)
+        $g.transition('fill').duration(200).style('fill', brighter)
+        $g.select('path').style('stroke', orig.darker(.7).toString()).style('stroke-width', 2)
+    )
+    .on('mouseout', (g) ->
+        $g = d3.select('[data-key="' +g.key+ '"]')
+        orig = $g.attr('data-orig-color')
+        if(orig)
+          $g.transition('fill').duration(200).style('fill', orig)
+        $g.select('path').style('stroke', '')
+
+    )
+    $td = $li.append("td")
+    $td.append('input').attr('type', 'checkbox').attr('id', (d) -> 'page-' + d.key).attr('name', (d) -> d.key)
     .on('change', () ->
       selecteds = [];
-      d3.selectAll('#pages li input:checked').each((d) -> selecteds.push d.key)
+      d3.selectAll('#pages input:checked').each((d) -> selecteds.push d.key)
       chart.keyFilter (g) -> selecteds.indexOf(g)>-1
       draw()
     )
-    $li.append('label').attr('for', (d) -> 'page-' + d.key).text((d) -> d.name)
+    $td.append('label').attr('for', (d) -> 'page-' + d.key).text((d) -> d.name)
+    $li.append('td').text((d) -> d3.format(',') d.sumVisits)
+    $li.append('td').text((d) -> d3.format(',') d.sumSubs)
+    $li.append('td').text((d) -> d3.format('%') d.sumSubs/d.sumVisits)
 
 
     $offsets = d3.select("#chart-controls").selectAll('span.offset')

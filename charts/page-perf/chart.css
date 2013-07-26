@@ -45,3 +45,6 @@ textPath {
 #convChart .axis.line text {
   fill: #71023b;
 }
+#pages td {
+  padding-right: 20px;
+}

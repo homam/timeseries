@@ -4,7 +4,7 @@
 
   exports = exports != null ? exports : this;
 
-  exports.stackedAreaimeSeriesChart = function() {
+  exports.multiLineTimeSeriesChart = function() {
     var X, Y, chart, height, keyFilter, keyMap, line, margin, stackOffset, valuesMap, width, xMap, xScale, yMap, yScale;
 
     margin = {
@@ -61,15 +61,15 @@
           return Y(d.y0 + d.y);
         });
         return chart.addStack = function(data) {
-          var $layer, $path, keys, layers, scaleLayers, stack;
+          var $layer, $path, keys, layers, scaleLayers;
 
-          stack = d3.layout.stack().offset(stackOffset).x(xMap).y(yMap).values(valuesMap);
-          layers = stack(data);
+          return;
           keys = data.map(keyMap).filter(keyFilter);
+          layers = data;
           layers = layers.map(function(layer) {
             if (keys.indexOf(keyMap(layer)) < 0) {
               (valuesMap(layer)).map(function(d) {
-                d.y = d.y0 = 0;
+                d.y = 0;
                 return d;
               });
             }

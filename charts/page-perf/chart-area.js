@@ -12,7 +12,7 @@
       return d;
     });
     return d3.csv('charts/page-perf/data/pages.csv', function(pages) {
-      var $li, $offsets, chart, colors, dateRange, draw, graphData, groups, msInaDay;
+      var $li, $offsets, $td, chart, colors, convChart, dateRange, draw, graphData, groups, msInaDay;
 
       groups = _(data).chain().filter(function(d) {
         return !!d.page && 'NULL' !== d.page;
@@ -57,16 +57,21 @@
             return p.page === page;
           }))[0].name,
           valuess: groups[page],
-          sum: groups[page].map(function(d) {
+          sumVisits: groups[page].map(function(d) {
             return d.visits;
+          }).reduce(function(a, b) {
+            return a + b;
+          }),
+          sumSubs: groups[page].map(function(d) {
+            return d.subs;
           }).reduce(function(a, b) {
             return a + b;
           }),
           color: colors(i)
         };
       });
-      graphData = _.sortBy(graphData, function(a) {
-        return -a.sum;
+      window.graphData = _.sortBy(graphData, function(a) {
+        return -a.sumVisits;
       });
       chart = stackedAreaimeSeriesChart().key(function(g) {
         return g.key;
@@ -78,13 +83,44 @@
         return d.visits;
       });
       d3.select('#chart').call(chart);
+      convChart = multiLineTimeSeriesChart().key(function(g) {
+        return g.key;
+      }).values(function(g) {
+        return g.valuess;
+      }).x(function(d) {
+        return d.day;
+      }).y(function(d) {
+        return d.visits;
+      });
+      d3.select('#convChart').call(convChart);
       draw = function() {
-        return chart.addStack(graphData);
+        chart.addStack(graphData);
+        return convChart.addStack(graphData);
       };
-      $li = d3.select('#pages').selectAll('li').data(graphData);
-      $li.enter().append('li').style('color', function(d) {
+      $li = d3.select('#pages tbody').selectAll('tr').data(graphData);
+      $li.enter().append('tr').style('color', function(d) {
         return d.color;
-      }).append('input').attr('type', 'checkbox').attr('id', function(d) {
+      }).on('mouseover', function(g) {
+        var $g, brighter, orig, _ref;
+
+        $g = d3.select('[data-key="' + g.key + '"]');
+        orig = d3.rgb((_ref = $g.attr('data-orig-color')) != null ? _ref : $g.style('fill'));
+        $g.attr('data-orig-color', orig);
+        brighter = orig.brighter(.8);
+        $g.transition('fill').duration(200).style('fill', brighter);
+        return $g.select('path').style('stroke', orig.darker(.7).toString()).style('stroke-width', 2);
+      }).on('mouseout', function(g) {
+        var $g, orig;
+
+        $g = d3.select('[data-key="' + g.key + '"]');
+        orig = $g.attr('data-orig-color');
+        if (orig) {
+          $g.transition('fill').duration(200).style('fill', orig);
+        }
+        return $g.select('path').style('stroke', '');
+      });
+      $td = $li.append("td");
+      $td.append('input').attr('type', 'checkbox').attr('id', function(d) {
         return 'page-' + d.key;
       }).attr('name', function(d) {
         return d.key;
@@ -92,7 +128,7 @@
         var selecteds;
 
         selecteds = [];
-        d3.selectAll('#pages li input:checked').each(function(d) {
+        d3.selectAll('#pages input:checked').each(function(d) {
           return selecteds.push(d.key);
         });
         chart.keyFilter(function(g) {
@@ -100,10 +136,19 @@
         });
         return draw();
       });
-      $li.append('label').attr('for', function(d) {
+      $td.append('label').attr('for', function(d) {
         return 'page-' + d.key;
       }).text(function(d) {
         return d.name;
+      });
+      $li.append('td').text(function(d) {
+        return d3.format(',')(d.sumVisits);
+      });
+      $li.append('td').text(function(d) {
+        return d3.format(',')(d.sumSubs);
+      });
+      $li.append('td').text(function(d) {
+        return d3.format('%')(d.sumSubs / d.sumVisits);
       });
       $offsets = d3.select("#chart-controls").selectAll('span.offset').data([
         {
