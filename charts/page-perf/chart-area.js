@@ -369,7 +369,7 @@
           n: 'Moving Average',
           v: 'conv_ma'
         }, {
-          n: 'Comulative MA',
+          n: 'Cumulative MA',
           v: 'conv_cma'
         }
       ]).enter().append('span').attr('class', 'smoother');

@@ -226,7 +226,7 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
 
     #controls for visits conv chart
     $smoothers = d3.select("#conv-chart .controls").selectAll('span.smoother')
-    .data([{n: 'Actual', v:'conv'},{n: 'Moving Average', v:'conv_ma'},{n: 'Comulative MA', v:'conv_cma'}]).enter().append('span').attr('class', 'smoother')
+    .data([{n: 'Actual', v:'conv'},{n: 'Moving Average', v:'conv_ma'},{n: 'Cumulative MA', v:'conv_cma'}]).enter().append('span').attr('class', 'smoother')
     $smoothers.append('input').attr('type','radio').attr('name', 'smoother').attr('id', (d) -> 'smoother-' + d.v)
     .attr('checked', (d) -> if 'conv' == d.v then 'checked' else null)
     .on('change', (val) ->
