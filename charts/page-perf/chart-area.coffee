@@ -214,7 +214,7 @@ d3.csv 'charts/page-perf/data/sc50time.csv', (data) ->
 
     #controls for visits chart
     $offsets = d3.select("#visits-chart .controls").selectAll('span.offset')
-    .data([{n: 'Comulative', v:'zero'},{n: 'Normalized', v:'expand'}]).enter().append('span').attr('class', 'offset')
+    .data([{n: 'Cumulative', v:'zero'},{n: 'Normalized', v:'expand'}]).enter().append('span').attr('class', 'offset')
     $offsets.append('input').attr('type','radio').attr('name', 'offset').attr('id', (d) -> 'offset-' + d.v)
     .attr('checked', (d) -> if 'zero' == d.v then 'checked' else null)
     .on('change', (val) ->

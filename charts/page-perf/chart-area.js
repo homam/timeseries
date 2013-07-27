@@ -337,7 +337,7 @@
       });
       $offsets = d3.select("#visits-chart .controls").selectAll('span.offset').data([
         {
-          n: 'Comulative',
+          n: 'Cumulative',
           v: 'zero'
         }, {
           n: 'Normalized',
