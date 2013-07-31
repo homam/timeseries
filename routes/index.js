@@ -36,9 +36,14 @@
         title: 'page perf bar'
       });
     });
-    return app.get('/page-perf', function(req, res) {
+    app.get('/page-perf', function(req, res) {
       return res.render('../charts/page-perf/view', {
         title: 'Campaign Pages Performance'
+      });
+    });
+    return app.get('/treemap', function(req, res) {
+      return res.render('../charts/treemap/view', {
+        title: 'Tree Map'
       });
     });
   };

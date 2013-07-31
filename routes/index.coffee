@@ -31,3 +31,6 @@ exports.register = (app) ->
     res.render '../charts/page-perf/view',
       title: 'Campaign Pages Performance'
 
+  app.get '/treemap', (req, res) ->
+    res.render '../charts/treemap/view',
+      title: 'Tree Map'
