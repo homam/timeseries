@@ -9,4 +9,11 @@ body {
   overflow: hidden;
   position: absolute;
   text-indent: 2px;
+  text-shadow: 0px 1px 4px white;
+}
+.n.v {
+  -webkit-transform: translateX(-44%) rotateZ(90deg) translateX(44%);
+}
+.c.v {
+  -webkit-transform: translateX(-44%) rotateZ(90deg) translateX(100%);
 }

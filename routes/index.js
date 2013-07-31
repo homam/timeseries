@@ -43,7 +43,7 @@
     });
     return app.get('/treemap', function(req, res) {
       return res.render('../charts/treemap/view', {
-        title: 'Tree Map'
+        title: 'Device Partition and Conversion'
       });
     });
   };

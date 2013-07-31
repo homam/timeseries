@@ -33,4 +33,4 @@ exports.register = (app) ->
 
   app.get '/treemap', (req, res) ->
     res.render '../charts/treemap/view',
-      title: 'Tree Map'
+      title: 'Device Partition and Conversion'

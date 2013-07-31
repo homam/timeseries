@@ -23,11 +23,27 @@ d3.csv 'charts/treemap/data/devices.csv', (data) ->
         data[i] = null
 
 
-  [0..data.length].forEach (i) ->
+
+  [0..data.length-1].forEach (i) ->
     d = data[i]
     if(!!d)
       pack(data[i])
   data = data.filter (d) -> d != null
+
+  addBack = (root) ->
+    if(root.children.length > 0)
+      root.children.forEach addBack
+      root.children.push
+        children: []
+        wurfl_device_id: root.wurfl_device_id
+        brand_name: root.brand_name
+        model_name: root.model_name
+        conv: root.conv
+        visits: root.visits
+
+  [0..data.length-1].forEach (i) ->
+    addBack(data[i])
+
 
 
   window.data = data

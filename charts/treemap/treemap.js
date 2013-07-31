@@ -5,7 +5,7 @@
   exports = exports != null ? exports : this;
 
   exports.treeMapChart = function() {
-    var chart, color, height, margin, position, treemap, width;
+    var chart, color, formatConv, height, margin, numFormat, position, treemap, width;
 
     margin = {
       top: 0,
@@ -15,6 +15,8 @@
     };
     width = 1100;
     height = 600;
+    formatConv = d3.format('.2%');
+    numFormat = d3.format(',');
     color = d3.scale.category20();
     treemap = d3.layout.treemap().size([width - margin.left - margin.right, height - margin.left - margin.right]).sticky(true).value(function(d) {
       return d.visits;
@@ -44,14 +46,22 @@
             } else {
               return null;
             }
-          }).text(function(d) {
+          }).html(function(d) {
+            var name, vertical;
+
             if (d.children.length > 0) {
               return null;
             } else {
-              return d.brand_name + ' ' + d.model_name;
+              name = d.brand_name + ' ' + d.model_name;
+              vertical = d.dx < 50 && d.dy > d.dx;
+              if (vertical) {
+                return "<p class='n v' style='width: " + d.dy + "px'>" + name + "</p>" + (d.dy < 50 ? null : "<p class='c v' style='width: " + d.dy + "px'>" + (formatConv(d.conv)) + "</p>");
+              } else {
+                return "<p class='n'>" + name + "</p>" + (d.dx < 50 ? "" : "<p class='c'>" + (formatConv(d.conv)) + "</p>");
+              }
             }
           }).attr('title', function(d) {
-            return d3.format('.2%')(d.conv);
+            return d.brand_name + ' ' + d.model_name + '\n' + (numFormat(d.visits)) + '\n' + (formatConv(d.conv));
           });
         };
       });
