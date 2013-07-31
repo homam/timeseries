@@ -13,8 +13,8 @@
       bottom: 0,
       left: 0
     };
-    width = 1100;
-    height = 600;
+    width = 1200;
+    height = 900;
     formatConv = d3.format('.2%');
     numFormat = d3.format(',');
     color = d3.scale.category20();
