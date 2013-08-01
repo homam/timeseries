@@ -110,7 +110,7 @@
     return data;
   };
 
-  d3.csv('charts/treemap/data/devices.csv', function(data) {
+  d3.csv('charts/treemap/data/devices-ae.csv', function(data) {
     var chart, more, moreSubs, moreVisits, totalConv, totalSubs, totalVisits, tree;
 
     data = data.map(function(d) {

@@ -62,7 +62,7 @@ groupByParentIdOnly = (data) ->
 
 
 
-d3.csv 'charts/treemap/data/devices.csv', (data) ->
+d3.csv 'charts/treemap/data/devices-ae.csv', (data) ->
 
   data = data.map (d) ->
     wurfl_device_id : d.wurfl_device_id
