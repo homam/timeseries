@@ -9,6 +9,7 @@
     "express": "3.1.0",
     "ejs": "*",
     "less-middleware": "*",
-     "connect-coffee-script":"*"
+    "connect-coffee-script": "*",
+    "d3-tooltip": "0.0.1"
   }
 }

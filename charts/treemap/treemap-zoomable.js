@@ -41,10 +41,48 @@
     };
     chart = function(selection) {
       return selection.each(function() {
-        var $svg, currentNode, zoom;
+        var $svg, TopLeft, currentNode, topLeft, zoom;
 
         $svg = d3.select(this).append('svg').attr('class', 'chart').attr("width", width).attr("height", height).append("g").attr('transform', 'translate(' + margin.top + ',' + margin.left + ')');
         currentNode = null;
+        TopLeft = function() {
+          var _kx, _ky, _px, _py;
+
+          _px = 0;
+          _py = 0;
+          _kx = 1;
+          _ky = 1;
+          return function(px, py, kx, ky) {
+            if (arguments.length > 0) {
+              _px = px;
+              _py = py;
+              if (arguments.length > 1) {
+                _kx = kx;
+                _ky = ky;
+              }
+            }
+            return {
+              x: _px,
+              y: _py,
+              kx: _kx,
+              ky: _ky,
+              xdomain: x.domain(),
+              ydomain: y.domain()
+            };
+          };
+        };
+        topLeft = TopLeft();
+        window.move = function(px, py) {
+          var kx, ky, tl;
+
+          if (arguments.length === 0) {
+            return topLeft();
+          } else {
+            tl = topLeft();
+            kx = tl.kx;
+            return ky = tl.ky;
+          }
+        };
         zoom = function(r, single) {
           var kx, ky, t;
 
@@ -98,7 +136,6 @@
               return zoom(d.parent);
             }
           }).on('dblclick', function(d) {
-            console.log(currentNode.wurfl_device_id, d.parent ? d.parent.wurfl_device_id : '');
             if (!d.parent || currentNode.wurfl_device_id === d.parent.wurfl_device_id) {
               return zoom(d, true);
             } else {
@@ -107,7 +144,17 @@
           });
           $node.attr('transform', function(d) {
             return "translate(" + d.x + "," + d.y + ")";
-          });
+          }).call(d3.helper.tooltip().attr('class', function(d, i) {
+            return d.wurfl_device_id;
+          }).style('color', 'blue').text(function(d) {
+            var html;
+
+            html = d.brand_name + ' ' + d.model_name;
+            html += '<br/>' + d.wurfl_device_id;
+            html += '<br/>Visits: ' + formatNumber(d.visits);
+            html += '<br/>Conv: ' + formatConv(d.conv);
+            return html;
+          }));
           $node.append('rect').attr('width', rectWidth).attr('height', rectHeight).style('fill', function(d) {
             return color(d.wurfl_device_id);
           }).attr('stroke', 'white');

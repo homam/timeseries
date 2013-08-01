@@ -32,6 +32,8 @@ exports.treeMapZoomableChart = () ->
   rectWidth = (d) -> if d.dx>2 then d.dx-2 else 0
   rectHeight = (d) -> if d.dy>2 then d.dy-2 else 0
 
+  #tooltip = d3tooltip(d3)
+
 
   chart = (selection) ->
     selection.each () ->
@@ -41,6 +43,40 @@ exports.treeMapZoomableChart = () ->
       .append("g").attr('transform', 'translate('+margin.top+','+margin.left+')')
 
       currentNode = null
+
+      TopLeft = () ->
+        _px = 0
+        _py = 0
+        _kx = 1
+        _ky = 1
+        return (px, py, kx, ky) ->
+          if arguments.length > 0
+            _px = px
+            _py = py
+
+            if(arguments.length > 1)
+              _kx = kx
+              _ky = ky
+
+          x: _px
+          y: _py
+          kx: _kx
+          ky: _ky
+          xdomain: x.domain()
+          ydomain: y.domain()
+
+      topLeft = TopLeft()
+
+
+
+      window.move = (px, py) ->
+        if arguments.length == 0
+          return topLeft()
+        else
+          tl = topLeft()
+          kx = tl.kx
+          ky = tl.ky
+
 
       zoom = (r, single = false) ->
         kx = awidth/ r.dx
@@ -54,9 +90,6 @@ exports.treeMapZoomableChart = () ->
           ky *= .5
           x.domain([r.x-r.dx*.5,1.5*r.dx+r.x])
           y.domain([r.y-r.dy*.5,1.5*r.dy+r.y])
-
-
-
 
         t = $svg.selectAll('.node').transition().duration(1500)
         .attr('transform', (d) -> "translate(" + x(d.x) + "," + y(d.y) + ")")
@@ -87,15 +120,12 @@ exports.treeMapZoomableChart = () ->
         $node = $svg.selectAll('.node').data(nodes)
         .enter().append('g').attr('class','node')
         .on('click', (d) ->
-
             if(!d.parent || currentNode.wurfl_device_id == d.parent.wurfl_device_id)
                 zoom(root)
             else
               zoom(d.parent)
         )
         .on('dblclick', (d) ->
-
-            console.log currentNode.wurfl_device_id, if d.parent then d.parent.wurfl_device_id else ''
             if(!d.parent || currentNode.wurfl_device_id == d.parent.wurfl_device_id)
               zoom(d, true)
             else
@@ -103,6 +133,17 @@ exports.treeMapZoomableChart = () ->
         )
 
         $node.attr('transform', (d) -> "translate(" + d.x + "," + d.y + ")")
+        .call(d3.helper.tooltip()
+          .attr('class', (d, i) -> d.wurfl_device_id)
+          .style('color', 'blue')
+          .text((d) ->
+            html = d.brand_name+' '+d.model_name
+            html += '<br/>' +d.wurfl_device_id
+            html += '<br/>Visits: ' + formatNumber d.visits
+            html += '<br/>Conv: ' + formatConv d.conv
+            html
+          )
+        )
         $node.append('rect')
         .attr('width', rectWidth).attr('height', rectHeight)
         .style('fill', (d) -> color(d.wurfl_device_id))
