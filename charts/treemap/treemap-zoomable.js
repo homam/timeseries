@@ -55,6 +55,12 @@
           ky = aheight / r.dy;
           x.domain([r.x, r.dx + r.x]);
           y.domain([r.y, r.dy + r.y]);
+          if (single) {
+            kx *= .5;
+            ky *= .5;
+            x.domain([r.x - r.dx * .5, 1.5 * r.dx + r.x]);
+            y.domain([r.y - r.dy * .5, 1.5 * r.dy + r.y]);
+          }
           t = $svg.selectAll('.node').transition().duration(1500).attr('transform', function(d) {
             return "translate(" + x(d.x) + "," + y(d.y) + ")";
           });
@@ -85,18 +91,18 @@
             return d.children.length === 0;
           });
           currentNode = root;
-          $node = $svg.selectAll('.node').data(nodes).enter().append('g').attr('class', 'node').on('dblclick', function(d) {
+          $node = $svg.selectAll('.node').data(nodes).enter().append('g').attr('class', 'node').on('click', function(d) {
             if (!d.parent || currentNode.wurfl_device_id === d.parent.wurfl_device_id) {
               return zoom(root);
             } else {
               return zoom(d.parent);
             }
-          }).on('click', function(d) {
+          }).on('dblclick', function(d) {
             console.log(currentNode.wurfl_device_id, d.parent ? d.parent.wurfl_device_id : '');
             if (!d.parent || currentNode.wurfl_device_id === d.parent.wurfl_device_id) {
               return zoom(d, true);
             } else {
-              return zoom(d.parent);
+              return zoom(d, true);
             }
           });
           $node.attr('transform', function(d) {
