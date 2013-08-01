@@ -1,3 +1,4 @@
+# convers the data array to a tree starting from root
 pack = (root, data) ->
   data.forEach (d,i) ->
     if(d != null && d.wurfl_fall_back == root.wurfl_device_id)
@@ -6,6 +7,7 @@ pack = (root, data) ->
       data[i] = null
   data
 
+# adds the root of tree back to the tree
 addBack = (root) ->
   if(root.children.length > 0)
     root.children.forEach addBack
@@ -23,6 +25,14 @@ groupByBrandName = (data) ->
 
   _(groups).map (darr, key) ->
 
+    groupVisits = darr.map((d) -> d.visits).reduce((a,b)->a+b)
+    groupSubs = darr.map((d) -> d.subscribers).reduce((a,b)->a+b)
+    groupAverageConv = groupSubs / groupVisits
+    groupStdevConversion = darr.map((g) ->
+      Math.sqrt(Math.pow((g.conv-groupAverageConv), 2)) * g.visits / groupVisits
+    )
+    .reduce((a,b) -> a+b)
+
     [0..darr.length-1].forEach (i) ->
       d = darr[i]
       if(!!d)
@@ -33,6 +43,8 @@ groupByBrandName = (data) ->
       addBack(darr[i])
 
     return {
+      averageConversion: groupAverageConv
+      stdevConversion: groupStdevConversion
       children: darr
     }
 
@@ -53,18 +65,24 @@ groupByParentIdOnly = (data) ->
 d3.csv 'charts/treemap/data/devices.csv', (data) ->
 
   data = data.map (d) ->
-    d.wurfl_device_id = d.wurfl_device_id
-    d.wurfl_fall_back = d.wurfl_fall_back
-    d.brand_name = d.brand_name
-    d.model_name = d.model_name
-    d.visits = +d.visits
-    d.subscribers = +d.subscribers
-    d.conv = +d.conv
-    d.children = []
-    d
+    wurfl_device_id : d.wurfl_device_id
+    wurfl_fall_back : d.wurfl_fall_back
+    brand_name : d.brand_name
+    model_name : d.model_name
+    visits : +d.visits
+    subscribers : +d.subscribers
+    conv : +d.conv
+    children : []
 
 
-  more = data.filter((d) ->d.visits <= 100).map((d) -> d.visits).reduce((a,b)->a+b)
+  totalVisits= data.map((d) -> d.visits).reduce((a,b)->a+b)
+  totalSubs = data.map((d) -> d.subscribers).reduce((a,b)->a+b)
+  totalConv= totalSubs/totalVisits
+
+
+  more = data.filter((d) ->d.visits <= 100)
+  moreVisits = more.map((d) -> d.visits).reduce((a,b)->a+b)
+  moreSubs = more.map((d) -> d.subscribers).reduce((a,b)->a+b)
   data = data.filter (d) ->d.visits > 100
   data.push
     children: [],
@@ -72,7 +90,9 @@ d3.csv 'charts/treemap/data/devices.csv', (data) ->
     wurfl_device_id: 'more...'
     brand_name: 'more'
     model_name: '..'
-    visits: more
+    visits: moreVisits
+    subscribers: moreSubs
+    conv : moreSubs/moreVisits
 
   data = groupByBrandName data #groupByParentIdOnly data
 

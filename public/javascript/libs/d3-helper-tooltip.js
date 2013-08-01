@@ -9,7 +9,6 @@ d3.helper.tooltip = function(){
 
     function tooltip(selection){
 
-        console.log(selection.selectAll('text'))
 
         selection.on('mouseover.tooltip', function(pD, pI){
             var name, value;

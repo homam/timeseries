@@ -1,6 +1,13 @@
 exports = exports ? this
 
 exports.treeMapZoomableChart = () ->
+  findParentWithProp = (d, prop) ->
+    if(!d)
+      return null
+    if(d.hasOwnProperty(prop))
+      return d[prop]
+    return findParentWithProp d.parent, prop
+
   # configs
   margin =
     top: 0
@@ -67,8 +74,6 @@ exports.treeMapZoomableChart = () ->
 
       topLeft = TopLeft()
 
-
-
       window.move = (px, py) ->
         if arguments.length == 0
           return topLeft()
@@ -98,10 +103,12 @@ exports.treeMapZoomableChart = () ->
         .attr('width', (d) -> kx*d.dx)
         .attr('height', (d) -> ky*d.dy)
 
-        t.select('text')
+        t.selectAll('text')
         .attr('x', (d) -> kx*d.dx/2)
-        .attr('y', (d) -> ky*d.dy/2)
-        .style('opacity', (d) -> if (kx * d.dx > d._tw) then 1 else 0)
+
+        t.select('text.name').attr('y', (d) -> ky*d.dy/2).style('opacity', (d) -> if (kx * d.dx > d._tnamew) then 1 else 0)
+        t.select('text.conv').attr('y', (d) ->.7*ky*d.dy).style('opacity', (d) -> if (kx * d.dx > d._tconvw) then 1 else 0)
+
 
         currentNode = r
         d3.event.stopPropagation()
@@ -137,19 +144,31 @@ exports.treeMapZoomableChart = () ->
           .attr('class', (d, i) -> d.wurfl_device_id)
           .style('color', 'blue')
           .text((d) ->
+            avgConv = findParentWithProp d, 'averageConversion'
+            stdevConv = findParentWithProp d, 'stdevConversion'
             html = d.brand_name+' '+d.model_name
             html += '<br/>' +d.wurfl_device_id
             html += '<br/>Visits: ' + formatNumber d.visits
-            html += '<br/>Conv: ' + formatConv d.conv
+            if d.conv < avgConv-stdevConv
+              html += '<br/><span style="color:red">Conv: ' + (formatConv d.conv) + '</span>'
+            else
+              html += '<br/>Conv: ' + formatConv d.conv
+            html += '<br/>Avg: ' + formatConv avgConv
+            html += '<br/>SigmaAvg: ' + formatConv stdevConv
             html
           )
         )
         $node.append('rect')
         .attr('width', rectWidth).attr('height', rectHeight)
         .style('fill', (d) -> color(d.wurfl_device_id))
-        .attr('stroke', 'white')
+        .attr('stroke', (d) ->
+          if d.conv < (findParentWithProp d, 'averageConversion')-(findParentWithProp d, 'stdevConversion')
+            'red'
+          else
+            'white'
+        )
 
-        $node.append('text')
+        $node.append('text').attr('class', 'name')
         .attr('x', (d) -> d.dx/2).attr('y', (d) -> d.dy/2)
         .attr('dy', '.35em').attr('text-anchor', 'middle')
         .text((d) ->
@@ -158,8 +177,20 @@ exports.treeMapZoomableChart = () ->
             d.brand_name+' '+d.model_name
         )
         .style('opacity', (d) ->
-            d._tw = this.getComputedTextLength();
-            if d.dx > d._tw then 1 else 0
+            d._tnamew = this.getComputedTextLength();
+            if d.dx > d._tnamew then 1 else 0
+        )
+        $node.append('text').attr('class', 'conv')
+        .attr('x', (d) -> d.dx/2).attr('y', (d) -> d.dy*.7)
+        .attr('dy', '.35em').attr('text-anchor', 'middle')
+        .text((d) ->
+            if d.children.length > 0
+              return null
+            formatConv d.conv
+        )
+        .style('opacity', (d) ->
+            d._tconvw = this.getComputedTextLength();
+            if d.dx > d._tconvw then 1 else 0
         )
 
 

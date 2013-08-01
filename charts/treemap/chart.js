@@ -34,8 +34,24 @@
       return d.brand_name;
     });
     return _(groups).map(function(darr, key) {
-      var _i, _j, _ref, _ref1, _results, _results1;
+      var groupAverageConv, groupStdevConversion, groupSubs, groupVisits, _i, _j, _ref, _ref1, _results, _results1;
 
+      groupVisits = darr.map(function(d) {
+        return d.visits;
+      }).reduce(function(a, b) {
+        return a + b;
+      });
+      groupSubs = darr.map(function(d) {
+        return d.subscribers;
+      }).reduce(function(a, b) {
+        return a + b;
+      });
+      groupAverageConv = groupSubs / groupVisits;
+      groupStdevConversion = darr.map(function(g) {
+        return Math.sqrt(Math.pow(g.conv - groupAverageConv, 2)) * g.visits / groupVisits;
+      }).reduce(function(a, b) {
+        return a + b;
+      });
       (function() {
         _results = [];
         for (var _i = 0, _ref = darr.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; 0 <= _ref ? _i++ : _i--){ _results.push(_i); }
@@ -59,6 +75,8 @@
         return addBack(darr[i]);
       });
       return {
+        averageConversion: groupAverageConv,
+        stdevConversion: groupStdevConversion,
         children: darr
       };
     });
@@ -93,23 +111,41 @@
   };
 
   d3.csv('charts/treemap/data/devices.csv', function(data) {
-    var chart, more, tree;
+    var chart, more, moreSubs, moreVisits, totalConv, totalSubs, totalVisits, tree;
 
     data = data.map(function(d) {
-      d.wurfl_device_id = d.wurfl_device_id;
-      d.wurfl_fall_back = d.wurfl_fall_back;
-      d.brand_name = d.brand_name;
-      d.model_name = d.model_name;
-      d.visits = +d.visits;
-      d.subscribers = +d.subscribers;
-      d.conv = +d.conv;
-      d.children = [];
-      return d;
+      return {
+        wurfl_device_id: d.wurfl_device_id,
+        wurfl_fall_back: d.wurfl_fall_back,
+        brand_name: d.brand_name,
+        model_name: d.model_name,
+        visits: +d.visits,
+        subscribers: +d.subscribers,
+        conv: +d.conv,
+        children: []
+      };
     });
+    totalVisits = data.map(function(d) {
+      return d.visits;
+    }).reduce(function(a, b) {
+      return a + b;
+    });
+    totalSubs = data.map(function(d) {
+      return d.subscribers;
+    }).reduce(function(a, b) {
+      return a + b;
+    });
+    totalConv = totalSubs / totalVisits;
     more = data.filter(function(d) {
       return d.visits <= 100;
-    }).map(function(d) {
+    });
+    moreVisits = more.map(function(d) {
       return d.visits;
+    }).reduce(function(a, b) {
+      return a + b;
+    });
+    moreSubs = more.map(function(d) {
+      return d.subscribers;
     }).reduce(function(a, b) {
       return a + b;
     });
@@ -122,7 +158,9 @@
       wurfl_device_id: 'more...',
       brand_name: 'more',
       model_name: '..',
-      visits: more
+      visits: moreVisits,
+      subscribers: moreSubs,
+      conv: moreSubs / moreVisits
     });
     data = groupByBrandName(data);
     window.data = data;

@@ -5,8 +5,17 @@
   exports = exports != null ? exports : this;
 
   exports.treeMapZoomableChart = function() {
-    var aheight, awidth, chart, color, formatConv, formatNumber, height, margin, rectHeight, rectWidth, treemap, width, x, y;
+    var aheight, awidth, chart, color, findParentWithProp, formatConv, formatNumber, height, margin, rectHeight, rectWidth, treemap, width, x, y;
 
+    findParentWithProp = function(d, prop) {
+      if (!d) {
+        return null;
+      }
+      if (d.hasOwnProperty(prop)) {
+        return d[prop];
+      }
+      return findParentWithProp(d.parent, prop);
+    };
     margin = {
       top: 0,
       right: 0,
@@ -107,12 +116,22 @@
           }).attr('height', function(d) {
             return ky * d.dy;
           });
-          t.select('text').attr('x', function(d) {
+          t.selectAll('text').attr('x', function(d) {
             return kx * d.dx / 2;
-          }).attr('y', function(d) {
+          });
+          t.select('text.name').attr('y', function(d) {
             return ky * d.dy / 2;
           }).style('opacity', function(d) {
-            if (kx * d.dx > d._tw) {
+            if (kx * d.dx > d._tnamew) {
+              return 1;
+            } else {
+              return 0;
+            }
+          });
+          t.select('text.conv').attr('y', function(d) {
+            return .7 * ky * d.dy;
+          }).style('opacity', function(d) {
+            if (kx * d.dx > d._tconvw) {
               return 1;
             } else {
               return 0;
@@ -147,18 +166,32 @@
           }).call(d3.helper.tooltip().attr('class', function(d, i) {
             return d.wurfl_device_id;
           }).style('color', 'blue').text(function(d) {
-            var html;
+            var avgConv, html, stdevConv;
 
+            avgConv = findParentWithProp(d, 'averageConversion');
+            stdevConv = findParentWithProp(d, 'stdevConversion');
             html = d.brand_name + ' ' + d.model_name;
             html += '<br/>' + d.wurfl_device_id;
             html += '<br/>Visits: ' + formatNumber(d.visits);
-            html += '<br/>Conv: ' + formatConv(d.conv);
+            if (d.conv < avgConv - stdevConv) {
+              html += '<br/><span style="color:red">Conv: ' + (formatConv(d.conv)) + '</span>';
+            } else {
+              html += '<br/>Conv: ' + formatConv(d.conv);
+            }
+            html += '<br/>Avg: ' + formatConv(avgConv);
+            html += '<br/>SigmaAvg: ' + formatConv(stdevConv);
             return html;
           }));
           $node.append('rect').attr('width', rectWidth).attr('height', rectHeight).style('fill', function(d) {
             return color(d.wurfl_device_id);
-          }).attr('stroke', 'white');
-          return $node.append('text').attr('x', function(d) {
+          }).attr('stroke', function(d) {
+            if (d.conv < (findParentWithProp(d, 'averageConversion')) - (findParentWithProp(d, 'stdevConversion'))) {
+              return 'red';
+            } else {
+              return 'white';
+            }
+          });
+          $node.append('text').attr('class', 'name').attr('x', function(d) {
             return d.dx / 2;
           }).attr('y', function(d) {
             return d.dy / 2;
@@ -168,8 +201,25 @@
             }
             return d.brand_name + ' ' + d.model_name;
           }).style('opacity', function(d) {
-            d._tw = this.getComputedTextLength();
-            if (d.dx > d._tw) {
+            d._tnamew = this.getComputedTextLength();
+            if (d.dx > d._tnamew) {
+              return 1;
+            } else {
+              return 0;
+            }
+          });
+          return $node.append('text').attr('class', 'conv').attr('x', function(d) {
+            return d.dx / 2;
+          }).attr('y', function(d) {
+            return d.dy * .7;
+          }).attr('dy', '.35em').attr('text-anchor', 'middle').text(function(d) {
+            if (d.children.length > 0) {
+              return null;
+            }
+            return formatConv(d.conv);
+          }).style('opacity', function(d) {
+            d._tconvw = this.getComputedTextLength();
+            if (d.dx > d._tconvw) {
               return 1;
             } else {
               return 0;

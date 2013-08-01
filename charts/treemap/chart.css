@@ -25,6 +25,9 @@ body {
   -webkit-transform: translateX(-44%) rotateZ(90deg) translateX(110%);
   text-align: left;
 }
+text {
+  cursor: default;
+}
 [data-tooltip] {
   text-align: center;
   min-width: 200px;
