@@ -93,7 +93,7 @@
   };
 
   d3.csv('charts/treemap/data/devices.csv', function(data) {
-    var chart, tree;
+    var chart, more, tree;
 
     data = data.map(function(d) {
       d.wurfl_device_id = d.wurfl_device_id;
@@ -106,16 +106,34 @@
       d.children = [];
       return d;
     });
-    tree = {};
+    more = data.filter(function(d) {
+      return d.visits <= 100;
+    }).map(function(d) {
+      return d.visits;
+    }).reduce(function(a, b) {
+      return a + b;
+    });
+    data = data.filter(function(d) {
+      return d.visits > 100;
+    });
+    data.push({
+      children: [],
+      wurfl_fall_back: 'root',
+      wurfl_device_id: 'more...',
+      brand_name: 'more',
+      model_name: '..',
+      visits: more
+    });
     data = groupByBrandName(data);
     window.data = data;
     tree = {
       children: data,
       wurfl_device_id: 'root',
       brand_name: 'root',
-      model_name: 'root'
+      model_name: 'root',
+      visits: 0
     };
-    chart = treeMapChart();
+    chart = treeMapZoomableChart();
     d3.select('#chart').call(chart);
     return chart.draw(tree);
   });

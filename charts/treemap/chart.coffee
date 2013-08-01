@@ -63,24 +63,18 @@ d3.csv 'charts/treemap/data/devices.csv', (data) ->
     d.children = []
     d
 
-  tree = {}
 
-
-
+  more = data.filter((d) ->d.visits <= 100).map((d) -> d.visits).reduce((a,b)->a+b)
+  data = data.filter (d) ->d.visits > 100
+  data.push
+    children: [],
+    wurfl_fall_back: 'root'
+    wurfl_device_id: 'more...'
+    brand_name: 'more'
+    model_name: '..'
+    visits: more
 
   data = groupByBrandName data #groupByParentIdOnly data
-
-
-
-#  [0..data.length-1].forEach (i) ->
-#    d = data[i]
-#    if(!!d)
-#      data = pack data[i], data
-#  data = data.filter (d) -> d != null
-#
-#  [0..data.length-1].forEach (i) ->
-#    addBack(data[i])
-#
 
 
   window.data = data
@@ -90,8 +84,9 @@ d3.csv 'charts/treemap/data/devices.csv', (data) ->
     wurfl_device_id: 'root'
     brand_name: 'root'
     model_name: 'root'
+    visits: 0
 
-  chart =  treeMapChart()
+  chart = treeMapZoomableChart() #treeMapChart()
 
   d3.select('#chart').call chart
 

@@ -4,6 +4,7 @@
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/charts/treemap/treemap.js" />
         <item url="file://$PROJECT_DIR$/charts/page-perf/multi-line-time-series-chart.js" />
+        <item url="file://$PROJECT_DIR$/charts/treemap/treemap-zoomable.js" />
         <item url="file://$PROJECT_DIR$/charts/page-perf/chart-area.js" />
         <item url="file://$PROJECT_DIR$/charts/treemap/chart.js" />
         <item url="file://$PROJECT_DIR$/routes/index.js" />
@@ -13,6 +14,7 @@
     <CLASSES>
       <root url="file://$PROJECT_DIR$/charts/treemap/treemap.js" />
       <root url="file://$PROJECT_DIR$/charts/page-perf/multi-line-time-series-chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/treemap/treemap-zoomable.js" />
       <root url="file://$PROJECT_DIR$/charts/page-perf/chart-area.js" />
       <root url="file://$PROJECT_DIR$/charts/treemap/chart.js" />
       <root url="file://$PROJECT_DIR$/routes/index.js" />
