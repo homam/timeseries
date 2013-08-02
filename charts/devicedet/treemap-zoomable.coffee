@@ -30,11 +30,6 @@ exports.treeMapZoomableChart = () ->
 
   color = d3.scale.category20()
 
-  treemap = d3.layout.treemap()
-  .size([width-margin.left-margin.right,height-margin.left-margin.right])
-  .round(false)
-  .sticky(true)
-  .value (d) -> d.visits
 
   rectWidth = (d) -> if d.dx>2 then d.dx-2 else 0
   rectHeight = (d) -> if d.dy>2 then d.dy-2 else 0
@@ -118,6 +113,11 @@ exports.treeMapZoomableChart = () ->
 
 
       chart.draw = (root) ->
+        treemap = d3.layout.treemap()
+        .size([width-margin.left-margin.right,height-margin.left-margin.right])
+        .round(false)
+        .sticky(true)
+        .value (d) -> d.visits
 
         nodes = treemap.nodes(root).filter (d) -> d.children.length==0
 
@@ -125,7 +125,8 @@ exports.treeMapZoomableChart = () ->
         currentNode = root
 
         $node = $svg.selectAll('.node').data(nodes)
-        .enter().append('g').attr('class','node')
+
+        $enterNode = $node.enter().append('g').attr('class','node')
         .on('click', (d) ->
             if(!d.parent || currentNode.wurfl_device_id == d.parent.wurfl_device_id)
                 zoom(root)
@@ -139,6 +140,8 @@ exports.treeMapZoomableChart = () ->
               zoom(d, true)
         )
 
+
+
         $node.attr('transform', (d) -> "translate(" + d.x + "," + d.y + ")")
         .call(d3.helper.tooltip()
           .attr('class', (d, i) -> d.wurfl_device_id)
@@ -146,11 +149,13 @@ exports.treeMapZoomableChart = () ->
           .text((d) ->
             avgConv = findParentWithProp d, 'averageConversion'
             stdevConv = findParentWithProp d, 'stdevConversion'
+            d._badConverting = d.conv == 0 or d.conv < avgConv-stdevConv
+
             html = d.brand_name+' '+d.model_name
             html += '<br/>' +d.wurfl_device_id
             html += '<br/>' + d.device_os;
             html += '<br/>Visits: ' + formatNumber d.visits
-            if d.conv < avgConv-stdevConv
+            if d._badConverting
               html += '<br/><span style="color:red">Conv: ' + (formatConv d.conv) + '</span>'
             else
               html += '<br/>Conv: ' + formatConv d.conv
@@ -159,18 +164,23 @@ exports.treeMapZoomableChart = () ->
             html
           )
         )
-        $node.append('rect')
-        .attr('width', rectWidth).attr('height', rectHeight)
+
+        $enterNode.append('rect')
+        $node.select('rect')
         .style('fill', (d) -> color(d.wurfl_device_id))
         .attr('stroke', (d) ->
-          if d.conv < (findParentWithProp d, 'averageConversion')-(findParentWithProp d, 'stdevConversion')
+          avgConv = findParentWithProp d, 'averageConversion'
+          stdevConv = findParentWithProp d, 'stdevConversion'
+          d._badConverting = d.conv == 0 or d.conv < avgConv-stdevConv
+
+          if d._badConverting
             'red'
           else
             'white'
-        )
+        ).transition().duration(500).attr('width', rectWidth).attr('height', rectHeight)
 
-        $node.append('text').attr('class', 'name')
-        .attr('x', (d) -> d.dx/2).attr('y', (d) -> d.dy/2)
+        $enterNode.append('text').attr('class', 'name')
+        $node.select('text.name').attr('x', (d) -> d.dx/2).attr('y', (d) -> d.dy/2)
         .attr('dy', '.35em').attr('text-anchor', 'middle')
         .text((d) ->
             if d.children.length > 0
@@ -181,8 +191,8 @@ exports.treeMapZoomableChart = () ->
             d._tnamew = this.getComputedTextLength();
             if d.dx > d._tnamew then 1 else 0
         )
-        $node.append('text').attr('class', 'conv')
-        .attr('x', (d) -> d.dx/2).attr('y', (d) -> d.dy*.7)
+        $enterNode.append('text').attr('class', 'conv')
+        $node.select('text.conv').attr('x', (d) -> d.dx/2).attr('y', (d) -> d.dy*.7)
         .attr('dy', '.35em').attr('text-anchor', 'middle')
         .text((d) ->
             if d.children.length > 0
@@ -194,6 +204,9 @@ exports.treeMapZoomableChart = () ->
             if d.dx > d._tconvw then 1 else 0
         )
 
+
+        $node.exit().select('rect').transition().duration(500).attr('width', 0).attr('height', 0)
+        $node.exit().selectAll('text').text(null)
 
 
   chart

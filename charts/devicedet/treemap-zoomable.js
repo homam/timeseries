@@ -5,7 +5,7 @@
   exports = exports != null ? exports : this;
 
   exports.treeMapZoomableChart = function() {
-    var aheight, awidth, chart, color, findParentWithProp, formatConv, formatNumber, height, margin, rectHeight, rectWidth, treemap, width, x, y;
+    var aheight, awidth, chart, color, findParentWithProp, formatConv, formatNumber, height, margin, rectHeight, rectWidth, width, x, y;
 
     findParentWithProp = function(d, prop) {
       if (!d) {
@@ -31,9 +31,6 @@
     x = d3.scale.linear().range([0, awidth]);
     y = d3.scale.linear().range([0, aheight]);
     color = d3.scale.category20();
-    treemap = d3.layout.treemap().size([width - margin.left - margin.right, height - margin.left - margin.right]).round(false).sticky(true).value(function(d) {
-      return d.visits;
-    });
     rectWidth = function(d) {
       if (d.dx > 2) {
         return d.dx - 2;
@@ -142,13 +139,17 @@
         };
         window.zoom = zoom;
         return chart.draw = function(root) {
-          var $node, nodes;
+          var $enterNode, $node, nodes, treemap;
 
+          treemap = d3.layout.treemap().size([width - margin.left - margin.right, height - margin.left - margin.right]).round(false).sticky(true).value(function(d) {
+            return d.visits;
+          });
           nodes = treemap.nodes(root).filter(function(d) {
             return d.children.length === 0;
           });
           currentNode = root;
-          $node = $svg.selectAll('.node').data(nodes).enter().append('g').attr('class', 'node').on('click', function(d) {
+          $node = $svg.selectAll('.node').data(nodes);
+          $enterNode = $node.enter().append('g').attr('class', 'node').on('click', function(d) {
             if (!d.parent || currentNode.wurfl_device_id === d.parent.wurfl_device_id) {
               return zoom(root);
             } else {
@@ -170,11 +171,12 @@
 
             avgConv = findParentWithProp(d, 'averageConversion');
             stdevConv = findParentWithProp(d, 'stdevConversion');
+            d._badConverting = d.conv === 0 || d.conv < avgConv - stdevConv;
             html = d.brand_name + ' ' + d.model_name;
             html += '<br/>' + d.wurfl_device_id;
             html += '<br/>' + d.device_os;
             html += '<br/>Visits: ' + formatNumber(d.visits);
-            if (d.conv < avgConv - stdevConv) {
+            if (d._badConverting) {
               html += '<br/><span style="color:red">Conv: ' + (formatConv(d.conv)) + '</span>';
             } else {
               html += '<br/>Conv: ' + formatConv(d.conv);
@@ -183,16 +185,23 @@
             html += '<br/>SigmaAvg: ' + formatConv(stdevConv);
             return html;
           }));
-          $node.append('rect').attr('width', rectWidth).attr('height', rectHeight).style('fill', function(d) {
+          $enterNode.append('rect');
+          $node.select('rect').style('fill', function(d) {
             return color(d.wurfl_device_id);
           }).attr('stroke', function(d) {
-            if (d.conv < (findParentWithProp(d, 'averageConversion')) - (findParentWithProp(d, 'stdevConversion'))) {
+            var avgConv, stdevConv;
+
+            avgConv = findParentWithProp(d, 'averageConversion');
+            stdevConv = findParentWithProp(d, 'stdevConversion');
+            d._badConverting = d.conv === 0 || d.conv < avgConv - stdevConv;
+            if (d._badConverting) {
               return 'red';
             } else {
               return 'white';
             }
-          });
-          $node.append('text').attr('class', 'name').attr('x', function(d) {
+          }).transition().duration(500).attr('width', rectWidth).attr('height', rectHeight);
+          $enterNode.append('text').attr('class', 'name');
+          $node.select('text.name').attr('x', function(d) {
             return d.dx / 2;
           }).attr('y', function(d) {
             return d.dy / 2;
@@ -209,7 +218,8 @@
               return 0;
             }
           });
-          return $node.append('text').attr('class', 'conv').attr('x', function(d) {
+          $enterNode.append('text').attr('class', 'conv');
+          $node.select('text.conv').attr('x', function(d) {
             return d.dx / 2;
           }).attr('y', function(d) {
             return d.dy * .7;
@@ -226,6 +236,8 @@
               return 0;
             }
           });
+          $node.exit().select('rect').transition().duration(500).attr('width', 0).attr('height', 0);
+          return $node.exit().selectAll('text').text(null);
         };
       });
     };

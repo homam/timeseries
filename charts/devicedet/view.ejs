@@ -6,12 +6,21 @@
         <script src="javascript/libs/d3.js"></script>
         <script src="javascript/libs/d3-helper-tooltip.js"></script>
         <script src="javascript/libs/underscore.js"></script>
+        <script src="javascript/libs/jquery.sortable.js"></script>
         <script src="charts/devicedet/treemap-zoomable.js"></script>
         <script src="charts/devicedet/chart.js"></script>
         <link href="charts/devicedet/chart.css" type="text/css" rel="stylesheet" />
     </head>
 <body>
     <h1><%= title %></h1>
+    <select id="submethods"></select>
+    <ul id="groupbys">
+        <li draggable="true" data-groupby='device_os'>device_os</li>
+        <li draggable="true" data-groupby='brand_name'>brand_name</li>
+    </ul>
+    <ul id="groupbys-bin" class="sortable-list">
+
+    </ul>
     <section id="chart"></section>
 </body>
 </html>

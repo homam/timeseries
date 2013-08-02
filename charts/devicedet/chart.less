@@ -32,6 +32,30 @@ text {
   cursor: default;
 }
 
+
+
+
+
+
+.sortable-list {
+  /*
+    user-select prevents the contents of your
+    list items from being selectable by the cursor
+  */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  li {
+    padding: 6px;
+    width: 200px;
+    float: left;
+    margin-right: 25px;
+  }
+}
+
 [data-tooltip] {
   text-align: center;
   min-width: 200px;
@@ -41,4 +65,11 @@ text {
   background: lightsteelblue;
   border: 0px;
   border-radius: 8px;
+}
+
+
+#groupbys-bin, #groupbys {
+  width: 100%;
+  height: 50px;
+  border: solid 1px black;
 }

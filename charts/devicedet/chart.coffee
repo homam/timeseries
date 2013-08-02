@@ -57,6 +57,8 @@ collectLongTail = (data) ->
   if (data.length<2)
     return data
   more = data.filter((d) ->d.visits <= 100)
+  if(more.length < 2)
+    return data
   moreVisits = more.map((d) -> d.visits).reduce((a,b)->a+b)
   moreSubs = more.map((d) -> d.subscribers).reduce((a,b)->a+b)
   data = data.filter (d) ->d.visits > 100
@@ -73,7 +75,8 @@ collectLongTail = (data) ->
   data
 
 groupByBrandName = (data) ->
-  return groupBy data,((d) ->d.brand_name), (children) -> groupBy(children,((c) ->c.device_os), collectLongTail)
+  return groupBy data, ((d) ->d.brand_name), (children) ->
+    groupBy children, ((c) ->c.device_os), (children) -> makeTreeByParentId collectLongTail children
 
   #, makeTreeByParentId
 
@@ -81,51 +84,107 @@ groupByBrandName = (data) ->
 
 
 
-d3.csv 'charts/devicedet/data/ae.csv', (data) ->
+d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
 
-  data = data.map (d) ->
-    wurfl_device_id : d.wurfl_device_id
-    wurfl_fall_back : d.wurfl_fall_back
-    brand_name : d.brand_name
-    model_name : d.model_name
-    visits : +d.visits
-    subscribers : +d.subscribers
-    method : d.method
-    conv : +d.conv
-    device_os :d.device_os
-    children : []
-
-  window.data = data
-
-  data = data.filter ((d) -> 'WAP' == d.method)
-
-
-  totalVisits= data.map((d) -> d.visits).reduce((a,b)->a+b)
-  totalSubs = data.map((d) -> d.subscribers).reduce((a,b)->a+b)
-  totalConv= totalSubs/totalVisits
+  fresh = () ->
+    raw.map (d) ->
+      wurfl_device_id : d.wurfl_device_id
+      wurfl_fall_back : d.wurfl_fall_back
+      brand_name : d.brand_name
+      model_name : d.model_name
+      visits : +d.visits
+      subscribers : +d.subscribers
+      method : d.method
+      conv : +d.conv
+      device_os :d.device_os
+      children : []
 
 
 
-
-  data = groupByBrandName data
-
-
-  window.data = data
-
-  tree =
-    children: data
-    wurfl_device_id: 'root'
-    brand_name: 'root'
-    model_name: 'root'
-    visits: 0
-
-  chart = treeMapZoomableChart() #treeMapChart()
-
+  chart = treeMapZoomableChart()
   d3.select('#chart').call chart
 
-  chart.draw tree
+  draw = (data, method) ->
+    chartData = data.filter ((d) -> method == d.method)
+
+
+    totalVisits= chartData.map((d) -> d.visits).reduce((a,b)->a+b)
+    totalSubs = chartData.map((d) -> d.subscribers).reduce((a,b)->a+b)
+    totalConv= totalSubs/totalVisits
+
+    chartData = groupByBrandName chartData
+
+    window.chartData = chartData
+
+    tree =
+      children: chartData
+      wurfl_device_id: 'root'
+      brand_name: 'root'
+      model_name: 'root'
+      visits: 0
+
+
+    chart.draw tree
+
+
+  subMethods = _.chain(fresh()).map((d) -> d.method).uniq().value()
+
+  d3.select('#submethods').data([subMethods])
+  .on('change', (d) ->
+      draw fresh(), this.value
+  )
+  .selectAll('option').data((d) -> d)
+  .enter().append('option').text((d) -> d)
+
+  makeGroupByFunction = (order) ->
+    gpbys = order.map (p) -> _.partial (data) -> groupBy data, (d)->d[p]
+    gpbys.push collectLongTail
+    gpbys
+
+  console.log makeGroupByFunction ['brand_name', 'device_os']
+
+  draw fresh(), subMethods[0]
 
 
 
 
+  $ () ->
 
+    $('#groupbys-bin, #groupbys').sortable({
+      connectWith: '.connected'
+    })
+    $('#groupbys-bin').on('dragend', () ->
+      gbOrderby = ($(this).find('li').map () -> $(this).attr('data-groupby')).get()
+      console.log gbOrderby
+
+      gpbys = gbOrderby.map (p) -> _.partial (data) -> groupBy data, (d)->d[p]
+      gpbys.push collectLongTail
+
+      filter = (data) ->
+        groupBy data, ((d) ->d.brand_name), (children) ->
+          groupBy children, ((c) ->c.device_os), (children) ->
+            makeTreeByParentId collectLongTail children
+
+
+    );
+
+  return
+
+  console.log $('#groupbys [draggable]').length
+  $('#groupbys [draggable]').on 'dragstart', (e) ->
+    o = e.originalEvent
+    o.dataTransfer.effectAllowed = 'all'
+    o.dataTransfer.setData("homam/groupby", this.dataset.groupby)
+    console.log 'd dragstart'
+
+
+  $('#groupbys [draggable]').on 'drop', (e) ->
+    console.log 'd drop'
+
+  $('#groupbys-bin').on 'dragover', (e) ->
+    e.originalEvent.dataTransfer.types.indexOf('homam/groupby')<0
+
+  $('#groupbys-bin').on 'drop', (e) ->
+    gby = e.originalEvent.dataTransfer.getData('homam/groupby')
+    console.log 'drop ' + gby
+    $(this).append $('#groupbys [draggable][data-groupby="'+gby+'"]').remove()

@@ -99,6 +99,9 @@
     more = data.filter(function(d) {
       return d.visits <= 100;
     });
+    if (more.length < 2) {
+      return data;
+    }
     moreVisits = more.map(function(d) {
       return d.visits;
     }).reduce(function(a, b) {
@@ -132,54 +135,141 @@
     }), function(children) {
       return groupBy(children, (function(c) {
         return c.device_os;
-      }), collectLongTail);
+      }), function(children) {
+        return makeTreeByParentId(collectLongTail(children));
+      });
     });
   };
 
-  d3.csv('charts/devicedet/data/ae.csv', function(data) {
-    var chart, totalConv, totalSubs, totalVisits, tree;
+  d3.csv('charts/devicedet/data/ae.csv', function(raw) {
+    var chart, draw, fresh, makeGroupByFunction, subMethods;
 
-    data = data.map(function(d) {
-      return {
-        wurfl_device_id: d.wurfl_device_id,
-        wurfl_fall_back: d.wurfl_fall_back,
-        brand_name: d.brand_name,
-        model_name: d.model_name,
-        visits: +d.visits,
-        subscribers: +d.subscribers,
-        method: d.method,
-        conv: +d.conv,
-        device_os: d.device_os,
-        children: []
-      };
-    });
-    window.data = data;
-    data = data.filter((function(d) {
-      return 'WAP' === d.method;
-    }));
-    totalVisits = data.map(function(d) {
-      return d.visits;
-    }).reduce(function(a, b) {
-      return a + b;
-    });
-    totalSubs = data.map(function(d) {
-      return d.subscribers;
-    }).reduce(function(a, b) {
-      return a + b;
-    });
-    totalConv = totalSubs / totalVisits;
-    data = groupByBrandName(data);
-    window.data = data;
-    tree = {
-      children: data,
-      wurfl_device_id: 'root',
-      brand_name: 'root',
-      model_name: 'root',
-      visits: 0
+    fresh = function() {
+      return raw.map(function(d) {
+        return {
+          wurfl_device_id: d.wurfl_device_id,
+          wurfl_fall_back: d.wurfl_fall_back,
+          brand_name: d.brand_name,
+          model_name: d.model_name,
+          visits: +d.visits,
+          subscribers: +d.subscribers,
+          method: d.method,
+          conv: +d.conv,
+          device_os: d.device_os,
+          children: []
+        };
+      });
     };
     chart = treeMapZoomableChart();
     d3.select('#chart').call(chart);
-    return chart.draw(tree);
+    draw = function(data, method) {
+      var chartData, totalConv, totalSubs, totalVisits, tree;
+
+      chartData = data.filter((function(d) {
+        return method === d.method;
+      }));
+      totalVisits = chartData.map(function(d) {
+        return d.visits;
+      }).reduce(function(a, b) {
+        return a + b;
+      });
+      totalSubs = chartData.map(function(d) {
+        return d.subscribers;
+      }).reduce(function(a, b) {
+        return a + b;
+      });
+      totalConv = totalSubs / totalVisits;
+      chartData = groupByBrandName(chartData);
+      window.chartData = chartData;
+      tree = {
+        children: chartData,
+        wurfl_device_id: 'root',
+        brand_name: 'root',
+        model_name: 'root',
+        visits: 0
+      };
+      return chart.draw(tree);
+    };
+    subMethods = _.chain(fresh()).map(function(d) {
+      return d.method;
+    }).uniq().value();
+    d3.select('#submethods').data([subMethods]).on('change', function(d) {
+      return draw(fresh(), this.value);
+    }).selectAll('option').data(function(d) {
+      return d;
+    }).enter().append('option').text(function(d) {
+      return d;
+    });
+    makeGroupByFunction = function(order) {
+      var gpbys;
+
+      gpbys = order.map(function(p) {
+        return _.partial(function(data) {
+          return groupBy(data, function(d) {
+            return d[p];
+          });
+        });
+      });
+      gpbys.push(collectLongTail);
+      return gpbys;
+    };
+    console.log(makeGroupByFunction(['brand_name', 'device_os']));
+    draw(fresh(), subMethods[0]);
+    $(function() {
+      $('#groupbys-bin, #groupbys').sortable({
+        connectWith: '.connected'
+      });
+      return $('#groupbys-bin').on('dragend', function() {
+        var filter, gbOrderby, gpbys;
+
+        gbOrderby = ($(this).find('li').map(function() {
+          return $(this).attr('data-groupby');
+        })).get();
+        console.log(gbOrderby);
+        gpbys = gbOrderby.map(function(p) {
+          return _.partial(function(data) {
+            return groupBy(data, function(d) {
+              return d[p];
+            });
+          });
+        });
+        gpbys.push(collectLongTail);
+        return filter = function(data) {
+          return groupBy(data, (function(d) {
+            return d.brand_name;
+          }), function(children) {
+            return groupBy(children, (function(c) {
+              return c.device_os;
+            }), function(children) {
+              return makeTreeByParentId(collectLongTail(children));
+            });
+          });
+        };
+      });
+    });
+    return;
+    console.log($('#groupbys [draggable]').length);
+    $('#groupbys [draggable]').on('dragstart', function(e) {
+      var o;
+
+      o = e.originalEvent;
+      o.dataTransfer.effectAllowed = 'all';
+      o.dataTransfer.setData("homam/groupby", this.dataset.groupby);
+      return console.log('d dragstart');
+    });
+    $('#groupbys [draggable]').on('drop', function(e) {
+      return console.log('d drop');
+    });
+    $('#groupbys-bin').on('dragover', function(e) {
+      return e.originalEvent.dataTransfer.types.indexOf('homam/groupby') < 0;
+    });
+    return $('#groupbys-bin').on('drop', function(e) {
+      var gby;
+
+      gby = e.originalEvent.dataTransfer.getData('homam/groupby');
+      console.log('drop ' + gby);
+      return $(this).append($('#groupbys [draggable][data-groupby="' + gby + '"]').remove());
+    });
   });
 
 }).call(this);
