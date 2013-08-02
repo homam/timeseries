@@ -1,3 +1,18 @@
+isPrime = (x) -> [2,3,5,7].indexOf(x) > -1
+even = (x) -> x%2 == 0
+
+h = (map, xs) -> map xs.filter (x) -> x<=5
+g = (map, xs) -> _.chain(xs).groupBy(isPrime).map((arr) -> map arr).value()
+f = (map, xs) -> _.chain(xs).groupBy(even).map((arr) -> map arr).value()
+
+data = _.range(1,11)
+
+hp = _.partial h, _.identity
+gp = _.partial g, hp
+fp = _.partial f, gp
+
+console.log fp(data)
+#return
 # convers the data array to a tree starting from root
 pack = (root, data) ->
   data.forEach (d,i) ->
@@ -33,7 +48,7 @@ addBack = (root) ->
       visits: root.visits
 
 
-groupBy = (data, what, childrenMap = _.identity) ->
+groupBy = (childrenMap, what, data) ->
   groups = _(data).groupBy what
 
   _(groups).map (darr) ->
@@ -75,12 +90,11 @@ collectLongTail = (data) ->
   data
 
 groupByBrandName = (data) ->
-  return groupBy data, ((d) ->d.brand_name), (children) ->
-    groupBy children, ((c) ->c.device_os), (children) -> makeTreeByParentId collectLongTail children
 
-  #, makeTreeByParentId
+  osF = _.partial groupBy, _.compose(makeTreeByParentId,collectLongTail), (d) ->d.device_os
+  brandF = _.partial groupBy, osF, (d) -> d.brand_name
 
-
+  return brandF(data)
 
 
 
@@ -137,9 +151,10 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
   .enter().append('option').text((d) -> d)
 
   makeGroupByFunction = (order) ->
-    gpbys = order.map (p) -> _.partial (data) -> groupBy data, (d)->d[p]
-    gpbys.push collectLongTail
-    gpbys
+    filter = _.partial _.identity
+    order.forEach (p) ->
+      filter = _.wrap filter, (data) ->_.partial groupBy(data, (d) -> d.brand_name)
+      _.wrap
 
   console.log makeGroupByFunction ['brand_name', 'device_os']
 
