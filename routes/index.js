@@ -41,9 +41,14 @@
         title: 'Campaign Pages Performance'
       });
     });
-    return app.get('/treemap', function(req, res) {
+    app.get('/treemap', function(req, res) {
       return res.render('../charts/treemap/view', {
         title: 'Device Partition and Conversion'
+      });
+    });
+    return app.get('/devicedet', function(req, res) {
+      return res.render('../charts/devicedet/view', {
+        title: 'Device Detection'
       });
     });
   };

@@ -34,3 +34,7 @@ exports.register = (app) ->
   app.get '/treemap', (req, res) ->
     res.render '../charts/treemap/view',
       title: 'Device Partition and Conversion'
+
+  app.get '/devicedet', (req, res) ->
+    res.render '../charts/devicedet/view',
+      title: 'Device Detection'
