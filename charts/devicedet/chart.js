@@ -175,7 +175,7 @@
   };
 
   d3.csv('charts/devicedet/data/ae.csv', function(raw) {
-    var chart, draw, fresh, makeGroupByFunction, subMethods;
+    var chart, draw, fresh, makeGroupByFunction, redraw, subMethods;
 
     fresh = function() {
       return raw.map(function(d) {
@@ -195,10 +195,10 @@
     };
     chart = treeMapZoomableChart();
     d3.select('#chart').call(chart);
-    draw = function(data, method) {
+    draw = function(method, chartDataMap) {
       var chartData, totalConv, totalSubs, totalVisits, tree;
 
-      chartData = data.filter((function(d) {
+      chartData = fresh().filter((function(d) {
         return method === d.method;
       }));
       totalVisits = chartData.map(function(d) {
@@ -212,7 +212,7 @@
         return a + b;
       });
       totalConv = totalSubs / totalVisits;
-      chartData = groupByBrandName(chartData);
+      chartData = chartDataMap(chartData);
       window.chartData = chartData;
       tree = {
         children: chartData,
@@ -226,82 +226,44 @@
     subMethods = _.chain(fresh()).map(function(d) {
       return d.method;
     }).uniq().value();
-    d3.select('#submethods').data([subMethods]).on('change', function(d) {
-      return draw(fresh(), this.value);
+    d3.select('#submethods').data([subMethods]).on('change', function() {
+      return redraw();
     }).selectAll('option').data(function(d) {
       return d;
     }).enter().append('option').text(function(d) {
       return d;
     });
-    makeGroupByFunction = function(order) {
-      var filter;
+    makeGroupByFunction = function(order, treefy, cutLongTail) {
+      var l, lastF, t;
 
-      filter = _.partial(_.identity);
-      return order.forEach(function(p) {
-        filter = _.wrap(filter, function(data) {
-          return _.partial(groupBy(data, function(d) {
-            return d.brand_name;
-          }));
+      order = _(order).reverse();
+      t = treefy ? makeTreeByParentId : _.identity;
+      l = cutLongTail ? collectLongTail : _.identity;
+      lastF = _.compose(t, l);
+      order.forEach(function(p) {
+        return lastF = _.partial(groupBy, lastF, function(d) {
+          return d[p];
         });
-        return _.wrap;
       });
+      return lastF;
     };
-    console.log(makeGroupByFunction(['brand_name', 'device_os']));
-    draw(fresh(), subMethods[0]);
-    $(function() {
+    draw(subMethods[0], makeGroupByFunction(['brand_name', 'device_os'], true, true));
+    redraw = function() {
+      var groupBys;
+
+      groupBys = ($('#groupbys-bin').find('li').map(function() {
+        return $(this).attr('data-groupby');
+      })).get();
+      console.log(groupBys);
+      return draw($("#submethods").val(), makeGroupByFunction(groupBys, true, true));
+    };
+    return $(function() {
       $('#groupbys-bin, #groupbys').sortable({
         connectWith: '.connected'
       });
       return $('#groupbys-bin').on('dragend', function() {
-        var filter, gbOrderby, gpbys;
-
-        gbOrderby = ($(this).find('li').map(function() {
-          return $(this).attr('data-groupby');
-        })).get();
-        console.log(gbOrderby);
-        gpbys = gbOrderby.map(function(p) {
-          return _.partial(function(data) {
-            return groupBy(data, function(d) {
-              return d[p];
-            });
-          });
-        });
-        gpbys.push(collectLongTail);
-        return filter = function(data) {
-          return groupBy(data, (function(d) {
-            return d.brand_name;
-          }), function(children) {
-            return groupBy(children, (function(c) {
-              return c.device_os;
-            }), function(children) {
-              return makeTreeByParentId(collectLongTail(children));
-            });
-          });
-        };
+        return redraw();
       });
-    });
-    return;
-    console.log($('#groupbys [draggable]').length);
-    $('#groupbys [draggable]').on('dragstart', function(e) {
-      var o;
-
-      o = e.originalEvent;
-      o.dataTransfer.effectAllowed = 'all';
-      o.dataTransfer.setData("homam/groupby", this.dataset.groupby);
-      return console.log('d dragstart');
-    });
-    $('#groupbys [draggable]').on('drop', function(e) {
-      return console.log('d drop');
-    });
-    $('#groupbys-bin').on('dragover', function(e) {
-      return e.originalEvent.dataTransfer.types.indexOf('homam/groupby') < 0;
-    });
-    return $('#groupbys-bin').on('drop', function(e) {
-      var gby;
-
-      gby = e.originalEvent.dataTransfer.getData('homam/groupby');
-      console.log('drop ' + gby);
-      return $(this).append($('#groupbys [draggable][data-groupby="' + gby + '"]').remove());
     });
   });
 

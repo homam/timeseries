@@ -14,12 +14,11 @@
 <body>
     <h1><%= title %></h1>
     <select id="submethods"></select>
-    <ul id="groupbys">
-        <li draggable="true" data-groupby='device_os'>device_os</li>
-        <li draggable="true" data-groupby='brand_name'>brand_name</li>
+    <ul id="groupbys" style="display: none">
     </ul>
     <ul id="groupbys-bin" class="sortable-list">
-
+        <li draggable="true" data-groupby='brand_name'>brand_name</li>
+        <li draggable="true" data-groupby='device_os'>device_os</li>
     </ul>
     <section id="chart"></section>
 </body>

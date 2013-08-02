@@ -118,15 +118,16 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
   chart = treeMapZoomableChart()
   d3.select('#chart').call chart
 
-  draw = (data, method) ->
-    chartData = data.filter ((d) -> method == d.method)
+  draw = (method, chartDataMap) ->
+    chartData = fresh().filter ((d) -> method == d.method)
 
 
     totalVisits= chartData.map((d) -> d.visits).reduce((a,b)->a+b)
     totalSubs = chartData.map((d) -> d.subscribers).reduce((a,b)->a+b)
     totalConv= totalSubs/totalVisits
 
-    chartData = groupByBrandName chartData
+    #chartData = groupByBrandName chartData
+    chartData = chartDataMap(chartData)
 
     window.chartData = chartData
 
@@ -144,21 +145,26 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
   subMethods = _.chain(fresh()).map((d) -> d.method).uniq().value()
 
   d3.select('#submethods').data([subMethods])
-  .on('change', (d) ->
-      draw fresh(), this.value
-  )
+  .on('change', () -> redraw())
   .selectAll('option').data((d) -> d)
   .enter().append('option').text((d) -> d)
 
-  makeGroupByFunction = (order) ->
-    filter = _.partial _.identity
+  makeGroupByFunction = (order, treefy, cutLongTail) ->
+    order = _(order).reverse()
+    t = if treefy then makeTreeByParentId else _.identity
+    l = if cutLongTail then collectLongTail else _.identity
+    lastF = _.compose(t,l)
     order.forEach (p) ->
-      filter = _.wrap filter, (data) ->_.partial groupBy(data, (d) -> d.brand_name)
-      _.wrap
+      lastF = _.partial groupBy, lastF, (d) -> d[p]
+    lastF
 
-  console.log makeGroupByFunction ['brand_name', 'device_os']
 
-  draw fresh(), subMethods[0]
+  draw subMethods[0],(makeGroupByFunction ['brand_name', 'device_os'], true, true)
+
+  redraw = () ->
+    groupBys = ($('#groupbys-bin').find('li').map () -> $(this).attr('data-groupby')).get()
+    console.log groupBys
+    draw $("#submethods").val(),(makeGroupByFunction groupBys, true, true)
 
 
 
@@ -168,38 +174,4 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
     $('#groupbys-bin, #groupbys').sortable({
       connectWith: '.connected'
     })
-    $('#groupbys-bin').on('dragend', () ->
-      gbOrderby = ($(this).find('li').map () -> $(this).attr('data-groupby')).get()
-      console.log gbOrderby
-
-      gpbys = gbOrderby.map (p) -> _.partial (data) -> groupBy data, (d)->d[p]
-      gpbys.push collectLongTail
-
-      filter = (data) ->
-        groupBy data, ((d) ->d.brand_name), (children) ->
-          groupBy children, ((c) ->c.device_os), (children) ->
-            makeTreeByParentId collectLongTail children
-
-
-    );
-
-  return
-
-  console.log $('#groupbys [draggable]').length
-  $('#groupbys [draggable]').on 'dragstart', (e) ->
-    o = e.originalEvent
-    o.dataTransfer.effectAllowed = 'all'
-    o.dataTransfer.setData("homam/groupby", this.dataset.groupby)
-    console.log 'd dragstart'
-
-
-  $('#groupbys [draggable]').on 'drop', (e) ->
-    console.log 'd drop'
-
-  $('#groupbys-bin').on 'dragover', (e) ->
-    e.originalEvent.dataTransfer.types.indexOf('homam/groupby')<0
-
-  $('#groupbys-bin').on 'drop', (e) ->
-    gby = e.originalEvent.dataTransfer.getData('homam/groupby')
-    console.log 'drop ' + gby
-    $(this).append $('#groupbys [draggable][data-groupby="'+gby+'"]').remove()
+    $('#groupbys-bin').on('dragend', () -> redraw());
