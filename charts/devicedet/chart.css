@@ -11,22 +11,21 @@ body {
   text-indent: 2px;
   text-shadow: 0px 1px 4px white;
 }
-.n {
-  font-size: 12px;
-}
-.n,
-.c {
-  text-align: center;
-}
-.n.v {
-  -webkit-transform: translateX(-44%) rotateZ(90deg) translateX(29%);
-}
-.c.v {
-  -webkit-transform: translateX(-44%) rotateZ(90deg) translateX(110%);
-  text-align: left;
+.node.bad rect {
+  fill: #51FC00 !important;
+  stroke: yellow;
 }
 text {
   cursor: default;
+}
+[data-tooltip] {
+  text-align: left;
+  min-width: 200px;
+  padding: 10px 10px;
+  font: 1em;
+  background: #deded5;
+  border: 0px;
+  border-radius: 8px;
 }
 .sortable-list {
   /*
@@ -46,15 +45,6 @@ text {
   width: 200px;
   float: left;
   margin-right: 25px;
-}
-[data-tooltip] {
-  text-align: center;
-  min-width: 200px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
-  border: 0px;
-  border-radius: 8px;
 }
 #groupbys-bin,
 #groupbys {

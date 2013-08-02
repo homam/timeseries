@@ -30,7 +30,7 @@
     formatNumber = d3.format(',');
     x = d3.scale.linear().range([0, awidth]);
     y = d3.scale.linear().range([0, aheight]);
-    color = d3.scale.category20();
+    color = d3.scale.category20c();
     rectWidth = function(d) {
       if (d.dx > 2) {
         return d.dx - 2;
@@ -164,9 +164,7 @@
           });
           $node.attr('class', 'node visible').attr('transform', function(d) {
             return "translate(" + d.x + "," + d.y + ")";
-          }).call(d3.helper.tooltip().attr('class', function(d, i) {
-            return d.wurfl_device_id;
-          }).style('color', 'blue').text(function(d) {
+          }).call(d3.helper.tooltip().text(function(d) {
             var avgConv, html, stdevConv;
 
             avgConv = findParentWithProp(d, 'averageConversion');
@@ -174,31 +172,29 @@
             d._badConverting = d.conv === 0 || d.conv < avgConv - stdevConv;
             html = d.brand_name + ' ' + d.model_name;
             html += '<br/>' + d.wurfl_device_id;
+            html += '<br/>' + d.wurfl_fall_back;
             html += '<br/>' + d.device_os;
-            html += '<br/>Visits: ' + formatNumber(d.visits);
+            html += '<br/><br/>Visits: ' + formatNumber(d.visits);
+            html += '<br/>Subs: ' + formatNumber(d.subscribers);
             if (d._badConverting) {
               html += '<br/><span style="color:red">Conv: ' + (formatConv(d.conv)) + '</span>';
             } else {
               html += '<br/>Conv: ' + formatConv(d.conv);
             }
-            html += '<br/>Avg: ' + formatConv(avgConv);
+            html += '<br/><br/>Avg: ' + formatConv(avgConv);
             html += '<br/>SigmaAvg: ' + formatConv(stdevConv);
             return html;
-          }));
-          $enterNode.append('rect');
-          $node.select('rect').style('fill', function(d) {
-            return color(d.wurfl_device_id);
-          }).attr('stroke', function(d) {
+          })).classed('bad', function(d) {
             var avgConv, stdevConv;
 
             avgConv = findParentWithProp(d, 'averageConversion');
             stdevConv = findParentWithProp(d, 'stdevConversion');
             d._badConverting = d.conv === 0 || d.conv < avgConv - stdevConv;
-            if (d._badConverting) {
-              return 'red';
-            } else {
-              return 'white';
-            }
+            return d._badConverting;
+          });
+          $enterNode.append('rect');
+          $node.select('rect').style('fill', function(d) {
+            return color(d.wurfl_device_id);
           }).transition().duration(200).attr('width', rectWidth).attr('height', rectHeight);
           $enterNode.append('text').attr('class', 'name');
           $node.select('text.name').attr('x', function(d) {

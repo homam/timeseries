@@ -28,13 +28,12 @@ exports.treeMapZoomableChart = () ->
 
 
 
-  color = d3.scale.category20()
+  color = d3.scale.category20c()
 
 
   rectWidth = (d) -> if d.dx>2 then d.dx-2 else 0
   rectHeight = (d) -> if d.dy>2 then d.dy-2 else 0
 
-  #tooltip = d3tooltip(d3)
 
 
   chart = (selection) ->
@@ -145,8 +144,6 @@ exports.treeMapZoomableChart = () ->
         $node.attr('class','node visible')
         .attr('transform', (d) -> "translate(" + d.x + "," + d.y + ")")
         .call(d3.helper.tooltip()
-          .attr('class', (d, i) -> d.wurfl_device_id)
-          .style('color', 'blue')
           .text((d) ->
             avgConv = findParentWithProp d, 'averageConversion'
             stdevConv = findParentWithProp d, 'stdevConversion'
@@ -154,31 +151,29 @@ exports.treeMapZoomableChart = () ->
 
             html = d.brand_name+' '+d.model_name
             html += '<br/>' +d.wurfl_device_id
+            html += '<br/>' + d.wurfl_fall_back
             html += '<br/>' + d.device_os;
-            html += '<br/>Visits: ' + formatNumber d.visits
+            html += '<br/><br/>Visits: ' + formatNumber d.visits
+            html += '<br/>Subs: ' + formatNumber d.subscribers
             if d._badConverting
               html += '<br/><span style="color:red">Conv: ' + (formatConv d.conv) + '</span>'
             else
               html += '<br/>Conv: ' + formatConv d.conv
-            html += '<br/>Avg: ' + formatConv avgConv
+            html += '<br/><br/>Avg: ' + formatConv avgConv
             html += '<br/>SigmaAvg: ' + formatConv stdevConv
             html
           )
+        ).classed('bad', (d) ->
+          avgConv = findParentWithProp d, 'averageConversion'
+          stdevConv = findParentWithProp d, 'stdevConversion'
+          d._badConverting = d.conv == 0 or d.conv < avgConv-stdevConv
+          d._badConverting
         )
 
         $enterNode.append('rect')
         $node.select('rect')
         .style('fill', (d) -> color(d.wurfl_device_id))
-        .attr('stroke', (d) ->
-          avgConv = findParentWithProp d, 'averageConversion'
-          stdevConv = findParentWithProp d, 'stdevConversion'
-          d._badConverting = d.conv == 0 or d.conv < avgConv-stdevConv
-
-          if d._badConverting
-            'red'
-          else
-            'white'
-        ).transition().duration(200).attr('width', rectWidth).attr('height', rectHeight)
+        .transition().duration(200).attr('width', rectWidth).attr('height', rectHeight)
 
         $enterNode.append('text').attr('class', 'name')
         $node.select('text.name').attr('x', (d) -> d.dx/2).attr('y', (d) -> d.dy/2)

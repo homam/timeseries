@@ -12,7 +12,9 @@ gp = _.partial g, hp
 fp = _.partial f, gp
 
 console.log fp(data)
-#return
+
+
+
 # convers the data array to a tree starting from root
 pack = (root, data) ->
   data.forEach (d,i) ->
@@ -23,6 +25,7 @@ pack = (root, data) ->
   data
 
 makeTreeByParentId = (data) ->
+
   [0..data.length-1].forEach (i) ->
     d = data[i]
     if(!!d)
@@ -41,11 +44,13 @@ addBack = (root) ->
     root.children.push
       children: []
       wurfl_device_id: root.wurfl_device_id
+      wurfl_fall_back: root.wurfl_fall_back
       brand_name: root.brand_name
       model_name: root.model_name
       conv: root.conv
       device_os :root.device_os
       visits: root.visits
+      subscribers: root.subscribers
 
 
 groupBy = (childrenMap, what, data) ->
@@ -97,6 +102,9 @@ groupByBrandName = (data) ->
   return brandF(data)
 
 
+chart = treeMapZoomableChart()
+d3.select('#chart').call chart
+
 
 d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
 
@@ -109,14 +117,9 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
       visits : +d.visits
       subscribers : +d.subscribers
       method : d.method
-      conv : +d.conv
+      conv : (+d.conv) or 0
       device_os :d.device_os
       children : []
-
-
-
-  chart = treeMapZoomableChart()
-  d3.select('#chart').call chart
 
   draw = (method, chartDataMap) ->
     chartData = fresh().filter ((d) -> method == d.method)
@@ -125,8 +128,12 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
     totalVisits= chartData.map((d) -> d.visits).reduce((a,b)->a+b)
     totalSubs = chartData.map((d) -> d.subscribers).reduce((a,b)->a+b)
     totalConv= totalSubs/totalVisits
+    totalStdevConv = chartData.map((g) ->
+      Math.sqrt(Math.pow((g.conv-totalConv), 2)) * g.visits / totalVisits
+    )
+    .reduce((a,b) -> a+b)
 
-    #chartData = groupByBrandName chartData
+
     chartData = chartDataMap(chartData)
 
     window.chartData = chartData
@@ -136,6 +143,8 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
       wurfl_device_id: 'root'
       brand_name: 'root'
       model_name: 'root'
+      averageConversion: totalConv
+      stdevConversion: totalStdevConv
       visits: 0
 
 
@@ -159,19 +168,16 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
     lastF
 
 
-  draw subMethods[0],(makeGroupByFunction ['brand_name', 'device_os'], true, true)
-
+  # how to call draw: draw subMethods[0],(makeGroupByFunction ['brand_name', 'device_os'], true, true)
   redraw = () ->
     groupBys = ($('#groupbys-bin').find('li').map () -> $(this).attr('data-groupby')).get()
-    console.log groupBys
     draw $("#submethods").val(),(makeGroupByFunction groupBys, true, true)
 
-
-
+  redraw()
 
   $ () ->
 
     $('#groupbys-bin, #groupbys').sortable({
       connectWith: '.connected'
     })
-    $('#groupbys-bin').on('dragend', () -> redraw());
+    $('#groupbys-bin, #groupbys').on('dragend', () -> redraw());
