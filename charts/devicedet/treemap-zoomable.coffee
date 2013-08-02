@@ -91,7 +91,7 @@ exports.treeMapZoomableChart = () ->
           x.domain([r.x-r.dx*.5,1.5*r.dx+r.x])
           y.domain([r.y-r.dy*.5,1.5*r.dy+r.y])
 
-        t = $svg.selectAll('.node').transition().duration(1500)
+        t = $svg.selectAll('.node.visible').transition().duration(1500)
         .attr('transform', (d) -> "translate(" + x(d.x) + "," + y(d.y) + ")")
 
         t.select('rect')
@@ -126,7 +126,7 @@ exports.treeMapZoomableChart = () ->
 
         $node = $svg.selectAll('.node').data(nodes)
 
-        $enterNode = $node.enter().append('g').attr('class','node')
+        $enterNode = $node.enter().append('g').attr('class','node visible')
         .on('click', (d) ->
             if(!d.parent || currentNode.wurfl_device_id == d.parent.wurfl_device_id)
                 zoom(root)
@@ -142,7 +142,8 @@ exports.treeMapZoomableChart = () ->
 
 
 
-        $node.attr('transform', (d) -> "translate(" + d.x + "," + d.y + ")")
+        $node.attr('class','node visible')
+        .attr('transform', (d) -> "translate(" + d.x + "," + d.y + ")")
         .call(d3.helper.tooltip()
           .attr('class', (d, i) -> d.wurfl_device_id)
           .style('color', 'blue')
@@ -177,7 +178,7 @@ exports.treeMapZoomableChart = () ->
             'red'
           else
             'white'
-        ).transition().duration(500).attr('width', rectWidth).attr('height', rectHeight)
+        ).transition().duration(200).attr('width', rectWidth).attr('height', rectHeight)
 
         $enterNode.append('text').attr('class', 'name')
         $node.select('text.name').attr('x', (d) -> d.dx/2).attr('y', (d) -> d.dy/2)
@@ -205,7 +206,7 @@ exports.treeMapZoomableChart = () ->
         )
 
 
-        $node.exit().select('rect').transition().duration(500).attr('width', 0).attr('height', 0)
+        $node.exit().attr('class', 'node').select('rect').transition().duration(200).attr('width', 0).attr('height', 0)
         $node.exit().selectAll('text').text(null)
 
 
