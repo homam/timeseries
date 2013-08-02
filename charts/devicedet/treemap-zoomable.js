@@ -172,6 +172,7 @@
             stdevConv = findParentWithProp(d, 'stdevConversion');
             html = d.brand_name + ' ' + d.model_name;
             html += '<br/>' + d.wurfl_device_id;
+            html += '<br/>' + d.device_os;
             html += '<br/>Visits: ' + formatNumber(d.visits);
             if (d.conv < avgConv - stdevConv) {
               html += '<br/><span style="color:red">Conv: ' + (formatConv(d.conv)) + '</span>';

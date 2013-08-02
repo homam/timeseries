@@ -7,48 +7,7 @@ pack = (root, data) ->
       data[i] = null
   data
 
-# adds the root of tree back to the tree
-addBack = (root) ->
-  if(root.children.length > 0)
-    root.children.forEach addBack
-    root.children.push
-      children: []
-      wurfl_device_id: root.wurfl_device_id
-      brand_name: root.brand_name
-      model_name: root.model_name
-      conv: root.conv
-      visits: root.visits
-
-
-groupByBrandName = (data) ->
-  groups = _(data).groupBy (d) -> d.brand_name
-
-  _(groups).map (darr, key) ->
-
-    groupVisits = darr.map((d) -> d.visits).reduce((a,b)->a+b)
-    groupSubs = darr.map((d) -> d.subscribers).reduce((a,b)->a+b)
-    groupAverageConv = groupSubs / groupVisits
-    groupStdevConversion = darr.map((g) ->
-      Math.sqrt(Math.pow((g.conv-groupAverageConv), 2)) * g.visits / groupVisits
-    )
-    .reduce((a,b) -> a+b)
-
-    [0..darr.length-1].forEach (i) ->
-      d = darr[i]
-      if(!!d)
-        darr = pack darr[i], darr
-    darr = darr.filter (d) -> d != null
-
-    [0..darr.length-1].forEach (i) ->
-      addBack(darr[i])
-
-    return {
-      averageConversion: groupAverageConv
-      stdevConversion: groupStdevConversion
-      children: darr
-    }
-
-groupByParentIdOnly = (data) ->
+makeTreeByParentId = (data) ->
   [0..data.length-1].forEach (i) ->
     d = data[i]
     if(!!d)
@@ -59,6 +18,66 @@ groupByParentIdOnly = (data) ->
     addBack(data[i])
 
   data
+
+# adds the root of tree back to the tree
+addBack = (root) ->
+  if(root.children.length > 0)
+    root.children.forEach addBack
+    root.children.push
+      children: []
+      wurfl_device_id: root.wurfl_device_id
+      brand_name: root.brand_name
+      model_name: root.model_name
+      conv: root.conv
+      device_os :root.device_os
+      visits: root.visits
+
+
+groupBy = (data, what, childrenMap = _.identity) ->
+  groups = _(data).groupBy what
+
+  _(groups).map (darr) ->
+
+    groupVisits = darr.map((d) -> d.visits).reduce((a,b)->a+b)
+    groupSubs = darr.map((d) -> d.subscribers).reduce((a,b)->a+b)
+    groupAverageConv = groupSubs / groupVisits
+    groupStdevConversion = darr.map((g) ->
+      Math.sqrt(Math.pow((g.conv-groupAverageConv), 2)) * g.visits / groupVisits
+    )
+    .reduce((a,b) -> a+b)
+
+    return {
+      averageConversion: groupAverageConv
+      stdevConversion: groupStdevConversion
+      children: childrenMap darr
+    }
+
+
+collectLongTail = (data) ->
+  if (data.length<2)
+    return data
+  more = data.filter((d) ->d.visits <= 100)
+  moreVisits = more.map((d) -> d.visits).reduce((a,b)->a+b)
+  moreSubs = more.map((d) -> d.subscribers).reduce((a,b)->a+b)
+  data = data.filter (d) ->d.visits > 100
+  data.push
+    children: [],
+    wurfl_fall_back: 'root'
+    wurfl_device_id: 'more...'
+    brand_name: 'more'
+    model_name: '..'
+    device_os :'any'
+    visits: moreVisits
+    subscribers: moreSubs
+    conv : moreSubs/moreVisits
+  data
+
+groupByBrandName = (data) ->
+  return groupBy data,((d) ->d.brand_name), (children) -> groupBy(children,((c) ->c.device_os), collectLongTail)
+
+  #, makeTreeByParentId
+
+
 
 
 
@@ -73,11 +92,10 @@ d3.csv 'charts/devicedet/data/ae.csv', (data) ->
     subscribers : +d.subscribers
     method : d.method
     conv : +d.conv
+    device_os :d.device_os
     children : []
 
   window.data = data
-
-  console.log _(data).groupBy((d) -> d.method)
 
   data = data.filter ((d) -> 'WAP' == d.method)
 
@@ -87,21 +105,9 @@ d3.csv 'charts/devicedet/data/ae.csv', (data) ->
   totalConv= totalSubs/totalVisits
 
 
-  more = data.filter((d) ->d.visits <= 100)
-  moreVisits = more.map((d) -> d.visits).reduce((a,b)->a+b)
-  moreSubs = more.map((d) -> d.subscribers).reduce((a,b)->a+b)
-  data = data.filter (d) ->d.visits > 100
-  data.push
-    children: [],
-    wurfl_fall_back: 'root'
-    wurfl_device_id: 'more...'
-    brand_name: 'more'
-    model_name: '..'
-    visits: moreVisits
-    subscribers: moreSubs
-    conv : moreSubs/moreVisits
 
-  data = groupByBrandName data #groupByParentIdOnly data
+
+  data = groupByBrandName data
 
 
   window.data = data
