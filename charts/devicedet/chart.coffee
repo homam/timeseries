@@ -21,7 +21,131 @@ sum = (arr) ->
     return arr[0]
   return arr.reduce((a,b) ->a+b)
 
+# SubMethodDeviceChart
 
+subMethodDeviceConvChart = new groupedBarsChart()
+d3.select('#submethodDevice-conv-chart').call subMethodDeviceConvChart
+
+subMethodDeviceVisitsChart = new groupedBarsChart()
+d3.select('#submethodDevice-visits-chart').call subMethodDeviceVisitsChart
+
+drawSubMethodDeviceChart = (node, data) ->
+  zip = (n) ->
+
+    zipped = (n.children.map (c) -> zip(c))
+    visits = if zipped.length == 0 then 0 else zipped.map((d)->d.visits).reduce (a,b)->a+b
+    subscribers = if zipped.length == 0 then 0 else zipped.map((d)->d.subscribers).reduce (a,b)->a+b
+    wurflIds = _.flatten zipped.map (c) ->c.wurflIds
+
+    if !!n.wurfl_device_id
+      wurflIds.push(n.wurfl_device_id)
+    if !!n.collected_children
+      for c in n.collected_children
+        wurflIds.push c.wurfl_device_id
+
+    visits: (n.visits||0) + visits
+    subscribers: (n.subscribers||0) + subscribers
+    wurflIds: wurflIds
+
+  zipped= zip node
+
+  rootName = node.wurfl_device_id or zipped.wurflIds[0]
+
+  convHierarchy = createSubMethodDeviceHierarchy(data, zipped.wurflIds, rootName, (sarr, skey) ->
+    # filter only converting devices: sarr = sarr.filter (d) -> d[2].subscribers >0
+    subGroupVisits = sum(sarr.map (a) -> a.visits)
+    mu = if sarr.length ==0 then 0 else sum(sarr.map (a) -> a.subscribers)/subGroupVisits
+    name: skey
+    value: mu
+    stdev: if sarr.length <2 then 0 else sum( sarr.map (d) -> Math.sqrt(Math.pow(d.conv-mu,2)) *d.visits/subGroupVisits)
+  )
+  subMethodDeviceConvChart.draw convHierarchy
+
+
+  visitsHierarchy = createSubMethodDeviceHierarchy(data, zipped.wurflIds, rootName, (sarr, skey, marr, raw) ->
+    # filter only converting devices: sarr = sarr.filter (d) -> d[2].subscribers >0
+    majorVisits = sum raw.filter((d) ->d.device == skey).map((d) -> d.visits)
+    mainGroupVisits = sum(marr.map (d) -> d.visits)
+    subGroupVisits = sum(sarr.map (a) -> a.visits)
+    #mu = if sarr.length ==0 then 0 else sum(sarr.map (a) -> a.subscribers)/subGroupVisits
+    name: skey
+    value: subGroupVisits/majorVisits
+    stdev: 0 # if sarr.length <2 then 0 else sum( sarr.map (d) -> Math.sqrt(Math.pow(d.conv-mu,2)) *d.visits/subGroupVisits)
+  )
+  subMethodDeviceVisitsChart.draw visitsHierarchy
+
+# barMaker = (arr, key) -> {name:key, value: #avg(arr), stdev: #stdev(arr)}
+createSubMethodDeviceHierarchy = (data, wurflIds, name, barMaker) ->
+  data = data.map (d) ->
+    method: d.method,
+    device: (if wurflIds.indexOf(d.wurfl_device_id)>-1  then name else 'Everything Else'),
+    visits: d.visits
+    subscribers: d.subscribers
+    conv: d.conv
+
+
+  byMethods = _(data).groupBy((d)->d.method)
+  byDevices = _(data).groupBy((d)->d.device)
+
+  hierarchy = _(byMethods).map (arr, key) ->
+    name: key
+    value: _.chain(arr).groupBy((d)->d.device)
+    .map((sarr, skey) ->barMaker(sarr, skey, arr, data)).value()
+
+
+
+  # add missing values
+
+  mainValueMap = (v) ->v.value
+  subNameMap = (v)->v.name
+  allSubKeys = _.uniq _.flatten hierarchy.map((d) -> mainValueMap(d).map subNameMap)
+
+
+  hierarchy = hierarchy.map (h)->
+    allSubKeys.forEach (k,i) ->
+      if !h.value[i] or h.value[i].name != k
+        h.value.splice i,0,{name:k,value:0,stdev:0}
+
+    h
+
+  return _(hierarchy).sortBy (v) ->v.name
+
+#end SubMethodDeviceChart
+
+# treemap
+
+draw = (data, method, chartDataMap) ->
+  chartData = data.filter ((d) -> method == d.method)
+
+
+  totalVisits= chartData.map((d) -> d.visits).reduce((a,b)->a+b)
+  totalSubs = chartData.map((d) -> d.subscribers).reduce((a,b)->a+b)
+  totalConv= totalSubs/totalVisits
+  totalStdevConv = chartData.map((g) ->
+    Math.sqrt(Math.pow((g.conv-totalConv), 2)) * g.visits / totalVisits
+  )
+  .reduce((a,b) -> a+b)
+
+
+  chartData = chartDataMap(chartData)
+
+  window.chartData = chartData
+
+  tree =
+    children: chartData
+    wurfl_device_id: 'root'
+    brand_name: 'root'
+    model_name: 'root'
+    averageConversion: totalConv
+    stdevConversion: totalStdevConv
+    visits: 0
+
+
+  chart.draw tree
+
+  tree
+
+#end treemap
 
 # convers the data array to a tree starting from root
 pack = (root, data) ->
@@ -118,9 +242,6 @@ chart = treeMapZoomableChart()
 d3.select('#chart').call chart
 
 
-subMethodDeviceChart = new groupedBarsChart()
-d3.select('#submethodDevice-chart').call subMethodDeviceChart
-
 d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
 
   fresh = () ->
@@ -135,37 +256,6 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
       conv : (+d.conv) or 0
       device_os :d.device_os
       children : []
-
-  #sanity check: console.log sum fresh().filter((d) -> d.method == 'WAPPIN').map((d) -> d.subscribers)
-
-  draw = (method, chartDataMap) ->
-    chartData = fresh().filter ((d) -> method == d.method)
-
-
-    totalVisits= chartData.map((d) -> d.visits).reduce((a,b)->a+b)
-    totalSubs = chartData.map((d) -> d.subscribers).reduce((a,b)->a+b)
-    totalConv= totalSubs/totalVisits
-    totalStdevConv = chartData.map((g) ->
-      Math.sqrt(Math.pow((g.conv-totalConv), 2)) * g.visits / totalVisits
-    )
-    .reduce((a,b) -> a+b)
-
-
-    chartData = chartDataMap(chartData)
-
-    window.chartData = chartData
-
-    tree =
-      children: chartData
-      wurfl_device_id: 'root'
-      brand_name: 'root'
-      model_name: 'root'
-      averageConversion: totalConv
-      stdevConversion: totalStdevConv
-      visits: 0
-
-
-    chart.draw tree
 
 
   subMethods = _.chain(fresh()).map((d) -> d.method).uniq().value()
@@ -188,7 +278,8 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
   # how to call draw: draw subMethods[0],(makeGroupByFunction ['brand_name', 'device_os'], true, true)
   redraw = () ->
     groupBys = ($('#groupbys-bin').find('li').map () -> $(this).attr('data-groupby')).get()
-    draw $("#submethods").val(),(makeGroupByFunction groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked)
+    tree = draw fresh(), $("#submethods").val(),(makeGroupByFunction groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked)
+    drawSubMethodDeviceChart tree, fresh()
 
   redraw()
 
@@ -203,71 +294,4 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
     $('#treefy, #collectLongTail').on('change', () -> redraw())
 
 
-
-  createSubMethodDeviceHierarchy = (wurflIds, name) ->
-    data = fresh().map (d) ->
-      method: d.method,
-      device: (if wurflIds.indexOf(d.wurfl_device_id)>-1  then name else 'Everything Else'),
-      visits: d.visits
-      subscribers: d.subscribers
-      conv: d.conv
-
-    mainGroupMap = (d) ->d.method
-    subGroupsMap = (d) ->d.device
-
-    parts = _.chain(data).groupBy(mainGroupMap).value()
-
-    hierarchy = _(parts).map (arr, key) ->
-      name: key
-      value: _.chain(arr).groupBy(subGroupsMap).map((sarr, skey) ->
-        # filter only converting devices: sarr = sarr.filter (d) -> d[2].subscribers >0
-        subGroupVisits = sum(sarr.map (a) -> a.visits)
-        mu = if sarr.length ==0 then 0 else sum(sarr.map (a) -> a.subscribers)/subGroupVisits
-        name: skey
-        value: mu
-        stdev: if sarr.length <2 then 0 else sum( sarr.map (d) -> Math.sqrt(Math.pow(d.conv-mu,2)) *d.visits/subGroupVisits)
-
-      ).value()
-
-
-
-    # add missing values
-
-    mainValueMap = (v) ->v.value
-    subNameMap = (v)->v.name
-    allSubKeys = _.uniq _.flatten hierarchy.map((d) -> mainValueMap(d).map subNameMap)
-
-
-    hierarchy = hierarchy.map (h)->
-      hnames = h.value.map (d) ->d.name
-      allSubKeys.forEach (k,i) ->
-        if !h.value[i] or h.value[i].name != k
-          h.value.splice i,0,{name:k,value:0,stdev:0}
-
-      h
-
-    return _(hierarchy).sortBy (v) ->v.name
-
-
-  chart.zoomed (node) ->
-    zip = (n) ->
-
-      zipped = (n.children.map (c) -> zip(c))
-      visits = if zipped.length == 0 then 0 else zipped.map((d)->d.visits).reduce (a,b)->a+b
-      subscribers = if zipped.length == 0 then 0 else zipped.map((d)->d.subscribers).reduce (a,b)->a+b
-      wurflIds = _.flatten zipped.map (c) ->c.wurflIds
-
-      if !!n.wurfl_device_id
-        wurflIds.push(n.wurfl_device_id)
-      if !!n.collected_children
-        for c in n.collected_children
-          wurflIds.push c.wurfl_device_id
-
-      visits: (n.visits||0) + visits
-      subscribers: (n.subscribers||0) + subscribers
-      wurflIds: wurflIds
-
-    zipped= zip node
-
-    hierarchy = createSubMethodDeviceHierarchy(zipped.wurflIds, node.wurfl_device_id or zipped.wurflIds[0])
-    subMethodDeviceChart.draw hierarchy
+  chart.zoomed (node) -> drawSubMethodDeviceChart(node, fresh())
