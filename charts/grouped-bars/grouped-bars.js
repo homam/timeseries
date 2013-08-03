@@ -64,7 +64,7 @@
           });
           $rect = $main.selectAll('rect.conv').data(mainValueMap);
           $rect.enter().append('rect').attr('class', 'conv');
-          $rect.transition().duration(200).attr('width', x1.rangeBand()).attr('x', function(d) {
+          $rect.transition().duration(200).attr('width', x1.rangeBand()).attr('x', function(d, i) {
             return x1(subNameMap(d));
           }).attr('y', function(d) {
             return y(subValueMap(d));
@@ -106,8 +106,8 @@
           }).attr('y', _.compose(y, subValueDevMap)).attr('height', function(d) {
             return height - (_.compose(y, subValueDevMap))(d);
           });
-          $devG.exit().attr('transform', 'translate(0,0)');
-          $devrect.exit().attr('height', 0).attr('y', height);
+          $devG.exit().attr('transform', 'translate(500px,500px)');
+          $devrect.exit().attr('height', 0).attr('y', height).attr('width', 0);
           $devUpperLine.exit().attr('y1', 0).attr('y2', 0);
           $devLowerLine.exit().attr('y1', 0).attr('y2', 0);
           $xAxis.transition().duration(200).call(xAxis);

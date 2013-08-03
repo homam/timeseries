@@ -11,6 +11,7 @@ exports.groupedBarsChart = () ->
   width = 720 - margin.left-margin.right
   height = 300 - margin.top-margin.bottom
 
+
   x0 = d3.scale.ordinal().rangeRoundBands([0,width], .1)
   x1 = d3.scale.ordinal()
 
@@ -64,7 +65,7 @@ exports.groupedBarsChart = () ->
         $rect = $main.selectAll('rect.conv').data(mainValueMap)
         $rect.enter().append('rect').attr('class', 'conv')
         $rect.transition().duration(200).attr('width', x1.rangeBand())
-        .attr('x', (d) -> x1(subNameMap(d)))
+        .attr('x', (d,i) -> x1(subNameMap(d)))
         .attr('y', (d) -> y(subValueMap(d)))
         .attr('height', (d)-> height-y(subValueMap(d)))
         .style('fill', (d)-> color allSubKeys.indexOf(mainNameMap(d)))
@@ -99,8 +100,8 @@ exports.groupedBarsChart = () ->
         .attr('y', _.compose y, subValueDevMap)
         .attr('height', (d)-> height- (_.compose y, subValueDevMap)(d))
 
-        $devG.exit().attr('transform', 'translate(0,0)')
-        $devrect.exit().attr('height', 0).attr('y', height)
+        $devG.exit().attr('transform', 'translate(500px,500px)')
+        $devrect.exit().attr('height', 0).attr('y', height).attr('width', 0)
         $devUpperLine.exit().attr('y1', 0).attr('y2', 0)
         $devLowerLine.exit().attr('y1', 0).attr('y2', 0)
 

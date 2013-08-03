@@ -34,7 +34,7 @@ exports.treeMapZoomableChart = () ->
   rectWidth = (d) -> if d.dx>2 then d.dx-2 else 0
   rectHeight = (d) -> if d.dy>2 then d.dy-2 else 0
 
-
+  mouseEvents = d3.dispatch('zoomed')
 
   chart = (selection) ->
     selection.each () ->
@@ -46,6 +46,7 @@ exports.treeMapZoomableChart = () ->
       currentNode = null
 
       zoom = (r, single = false) ->
+        mouseEvents.zoomed r
         kx = awidth/ r.dx
         ky = aheight/ r.dy
 
@@ -80,6 +81,7 @@ exports.treeMapZoomableChart = () ->
 
 
       chart.draw = (root) ->
+
         treemap = d3.layout.treemap()
         .size([width-margin.left-margin.right,height-margin.left-margin.right])
         .round(false)
@@ -95,7 +97,7 @@ exports.treeMapZoomableChart = () ->
         $node = $svg.selectAll('.node').data(nodes)
 
         $enterNode = $node.enter().append('g').attr('class','node visible')
-        .on('click', (d) ->
+        $node.on('click', (d) ->
             if(!d.parent || currentNode.wurfl_device_id == d.parent.wurfl_device_id)
                 zoom(root)
             else
@@ -173,6 +175,6 @@ exports.treeMapZoomableChart = () ->
         $node.exit().attr('class', 'node').select('rect').transition().duration(200).attr('width', 0).attr('height', 0)
         $node.exit().selectAll('text').text(null)
 
-
+  chart.zoomed = (delegate) -> mouseEvents.on('zoomed', delegate); return chart;
   chart
 

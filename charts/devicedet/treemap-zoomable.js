@@ -5,7 +5,7 @@
   exports = exports != null ? exports : this;
 
   exports.treeMapZoomableChart = function() {
-    var aheight, awidth, chart, color, findParentWithProp, formatConv, formatNumber, height, margin, rectHeight, rectWidth, width, x, y;
+    var aheight, awidth, chart, color, findParentWithProp, formatConv, formatNumber, height, margin, mouseEvents, rectHeight, rectWidth, width, x, y;
 
     findParentWithProp = function(d, prop) {
       if (!d) {
@@ -45,6 +45,7 @@
         return 0;
       }
     };
+    mouseEvents = d3.dispatch('zoomed');
     chart = function(selection) {
       return selection.each(function() {
         var $svg, currentNode, zoom;
@@ -57,6 +58,7 @@
           if (single == null) {
             single = false;
           }
+          mouseEvents.zoomed(r);
           kx = awidth / r.dx;
           ky = aheight / r.dy;
           x.domain([r.x, r.dx + r.x]);
@@ -111,7 +113,8 @@
           });
           currentNode = root;
           $node = $svg.selectAll('.node').data(nodes);
-          $enterNode = $node.enter().append('g').attr('class', 'node visible').on('click', function(d) {
+          $enterNode = $node.enter().append('g').attr('class', 'node visible');
+          $node.on('click', function(d) {
             if (!d.parent || currentNode.wurfl_device_id === d.parent.wurfl_device_id) {
               return zoom(root);
             } else {
@@ -198,6 +201,10 @@
           return $node.exit().selectAll('text').text(null);
         };
       });
+    };
+    chart.zoomed = function(delegate) {
+      mouseEvents.on('zoomed', delegate);
+      return chart;
     };
     return chart;
   };

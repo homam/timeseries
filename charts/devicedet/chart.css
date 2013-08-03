@@ -2,10 +2,10 @@ body {
   font-family: Helvetica, Calibri, sans-serif;
   position: relative;
 }
-svg {
+#chart svg {
   background-color: black;
 }
-.node {
+#chart .node {
   border: solid 1px white;
   font: 10px sans-serif;
   line-height: 12px;
@@ -14,11 +14,11 @@ svg {
   text-indent: 2px;
   text-shadow: 0px 1px 4px white;
 }
-.node.bad rect {
+#chart .node.bad rect {
   fill: #51FC00 !important;
   stroke: yellow;
 }
-text {
+#chart text {
   cursor: default;
 }
 [data-tooltip] {
@@ -67,6 +67,9 @@ text {
 .controls select {
   float: left;
   display: inline-block;
+}
+.controls > div {
+  float: left;
 }
 .controls .groupby {
   float: left;

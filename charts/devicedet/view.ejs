@@ -9,6 +9,9 @@
         <script src="javascript/libs/jquery.sortable.js"></script>
         <script src="charts/devicedet/treemap-zoomable.js"></script>
         <link href="charts/devicedet/chart.css" type="text/css" rel="stylesheet" />
+
+        <script src="charts/grouped-bars/grouped-bars.js"></script>
+        <link href="charts/grouped-bars/chart.css" type="text/css" rel="stylesheet" />
     </head>
 <body>
     <h1><%= title %></h1>
@@ -26,8 +29,14 @@
             <input type="checkbox" id="treefy" checked />
             <label for="treefy">Treefy</label>
         </div>
+        <div class="collectLongTail">
+            <input type="checkbox" id="collectLongTail" checked />
+            <label for="collectLongTail">Collect Long Tail</label>
+        </div>
     </section>
     <section id="chart"></section>
+
+    <section id="submethodDevice-chart"></section>
 
     <script src="charts/devicedet/chart.js"></script>
 </body>

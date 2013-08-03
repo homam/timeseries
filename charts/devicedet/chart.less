@@ -4,36 +4,37 @@ body {
 
 }
 
-svg {
-  background-color: black;
-}
-.node {
-  border: solid 1px white;
-  font: 10px sans-serif;
-  line-height: 12px;
-  overflow: hidden;
-  position: absolute;
-  text-indent: 2px;
-  text-shadow: 0px 1px 4px white;
+#chart {
+  svg {
+    background-color: black;
+  }
+  .node {
+    border: solid 1px white;
+    font: 10px sans-serif;
+    line-height: 12px;
+    overflow: hidden;
+    position: absolute;
+    text-indent: 2px;
+    text-shadow: 0px 1px 4px white;
 
-  &.bad {
-    rect {
-      fill: #51FC00 !important;
-      stroke: yellow;
-    }
+    &.bad {
+      rect {
+        fill: #51FC00 !important;
+        stroke: yellow;
+      }
 
-    text {
-      //fill: #702101 !important;
+      text {
+        //fill: #702101 !important;
+      }
     }
   }
+
+
+  text {
+    cursor: default;
+  }
+
 }
-
-
-text {
-  cursor: default;
-}
-
-
 
 
 
@@ -91,6 +92,9 @@ text {
     display: inline-block;
   }
 
+  > div {
+    float:left;
+  }
 
   .groupby {
     float: left;
