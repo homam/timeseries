@@ -201,7 +201,7 @@
   draw = function(data, method, chartDataMap) {
     var chartData, totalConv, totalStdevConv, totalSubs, totalVisits, tree;
 
-    chartData = data.filter((function(d) {
+    chartData = !method ? data : data.filter((function(d) {
       return method === d.method;
     }));
     totalVisits = chartData.map(function(d) {
@@ -382,7 +382,7 @@
   d3.select('#chart').call(chart);
 
   d3.csv('charts/devicedet/data/ae.csv', function(raw) {
-    var fresh, lastTree, makeGroupByFunction, redraw, redrawSubMethodDeviceChart, subMethods;
+    var fresh, lastTree, makeGroupByFunction, redraw, redrawSubMethodDeviceChart;
 
     fresh = function() {
       return raw.map(function(d) {
@@ -400,15 +400,20 @@
         };
       });
     };
-    subMethods = _.chain(fresh()).map(function(d) {
-      return d.method;
-    }).uniq().value();
-    d3.select('#submethods').data([subMethods]).on('change', function() {
-      return redraw();
-    }).selectAll('option').data(function(d) {
-      return d;
-    }).enter().append('option').text(function(d) {
-      return d;
+    $(function() {
+      var subMethods;
+
+      subMethods = _.chain(fresh()).map(function(d) {
+        return d.method;
+      }).uniq().value();
+      subMethods.push('');
+      return d3.select('#submethods').data([subMethods]).on('change', function() {
+        return redraw();
+      }).selectAll('option').data(function(d) {
+        return d;
+      }).enter().append('option').text(function(d) {
+        return d;
+      });
     });
     makeGroupByFunction = function(order, treefy, cutLongTail) {
       var l, lastF, t;

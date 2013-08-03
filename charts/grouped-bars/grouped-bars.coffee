@@ -72,9 +72,9 @@ exports.groupedBarsChart = () ->
         .attr('height', (d)-> height-y(subValueMap(d)))
         .style('fill', (d,i)-> color allSubKeys.indexOf(mainNameMap(d)))
 
-        $rect.exit().transition().duration(200)
-        .attr('y', height)
-        .attr('height', 0)
+        $rect.exit()#.transition().duration(200)
+        .attr('y', (d) ->0)
+        .attr('height', 0)#.attr('class', 'conv exit')
 
         # start standard deviation lines
 
@@ -102,10 +102,8 @@ exports.groupedBarsChart = () ->
         .attr('y', _.compose y, subValueDevMap)
         .attr('height', (d)-> height- (_.compose y, subValueDevMap)(d))
 
-        $devG.exit().attr('transform', 'translate(500px,500px)')
-        $devrect.exit().attr('height', 0).attr('y', height).attr('width', 0)
-        $devUpperLine.exit().attr('y1', 0).attr('y2', 0)
-        $devLowerLine.exit().attr('y1', 0).attr('y2', 0)
+        $devG.exit().select('rect').attr('height', 0).attr('y', () ->0).attr('width', 0)
+        $devG.exit().selectAll('line').attr('y1', 0).attr('y2', 0)
 
         # end standard deviation lines
 

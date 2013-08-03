@@ -115,7 +115,7 @@ createSubMethodDeviceHierarchy = (data, wurflIds, name, barMaker) ->
 # treemap
 
 draw = (data, method, chartDataMap) ->
-  chartData = data.filter ((d) -> method == d.method)
+  chartData = if !method then data else data.filter ((d) -> method == d.method)
 
 
   totalVisits= chartData.map((d) -> d.visits).reduce((a,b)->a+b)
@@ -258,12 +258,14 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
       children : []
 
 
-  subMethods = _.chain(fresh()).map((d) -> d.method).uniq().value()
+  $ ()->
+    subMethods = _.chain(fresh()).map((d) -> d.method).uniq().value()
+    subMethods.push('')
 
-  d3.select('#submethods').data([subMethods])
-  .on('change', () -> redraw())
-  .selectAll('option').data((d) -> d)
-  .enter().append('option').text((d) -> d)
+    d3.select('#submethods').data([subMethods])
+    .on('change', () -> redraw())
+    .selectAll('option').data((d) -> d)
+    .enter().append('option').text((d) -> d)
 
   makeGroupByFunction = (order, treefy, cutLongTail) ->
     order = _(order).reverse()
