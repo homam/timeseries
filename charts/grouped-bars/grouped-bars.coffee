@@ -72,15 +72,29 @@ exports.groupedBarsChart = () ->
         .attr('y', height)
         .attr('height', 0)
 
-
-        $devrect = $main.selectAll('rect.dev').data(mainValueMap)
-        $devrect.enter().append('rect').attr('class', 'dev')
-        $devrect.transition().duration(200).attr('width', x1.rangeBand()/2)
+        $devG = $main.selectAll('g.dev').data(mainValueMap)
+        $devG.enter().append('g').attr('class', 'dev')
+        $devG.transition().duration(200)
         .attr('transform', (d) -> 'translate(0,'+(-height+y(d.value)-(-height+y(d.stdev))/2)+')')
-        .attr('x', (d) -> x1(subNameMap(d))+x1.rangeBand()*.25)
+
+        $devUpperLine = $devG.selectAll('line.dev.up').data((d) -> [d])
+        $devUpperLine.enter().append('line').attr('class', 'dev up')
+        $devUpperLine.transition().duration(200)
+        .attr('x1', _.compose(x1, subNameMap)).attr('x2', (d) -> _.compose(x1, subNameMap)(d)+x1.rangeBand())
+        .attr('y1', (d) -> y(d.stdev)).attr('y2', (d) -> y(d.stdev))
+
+        $devLowLine = $devG.selectAll('line.dev.low').data((d) -> [d])
+        $devLowLine.enter().append('line').attr('class', 'dev low')
+        $devLowLine.transition().duration(200)
+        .attr('x1', _.compose(x1, subNameMap)).attr('x2', (d) -> _.compose(x1, subNameMap)(d)+x1.rangeBand())
+        .attr('y1', (d) -> y(0)).attr('y2', (d) -> y(0))
+
+        $devrect = $devG.selectAll('rect.dev').data((d) -> [d])
+        $devrect.enter().append('rect').attr('class', 'dev')
+        $devrect.transition().duration(200).attr('width', x1.rangeBand()*.25)
+        .attr('x', (d) -> x1(subNameMap(d))+x1.rangeBand()*.375)
         .attr('y', (d) -> y(d.stdev))
         .attr('height', (d)-> height-y(d.stdev))
-        .style('fill', 'rgba(0,0,0,.5)')
 
 
 

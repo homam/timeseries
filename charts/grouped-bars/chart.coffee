@@ -69,7 +69,7 @@ d3.csv 'charts/grouped-bars/data/ae.csv', (raw) ->
   next = () ->
     key = data[++index].wurfl_device_id
     redraw(fresh(), key)
-    setTimeout next, 4000
+    setTimeout next, 2000
 
   next()
 

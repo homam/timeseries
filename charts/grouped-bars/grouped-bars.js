@@ -41,7 +41,7 @@
         $xAxis = $svg.append('g').attr('class', 'x axis').attr("transform", "translate(0," + height + ")");
         $yAxis = $svg.append('g').attr('class', 'y axis');
         chart.draw = function(hierarchy) {
-          var $devrect, $legend, $legendEnter, $main, $rect, allMainKeys, allSubKeys;
+          var $devG, $devLowLine, $devUpperLine, $devrect, $legend, $legendEnter, $main, $rect, allMainKeys, allSubKeys;
 
           allSubKeys = _.uniq(_.flatten(hierarchy.map(function(d) {
             return mainValueMap(d).map(subNameMap);
@@ -71,17 +71,44 @@
             return color(allSubKeys.indexOf(mainNameMap(d)));
           });
           $rect.exit().transition().duration(200).attr('y', height).attr('height', 0);
-          $devrect = $main.selectAll('rect.dev').data(mainValueMap);
-          $devrect.enter().append('rect').attr('class', 'dev');
-          $devrect.transition().duration(200).attr('width', x1.rangeBand() / 2).attr('transform', function(d) {
+          $devG = $main.selectAll('g.dev').data(mainValueMap);
+          $devG.enter().append('g').attr('class', 'dev');
+          $devG.transition().duration(200).attr('transform', function(d) {
             return 'translate(0,' + (-height + y(d.value) - (-height + y(d.stdev)) / 2) + ')';
-          }).attr('x', function(d) {
-            return x1(subNameMap(d)) + x1.rangeBand() * .25;
+          });
+          $devUpperLine = $devG.selectAll('line.dev.up').data(function(d) {
+            return [d];
+          });
+          $devUpperLine.enter().append('line').attr('class', 'dev up');
+          $devUpperLine.transition().duration(200).attr('x1', _.compose(x1, subNameMap)).attr('x2', function(d) {
+            return _.compose(x1, subNameMap)(d) + x1.rangeBand();
+          }).attr('y1', function(d) {
+            return y(d.stdev);
+          }).attr('y2', function(d) {
+            return y(d.stdev);
+          });
+          $devLowLine = $devG.selectAll('line.dev.low').data(function(d) {
+            return [d];
+          });
+          $devLowLine.enter().append('line').attr('class', 'dev low');
+          $devLowLine.transition().duration(200).attr('x1', _.compose(x1, subNameMap)).attr('x2', function(d) {
+            return _.compose(x1, subNameMap)(d) + x1.rangeBand();
+          }).attr('y1', function(d) {
+            return y(0);
+          }).attr('y2', function(d) {
+            return y(0);
+          });
+          $devrect = $devG.selectAll('rect.dev').data(function(d) {
+            return [d];
+          });
+          $devrect.enter().append('rect').attr('class', 'dev');
+          $devrect.transition().duration(200).attr('width', x1.rangeBand() * .25).attr('x', function(d) {
+            return x1(subNameMap(d)) + x1.rangeBand() * .375;
           }).attr('y', function(d) {
             return y(d.stdev);
           }).attr('height', function(d) {
             return height - y(d.stdev);
-          }).style('fill', 'rgba(0,0,0,.5)');
+          });
           $xAxis.transition().duration(200).call(xAxis);
           $yAxis.transition().duration(200).call(yAxis);
           $legend = $svg.selectAll('.legend').data(allSubKeys);
