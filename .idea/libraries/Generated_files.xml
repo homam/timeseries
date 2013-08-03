@@ -12,6 +12,7 @@
         <item url="file://$PROJECT_DIR$/charts/grouped-bars/chart.js" />
         <item url="file://$PROJECT_DIR$/charts/treemap/chart.js" />
         <item url="file://$PROJECT_DIR$/routes/index.js" />
+        <item url="file://$PROJECT_DIR$/charts/grouped-bars/bar-chart.js" />
         <item url="file://$PROJECT_DIR$/charts/page-perf/stacked-area-time-series-chart.js" />
       </sourceFilesUrls>
     </properties>
@@ -19,14 +20,15 @@
       <root url="file://$PROJECT_DIR$/charts/treemap/treemap.js" />
       <root url="file://$PROJECT_DIR$/charts/page-perf/multi-line-time-series-chart.js" />
       <root url="file://$PROJECT_DIR$/charts/devicedet/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/treemap/treemap-zoomable.js" />
-      <root url="file://$PROJECT_DIR$/charts/grouped-bars/grouped-bars.js" />
       <root url="file://$PROJECT_DIR$/charts/devicedet/treemap-zoomable.js" />
       <root url="file://$PROJECT_DIR$/charts/grouped-bars/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/page-perf/chart-area.js" />
       <root url="file://$PROJECT_DIR$/charts/treemap/chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/treemap/treemap-zoomable.js" />
+      <root url="file://$PROJECT_DIR$/charts/grouped-bars/grouped-bars.js" />
+      <root url="file://$PROJECT_DIR$/charts/page-perf/chart-area.js" />
       <root url="file://$PROJECT_DIR$/routes/index.js" />
       <root url="file://$PROJECT_DIR$/charts/page-perf/stacked-area-time-series-chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/grouped-bars/bar-chart.js" />
     </CLASSES>
     <SOURCES />
   </library>

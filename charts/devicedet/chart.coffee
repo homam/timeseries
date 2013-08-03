@@ -74,6 +74,22 @@ drawSubMethodDeviceChart = (node, data, compareConvWithOnlyConvertingDevices) ->
   )
   subMethodDeviceVisitsChart.draw visitsHierarchy
 
+
+  allSubMethods = convHierarchy.map (c) ->c.name
+
+  targetDevices = data.filter((d) -> zipped.wurflIds.indexOf(d.wurfl_device_id) >-1)
+  visitsData = _.chain(targetDevices).groupBy((d) -> d.method).map( (arr, key) ->
+    name: key
+    value: sum arr.map((a) -> a.visits)
+  ).value()
+
+  existingSubMethods = visitsData.map (c) ->c.name
+  for m in allSubMethods.filter((s) -> existingSubMethods.indexOf(s)<0)
+    visitsData.push {name: m, value: 0}
+
+  visitsBySubMethodsChart.draw _(visitsData).sortBy((a)->a.name)
+
+
 # barMaker = (arr, key) -> {name:key, value: #avg(arr), stdev: #stdev(arr)}
 createSubMethodDeviceHierarchy = (data, wurflIds, name, barMaker) ->
   data = data.map (d) ->
@@ -91,7 +107,6 @@ createSubMethodDeviceHierarchy = (data, wurflIds, name, barMaker) ->
     name: key
     value: _.chain(arr).groupBy((d)->d.device)
     .map((sarr, skey) ->barMaker(sarr, skey, arr, data)).value()
-
 
 
   # add missing values
@@ -112,7 +127,14 @@ createSubMethodDeviceHierarchy = (data, wurflIds, name, barMaker) ->
 
 #end SubMethodDeviceChart
 
-# treemap
+# visits by submethods chart
+
+visitsBySubMethodsChart = new barChart()
+d3.select('#device-visits-bysubmethods-chart').call visitsBySubMethodsChart
+
+#end visits by submethods chart
+
+# treemap chart
 
 draw = (data, method, chartDataMap) ->
   chartData = if !method then data else data.filter ((d) -> method == d.method)

@@ -22,8 +22,8 @@
       bottom: 0,
       left: 0
     };
-    width = 1200;
-    height = 900;
+    width = screen.availWidth;
+    height = d3.min([screen.availHeight - 200, screen.availHeight * .7]);
     awidth = width - margin.left - margin.right;
     aheight = height - margin.top - margin.bottom;
     formatConv = d3.format('.2%');

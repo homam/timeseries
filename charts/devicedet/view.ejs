@@ -12,6 +12,8 @@
 
         <script src="charts/grouped-bars/grouped-bars.js"></script>
         <link href="charts/grouped-bars/chart.css" type="text/css" rel="stylesheet" />
+
+        <script src="charts/grouped-bars/bar-chart.js"></script>
     </head>
 <body>
     <h1><%= title %></h1>
@@ -37,12 +39,18 @@
     <section id="chart"></section>
 
     <section id="submethodDevice-conv-chart">
+        <h2>Conversion Comparison</h2>
         <div class="controls">
             <input type="checkbox" id="onlyConvertingDevices" />
             <label for="onlyConvertingDevices">Compare with only converting devices</label>
         </div>
     </section>
-    <section id="submethodDevice-visits-chart"></section>
+    <section id="device-visits-bysubmethods-chart">
+
+    </section>
+    <section id="submethodDevice-visits-chart">
+        <h2>Visits Comparison</h2>
+    </section>
 
     <script src="charts/devicedet/chart.js"></script>
 </body>
