@@ -98,18 +98,15 @@ exports.treeMapZoomableChart = () ->
 
         $enterNode = $node.enter().append('g').attr('class','node visible')
         $node.on('click', (d) ->
+          alt = d3.event.altKey
+          if alt
+            zoom(d, true)
+          else
             if(!d.parent || currentNode.wurfl_device_id == d.parent.wurfl_device_id)
                 zoom(root)
             else
               zoom(d.parent)
         )
-        .on('dblclick', (d) ->
-            if(!d.parent || currentNode.wurfl_device_id == d.parent.wurfl_device_id)
-              zoom(d, true)
-            else
-              zoom(d, true)
-        )
-
 
 
         $node.attr('class','node visible')

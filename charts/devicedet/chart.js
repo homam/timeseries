@@ -58,7 +58,7 @@
 
   d3.select('#submethodDevice-visits-chart').call(subMethodDeviceVisitsChart);
 
-  drawSubMethodDeviceChart = function(node, data) {
+  drawSubMethodDeviceChart = function(node, data, compareConvWithOnlyConvertingDevices) {
     var convHierarchy, rootName, visitsHierarchy, zip, zipped;
 
     zip = function(n) {
@@ -101,6 +101,11 @@
     convHierarchy = createSubMethodDeviceHierarchy(data, zipped.wurflIds, rootName, function(sarr, skey) {
       var mu, subGroupVisits;
 
+      if (compareConvWithOnlyConvertingDevices) {
+        sarr = sarr.filter(function(d) {
+          return d.subscribers > 0;
+        });
+      }
       subGroupVisits = sum(sarr.map(function(a) {
         return a.visits;
       }));
@@ -377,7 +382,7 @@
   d3.select('#chart').call(chart);
 
   d3.csv('charts/devicedet/data/ae.csv', function(raw) {
-    var fresh, makeGroupByFunction, redraw, subMethods;
+    var fresh, lastTree, makeGroupByFunction, redraw, redrawSubMethodDeviceChart, subMethods;
 
     fresh = function() {
       return raw.map(function(d) {
@@ -419,6 +424,15 @@
       });
       return lastF;
     };
+    lastTree = null;
+    redrawSubMethodDeviceChart = function(tree) {
+      if (tree == null) {
+        tree = null;
+      }
+      tree = tree || lastTree;
+      lastTree = tree;
+      return drawSubMethodDeviceChart(tree, fresh(), $('#onlyConvertingDevices')[0].checked);
+    };
     redraw = function() {
       var groupBys, tree;
 
@@ -426,7 +440,7 @@
         return $(this).attr('data-groupby');
       })).get();
       tree = draw(fresh(), $("#submethods").val(), makeGroupByFunction(groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked));
-      return drawSubMethodDeviceChart(tree, fresh());
+      return redrawSubMethodDeviceChart(tree);
     };
     redraw();
     $(function() {
@@ -436,12 +450,15 @@
       $('#groupbys-bin, #groupbys').on('dragend', function() {
         return redraw();
       });
-      return $('#treefy, #collectLongTail').on('change', function() {
+      $('#treefy, #collectLongTail').on('change', function() {
         return redraw();
+      });
+      return $('#onlyConvertingDevices').on('change', function() {
+        return redrawSubMethodDeviceChart();
       });
     });
     return chart.zoomed(function(node) {
-      return drawSubMethodDeviceChart(node, fresh());
+      return redrawSubMethodDeviceChart(node);
     });
   });
 

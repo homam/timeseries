@@ -115,16 +115,17 @@
           $node = $svg.selectAll('.node').data(nodes);
           $enterNode = $node.enter().append('g').attr('class', 'node visible');
           $node.on('click', function(d) {
-            if (!d.parent || currentNode.wurfl_device_id === d.parent.wurfl_device_id) {
-              return zoom(root);
-            } else {
-              return zoom(d.parent);
-            }
-          }).on('dblclick', function(d) {
-            if (!d.parent || currentNode.wurfl_device_id === d.parent.wurfl_device_id) {
+            var alt;
+
+            alt = d3.event.altKey;
+            if (alt) {
               return zoom(d, true);
             } else {
-              return zoom(d, true);
+              if (!d.parent || currentNode.wurfl_device_id === d.parent.wurfl_device_id) {
+                return zoom(root);
+              } else {
+                return zoom(d.parent);
+              }
             }
           });
           $node.attr('class', 'node visible').attr('transform', function(d) {

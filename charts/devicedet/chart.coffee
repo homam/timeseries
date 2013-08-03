@@ -29,7 +29,7 @@ d3.select('#submethodDevice-conv-chart').call subMethodDeviceConvChart
 subMethodDeviceVisitsChart = new groupedBarsChart()
 d3.select('#submethodDevice-visits-chart').call subMethodDeviceVisitsChart
 
-drawSubMethodDeviceChart = (node, data) ->
+drawSubMethodDeviceChart = (node, data, compareConvWithOnlyConvertingDevices) ->
   zip = (n) ->
 
     zipped = (n.children.map (c) -> zip(c))
@@ -52,7 +52,8 @@ drawSubMethodDeviceChart = (node, data) ->
   rootName = node.wurfl_device_id or zipped.wurflIds[0]
 
   convHierarchy = createSubMethodDeviceHierarchy(data, zipped.wurflIds, rootName, (sarr, skey) ->
-    # filter only converting devices: sarr = sarr.filter (d) -> d[2].subscribers >0
+    if compareConvWithOnlyConvertingDevices
+      sarr = sarr.filter (d) -> d.subscribers >0
     subGroupVisits = sum(sarr.map (a) -> a.visits)
     mu = if sarr.length ==0 then 0 else sum(sarr.map (a) -> a.subscribers)/subGroupVisits
     name: skey
@@ -63,7 +64,6 @@ drawSubMethodDeviceChart = (node, data) ->
 
 
   visitsHierarchy = createSubMethodDeviceHierarchy(data, zipped.wurflIds, rootName, (sarr, skey, marr, raw) ->
-    # filter only converting devices: sarr = sarr.filter (d) -> d[2].subscribers >0
     majorVisits = sum raw.filter((d) ->d.device == skey).map((d) -> d.visits)
     mainGroupVisits = sum(marr.map (d) -> d.visits)
     subGroupVisits = sum(sarr.map (a) -> a.visits)
@@ -275,11 +275,17 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
     lastF
 
 
+  lastTree = null
+  redrawSubMethodDeviceChart = (tree = null) ->
+    tree = tree or lastTree
+    lastTree = tree
+    drawSubMethodDeviceChart tree, fresh(), $('#onlyConvertingDevices')[0].checked
+
   # how to call draw: draw subMethods[0],(makeGroupByFunction ['brand_name', 'device_os'], true, true)
   redraw = () ->
     groupBys = ($('#groupbys-bin').find('li').map () -> $(this).attr('data-groupby')).get()
     tree = draw fresh(), $("#submethods").val(),(makeGroupByFunction groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked)
-    drawSubMethodDeviceChart tree, fresh()
+    redrawSubMethodDeviceChart(tree)
 
   redraw()
 
@@ -293,5 +299,7 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
 
     $('#treefy, #collectLongTail').on('change', () -> redraw())
 
+    $('#onlyConvertingDevices').on('change', () -> redrawSubMethodDeviceChart())
 
-  chart.zoomed (node) -> drawSubMethodDeviceChart(node, fresh())
+
+  chart.zoomed (node) -> redrawSubMethodDeviceChart(node)
