@@ -70,7 +70,7 @@
             return y(subValueMap(d));
           }).attr('height', function(d) {
             return height - y(subValueMap(d));
-          }).style('fill', function(d) {
+          }).style('fill', function(d, i) {
             return color(allSubKeys.indexOf(mainNameMap(d)));
           });
           $rect.exit().transition().duration(200).attr('y', height).attr('height', 0);

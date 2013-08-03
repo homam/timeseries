@@ -240,10 +240,10 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
 
     hierarchy = hierarchy.map (h)->
       hnames = h.value.map (d) ->d.name
-      for k in allSubKeys.filter( (s) -> hnames.indexOf(s)<0)
-        h.value.push({name:k,value:0,stdev:0})
+      allSubKeys.forEach (k,i) ->
+        if !h.value[i] or h.value[i].name != k
+          h.value.splice i,0,{name:k,value:0,stdev:0}
 
-      h.values = _(h.values).sortBy (v) ->v.name
       h
 
     return _(hierarchy).sortBy (v) ->v.name

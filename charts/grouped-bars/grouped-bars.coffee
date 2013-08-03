@@ -65,10 +65,12 @@ exports.groupedBarsChart = () ->
         $rect = $main.selectAll('rect.conv').data(mainValueMap)
         $rect.enter().append('rect').attr('class', 'conv')
         $rect.transition().duration(200).attr('width', x1.rangeBand())
-        .attr('x', (d,i) -> x1(subNameMap(d)))
+        .attr('x', (d,i) ->
+          #debugger
+          x1(subNameMap(d)))
         .attr('y', (d) -> y(subValueMap(d)))
         .attr('height', (d)-> height-y(subValueMap(d)))
-        .style('fill', (d)-> color allSubKeys.indexOf(mainNameMap(d)))
+        .style('fill', (d,i)-> color allSubKeys.indexOf(mainNameMap(d)))
 
         $rect.exit().transition().duration(200)
         .attr('y', height)

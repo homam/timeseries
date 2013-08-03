@@ -349,24 +349,19 @@
         return mainValueMap(d).map(subNameMap);
       })));
       hierarchy = hierarchy.map(function(h) {
-        var hnames, k, _i, _len, _ref;
+        var hnames;
 
         hnames = h.value.map(function(d) {
           return d.name;
         });
-        _ref = allSubKeys.filter(function(s) {
-          return hnames.indexOf(s) < 0;
-        });
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          k = _ref[_i];
-          h.value.push({
-            name: k,
-            value: 0,
-            stdev: 0
-          });
-        }
-        h.values = _(h.values).sortBy(function(v) {
-          return v.name;
+        allSubKeys.forEach(function(k, i) {
+          if (!h.value[i] || h.value[i].name !== k) {
+            return h.value.splice(i, 0, {
+              name: k,
+              value: 0,
+              stdev: 0
+            });
+          }
         });
         return h;
       });
