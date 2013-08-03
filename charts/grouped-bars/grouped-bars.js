@@ -41,7 +41,7 @@
         $xAxis = $svg.append('g').attr('class', 'x axis').attr("transform", "translate(0," + height + ")");
         $yAxis = $svg.append('g').attr('class', 'y axis');
         chart.draw = function(hierarchy) {
-          var $legend, $legendEnter, $main, $rect, allMainKeys, allSubKeys;
+          var $devrect, $legend, $legendEnter, $main, $rect, allMainKeys, allSubKeys;
 
           allSubKeys = _.uniq(_.flatten(hierarchy.map(function(d) {
             return mainValueMap(d).map(subNameMap);
@@ -59,8 +59,8 @@
           $main.attr('transform', function(d) {
             return "translate(" + x0(mainNameMap(d)) + ",0)";
           });
-          $rect = $main.selectAll('rect').data(mainValueMap);
-          $rect.enter().append('rect');
+          $rect = $main.selectAll('rect.conv').data(mainValueMap);
+          $rect.enter().append('rect').attr('class', 'conv');
           $rect.transition().duration(200).attr('width', x1.rangeBand()).attr('x', function(d) {
             return x1(subNameMap(d));
           }).attr('y', function(d) {
@@ -71,6 +71,17 @@
             return color(allSubKeys.indexOf(mainNameMap(d)));
           });
           $rect.exit().transition().duration(200).attr('y', height).attr('height', 0);
+          $devrect = $main.selectAll('rect.dev').data(mainValueMap);
+          $devrect.enter().append('rect').attr('class', 'dev');
+          $devrect.transition().duration(200).attr('width', x1.rangeBand() / 2).attr('transform', function(d) {
+            return 'translate(0,' + (-height + y(d.value) - (-height + y(d.stdev)) / 2) + ')';
+          }).attr('x', function(d) {
+            return x1(subNameMap(d)) + x1.rangeBand() * .25;
+          }).attr('y', function(d) {
+            return y(d.stdev);
+          }).attr('height', function(d) {
+            return height - y(d.stdev);
+          }).style('fill', 'rgba(0,0,0,.5)');
           $xAxis.transition().duration(200).call(xAxis);
           $yAxis.transition().duration(200).call(yAxis);
           $legend = $svg.selectAll('.legend').data(allSubKeys);

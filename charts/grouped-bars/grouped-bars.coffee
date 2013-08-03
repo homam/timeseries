@@ -60,8 +60,8 @@ exports.groupedBarsChart = () ->
         $main.enter().append('g').attr('class','main')
         $main.attr('transform', (d) -> "translate(" + x0(mainNameMap(d)) + ",0)")
 
-        $rect = $main.selectAll('rect').data(mainValueMap)
-        $rect.enter().append('rect')
+        $rect = $main.selectAll('rect.conv').data(mainValueMap)
+        $rect.enter().append('rect').attr('class', 'conv')
         $rect.transition().duration(200).attr('width', x1.rangeBand())
         .attr('x', (d) -> x1(subNameMap(d)))
         .attr('y', (d) -> y(subValueMap(d)))
@@ -71,6 +71,16 @@ exports.groupedBarsChart = () ->
         $rect.exit().transition().duration(200)
         .attr('y', height)
         .attr('height', 0)
+
+
+        $devrect = $main.selectAll('rect.dev').data(mainValueMap)
+        $devrect.enter().append('rect').attr('class', 'dev')
+        $devrect.transition().duration(200).attr('width', x1.rangeBand()/2)
+        .attr('transform', (d) -> 'translate(0,'+(-height+y(d.value)-(-height+y(d.stdev))/2)+')')
+        .attr('x', (d) -> x1(subNameMap(d))+x1.rangeBand()*.25)
+        .attr('y', (d) -> y(d.stdev))
+        .attr('height', (d)-> height-y(d.stdev))
+        .style('fill', 'rgba(0,0,0,.5)')
 
 
 

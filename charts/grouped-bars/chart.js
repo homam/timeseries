@@ -97,7 +97,8 @@
       var key;
 
       key = data[++index].wurfl_device_id;
-      return redraw(fresh(), key);
+      redraw(fresh(), key);
+      return setTimeout(next, 4000);
     };
     return next();
   });
