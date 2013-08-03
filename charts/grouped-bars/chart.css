@@ -1,0 +1,19 @@
+body {
+  font-family: Helvetica, Calibri, sans-serif;
+  background-color: silver;
+}
+svg {
+  font-size: 10pt;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.bar {
+  fill: steelblue;
+}
+.x.axis path {
+  display: none;
+}

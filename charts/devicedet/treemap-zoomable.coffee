@@ -115,7 +115,8 @@ exports.treeMapZoomableChart = () ->
         treemap = d3.layout.treemap()
         .size([width-margin.left-margin.right,height-margin.left-margin.right])
         .round(false)
-        .sticky(true)
+        .padding(1)
+        .sticky(false)
         .value (d) -> d.visits
 
         nodes = treemap.nodes(root).filter (d) -> d.children.length==0

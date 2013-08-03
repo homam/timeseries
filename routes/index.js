@@ -46,9 +46,14 @@
         title: 'Device Partition and Conversion'
       });
     });
-    return app.get('/devicedet', function(req, res) {
+    app.get('/devicedet', function(req, res) {
       return res.render('../charts/devicedet/view', {
         title: 'Device Detection'
+      });
+    });
+    return app.get('/grouped-bars', function(req, res) {
+      return res.render('../charts/grouped-bars/view', {
+        title: 'Submethod Groups'
       });
     });
   };

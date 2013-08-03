@@ -38,3 +38,7 @@ exports.register = (app) ->
   app.get '/devicedet', (req, res) ->
     res.render '../charts/devicedet/view',
       title: 'Device Detection'
+
+  app.get '/grouped-bars', (req, res) ->
+    res.render '../charts/grouped-bars/view',
+      title: 'Submethod Groups'

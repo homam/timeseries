@@ -2,6 +2,9 @@ body {
   font-family: Helvetica, Calibri, sans-serif;
   position: relative;
 }
+svg {
+  background-color: black;
+}
 .node {
   border: solid 1px white;
   font: 10px sans-serif;

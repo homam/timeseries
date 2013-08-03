@@ -141,7 +141,7 @@
         return chart.draw = function(root) {
           var $enterNode, $node, nodes, treemap;
 
-          treemap = d3.layout.treemap().size([width - margin.left - margin.right, height - margin.left - margin.right]).round(false).sticky(true).value(function(d) {
+          treemap = d3.layout.treemap().size([width - margin.left - margin.right, height - margin.left - margin.right]).round(false).padding(1).sticky(false).value(function(d) {
             return d.visits;
           });
           nodes = treemap.nodes(root).filter(function(d) {
