@@ -264,14 +264,17 @@
       groupBys = ($('#groupbys-bin').find('li').map(function() {
         return $(this).attr('data-groupby');
       })).get();
-      return draw($("#submethods").val(), makeGroupByFunction(groupBys, true, true));
+      return draw($("#submethods").val(), makeGroupByFunction(groupBys, $('#treefy')[0].checked, true));
     };
     redraw();
     return $(function() {
       $('#groupbys-bin, #groupbys').sortable({
         connectWith: '.connected'
       });
-      return $('#groupbys-bin, #groupbys').on('dragend', function() {
+      $('#groupbys-bin, #groupbys').on('dragend', function() {
+        return redraw();
+      });
+      return $('#treefy').on('change', function() {
         return redraw();
       });
     });

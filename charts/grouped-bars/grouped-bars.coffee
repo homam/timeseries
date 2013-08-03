@@ -28,6 +28,7 @@ exports.groupedBarsChart = () ->
   subNameMap = (d) ->d.name
   mainValueMap  = (d) ->d.value
   subValueMap = (d)->d.value
+  subValueDevMap = (d) ->d.stdev
 
   chart = (selection) ->
     selection.each () ->
@@ -43,7 +44,7 @@ exports.groupedBarsChart = () ->
       $yAxis = $svg.append('g').attr('class', 'y axis')
 
 
-      #hierarchy = [{name, value:[{name, value: #}]}]
+      #hierarchy = [{name, value:[{name, value: #, stdev: #}]}]
 
       chart.draw = (hierarchy) ->
 
@@ -72,20 +73,22 @@ exports.groupedBarsChart = () ->
         .attr('y', height)
         .attr('height', 0)
 
+        # start standard deviation lines
+
         $devG = $main.selectAll('g.dev').data(mainValueMap)
         $devG.enter().append('g').attr('class', 'dev')
         $devG.transition().duration(200)
-        .attr('transform', (d) -> 'translate(0,'+(-height+y(d.value)-(-height+y(d.stdev))/2)+')')
+        .attr('transform', (d) -> 'translate(0,'+(-height+y(mainValueMap(d))-(-height+y(subValueDevMap(d)))/2)+')')
 
         $devUpperLine = $devG.selectAll('line.dev.up').data((d) -> [d])
         $devUpperLine.enter().append('line').attr('class', 'dev up')
         $devUpperLine.transition().duration(200)
         .attr('x1', _.compose(x1, subNameMap)).attr('x2', (d) -> _.compose(x1, subNameMap)(d)+x1.rangeBand())
-        .attr('y1', (d) -> y(d.stdev)).attr('y2', (d) -> y(d.stdev))
+        .attr('y1', _.compose y, subValueDevMap).attr('y2', _.compose y, subValueDevMap)
 
-        $devLowLine = $devG.selectAll('line.dev.low').data((d) -> [d])
-        $devLowLine.enter().append('line').attr('class', 'dev low')
-        $devLowLine.transition().duration(200)
+        $devLowerLine = $devG.selectAll('line.dev.low').data((d) -> [d])
+        $devLowerLine.enter().append('line').attr('class', 'dev low')
+        $devLowerLine.transition().duration(200)
         .attr('x1', _.compose(x1, subNameMap)).attr('x2', (d) -> _.compose(x1, subNameMap)(d)+x1.rangeBand())
         .attr('y1', (d) -> y(0)).attr('y2', (d) -> y(0))
 
@@ -93,8 +96,15 @@ exports.groupedBarsChart = () ->
         $devrect.enter().append('rect').attr('class', 'dev')
         $devrect.transition().duration(200).attr('width', x1.rangeBand()*.25)
         .attr('x', (d) -> x1(subNameMap(d))+x1.rangeBand()*.375)
-        .attr('y', (d) -> y(d.stdev))
-        .attr('height', (d)-> height-y(d.stdev))
+        .attr('y', _.compose y, subValueDevMap)
+        .attr('height', (d)-> height- (_.compose y, subValueDevMap)(d))
+
+        $devG.exit().attr('transform', 'translate(0,0)')
+        $devrect.exit().attr('height', 0).attr('y', height)
+        $devUpperLine.exit().attr('y1', 0).attr('y2', 0)
+        $devLowerLine.exit().attr('y1', 0).attr('y2', 0)
+
+        # end standard deviation lines
 
 
 

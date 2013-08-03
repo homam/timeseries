@@ -45,38 +45,6 @@ exports.treeMapZoomableChart = () ->
 
       currentNode = null
 
-      TopLeft = () ->
-        _px = 0
-        _py = 0
-        _kx = 1
-        _ky = 1
-        return (px, py, kx, ky) ->
-          if arguments.length > 0
-            _px = px
-            _py = py
-
-            if(arguments.length > 1)
-              _kx = kx
-              _ky = ky
-
-          x: _px
-          y: _py
-          kx: _kx
-          ky: _ky
-          xdomain: x.domain()
-          ydomain: y.domain()
-
-      topLeft = TopLeft()
-
-      window.move = (px, py) ->
-        if arguments.length == 0
-          return topLeft()
-        else
-          tl = topLeft()
-          kx = tl.kx
-          ky = tl.ky
-
-
       zoom = (r, single = false) ->
         kx = awidth/ r.dx
         ky = aheight/ r.dy

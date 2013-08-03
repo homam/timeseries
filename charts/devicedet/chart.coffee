@@ -171,7 +171,7 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
   # how to call draw: draw subMethods[0],(makeGroupByFunction ['brand_name', 'device_os'], true, true)
   redraw = () ->
     groupBys = ($('#groupbys-bin').find('li').map () -> $(this).attr('data-groupby')).get()
-    draw $("#submethods").val(),(makeGroupByFunction groupBys, true, true)
+    draw $("#submethods").val(),(makeGroupByFunction groupBys, $('#treefy')[0].checked, true)
 
   redraw()
 
@@ -180,4 +180,6 @@ d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
     $('#groupbys-bin, #groupbys').sortable({
       connectWith: '.connected'
     })
-    $('#groupbys-bin, #groupbys').on('dragend', () -> redraw());
+    $('#groupbys-bin, #groupbys').on('dragend', () -> redraw())
+
+    $('#treefy').on('change', () -> redraw())
