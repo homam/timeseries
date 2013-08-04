@@ -17,7 +17,7 @@
       {
         name: 'A',
         value: 345,
-        dev: 21
+        dev: 31
       }, {
         name: 'B',
         value: 441,
@@ -55,6 +55,9 @@
       });
       chart.values(function(d) {
         return d[1];
+      });
+      chart.devs(function(d) {
+        return d[2];
       });
       return d3.select('#chart').datum(newData).call(chart);
     }, 2000);

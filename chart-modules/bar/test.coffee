@@ -8,7 +8,7 @@ require.config({
 
 require ['chart.js'], (chartMaker) ->
   testData = [
-    {name:'A', value: 345, dev: 21},
+    {name:'A', value: 345, dev: 31},
     {name: 'B', value:441, dev: 42},
     {name: 'C', value: 273, dev: 12}
   ]
@@ -23,5 +23,6 @@ require ['chart.js'], (chartMaker) ->
     chart.margin({top:0,left:30,bottom:20,right:0})
     chart.names (d) -> d[0]
     chart.values (d) -> d[1]
+    chart.devs (d) -> d[2]
     d3.select('#chart').datum(newData).call chart
   ,2000

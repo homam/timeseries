@@ -80,7 +80,7 @@
       properties.height.set(height);
       chart = function(selection) {
         selection.each(function(data) {
-          var $g, $gEnter, $main, $rect, $selection, $svg, $xAxis, $yAxis, keys;
+          var $devG, $devGEnter, $g, $gEnter, $main, $mainEnter, $rect, $selection, $svg, $xAxis, $yAxis, keys;
 
           $selection = d3.select(this);
           $svg = $selection.selectAll('svg').data([data]);
@@ -94,10 +94,11 @@
           keys = _.flatten(data.map(nameMap));
           x.domain(keys);
           y.domain([0, d3.max(data.map(valueMap))]);
-          $main = $g.selectAll('.main').data(data);
-          $main.enter().append('g').attr('class', 'main').append('rect').attr('class', 'conv');
+          $main = $g.selectAll('g.main').data(data);
+          $mainEnter = $main.enter().append('g').attr('class', 'main');
           $main.transition().duration(200);
-          $rect = $main.select('rect.conv');
+          $mainEnter.append('rect');
+          $rect = $main.select('rect');
           $rect.transition().duration(200).attr('width', x.rangeBand()).attr('x', function(d) {
             return x(nameMap(d));
           }).attr('y', function(d) {
@@ -107,13 +108,29 @@
           }).style('fill', function(d, i) {
             return '#ff7f0e';
           });
+          $devGEnter = $mainEnter.append('g').attr('class', 'dev');
+          $devG = $main.select('g.dev').transition().duration(200).attr('transform', function(d) {
+            return 'translate(0,' + (-height + y(valueMap(d)) - (-height + y(devMap(d))) / 2) + ')';
+          });
+          $devGEnter.append('line').attr('class', 'dev up');
+          $devG.select('line.dev.up').transition().duration(200).attr('x1', _.compose(x, nameMap)).attr('x2', function(d) {
+            return _.compose(x, nameMap)(d) + x.rangeBand();
+          }).attr('y1', _.compose(y, devMap)).attr('y2', _.compose(y, devMap));
+          $devGEnter.append('line').attr('class', 'dev low');
+          $devG.select('line.dev.low').transition().duration(200).attr('x1', _.compose(x, nameMap)).attr('x2', function(d) {
+            return _.compose(x, nameMap)(d) + x.rangeBand();
+          }).attr('y1', y(0)).attr('y2', y(0));
+          $devGEnter.append('rect').attr('class', 'dev');
+          $devG.select('rect.dev').transition().duration(200).attr('width', x.rangeBand() * .25).attr('x', function(d) {
+            return x(nameMap(d)) + x.rangeBand() * .375;
+          }).attr('y', _.compose(y, devMap)).attr('height', function(d) {
+            return height - (_.compose(y, devMap))(d);
+          });
           $main.exit().select('rect').attr('y', 0).attr('height', 0);
           $xAxis.transition().duration(200).call(xAxis);
-          $yAxis.transition().duration(200).call(yAxis);
-          return;
-          chart.draw = function(data) {};
-          return null;
+          return $yAxis.transition().duration(200).call(yAxis);
         });
+        null;
         return d3.keys(properties).forEach(function(k) {
           var p;
 

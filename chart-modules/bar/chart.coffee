@@ -85,16 +85,45 @@ define [], () ->
         x.domain(keys)
         y.domain([0, d3.max data.map valueMap ])
 
-        $main = $g.selectAll('.main').data(data)
-        $main.enter().append('g').attr('class','main').append('rect').attr('class', 'conv')
+        $main = $g.selectAll('g.main').data(data)
+        $mainEnter = $main.enter().append('g').attr('class','main')
         $main.transition().duration(200)
 
-        $rect = $main.select('rect.conv')
+        $mainEnter.append('rect')
+        $rect = $main.select('rect')
         $rect.transition().duration(200).attr('width', x.rangeBand())
         .attr('x', (d) -> x(nameMap(d)))
         .attr('y', (d) -> y(valueMap(d)))
         .attr('height', (d)-> height-y(valueMap(d)))
         .style('fill', (d,i)-> '#ff7f0e')
+
+        # deviation lines
+        #if 'undefined' != typeof devMap data[0]
+        $devGEnter = $mainEnter.append('g').attr('class','dev')
+        $devG = $main.select('g.dev')
+        .transition().duration(200)
+        .attr('transform', (d) -> 'translate(0,'+(-height+y(valueMap(d))-(-height+y(devMap(d)))/2)+')')
+
+        $devGEnter.append('line').attr('class', 'dev up')
+        $devG.select('line.dev.up')
+        .transition().duration(200)
+        .attr('x1', _.compose(x, nameMap)).attr('x2', (d) -> _.compose(x, nameMap)(d)+x.rangeBand())
+        .attr('y1', _.compose y, devMap).attr('y2', _.compose y, devMap)
+
+        $devGEnter.append('line').attr('class', 'dev low')
+        $devG.select('line.dev.low')
+        .transition().duration(200)
+        .attr('x1', _.compose(x, nameMap)).attr('x2', (d) -> _.compose(x, nameMap)(d)+x.rangeBand())
+        .attr('y1', y(0)).attr('y2',y(0))
+
+        $devGEnter.append('rect').attr('class', 'dev')
+        $devG.select('rect.dev')
+        .transition().duration(200).attr('width', x.rangeBand()*.25)
+        .attr('x', (d) -> x(nameMap(d))+x.rangeBand()*.375)
+        .attr('y', _.compose y, devMap)
+        .attr('height', (d)-> height- (_.compose y, devMap)(d))
+
+
 
         $main.exit().select('rect').attr('y', 0).attr('height', 0)
 
@@ -102,46 +131,7 @@ define [], () ->
         $yAxis.transition().duration(200).call(yAxis)
 
 
-        return
-        chart.draw = (data) ->
-
-
-
-          # start standard deviation lines
-
-          #        $devG = $main.selectAll('g.dev').data(mainValueMap)
-          #        $devG.enter().append('g').attr('class', 'dev')
-          #        $devG.transition().duration(200)
-          #        .attr('transform', (d) -> 'translate(0,'+(-height+y(mainValueMap(d))-(-height+y(subValueDevMap(d)))/2)+')')
-          #
-          #        $devUpperLine = $devG.selectAll('line.dev.up').data((d) -> [d])
-          #        $devUpperLine.enter().append('line').attr('class', 'dev up')
-          #        $devUpperLine.transition().duration(200)
-          #        .attr('x1', _.compose(x1, subNameMap)).attr('x2', (d) -> _.compose(x1, subNameMap)(d)+x1.rangeBand())
-          #        .attr('y1', _.compose y, subValueDevMap).attr('y2', _.compose y, subValueDevMap)
-          #
-          #        $devLowerLine = $devG.selectAll('line.dev.low').data((d) -> [d])
-          #        $devLowerLine.enter().append('line').attr('class', 'dev low')
-          #        $devLowerLine.transition().duration(200)
-          #        .attr('x1', _.compose(x1, subNameMap)).attr('x2', (d) -> _.compose(x1, subNameMap)(d)+x1.rangeBand())
-          #        .attr('y1', (d) -> y(0)).attr('y2', (d) -> y(0))
-          #
-          #        $devrect = $devG.selectAll('rect.dev').data((d) -> [d])
-          #        $devrect.enter().append('rect').attr('class', 'dev')
-          #        $devrect.transition().duration(200).attr('width', x1.rangeBand()*.25)
-          #        .attr('x', (d) -> x1(subNameMap(d))+x1.rangeBand()*.375)
-          #        .attr('y', _.compose y, subValueDevMap)
-          #        .attr('height', (d)-> height- (_.compose y, subValueDevMap)(d))
-          #
-          #        $devG.exit().select('rect').attr('height', 0).attr('y', () ->0).attr('width', 0)
-          #        $devG.exit().selectAll('line').attr('y1', 0).attr('y2', 0)
-
-          # end standard deviation lines
-
-
-
-
-        null
+      null # chart()
 
 
 
