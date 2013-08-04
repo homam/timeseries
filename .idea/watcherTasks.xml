@@ -57,13 +57,7 @@
       <option name="name" value="LESS" />
       <option name="output" value="$FileNameWithoutExtension$.css" />
       <option name="outputFilters">
-        <array>
-          <FilterInfo>
-            <option name="description" value="lessc error format" />
-            <option name="name" value="lessc" />
-            <option name="regExp" value="$MESSAGE$$FILE_PATH$?:$LINE$:$COLUMN$" />
-          </FilterInfo>
-        </array>
+        <array />
       </option>
       <option name="outputFromStdout" value="true" />
       <option name="passParentEnvs" value="true" />

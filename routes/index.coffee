@@ -44,6 +44,6 @@ exports.register = (app) ->
       title: 'Submethod Groups'
 
 
-  app.get '/modules-test', (req, res) ->
+  app.get '/modules-test/main', (req, res) ->
     res.render '../modules-test/main/index',
       title: 'Testing RequireJS Modules'

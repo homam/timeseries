@@ -25,6 +25,7 @@ app.use require('connect-coffee-script')
 
 
 app.use '/charts', express.static 'charts'
+app.use '/chart-modules', express.static 'chart-modules'
 app.use '/modules-test', express.static 'modules-test'
 app.use '/javascript', express.static 'public/javascript'
 

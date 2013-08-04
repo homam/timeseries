@@ -2,22 +2,25 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/charts/devicedet/chart.js" />
-        <item url="file://$PROJECT_DIR$/modules-test/modules/hello/module.js" />
-        <item url="file://$PROJECT_DIR$/modules-test/modules/hello/hello.js" />
-        <item url="file://$PROJECT_DIR$/app.js" />
-        <item url="file://$PROJECT_DIR$/routes/index.js" />
         <item url="file://$PROJECT_DIR$/modules-test/main/index.js" />
+        <item url="file://$PROJECT_DIR$/charts/devicedet/chart.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/bar/chart.js" />
+        <item url="file://$PROJECT_DIR$/routes/index.js" />
+        <item url="file://$PROJECT_DIR$/modules-test/modules/hello/module.js" />
+        <item url="file://$PROJECT_DIR$/app.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/bar/test.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/modules-test/modules/hello/hello.js" />
-      <root url="file://$PROJECT_DIR$/charts/devicedet/chart.js" />
       <root url="file://$PROJECT_DIR$/modules-test/modules/hello/hello.js" />
-      <root url="file://$PROJECT_DIR$/modules-test/modules/hello/module.js" />
-      <root url="file://$PROJECT_DIR$/app.js" />
-      <root url="file://$PROJECT_DIR$/routes/index.js" />
+      <root url="file://$PROJECT_DIR$/charts/devicedet/chart.js" />
       <root url="file://$PROJECT_DIR$/modules-test/main/index.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/bar/chart.js" />
+      <root url="file://$PROJECT_DIR$/modules-test/modules/hello/module.js" />
+      <root url="file://$PROJECT_DIR$/routes/index.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/bar/test.js" />
+      <root url="file://$PROJECT_DIR$/app.js" />
     </CLASSES>
     <SOURCES />
   </library>

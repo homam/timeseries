@@ -1,17 +1,15 @@
-isPrime = (x) -> [2,3,5,7].indexOf(x) > -1
-even = (x) -> x%2 == 0
+require.config({
+  baseUrl: ''
+  map:
+    '*':
+      'css': 'javascript/libs/require-css/css'
+      'text': 'javascript/libs/require-text'
+})
 
-h = (map, xs) -> map xs.filter (x) -> x<=5
-g = (map, xs) -> _.chain(xs).groupBy(isPrime).map((arr) -> map arr).value()
-f = (map, xs) -> _.chain(xs).groupBy(even).map((arr) -> map arr).value()
 
-data = _.range(1,11)
-
-hp = _.partial h, _.identity
-gp = _.partial g, hp
-fp = _.partial f, gp
-
-console.log fp(data)
+# this too works: /modules-test/modules/hello/module.js
+require ['chart-modules/bar/chart'], (barChart) ->
+  console.log typeof barChart
 
 
 sum = (arr) ->
