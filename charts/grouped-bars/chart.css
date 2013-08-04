@@ -1,25 +1,32 @@
 body {
   font-family: Helvetica, Calibri, sans-serif;
 }
+
+
 svg {
   font-size: 10pt;
 }
+
 line.dev {
-  stroke: rgba(0, 0, 0, 0.5);
+  stroke: rgba(0,0,0,.5);
   stroke-width: 2px;
 }
 rect.dev {
-  fill: rgba(0, 0, 0, 0.5);
+  fill: rgba(0,0,0,.5);
+  //stroke: rgba(0,0,0,.3);
 }
+
 .axis path,
 .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
+
 .bar {
   fill: steelblue;
 }
+
 .x.axis path {
   display: none;
 }

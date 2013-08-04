@@ -2,33 +2,22 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/charts/treemap/treemap.js" />
         <item url="file://$PROJECT_DIR$/charts/devicedet/chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/page-perf/multi-line-time-series-chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/treemap/treemap-zoomable.js" />
-        <item url="file://$PROJECT_DIR$/charts/devicedet/treemap-zoomable.js" />
-        <item url="file://$PROJECT_DIR$/charts/grouped-bars/grouped-bars.js" />
-        <item url="file://$PROJECT_DIR$/charts/page-perf/chart-area.js" />
-        <item url="file://$PROJECT_DIR$/charts/grouped-bars/chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/treemap/chart.js" />
+        <item url="file://$PROJECT_DIR$/modules-test/modules/hello/module.js" />
+        <item url="file://$PROJECT_DIR$/modules-test/modules/hello/hello.js" />
+        <item url="file://$PROJECT_DIR$/app.js" />
         <item url="file://$PROJECT_DIR$/routes/index.js" />
-        <item url="file://$PROJECT_DIR$/charts/grouped-bars/bar-chart.js" />
-        <item url="file://$PROJECT_DIR$/charts/page-perf/stacked-area-time-series-chart.js" />
+        <item url="file://$PROJECT_DIR$/modules-test/main/index.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/charts/treemap/treemap.js" />
-      <root url="file://$PROJECT_DIR$/charts/page-perf/multi-line-time-series-chart.js" />
+      <root url="file://$PROJECT_DIR$/modules-test/modules/hello/hello.js" />
       <root url="file://$PROJECT_DIR$/charts/devicedet/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/devicedet/treemap-zoomable.js" />
-      <root url="file://$PROJECT_DIR$/charts/grouped-bars/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/treemap/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/treemap/treemap-zoomable.js" />
-      <root url="file://$PROJECT_DIR$/charts/grouped-bars/grouped-bars.js" />
-      <root url="file://$PROJECT_DIR$/charts/page-perf/chart-area.js" />
+      <root url="file://$PROJECT_DIR$/modules-test/modules/hello/hello.js" />
+      <root url="file://$PROJECT_DIR$/modules-test/modules/hello/module.js" />
+      <root url="file://$PROJECT_DIR$/app.js" />
       <root url="file://$PROJECT_DIR$/routes/index.js" />
-      <root url="file://$PROJECT_DIR$/charts/page-perf/stacked-area-time-series-chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/grouped-bars/bar-chart.js" />
+      <root url="file://$PROJECT_DIR$/modules-test/main/index.js" />
     </CLASSES>
     <SOURCES />
   </library>

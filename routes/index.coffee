@@ -42,3 +42,8 @@ exports.register = (app) ->
   app.get '/grouped-bars', (req, res) ->
     res.render '../charts/grouped-bars/view',
       title: 'Submethod Groups'
+
+
+  app.get '/modules-test', (req, res) ->
+    res.render '../modules-test/main/index',
+      title: 'Testing RequireJS Modules'

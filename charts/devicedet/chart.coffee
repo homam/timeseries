@@ -179,7 +179,6 @@ pack = (root, data) ->
   data
 
 makeTreeByParentId = (data) ->
-
   [0..data.length-1].forEach (i) ->
     d = data[i]
     if(!!d)
@@ -251,13 +250,6 @@ collectLongTail = (data) ->
     conv : moreSubs/moreVisits
     collected_children: more
   data
-
-groupByBrandName = (data) ->
-
-  osF = _.partial groupBy, _.compose(makeTreeByParentId,collectLongTail), (d) ->d.device_os
-  brandF = _.partial groupBy, osF, (d) -> d.brand_name
-
-  return brandF(data)
 
 
 chart = treeMapZoomableChart()
