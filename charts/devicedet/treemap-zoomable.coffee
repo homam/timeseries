@@ -28,7 +28,12 @@ exports.treeMapZoomableChart = () ->
 
 
 
-  color = d3.scale.category20c()
+  color = d3.scale.quantile()
+  #.range(colorbrewer.PuBuGn[9].map (c) -> d3.rgb(c).brighter(3.2).toString()).domain([0,.01]) # d3.scale.category20c()
+
+  color.range ['#ffe866', '#fefd69', '#eafd6d', '#d5fc70', '#c2fa74', '#b1f977', '#a0f87a', '#91f77e', '#83f681', '#84f592', '#87f4a4', '#8af2b5', '#8df1c4', '#90f0d3', '#93efe0', '#96eeec', '#99e3ed', '#9cd7eb', '#9fccea', '#a2c3e9']
+
+
 
 
   rectWidth = (d) -> if d.dx>2 then d.dx-2 else 0
@@ -81,6 +86,8 @@ exports.treeMapZoomableChart = () ->
 
 
       chart.draw = (root) ->
+
+        color.domain([0, root.averageConversion+2*root.stdevConversion])
 
         treemap = d3.layout.treemap()
         .size([width-margin.left-margin.right,height-margin.left-margin.right])
@@ -135,12 +142,12 @@ exports.treeMapZoomableChart = () ->
           avgConv = findParentWithProp d, 'averageConversion'
           stdevConv = findParentWithProp d, 'stdevConversion'
           d._badConverting = d.conv == 0 or d.conv < avgConv-stdevConv
-          d._badConverting
+          false && d._badConverting
         )
 
         $enterNode.append('rect')
         $node.select('rect')
-        .style('fill', (d) -> color(d.wurfl_device_id))
+        .style('fill', (d) -> color(d.conv))
         .transition().duration(200).attr('width', rectWidth).attr('height', rectHeight)
 
         $enterNode.append('text').attr('class', 'name')
