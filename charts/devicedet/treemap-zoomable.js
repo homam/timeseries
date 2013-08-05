@@ -30,7 +30,9 @@
     formatNumber = d3.format(',');
     x = d3.scale.linear().range([0, awidth]);
     y = d3.scale.linear().range([0, aheight]);
-    color = d3.scale.category20c();
+    color = d3.scale.quantile().range(colorbrewer.PuBuGn[9].map(function(c) {
+      return d3.rgb(c).brighter(3.2).toString();
+    })).domain([0, .01]);
     rectWidth = function(d) {
       if (d.dx > 2) {
         return d.dx - 2;
@@ -105,6 +107,7 @@
         return chart.draw = function(root) {
           var $enterNode, $node, nodes, treemap;
 
+          color.domain([0, root.averageConversion + root.stdevConversion]);
           treemap = d3.layout.treemap().size([width - margin.left - margin.right, height - margin.left - margin.right]).round(false).padding(1).sticky(false).value(function(d) {
             return d.visits;
           });
@@ -156,11 +159,11 @@
             avgConv = findParentWithProp(d, 'averageConversion');
             stdevConv = findParentWithProp(d, 'stdevConversion');
             d._badConverting = d.conv === 0 || d.conv < avgConv - stdevConv;
-            return d._badConverting;
+            return false && d._badConverting;
           });
           $enterNode.append('rect');
           $node.select('rect').style('fill', function(d) {
-            return color(d.wurfl_device_id);
+            return color(d.conv);
           }).transition().duration(200).attr('width', rectWidth).attr('height', rectHeight);
           $enterNode.append('text').attr('class', 'name');
           $node.select('text.name').attr('x', function(d) {
