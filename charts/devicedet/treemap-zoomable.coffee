@@ -29,10 +29,7 @@ exports.treeMapZoomableChart = () ->
 
 
   color = d3.scale.quantile()
-  #.range(colorbrewer.PuBuGn[9].map (c) -> d3.rgb(c).brighter(3.2).toString()).domain([0,.01]) # d3.scale.category20c()
-
-  color.range ['#ffe866', '#fefd69', '#eafd6d', '#d5fc70', '#c2fa74', '#b1f977', '#a0f87a', '#91f77e', '#83f681', '#84f592', '#87f4a4', '#8af2b5', '#8df1c4', '#90f0d3', '#93efe0', '#96eeec', '#99e3ed', '#9cd7eb', '#9fccea', '#a2c3e9']
-
+  .range ['#ffe866', '#fefd69', '#eafd6d', '#d5fc70', '#c2fa74', '#b1f977', '#a0f87a', '#91f77e', '#83f681', '#84f592', '#87f4a4', '#8af2b5', '#8df1c4', '#90f0d3', '#93efe0', '#96eeec', '#99e3ed', '#9cd7eb', '#9fccea', '#a2c3e9']
 
 
 
