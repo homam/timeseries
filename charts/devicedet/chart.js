@@ -11,7 +11,7 @@
   });
 
   require(['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum'], function(barChart, reduceLongTail, sum) {
-    var addBack, chart, createSubMethodDeviceHierarchy, draw, drawSubMethodDeviceChart, groupBy, makeTreeByParentId, pack, subMethodDeviceConvChart, subMethodDeviceVisitsChart, visitsBySubMethodsChart;
+    var chart, createSubMethodDeviceHierarchy, draw, drawSubMethodDeviceChart, groupBy, makeTreeByParentId, subMethodDeviceConvChart, subMethodDeviceVisitsChart, visitsBySubMethodsChart;
 
     reduceLongTail = _.partial(reduceLongTail, (function(v) {
       return v.visits <= 100;
@@ -248,62 +248,66 @@
       chart.draw(tree);
       return tree;
     };
-    pack = function(root, data) {
-      data.forEach(function(d, i) {
-        if (d !== null && d.wurfl_fall_back === root.wurfl_device_id) {
-          data = pack(d, data);
-          root.children.push(d);
-          return data[i] = null;
-        }
-      });
-      return data;
-    };
-    makeTreeByParentId = function(data) {
-      var _i, _j, _ref, _ref1, _results, _results1;
+    makeTreeByParentId = (function() {
+      var addBack, pack;
 
-      (function() {
-        _results = [];
-        for (var _i = 0, _ref = data.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; 0 <= _ref ? _i++ : _i--){ _results.push(_i); }
-        return _results;
-      }).apply(this).forEach(function(i) {
-        var d;
-
-        d = data[i];
-        if (!!d) {
-          data = pack(data[i], data);
+      addBack = function(root) {
+        if (root.children.length > 0) {
+          root.children.forEach(addBack);
+          root.children.push({
+            children: [],
+            wurfl_device_id: root.wurfl_device_id,
+            wurfl_fall_back: root.wurfl_fall_back,
+            brand_name: root.brand_name,
+            model_name: root.model_name,
+            conv: root.conv,
+            device_os: root.device_os,
+            visits: root.visits,
+            subscribers: root.subscribers
+          });
+          root.visits = 0;
+          root.subscribers = 0;
+          return root.conv = 0;
         }
-        return data = data.filter(function(d) {
-          return d !== null;
+      };
+      pack = function(root, data) {
+        data.forEach(function(d, i) {
+          if (d !== null && d.wurfl_fall_back === root.wurfl_device_id) {
+            data = pack(d, data);
+            root.children.push(d);
+            return data[i] = null;
+          }
         });
-      });
-      (function() {
-        _results1 = [];
-        for (var _j = 0, _ref1 = data.length - 1; 0 <= _ref1 ? _j <= _ref1 : _j >= _ref1; 0 <= _ref1 ? _j++ : _j--){ _results1.push(_j); }
-        return _results1;
-      }).apply(this).forEach(function(i) {
-        return addBack(data[i]);
-      });
-      return data;
-    };
-    addBack = function(root) {
-      if (root.children.length > 0) {
-        root.children.forEach(addBack);
-        root.children.push({
-          children: [],
-          wurfl_device_id: root.wurfl_device_id,
-          wurfl_fall_back: root.wurfl_fall_back,
-          brand_name: root.brand_name,
-          model_name: root.model_name,
-          conv: root.conv,
-          device_os: root.device_os,
-          visits: root.visits,
-          subscribers: root.subscribers
+        return data;
+      };
+      return function(data) {
+        var _i, _j, _ref, _ref1, _results, _results1;
+
+        (function() {
+          _results = [];
+          for (var _i = 0, _ref = data.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; 0 <= _ref ? _i++ : _i--){ _results.push(_i); }
+          return _results;
+        }).apply(this).forEach(function(i) {
+          var d;
+
+          d = data[i];
+          if (!!d) {
+            data = pack(data[i], data);
+          }
+          return data = data.filter(function(d) {
+            return d !== null;
+          });
         });
-        root.visits = 0;
-        root.subscribers = 0;
-        return root.conv = 0;
-      }
-    };
+        (function() {
+          _results1 = [];
+          for (var _j = 0, _ref1 = data.length - 1; 0 <= _ref1 ? _j <= _ref1 : _j >= _ref1; 0 <= _ref1 ? _j++ : _j--){ _results1.push(_j); }
+          return _results1;
+        }).apply(this).forEach(function(i) {
+          return addBack(data[i]);
+        });
+        return data;
+      };
+    })();
     groupBy = function(childrenMap, what, data) {
       var groups;
 

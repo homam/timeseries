@@ -28,7 +28,7 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
 
 
 
-  # SubMethodDeviceChart
+  # bar charts
 
   subMethodDeviceConvChart = new groupedBarsChart()
   d3.select('#submethodDevice-conv-chart').call subMethodDeviceConvChart
@@ -133,7 +133,7 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
 
     return _(hierarchy).sortBy (v) ->v.name
 
-  #end SubMethodDeviceChart
+  #end bar charts
 
   # visits by submethods chart
 
@@ -177,44 +177,48 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
 
   #end treemap
 
-  # convers the data array to a tree starting from root
-  pack = (root, data) ->
-    data.forEach (d,i) ->
-      if(d != null && d.wurfl_fall_back == root.wurfl_device_id)
-        data = pack d, data
-        root.children.push d
-        data[i] = null
-    data
+  makeTreeByParentId = do () ->
 
-  makeTreeByParentId = (data) ->
-    [0..data.length-1].forEach (i) ->
-      d = data[i]
-      if(!!d)
-        data = pack data[i], data
-      data = data.filter (d) -> d != null
+    # adds the root of tree back to the tree
+    addBack = (root) ->
+      if(root.children.length > 0)
+        root.children.forEach addBack
+        root.children.push
+          children: []
+          wurfl_device_id: root.wurfl_device_id
+          wurfl_fall_back: root.wurfl_fall_back
+          brand_name: root.brand_name
+          model_name: root.model_name
+          conv: root.conv
+          device_os :root.device_os
+          visits: root.visits
+          subscribers: root.subscribers
+        root.visits = 0
+        root.subscribers = 0
+        root.conv = 0
 
-    [0..data.length-1].forEach (i) ->
-      addBack(data[i])
+    # convers the data array to a tree starting from root
+    pack = (root, data) ->
+      data.forEach (d,i) ->
+        if(d != null && d.wurfl_fall_back == root.wurfl_device_id)
+          data = pack d, data
+          root.children.push d
+          data[i] = null
+      data
 
-    data
 
-  # adds the root of tree back to the tree
-  addBack = (root) ->
-    if(root.children.length > 0)
-      root.children.forEach addBack
-      root.children.push
-        children: []
-        wurfl_device_id: root.wurfl_device_id
-        wurfl_fall_back: root.wurfl_fall_back
-        brand_name: root.brand_name
-        model_name: root.model_name
-        conv: root.conv
-        device_os :root.device_os
-        visits: root.visits
-        subscribers: root.subscribers
-      root.visits = 0
-      root.subscribers = 0
-      root.conv = 0
+
+    return (data) ->
+      [0..data.length-1].forEach (i) ->
+        d = data[i]
+        if(!!d)
+          data = pack data[i], data
+        data = data.filter (d) -> d != null
+
+      [0..data.length-1].forEach (i) ->
+        addBack(data[i])
+      data
+
 
 
   groupBy = (childrenMap, what, data) ->
