@@ -1,16 +1,4 @@
-class Property
-  constructor: (@_onSet) ->
-  _value: null
-  set: (value)->
-    this._value = value
-    this._onSet(value)
-  get: () ->
-    this._value
-  reset: () ->
-    this.set(this._value)
-
-define [], () ->
-
+define ['../common/property'], (Property) ->
   () ->
     # configs
     margin =
@@ -31,7 +19,7 @@ define [], () ->
 
     nameMap = (d) ->d.name
     valueMap  = (d) ->d.value
-    devMap = (d) ->d.dev
+    devMap = null # (d) ->d.dev
 
 
     # configurable properties
@@ -98,30 +86,31 @@ define [], () ->
         .style('fill', (d,i)-> '#ff7f0e')
 
         # deviation lines
-        #if 'undefined' != typeof devMap data[0]
-        $devGEnter = $mainEnter.append('g').attr('class','dev')
-        $devG = $main.select('g.dev')
-        .transition().duration(200)
-        .attr('transform', (d) -> 'translate(0,'+(-height+y(valueMap(d))-(-height+y(devMap(d)))/2)+')')
+        if !!devMap
+          $devGEnter = $mainEnter.append('g').attr('class','dev')
+          $devG = $main.select('g.dev')
+          .transition().duration(200)
+          .attr('transform', (d) -> 'translate(0,'+(-height+y(valueMap(d))-(-height+y(devMap(d)))/2)+')')
 
-        $devGEnter.append('line').attr('class', 'dev up')
-        $devG.select('line.dev.up')
-        .transition().duration(200)
-        .attr('x1', _.compose(x, nameMap)).attr('x2', (d) -> _.compose(x, nameMap)(d)+x.rangeBand())
-        .attr('y1', _.compose y, devMap).attr('y2', _.compose y, devMap)
+          $devGEnter.append('line').attr('class', 'dev up')
+          $devG.select('line.dev.up')
+          .transition().duration(200)
+          .attr('x1', _.compose(x, nameMap)).attr('x2', (d) -> _.compose(x, nameMap)(d)+x.rangeBand())
+          .attr('y1', _.compose y, devMap).attr('y2', _.compose y, devMap)
 
-        $devGEnter.append('line').attr('class', 'dev low')
-        $devG.select('line.dev.low')
-        .transition().duration(200)
-        .attr('x1', _.compose(x, nameMap)).attr('x2', (d) -> _.compose(x, nameMap)(d)+x.rangeBand())
-        .attr('y1', y(0)).attr('y2',y(0))
+          $devGEnter.append('line').attr('class', 'dev low')
+          $devG.select('line.dev.low')
+          .transition().duration(200)
+          .attr('x1', _.compose(x, nameMap)).attr('x2', (d) -> _.compose(x, nameMap)(d)+x.rangeBand())
+          .attr('y1', y(0)).attr('y2',y(0))
 
-        $devGEnter.append('rect').attr('class', 'dev')
-        $devG.select('rect.dev')
-        .transition().duration(200).attr('width', x.rangeBand()*.25)
-        .attr('x', (d) -> x(nameMap(d))+x.rangeBand()*.375)
-        .attr('y', _.compose y, devMap)
-        .attr('height', (d)-> height- (_.compose y, devMap)(d))
+          $devGEnter.append('rect').attr('class', 'dev')
+          $devG.select('rect.dev')
+          .transition().duration(200).attr('width', x.rangeBand()*.25)
+          .attr('x', (d) -> x(nameMap(d))+x.rangeBand()*.375)
+          .attr('y', _.compose y, devMap)
+          .attr('height', (d)-> height- (_.compose y, devMap)(d))
+
 
 
 
@@ -130,21 +119,21 @@ define [], () ->
         $xAxis.transition().duration(200).call(xAxis)
         $yAxis.transition().duration(200).call(yAxis)
 
-
-      null # chart()
+        null # selection.each()
+    null # chart()
 
 
 
 
       # expose the properties
 
-      d3.keys(properties).forEach (k) ->
-        p = properties[k]
-        chart[k] = (val) ->
-          if(!!arguments.length)
-            p.set(val)
-            chart
-          else
-            p.get()
+    d3.keys(properties).forEach (k) ->
+      p = properties[k]
+      chart[k] = (val) ->
+        if(!!arguments.length)
+          p.set(val)
+          chart
+        else
+          p.get()
 
     return chart

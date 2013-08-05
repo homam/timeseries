@@ -28,7 +28,9 @@
         dev: 12
       }
     ];
-    chart = chartMaker();
+    chart = chartMaker().devs(function(d) {
+      return d.dev;
+    });
     d3.select('#chart').datum(testData).call(chart);
     return setTimeout(function() {
       var newData;
@@ -57,7 +59,7 @@
         return d[1];
       });
       chart.devs(function(d) {
-        return d[2];
+        return d[2] * 0;
       });
       return d3.select('#chart').datum(newData).call(chart);
     }, 2000);
