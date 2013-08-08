@@ -14,6 +14,7 @@
     var chart, createSubMethodDeviceHierarchy, draw, drawSubMethodDeviceChart, groupBy, makeTreeByParentId, subMethodDeviceConvChart, subMethodDeviceVisitsChart, sumVisitsWithChildren, visitsBySubMethodsChart;
 
     sumVisitsWithChildren = function(d) {
+      return d.visits;
       if (!!d.children && d.children.length > 0) {
         return (d.visits || 0) + d.children.map(function(c) {
           return sumVisitsWithChildren(c);
@@ -62,6 +63,11 @@
         zipped = n.children.map(function(c) {
           return zip(c);
         });
+        if (n.collected_children) {
+          zipped = zipped.concat(n.collected_children.map(function(c) {
+            return zip(c);
+          }));
+        }
         visits = zipped.length === 0 ? 0 : zipped.map(function(d) {
           return d.visits;
         }).reduce(function(a, b) {

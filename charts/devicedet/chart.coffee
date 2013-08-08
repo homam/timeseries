@@ -12,6 +12,7 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
 , (barChart, reduceLongTail, sum) ->
 
   sumVisitsWithChildren = (d) ->
+    return d.visits
     if !!d.children and d.children.length > 0
       return (d.visits||0) + d.children.map((c) -> sumVisitsWithChildren(c)).reduce (a,b)->a+b
     else
@@ -48,6 +49,8 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
   drawSubMethodDeviceChart = (node, data, compareConvWithOnlyConvertingDevices) ->
     zip = (n) ->
       zipped = (n.children.map (c) -> zip(c))
+      if (n.collected_children)
+        zipped = zipped.concat(n.collected_children.map (c) -> zip c)
       visits = if zipped.length == 0 then 0 else zipped.map((d)->d.visits).reduce (a,b)->a+b
       subscribers = if zipped.length == 0 then 0 else zipped.map((d)->d.subscribers).reduce (a,b)->a+b
       wurflIds = _.flatten zipped.map (c) ->c.wurflIds
