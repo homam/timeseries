@@ -18,19 +18,19 @@
     }), function(tail) {
       var subs, visits;
 
-      visits = sum(function(v) {
+      visits = sum(tail.map(function(v) {
         return v.visits;
-      });
-      subs = sum(function(v) {
+      }));
+      subs = sum(tail.map(function(v) {
         return v.subscribers;
-      });
+      }));
       return {
         children: [],
-        wurfl_fall_back: 'root',
+        wurfl_fall_back: tail[0].wurfl_fall_back,
         wurfl_device_id: 'more...',
-        brand_name: 'more',
+        brand_name: tail[0].brand_name,
         model_name: '..',
-        device_os: 'any',
+        device_os: tail[0].device_os,
         visits: visits,
         subscribers: subs,
         conv: subs / visits,
@@ -213,11 +213,34 @@
       });
     };
     draw = function(data, method, chartDataMap) {
-      var chartData, totalConv, totalStdevConv, totalSubs, totalVisits, tree;
+      var chartData, groups, totalConv, totalStdevConv, totalSubs, totalVisits, tree;
 
-      chartData = !method ? data : data.filter((function(d) {
-        return method === d.method;
-      }));
+      chartData = null;
+      if (!method) {
+        groups = _(data).groupBy(function(d) {
+          return d.wurfl_device_id;
+        });
+        chartData = _(groups).map(function(arr, key) {
+          var item, subscribers, visits;
+
+          visits = sum(arr.map(function(d) {
+            return d.visits;
+          }));
+          subscribers = sum(arr.map(function(d) {
+            return d.subscribers;
+          }));
+          item = _.clone(arr[0]);
+          item.visits = visits;
+          item.subscribers = subscribers;
+          item.conv = subscribers / visits;
+          item.method = method;
+          return item;
+        });
+      } else {
+        chartData = data.filter((function(d) {
+          return method === d.method;
+        }));
+      }
       totalVisits = chartData.map(function(d) {
         return d.visits;
       }).reduce(function(a, b) {
@@ -340,7 +363,7 @@
     };
     chart = treeMapZoomableChart();
     d3.select('#chart').call(chart);
-    return d3.csv('charts/devicedet/data/ae.csv', function(raw) {
+    return d3.csv('charts/devicedet/data/iq-pin-android.csv', function(raw) {
       var fresh, lastTree, makeGroupByFunction, redraw, redrawSubMethodDeviceChart;
 
       fresh = function() {
@@ -359,6 +382,7 @@
           };
         });
       };
+      window.fresh = fresh;
       $(function() {
         var subMethods;
 

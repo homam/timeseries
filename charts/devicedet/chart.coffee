@@ -12,14 +12,14 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
 , (barChart, reduceLongTail, sum) ->
 
   reduceLongTail = _.partial reduceLongTail, ((v) ->v.visits<=100), (tail) ->
-    visits = sum((v)->v.visits)
-    subs = sum((v) -> v.subscribers)
+    visits = sum(tail.map (v)->v.visits)
+    subs = sum(tail.map (v) -> v.subscribers)
     children: []
-    wurfl_fall_back: 'root'
+    wurfl_fall_back: tail[0].wurfl_fall_back # todo: fall_back, brand_name and device_os have to be the common thing in the tail, need to know the last group by
     wurfl_device_id: 'more...'
-    brand_name: 'more'
+    brand_name: tail[0].brand_name
     model_name: '..'
-    device_os :'any'
+    device_os :tail[0].device_os
     visits: visits
     subscribers: subs
     conv : subs/visits
@@ -145,7 +145,20 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
   # treemap chart
 
   draw = (data, method, chartDataMap) ->
-    chartData = if !method then data else data.filter ((d) -> method == d.method)
+    chartData = null
+    if !method
+      groups = _(data).groupBy (d) ->d.wurfl_device_id
+      chartData = _(groups).map (arr, key) ->
+        visits = sum(arr.map (d) -> d.visits)
+        subscribers = sum(arr.map (d) -> d.subscribers)
+        item = _.clone(arr[0])
+        item.visits = visits
+        item.subscribers = subscribers
+        item.conv = subscribers/visits
+        item.method = method
+        item
+    else
+      chartData = data.filter ((d) -> method == d.method)
 
 
     totalVisits= chartData.map((d) -> d.visits).reduce((a,b)->a+b)
@@ -245,7 +258,7 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
   d3.select('#chart').call chart
 
 
-  d3.csv 'charts/devicedet/data/ae.csv', (raw) ->
+  d3.csv 'charts/devicedet/data/iq-pin-android.csv', (raw) ->
 
     fresh = () ->
       raw.map (d) ->
@@ -259,6 +272,8 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
         conv : (+d.conv) or 0
         device_os :d.device_os
         children : []
+
+    window.fresh= fresh
 
 
     $ ()->

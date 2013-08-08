@@ -2,10 +2,12 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/charts/devicedet/chart.js" />
         <item url="file://$PROJECT_DIR$/charts/devicedet/treemap-zoomable.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
+      <root url="file://$PROJECT_DIR$/charts/devicedet/chart.js" />
       <root url="file://$PROJECT_DIR$/charts/devicedet/treemap-zoomable.js" />
     </CLASSES>
     <SOURCES />
