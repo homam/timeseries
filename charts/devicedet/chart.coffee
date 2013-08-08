@@ -11,7 +11,14 @@ require.config({
 require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum']
 , (barChart, reduceLongTail, sum) ->
 
-  reduceLongTail = _.partial reduceLongTail, ((v) ->v.visits<=100), (tail) ->
+  sumVisitsWithChildren = (d) ->
+    if !!d.children and d.children.length > 0
+      return (d.visits||0) + d.children.map((c) -> sumVisitsWithChildren(c)).reduce (a,b)->a+b
+    else
+      return (d.visits||0)
+
+
+  reduceLongTail = _.partial reduceLongTail, ((v) -> sumVisitsWithChildren(v)<=100), (tail) ->
     visits = sum(tail.map (v)->v.visits)
     subs = sum(tail.map (v) -> v.subscribers)
     children: []
@@ -226,12 +233,15 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
     return (cutLongTail, data) ->
       [0..data.length-1].forEach (i) ->
         d = data[i]
+        #if !!d && 'archos_80g9_ver1' == d.wurfl_fall_back
+        #  debugger
         if(!!d)
           data = pack data[i], data, cutLongTail
         data = data.filter (d) -> d != null
 
       [0..data.length-1].forEach (i) ->
         addBack(data[i])
+
       data
 
 

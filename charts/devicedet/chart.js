@@ -11,10 +11,21 @@
   });
 
   require(['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum'], function(barChart, reduceLongTail, sum) {
-    var chart, createSubMethodDeviceHierarchy, draw, drawSubMethodDeviceChart, groupBy, makeTreeByParentId, subMethodDeviceConvChart, subMethodDeviceVisitsChart, visitsBySubMethodsChart;
+    var chart, createSubMethodDeviceHierarchy, draw, drawSubMethodDeviceChart, groupBy, makeTreeByParentId, subMethodDeviceConvChart, subMethodDeviceVisitsChart, sumVisitsWithChildren, visitsBySubMethodsChart;
 
+    sumVisitsWithChildren = function(d) {
+      if (!!d.children && d.children.length > 0) {
+        return (d.visits || 0) + d.children.map(function(c) {
+          return sumVisitsWithChildren(c);
+        }).reduce(function(a, b) {
+          return a + b;
+        });
+      } else {
+        return d.visits || 0;
+      }
+    };
     reduceLongTail = _.partial(reduceLongTail, (function(v) {
-      return v.visits <= 100;
+      return sumVisitsWithChildren(v) <= 100;
     }), function(tail) {
       var subs, visits;
 
