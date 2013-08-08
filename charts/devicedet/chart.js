@@ -14,7 +14,6 @@
     var chart, createSubMethodDeviceHierarchy, draw, drawSubMethodDeviceChart, groupBy, makeTreeByParentId, subMethodDeviceConvChart, subMethodDeviceVisitsChart, sumVisitsWithChildren, visitsBySubMethodsChart;
 
     sumVisitsWithChildren = function(d) {
-      return d.visits;
       if (!!d.children && d.children.length > 0) {
         return (d.visits || 0) + d.children.map(function(c) {
           return sumVisitsWithChildren(c);
@@ -348,7 +347,11 @@
         }).apply(this).forEach(function(i) {
           return addBack(data[i]);
         });
-        return data;
+        if (cutLongTail) {
+          return reduceLongTail(data);
+        } else {
+          return data;
+        }
       };
     })();
     groupBy = function(childrenMap, what, data) {

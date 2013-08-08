@@ -12,7 +12,7 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
 , (barChart, reduceLongTail, sum) ->
 
   sumVisitsWithChildren = (d) ->
-    return d.visits
+    #return d.visits
     if !!d.children and d.children.length > 0
       return (d.visits||0) + d.children.map((c) -> sumVisitsWithChildren(c)).reduce (a,b)->a+b
     else
@@ -245,7 +245,7 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
       [0..data.length-1].forEach (i) ->
         addBack(data[i])
 
-      data
+      return if cutLongTail then reduceLongTail data else data
 
 
 
