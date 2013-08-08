@@ -293,17 +293,20 @@
           return root.conv = 0;
         }
       };
-      pack = function(root, data) {
+      pack = function(root, data, cutLongTail) {
         data.forEach(function(d, i) {
           if (d !== null && d.wurfl_fall_back === root.wurfl_device_id) {
-            data = pack(d, data);
+            data = pack(d, data, cutLongTail);
             root.children.push(d);
+            if (cutLongTail) {
+              root.children = reduceLongTail(root.children);
+            }
             return data[i] = null;
           }
         });
         return data;
       };
-      return function(data) {
+      return function(cutLongTail, data) {
         var _i, _j, _ref, _ref1, _results, _results1;
 
         (function() {
@@ -315,7 +318,7 @@
 
           d = data[i];
           if (!!d) {
-            data = pack(data[i], data);
+            data = pack(data[i], data, cutLongTail);
           }
           return data = data.filter(function(d) {
             return d !== null;
@@ -402,8 +405,8 @@
         var l, lastF, t;
 
         order = _(order).reverse();
-        t = treefy ? makeTreeByParentId : _.identity;
-        l = cutLongTail ? reduceLongTail : _.identity;
+        t = treefy ? _.partial(makeTreeByParentId, cutLongTail) : _.identity;
+        l = cutLongTail && !treefy ? reduceLongTail : _.identity;
         lastF = _.compose(t, l);
         order.forEach(function(p) {
           return lastF = _.partial(groupBy, lastF, function(d) {

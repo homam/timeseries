@@ -211,21 +211,23 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
         root.conv = 0
 
     # convers the data array to a tree starting from root
-    pack = (root, data) ->
+    pack = (root, data, cutLongTail) ->
       data.forEach (d,i) ->
         if(d != null && d.wurfl_fall_back == root.wurfl_device_id)
-          data = pack d, data
+          data = pack d, data, cutLongTail
           root.children.push d
+          if cutLongTail
+            root.children = reduceLongTail root.children
           data[i] = null
       data
 
 
 
-    return (data) ->
+    return (cutLongTail, data) ->
       [0..data.length-1].forEach (i) ->
         d = data[i]
         if(!!d)
-          data = pack data[i], data
+          data = pack data[i], data, cutLongTail
         data = data.filter (d) -> d != null
 
       [0..data.length-1].forEach (i) ->
@@ -287,8 +289,8 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
 
     makeGroupByFunction = (order, treefy, cutLongTail) ->
       order = _(order).reverse()
-      t = if treefy then makeTreeByParentId else _.identity
-      l = if cutLongTail then reduceLongTail else _.identity
+      t = if treefy then _.partial(makeTreeByParentId, cutLongTail) else _.identity
+      l = if cutLongTail and not treefy then reduceLongTail else _.identity
       lastF = _.compose(t,l)
       order.forEach (p) ->
         lastF = _.partial groupBy, lastF, (d) -> d[p]
