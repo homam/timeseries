@@ -10,8 +10,8 @@
     }
   });
 
-  require(['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum'], function(barChart, reduceLongTail, sum) {
-    var chart, createSubMethodDeviceHierarchy, draw, drawSubMethodDeviceChart, groupBy, makeTreeByParentId, subMethodDeviceConvChart, subMethodDeviceVisitsChart, sumVisitsWithChildren, visitsBySubMethodsChart;
+  require(['chart-modules/bar/chart', 'chart-modules/pie/chart', 'chart-modules/common/d3-tooltip', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum'], function(barChart, pieChart, tooltip, reduceLongTail, sum) {
+    var chart, createSubMethodDeviceHierarchy, draw, drawSubMethodDeviceChart, groupBy, makeTreeByParentId, subMethodDeviceConvChart, subMethodDeviceVisitsChart, sumVisitsWithChildren, visitsBySubMethodsChart, visitsBySubMethodsPieChart;
 
     sumVisitsWithChildren = function(d) {
       if (!!d.children && d.children.length > 0) {
@@ -52,9 +52,12 @@
     d3.select('#submethodDevice-conv-chart').call(subMethodDeviceConvChart);
     subMethodDeviceVisitsChart = new groupedBarsChart();
     d3.select('#submethodDevice-visits-chart').call(subMethodDeviceVisitsChart);
-    visitsBySubMethodsChart = barChart();
+    visitsBySubMethodsChart = barChart().tooltip(tooltip().text(function(d) {
+      return JSON.stringify(d);
+    }));
+    visitsBySubMethodsPieChart = pieChart();
     drawSubMethodDeviceChart = function(node, data, compareConvWithOnlyConvertingDevices) {
-      var allSubMethods, convHierarchy, existingSubMethods, m, rootName, targetDevices, visitsData, visitsHierarchy, zip, zipped, _i, _len, _ref;
+      var allSubMethods, convHierarchy, existingSubMethods, m, rootName, targetDevices, totalVisits, visitsData, visitsHierarchy, zip, zipped, _i, _len, _ref;
 
       zip = function(n) {
         var c, subscribers, visits, wurflIds, zipped, _i, _len, _ref;
@@ -171,6 +174,13 @@
           value: 0
         });
       }
+      totalVisits = sum(visitsData.map(function(v) {
+        return v.value;
+      }));
+      d3.select('#device-visits-bysubmethods-pie').datum(visitsData).call(visitsBySubMethodsPieChart);
+      visitsBySubMethodsChart.tooltip().text(function(d) {
+        return d.name + ' : ' + d3.format('%')(d.value / totalVisits);
+      });
       return d3.select('#device-visits-bysubmethods-chart').datum(_(visitsData).sortBy(function(a) {
         return a.name;
       })).call(visitsBySubMethodsChart);

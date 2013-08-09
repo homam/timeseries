@@ -8,8 +8,8 @@ require.config({
 
 
 # this too works: /modules-test/modules/hello/module.js
-require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum']
-, (barChart, reduceLongTail, sum) ->
+require ['chart-modules/bar/chart', 'chart-modules/pie/chart', 'chart-modules/common/d3-tooltip', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum']
+, (barChart, pieChart, tooltip, reduceLongTail, sum) ->
 
   sumVisitsWithChildren = (d) ->
     #return d.visits
@@ -44,7 +44,8 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
   subMethodDeviceVisitsChart = new groupedBarsChart()
   d3.select('#submethodDevice-visits-chart').call subMethodDeviceVisitsChart
 
-  visitsBySubMethodsChart = barChart()
+  visitsBySubMethodsChart = barChart().tooltip(tooltip().text (d) -> JSON.stringify(d))
+  visitsBySubMethodsPieChart = pieChart()
 
   drawSubMethodDeviceChart = (node, data, compareConvWithOnlyConvertingDevices) ->
     zip = (n) ->
@@ -105,6 +106,11 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
     for m in allSubMethods.filter((s) -> existingSubMethods.indexOf(s)<0)
       visitsData.push {name: m, value: 0}
 
+    totalVisits = sum visitsData.map (v) ->v.value
+
+    d3.select('#device-visits-bysubmethods-pie').datum(visitsData).call visitsBySubMethodsPieChart
+
+    visitsBySubMethodsChart.tooltip().text (d) ->d.name + ' : ' + d3.format('%') d.value/totalVisits
     d3.select('#device-visits-bysubmethods-chart').datum(_(visitsData).sortBy((a)->a.name)).call visitsBySubMethodsChart
 
 
@@ -144,13 +150,6 @@ require ['chart-modules/bar/chart', 'chart-modules/utils/reduceLongTail', 'chart
     return _(hierarchy).sortBy (v) ->v.name
 
   #end bar charts
-
-  # visits by submethods chart
-
-  #visitsBySubMethodsChart = new barChart()
-  #d3.select('#device-visits-bysubmethods-chart').call visitsBySubMethodsChart
-
-  #end visits by submethods chart
 
   # treemap chart
 

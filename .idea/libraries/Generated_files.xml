@@ -2,13 +2,29 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/chart-modules/pie/chart.js" />
         <item url="file://$PROJECT_DIR$/charts/devicedet/chart.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/pie/test.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/bar-groups/chart.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/bar-groups/test.js" />
+        <item url="file://$PROJECT_DIR$/charts/grouped-bars/grouped-bars.js" />
         <item url="file://$PROJECT_DIR$/charts/devicedet/treemap-zoomable.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/bar/chart.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/common/property.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/bar/test.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
+      <root url="file://$PROJECT_DIR$/chart-modules/pie/chart.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/pie/test.js" />
       <root url="file://$PROJECT_DIR$/charts/devicedet/chart.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/bar-groups/chart.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/bar-groups/test.js" />
       <root url="file://$PROJECT_DIR$/charts/devicedet/treemap-zoomable.js" />
+      <root url="file://$PROJECT_DIR$/charts/grouped-bars/grouped-bars.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/bar/chart.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/common/property.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/bar/test.js" />
     </CLASSES>
     <SOURCES />
   </library>

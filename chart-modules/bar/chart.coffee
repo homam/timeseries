@@ -21,6 +21,12 @@ define ['../common/property'], (Property) ->
     valueMap  = (d) ->d.value
     devMap = null # (d) ->d.dev
 
+    tooltip = () ->
+
+
+    dispatch = d3.dispatch('mouseover', 'mouseout')
+
+
 
     # configurable properties
 
@@ -44,6 +50,8 @@ define ['../common/property'], (Property) ->
       values : new Property (value) ->valueMap = value
 
       devs : new Property (value) -> devMap = value
+
+      tooltip : new Property (value) -> tooltip = value
     }
 
     properties.width.set(width)
@@ -78,6 +86,10 @@ define ['../common/property'], (Property) ->
         $main.transition().duration(200)
 
         $mainEnter.append('rect')
+        .on('mouseover', (d) -> dispatch.mouseover(d))
+        .on('mouseout', (d) -> dispatch.mouseout(d))
+        .call(tooltip)
+
         $rect = $main.select('rect')
         $rect.transition().duration(200).attr('width', x.rangeBand())
         .attr('x', (d) -> x(nameMap(d)))
@@ -125,15 +137,9 @@ define ['../common/property'], (Property) ->
 
 
 
-      # expose the properties
+    # expose the properties
 
-    d3.keys(properties).forEach (k) ->
-      p = properties[k]
-      chart[k] = (val) ->
-        if(!!arguments.length)
-          p.set(val)
-          chart
-        else
-          p.get()
+    chart = Property.expose(chart, properties)
+    chart.mouseover = (handler) -> dispatch.on('mouseover', handler)
 
     return chart

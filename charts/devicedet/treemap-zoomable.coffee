@@ -144,10 +144,7 @@ exports.treeMapZoomableChart = () ->
 
         $enterNode.append('rect')
         $node.select('rect')
-        .style('fill', (d) ->
-          if 'more...' == d.wurfl_device_id
-            return 'red'
-          return color(d.conv))
+        .style('fill', (d) -> color(d.conv))
         .attr('data-wid', (d)->d.wurfl_device_id)
         .transition().duration(200).attr('width', rectWidth).attr('height', rectHeight)
 

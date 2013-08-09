@@ -24,6 +24,23 @@
         return this.set(this._value);
       };
 
+      Property.expose = function(chart, properties) {
+        d3.keys(properties).forEach(function(k) {
+          var p;
+
+          p = properties[k];
+          return chart[k] = function(val) {
+            if (!!arguments.length) {
+              p.set(val);
+              return chart;
+            } else {
+              return p.get();
+            }
+          };
+        });
+        return chart;
+      };
+
       return Property;
 
     })();

@@ -2,7 +2,7 @@
 (function() {
   define(['../common/property'], function(Property) {
     return function() {
-      var chart, devMap, height, margin, nameMap, properties, valueMap, width, x, xAxis, y, yAxis;
+      var chart, devMap, dispatch, height, margin, nameMap, properties, tooltip, valueMap, width, x, xAxis, y, yAxis;
 
       margin = {
         top: 20,
@@ -23,6 +23,8 @@
         return d.value;
       };
       devMap = null;
+      tooltip = function() {};
+      dispatch = d3.dispatch('mouseover', 'mouseout');
       properties = {
         width: new Property(function(value) {
           width = value - margin.left - margin.right;
@@ -46,6 +48,9 @@
         }),
         devs: new Property(function(value) {
           return devMap = value;
+        }),
+        tooltip: new Property(function(value) {
+          return tooltip = value;
         })
       };
       properties.width.set(width);
@@ -69,7 +74,11 @@
           $main = $g.selectAll('g.main').data(data);
           $mainEnter = $main.enter().append('g').attr('class', 'main');
           $main.transition().duration(200);
-          $mainEnter.append('rect');
+          $mainEnter.append('rect').on('mouseover', function(d) {
+            return dispatch.mouseover(d);
+          }).on('mouseout', function(d) {
+            return dispatch.mouseout(d);
+          }).call(tooltip);
           $rect = $main.select('rect');
           $rect.transition().duration(200).attr('width', x.rangeBand()).attr('x', function(d) {
             return x(nameMap(d));
@@ -107,19 +116,10 @@
         });
       };
       null;
-      d3.keys(properties).forEach(function(k) {
-        var p;
-
-        p = properties[k];
-        return chart[k] = function(val) {
-          if (!!arguments.length) {
-            p.set(val);
-            return chart;
-          } else {
-            return p.get();
-          }
-        };
-      });
+      chart = Property.expose(chart, properties);
+      chart.mouseover = function(handler) {
+        return dispatch.on('mouseover', handler);
+      };
       return chart;
     };
   });

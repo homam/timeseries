@@ -16,19 +16,46 @@
     testData = [
       {
         name: 'A',
-        value: 345,
-        dev: 31
+        value: [
+          {
+            name: 'Alpha',
+            value: 345,
+            dev: 31
+          }, {
+            name: 'Beta',
+            value: 45,
+            dev: 11
+          }
+        ]
       }, {
         name: 'B',
-        value: 441,
-        dev: 42
+        value: [
+          {
+            name: 'Alpha',
+            value: 441,
+            dev: 42
+          }, {
+            name: 'Beta',
+            value: 105,
+            dev: 6
+          }
+        ]
       }, {
         name: 'C',
-        value: 273,
-        dev: 12
+        value: [
+          {
+            name: 'Alpha',
+            value: 273,
+            dev: 12
+          }, {
+            name: 'Beta',
+            value: 89,
+            dev: 30
+          }
+        ]
       }
     ];
-    chart = chartMaker().devs(function(d) {
+    chart = chartMaker().subDevs(function(d) {
       return d.dev;
     }).tooltip(tooltip().text(function(d) {
       return JSON.stringify(d);
@@ -40,13 +67,10 @@
       newData = testData.map(function(d) {
         return {
           name: d.name,
-          value: d.value * Math.random(),
-          dev: d.dev
+          value: [d.value[0]]
         };
-      }).map(function(d) {
-        return [d.name, d.value, d.dev];
       });
-      chart.width(300);
+      chart.width(600);
       chart.height(200);
       chart.margin({
         top: 0,
@@ -54,19 +78,10 @@
         bottom: 20,
         right: 0
       });
-      chart.names(function(d) {
-        return d[0];
-      });
-      chart.values(function(d) {
-        return d[1];
-      });
-      chart.devs(function(d) {
-        return d[2] * 0;
-      });
-      chart.tooltip().text(function(d) {
-        return d[0];
-      });
-      return d3.select('#chart').datum(newData).call(chart);
+      d3.select('#chart').datum(newData).call(chart);
+      return setTimeout(function() {
+        return d3.select('#chart').datum(testData).call(chart);
+      }, 10000);
     }, 2000);
   });
 

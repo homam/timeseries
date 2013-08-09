@@ -161,9 +161,6 @@
           });
           $enterNode.append('rect');
           $node.select('rect').style('fill', function(d) {
-            if ('more...' === d.wurfl_device_id) {
-              return 'red';
-            }
             return color(d.conv);
           }).attr('data-wid', function(d) {
             return d.wurfl_device_id;
