@@ -10,29 +10,24 @@
     }
   });
 
-  require(['chart.js', '../common/d3-tooltip.js'], function(chartMaker, tooltip) {
+  require(['chart.js'], function(chartMaker) {
     var chart, testData;
 
     testData = [
       {
-        name: 'A',
-        value: 345,
-        dev: 31
+        name: 'A long name',
+        value: 645
       }, {
-        name: 'B',
-        value: 441,
-        dev: 42
+        name: 'Some name',
+        value: 441
       }, {
-        name: 'C',
-        value: 273,
-        dev: 12
+        name: 'Short',
+        value: 273
       }
     ];
-    chart = chartMaker().devs(function(d) {
-      return d.dev;
-    }).tooltip(tooltip().text(function(d) {
-      return JSON.stringify(d);
-    }));
+    chart = chartMaker().margin({
+      right: 120
+    }).width(400);
     d3.select('#chart').datum(testData).call(chart);
     return setTimeout(function() {
       var newData;
@@ -40,31 +35,18 @@
       newData = testData.map(function(d) {
         return {
           name: d.name,
-          value: d.value * Math.random(),
-          dev: d.dev
+          value: d.value * Math.random()
         };
       }).map(function(d) {
-        return [d.name, d.value, d.dev];
+        return [d.name, d.value];
       });
       chart.width(300);
       chart.height(200);
-      chart.margin({
-        top: 0,
-        left: 30,
-        bottom: 20,
-        right: 0
-      });
       chart.names(function(d) {
         return d[0];
       });
       chart.values(function(d) {
         return d[1];
-      });
-      chart.devs(function(d) {
-        return d[2] * 0;
-      });
-      chart.tooltip().text(function(d) {
-        return d[0];
       });
       return d3.select('#chart').datum(newData).call(chart);
     }, 2000);
