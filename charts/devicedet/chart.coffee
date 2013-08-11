@@ -8,8 +8,12 @@ require.config({
 
 
 # this too works: /modules-test/modules/hello/module.js
-require ['chart-modules/bar/chart', 'chart-modules/pie/chart', 'chart-modules/common/d3-tooltip', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum']
-, (barChart, pieChart, tooltip, reduceLongTail, sum) ->
+require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-modules/pie/chart',
+         'chart-modules/common/d3-tooltip', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum']
+, (barChart, barGroupsChart, pieChart, tooltip, reduceLongTail, sum) ->
+
+  v = require 'chart-modules/bar/chart'
+
 
   sumVisitsWithChildren = (d) ->
     #return d.visits
@@ -38,11 +42,9 @@ require ['chart-modules/bar/chart', 'chart-modules/pie/chart', 'chart-modules/co
 
   # bar charts
 
-  subMethodDeviceConvChart = new groupedBarsChart()
-  d3.select('#submethodDevice-conv-chart').call subMethodDeviceConvChart
+  subMethodDeviceConvChart = barGroupsChart().yAxisTickFormat(d3.format('.1%'))
 
-  subMethodDeviceVisitsChart = new groupedBarsChart()
-  d3.select('#submethodDevice-visits-chart').call subMethodDeviceVisitsChart
+  subMethodDeviceVisitsChart = barGroupsChart().yAxisTickFormat(d3.format('.1%'))
 
   visitsBySubMethodsChart = barChart().tooltip(tooltip().text (d) -> JSON.stringify(d))
   visitsBySubMethodsPieChart = pieChart()
@@ -79,7 +81,7 @@ require ['chart-modules/bar/chart', 'chart-modules/pie/chart', 'chart-modules/co
       value: mu
       stdev: if sarr.length <2 then 0 else sum( sarr.map (d) -> Math.sqrt(Math.pow(d.conv-mu,2)) *d.visits/subGroupVisits)
     )
-    subMethodDeviceConvChart.draw convHierarchy
+    d3.select('#submethodDevice-conv-chart').datum(convHierarchy).call subMethodDeviceConvChart
 
 
     visitsHierarchy = createSubMethodDeviceHierarchy(data, zipped.wurflIds, rootName, (sarr, skey, marr, raw) ->
@@ -91,7 +93,7 @@ require ['chart-modules/bar/chart', 'chart-modules/pie/chart', 'chart-modules/co
       value: subGroupVisits/majorVisits
       stdev: 0 # if sarr.length <2 then 0 else sum( sarr.map (d) -> Math.sqrt(Math.pow(d.conv-mu,2)) *d.visits/subGroupVisits)
     )
-    subMethodDeviceVisitsChart.draw visitsHierarchy
+    d3.select('#submethodDevice-visits-chart').datum(visitsHierarchy).call subMethodDeviceVisitsChart
 
 
     allSubMethods = convHierarchy.map (c) ->c.name

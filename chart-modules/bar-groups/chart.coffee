@@ -51,6 +51,9 @@ define ['../common/property'], (Property) ->
         properties.width.reset()
         properties.height.reset()
 
+      yAxisTickFormat: new Property (value) ->
+        yAxis.tickFormat(value)
+
       mainNames : new Property (value) -> mainNameMap = value
 
       mainValues : new Property (value) ->mainValueMap = value
