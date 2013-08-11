@@ -1,3 +1,6 @@
 .DS_Store
 projectFilesBackup
 .idea/workspace.xml
+.idea/*.iws
+.idea/*space.xml
+.idea/*asks.xml
