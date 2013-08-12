@@ -334,14 +334,19 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
   window.fresh = fresh
 
 
-  fresh().done (data) ->
+  populateSubMethodsSelect = (data) ->
     subMethods = _.chain(data).map((d) -> d.method).uniq().value()
     subMethods.push('')
 
+    $('#submethods').html('')
+
     d3.select('#submethods').data([subMethods])
     .on('change', () -> redraw())
-    .selectAll('option').data((d) -> d)
-    .enter().append('option').text((d) -> d)
+    $options = d3.select('#submethods').selectAll('option').data((d) -> d)
+    $options.enter().append('option').text((d) -> d)
+    $options.exit().remove((d) ->
+      debugger
+    )
 
   makeGroupByFunction = (order, treefy, cutLongTail) ->
     order = _(order).reverse()
@@ -361,13 +366,15 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       drawSubMethodDeviceChart tree, data, $('#onlyConvertingDevices')[0].checked
 
   # how to call draw: draw subMethods[0],(makeGroupByFunction ['brand_name', 'device_os'], true, true)
-  redraw = () ->
+  redraw = (countryChanged) ->
     fresh().done (data) ->
+      if(countryChanged)
+        populateSubMethodsSelect data
       groupBys = ($('#groupbys-bin').find('li').map () -> $(this).attr('data-groupby')).get()
       tree = draw data, $("#submethods").val(),(makeGroupByFunction groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked)
       redrawSubMethodDeviceChart(tree)
 
-  redraw()
+  redraw(true)
 
 
   $ () ->
@@ -382,6 +389,14 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
     $('#onlyConvertingDevices').on('change', () -> redrawSubMethodDeviceChart())
 
     chart.zoomed (node) -> redrawSubMethodDeviceChart(node)
+
+
+    ['ae','sa','om', 'iq','jo', 'lk'].sort().forEach (c) -> $("select[name=country]").append $("<option />").text(c)
+
+    $("select[name=country]").change () ->
+      country = $("select[name=country]").val()
+      redraw(true)
+
 
 
 

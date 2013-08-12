@@ -11,7 +11,7 @@
   });
 
   require(['chart-modules/bar/chart', 'chart-modules/bar-groups/chart', 'chart-modules/pie/chart', 'chart-modules/common/d3-tooltip', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum'], function(barChart, barGroupsChart, pieChart, tooltip, reduceLongTail, sum) {
-    var chart, chartId, country, createSubMethodDeviceHierarchy, draw, drawSubMethodDeviceChart, fresh, fromDate, groupBy, lastTree, makeGroupByFunction, makeTreeByParentId, query, redraw, redrawSubMethodDeviceChart, subMethodDeviceConvChart, subMethodDeviceVisitsChart, sumVisitsWithChildren, toDate, visitsBySubMethodsChart, visitsBySubMethodsPieChart;
+    var chart, chartId, country, createSubMethodDeviceHierarchy, draw, drawSubMethodDeviceChart, fresh, fromDate, groupBy, lastTree, makeGroupByFunction, makeTreeByParentId, populateSubMethodsSelect, query, redraw, redrawSubMethodDeviceChart, subMethodDeviceConvChart, subMethodDeviceVisitsChart, sumVisitsWithChildren, toDate, visitsBySubMethodsChart, visitsBySubMethodsPieChart;
 
     sumVisitsWithChildren = function(d) {
       if (!!d.children && d.children.length > 0) {
@@ -491,21 +491,27 @@
       });
     };
     window.fresh = fresh;
-    fresh().done(function(data) {
-      var subMethods;
+    populateSubMethodsSelect = function(data) {
+      var $options, subMethods;
 
       subMethods = _.chain(data).map(function(d) {
         return d.method;
       }).uniq().value();
       subMethods.push('');
-      return d3.select('#submethods').data([subMethods]).on('change', function() {
+      $('#submethods').html('');
+      d3.select('#submethods').data([subMethods]).on('change', function() {
         return redraw();
-      }).selectAll('option').data(function(d) {
-        return d;
-      }).enter().append('option').text(function(d) {
+      });
+      $options = d3.select('#submethods').selectAll('option').data(function(d) {
         return d;
       });
-    });
+      $options.enter().append('option').text(function(d) {
+        return d;
+      });
+      return $options.exit().remove(function(d) {
+        debugger;
+      });
+    };
     makeGroupByFunction = function(order, treefy, cutLongTail) {
       var l, lastF, t;
 
@@ -531,10 +537,13 @@
         return drawSubMethodDeviceChart(tree, data, $('#onlyConvertingDevices')[0].checked);
       });
     };
-    redraw = function() {
+    redraw = function(countryChanged) {
       return fresh().done(function(data) {
         var groupBys, tree;
 
+        if (countryChanged) {
+          populateSubMethodsSelect(data);
+        }
         groupBys = ($('#groupbys-bin').find('li').map(function() {
           return $(this).attr('data-groupby');
         })).get();
@@ -542,7 +551,7 @@
         return redrawSubMethodDeviceChart(tree);
       });
     };
-    redraw();
+    redraw(true);
     return $(function() {
       $('#groupbys-bin, #groupbys').sortable({
         connectWith: '.connected'
@@ -556,8 +565,15 @@
       $('#onlyConvertingDevices').on('change', function() {
         return redrawSubMethodDeviceChart();
       });
-      return chart.zoomed(function(node) {
+      chart.zoomed(function(node) {
         return redrawSubMethodDeviceChart(node);
+      });
+      ['ae', 'sa', 'om', 'iq', 'jo', 'lk'].sort().forEach(function(c) {
+        return $("select[name=country]").append($("<option />").text(c));
+      });
+      return $("select[name=country]").change(function() {
+        country = $("select[name=country]").val();
+        return redraw(true);
       });
     });
   });
