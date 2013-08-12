@@ -6,27 +6,15 @@ require.config({
       'text': 'javascript/libs/require-text'
 })
 
-fromDate = new Date(2013,6,1) # July 1
-toDate = new Date(2013,6,15)
-timezone = new Date().getTimezoneOffset() * -60*1000;
-country = 'om'
 
-for d in [fromDate.valueOf()+timezone...toDate.valueOf()+timezone] by (1000*60*60*24)
-  do () ->
-    date = new Date(d).toISOString().split('T')[0]
-    $.get('charts/devicedet-controls/data/sa-'+date+'.csv').done (txt) ->
-      console.log txt.length,date
 
-console.log 'req csv'
-require ['charts/devicedet-controls/data/sa-2013-08-01.csv'], (f1) ->
-  console.log f1
 
 # this too works: /modules-test/modules/hello/module.js
 require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-modules/pie/chart',
          'chart-modules/common/d3-tooltip', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum']
 , (barChart, barGroupsChart, pieChart, tooltip, reduceLongTail, sum) ->
 
-  v = require 'chart-modules/bar/chart'
+
 
 
   sumVisitsWithChildren = (d) ->
@@ -209,7 +197,15 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       visits: 0
 
 
+    chartId = 'chart'
+    $("#chart-container").html('<section id="' + chartId+  '"></section>')
+
+    chart = treeMapZoomableChart()
+    d3.select('#'+chartId).call chart
+
     chart.draw tree
+
+    chart.zoomed (node) -> redrawSubMethodDeviceChart(node)
 
     tree
 
@@ -284,26 +280,42 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       }
 
 
-  chart = treeMapZoomableChart()
-  d3.select('#chart').call chart
 
 
-  d3.csv 'charts/devicedet-controls/data/iq-pin-android.csv', (raw) ->
+
+  fromDate = new Date(2013,6,1) # July 1
+  toDate = new Date(2013,6,15)
+  timezone = new Date().getTimezoneOffset() * -60*1000;
+  country = 'om'
+
+  dates = (toDate.valueOf()-fromDate.valueOf())/ (1000*60*60*24)
+  gets = [0..dates-1].map((i) -> fromDate.valueOf() + (i*(1000*60*60*24)) + timezone).map((d) -> {date:d, dateName: new Date(d).toISOString().split('T')[0]}).map (d) -> {date:d.date,dateName:d.dateName,def:$.get('charts/devicedet-controls/data/sa-'+d.dateName+'.csv')}
+  $.when.apply(this,gets.map (d) -> d.def).done () ->
+    #console.log 'all done', arguments
+    items = _.chain(Array.prototype.slice.call(arguments, 0).map (d) -> d3.csv.parse d[0]).flatten().groupBy('wurfl_device_id').map((deviceArr) ->
+      _.chain(deviceArr).groupBy('Method').map((arr, method) ->
+        visits = sum arr.map (d) -> +d.Visits
+        subscribers = sum arr.map (d) ->  +d.Subscribers
+        wurfl_device_id : arr[0].wurfl_device_id
+        wurfl_fall_back : arr[0].wurfl_fall_back
+        brand_name : arr[0].brand_name
+        model_name : arr[0].model_name
+        device_os :arr[0].device_os
+        visits : visits
+        subscribers : subscribers
+        method : method
+        conv : subscribers/visits
+      ).value()
+    ).flatten().value()
+
 
     fresh = () ->
-      raw.map (d) ->
-        wurfl_device_id : d.wurfl_device_id
-        wurfl_fall_back : d.wurfl_fall_back
-        brand_name : d.brand_name
-        model_name : d.model_name
-        visits : +d.visits
-        subscribers : +d.subscribers
-        method : d.method
-        conv : (+d.conv) or 0
-        device_os :d.device_os
-        children : []
+      _.chain(items).map((i) ->
+        i.children = []
+        return i
+      ).clone().value()
 
-    window.fresh= fresh
+    window.fresh = fresh
 
 
     $ ()->
@@ -352,4 +364,4 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       $('#onlyConvertingDevices').on('change', () -> redrawSubMethodDeviceChart())
 
 
-    chart.zoomed (node) -> redrawSubMethodDeviceChart(node)
+
