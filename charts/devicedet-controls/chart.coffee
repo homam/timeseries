@@ -157,6 +157,13 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
   # treemap chart
 
+  chartId = 'chart'
+  $("#chart-container").html('<section id="' + chartId+  '"></section>')
+
+  chart = treeMapZoomableChart()
+  d3.select('#'+chartId).call chart
+
+
   draw = (data, method, chartDataMap) ->
     chartData = null
     if !method
@@ -196,16 +203,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       stdevConversion: totalStdevConv
       visits: 0
 
-
-    chartId = 'chart'
-    $("#chart-container").html('<section id="' + chartId+  '"></section>')
-
-    chart = treeMapZoomableChart()
-    d3.select('#'+chartId).call chart
-
     chart.draw tree
-
-    chart.zoomed (node) -> redrawSubMethodDeviceChart(node)
 
     tree
 
@@ -281,87 +279,109 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
 
 
+  query = do () ->
 
+    cached = null
+    cachedKey = null
+    makeCacheKey = (f,t,c) -> c + f.valueOf() + t.valueOf()
+    getCache = (fromDate, toDate, country) ->  if makeCacheKey(fromDate,toDate,country) == cachedKey then cached else null
+    saveCache = (fromDate, toDate, country,value) ->
+      cachedKey = makeCacheKey(fromDate,toDate,country)
+      cached = value
+
+
+    return (fromDate, toDate, country) ->
+      p = $.Deferred()
+      if getCache(fromDate,toDate,country)
+        p.resolve cached
+      else
+        timezone = new Date().getTimezoneOffset() * -60*1000;
+        dates = (toDate.valueOf()-fromDate.valueOf())/ (1000*60*60*24)
+        gets = [0..dates-1].map((i) -> fromDate.valueOf() + (i*(1000*60*60*24)) + timezone).map((d) -> {date:d, dateName: new Date(d).toISOString().split('T')[0]}).map (d) -> {date:d.date,dateName:d.dateName,def:$.get('charts/devicedet-controls/data/'+country+'-'+d.dateName+'.csv')}
+        $.when.apply(this,gets.map (d) -> d.def).done () ->
+          items = _.chain(Array.prototype.slice.call(arguments, 0).map (d) -> d3.csv.parse d[0]).flatten().groupBy('wurfl_device_id').map((deviceArr) ->
+            _.chain(deviceArr).groupBy('Method').map((arr, method) ->
+              visits = sum arr.map (d) -> +d.Visits
+              subscribers = sum arr.map (d) ->  +d.Subscribers
+              wurfl_device_id : arr[0].wurfl_device_id
+              wurfl_fall_back : arr[0].wurfl_fall_back
+              brand_name : arr[0].brand_name
+              model_name : arr[0].model_name
+              device_os :arr[0].device_os
+              visits : visits
+              subscribers : subscribers
+              method : method
+              conv : subscribers/visits
+            ).value()
+          ).flatten().value()
+          p.resolve items
+          saveCache(fromDate,toDate,country, items)
+      return p
 
   fromDate = new Date(2013,6,1) # July 1
   toDate = new Date(2013,6,15)
-  timezone = new Date().getTimezoneOffset() * -60*1000;
   country = 'om'
 
-  dates = (toDate.valueOf()-fromDate.valueOf())/ (1000*60*60*24)
-  gets = [0..dates-1].map((i) -> fromDate.valueOf() + (i*(1000*60*60*24)) + timezone).map((d) -> {date:d, dateName: new Date(d).toISOString().split('T')[0]}).map (d) -> {date:d.date,dateName:d.dateName,def:$.get('charts/devicedet-controls/data/sa-'+d.dateName+'.csv')}
-  $.when.apply(this,gets.map (d) -> d.def).done () ->
-    #console.log 'all done', arguments
-    items = _.chain(Array.prototype.slice.call(arguments, 0).map (d) -> d3.csv.parse d[0]).flatten().groupBy('wurfl_device_id').map((deviceArr) ->
-      _.chain(deviceArr).groupBy('Method').map((arr, method) ->
-        visits = sum arr.map (d) -> +d.Visits
-        subscribers = sum arr.map (d) ->  +d.Subscribers
-        wurfl_device_id : arr[0].wurfl_device_id
-        wurfl_fall_back : arr[0].wurfl_fall_back
-        brand_name : arr[0].brand_name
-        model_name : arr[0].model_name
-        device_os :arr[0].device_os
-        visits : visits
-        subscribers : subscribers
-        method : method
-        conv : subscribers/visits
-      ).value()
-    ).flatten().value()
 
 
-    fresh = () ->
+  fresh = () ->
+    query(fromDate,toDate,country).done (items) ->
       _.chain(items).map((i) ->
         i.children = []
         return i
       ).clone().value()
 
-    window.fresh = fresh
+  window.fresh = fresh
 
 
-    $ ()->
-      subMethods = _.chain(fresh()).map((d) -> d.method).uniq().value()
-      subMethods.push('')
+  fresh().done (data) ->
+    subMethods = _.chain(data).map((d) -> d.method).uniq().value()
+    subMethods.push('')
 
-      d3.select('#submethods').data([subMethods])
-      .on('change', () -> redraw())
-      .selectAll('option').data((d) -> d)
-      .enter().append('option').text((d) -> d)
+    d3.select('#submethods').data([subMethods])
+    .on('change', () -> redraw())
+    .selectAll('option').data((d) -> d)
+    .enter().append('option').text((d) -> d)
 
-    makeGroupByFunction = (order, treefy, cutLongTail) ->
-      order = _(order).reverse()
-      t = if treefy then _.partial(makeTreeByParentId, cutLongTail) else _.identity
-      l = if cutLongTail and not treefy then reduceLongTail else _.identity
-      lastF = _.compose(t,l)
-      order.forEach (p) ->
-        lastF = _.partial groupBy, lastF, (d) -> d[p]
-      lastF
+  makeGroupByFunction = (order, treefy, cutLongTail) ->
+    order = _(order).reverse()
+    t = if treefy then _.partial(makeTreeByParentId, cutLongTail) else _.identity
+    l = if cutLongTail and not treefy then reduceLongTail else _.identity
+    lastF = _.compose(t,l)
+    order.forEach (p) ->
+      lastF = _.partial groupBy, lastF, (d) -> d[p]
+    lastF
 
 
-    lastTree = null
-    redrawSubMethodDeviceChart = (tree = null) ->
+  lastTree = null
+  redrawSubMethodDeviceChart = (tree = null) ->
+    fresh().done (data) ->
       tree = tree or lastTree
       lastTree = tree
-      drawSubMethodDeviceChart tree, fresh(), $('#onlyConvertingDevices')[0].checked
+      drawSubMethodDeviceChart tree, data, $('#onlyConvertingDevices')[0].checked
 
-    # how to call draw: draw subMethods[0],(makeGroupByFunction ['brand_name', 'device_os'], true, true)
-    redraw = () ->
+  # how to call draw: draw subMethods[0],(makeGroupByFunction ['brand_name', 'device_os'], true, true)
+  redraw = () ->
+    fresh().done (data) ->
       groupBys = ($('#groupbys-bin').find('li').map () -> $(this).attr('data-groupby')).get()
-      tree = draw fresh(), $("#submethods").val(),(makeGroupByFunction groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked)
+      tree = draw data, $("#submethods").val(),(makeGroupByFunction groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked)
       redrawSubMethodDeviceChart(tree)
 
-    redraw()
+  redraw()
 
 
-    $ () ->
+  $ () ->
 
-      $('#groupbys-bin, #groupbys').sortable({
-        connectWith: '.connected'
-      })
-      $('#groupbys-bin, #groupbys').on('dragend', () -> redraw())
+    $('#groupbys-bin, #groupbys').sortable({
+      connectWith: '.connected'
+    })
+    $('#groupbys-bin, #groupbys').on('dragend', () -> redraw())
 
-      $('#treefy, #collectLongTail').on('change', () -> redraw())
+    $('#treefy, #collectLongTail').on('change', () -> redraw())
 
-      $('#onlyConvertingDevices').on('change', () -> redrawSubMethodDeviceChart())
+    $('#onlyConvertingDevices').on('change', () -> redrawSubMethodDeviceChart())
+
+    chart.zoomed (node) -> redrawSubMethodDeviceChart(node)
 
 
 

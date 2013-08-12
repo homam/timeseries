@@ -11,7 +11,7 @@
   });
 
   require(['chart-modules/bar/chart', 'chart-modules/bar-groups/chart', 'chart-modules/pie/chart', 'chart-modules/common/d3-tooltip', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum'], function(barChart, barGroupsChart, pieChart, tooltip, reduceLongTail, sum) {
-    var country, createSubMethodDeviceHierarchy, dates, draw, drawSubMethodDeviceChart, fromDate, gets, groupBy, makeTreeByParentId, subMethodDeviceConvChart, subMethodDeviceVisitsChart, sumVisitsWithChildren, timezone, toDate, visitsBySubMethodsChart, visitsBySubMethodsPieChart, _i, _ref, _results;
+    var chart, chartId, country, createSubMethodDeviceHierarchy, draw, drawSubMethodDeviceChart, fresh, fromDate, groupBy, lastTree, makeGroupByFunction, makeTreeByParentId, query, redraw, redrawSubMethodDeviceChart, subMethodDeviceConvChart, subMethodDeviceVisitsChart, sumVisitsWithChildren, toDate, visitsBySubMethodsChart, visitsBySubMethodsPieChart;
 
     sumVisitsWithChildren = function(d) {
       if (!!d.children && d.children.length > 0) {
@@ -236,8 +236,12 @@
         return v.name;
       });
     };
+    chartId = 'chart';
+    $("#chart-container").html('<section id="' + chartId + '"></section>');
+    chart = treeMapZoomableChart();
+    d3.select('#' + chartId).call(chart);
     draw = function(data, method, chartDataMap) {
-      var chart, chartData, chartId, groups, totalConv, totalStdevConv, totalSubs, totalVisits, tree;
+      var chartData, groups, totalConv, totalStdevConv, totalSubs, totalVisits, tree;
 
       chartData = null;
       if (!method) {
@@ -292,14 +296,7 @@
         stdevConversion: totalStdevConv,
         visits: 0
       };
-      chartId = 'chart';
-      $("#chart-container").html('<section id="' + chartId + '"></section>');
-      chart = treeMapZoomableChart();
-      d3.select('#' + chartId).call(chart);
       chart.draw(tree);
-      chart.zoomed(function(node) {
-        return redrawSubMethodDeviceChart(node);
-      });
       return tree;
     };
     makeTreeByParentId = (function() {
@@ -399,127 +396,168 @@
         };
       });
     };
+    query = (function() {
+      var cached, cachedKey, getCache, makeCacheKey, saveCache;
+
+      cached = null;
+      cachedKey = null;
+      makeCacheKey = function(f, t, c) {
+        return c + f.valueOf() + t.valueOf();
+      };
+      getCache = function(fromDate, toDate, country) {
+        if (makeCacheKey(fromDate, toDate, country) === cachedKey) {
+          return cached;
+        } else {
+          return null;
+        }
+      };
+      saveCache = function(fromDate, toDate, country, value) {
+        cachedKey = makeCacheKey(fromDate, toDate, country);
+        return cached = value;
+      };
+      return function(fromDate, toDate, country) {
+        var dates, gets, p, timezone, _i, _ref, _results;
+
+        p = $.Deferred();
+        if (getCache(fromDate, toDate, country)) {
+          p.resolve(cached);
+        } else {
+          timezone = new Date().getTimezoneOffset() * -60 * 1000;
+          dates = (toDate.valueOf() - fromDate.valueOf()) / (1000 * 60 * 60 * 24);
+          gets = (function() {
+            _results = [];
+            for (var _i = 0, _ref = dates - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; 0 <= _ref ? _i++ : _i--){ _results.push(_i); }
+            return _results;
+          }).apply(this).map(function(i) {
+            return fromDate.valueOf() + (i * (1000 * 60 * 60 * 24)) + timezone;
+          }).map(function(d) {
+            return {
+              date: d,
+              dateName: new Date(d).toISOString().split('T')[0]
+            };
+          }).map(function(d) {
+            return {
+              date: d.date,
+              dateName: d.dateName,
+              def: $.get('charts/devicedet-controls/data/' + country + '-' + d.dateName + '.csv')
+            };
+          });
+          $.when.apply(this, gets.map(function(d) {
+            return d.def;
+          })).done(function() {
+            var items;
+
+            items = _.chain(Array.prototype.slice.call(arguments, 0).map(function(d) {
+              return d3.csv.parse(d[0]);
+            })).flatten().groupBy('wurfl_device_id').map(function(deviceArr) {
+              return _.chain(deviceArr).groupBy('Method').map(function(arr, method) {
+                var subscribers, visits;
+
+                visits = sum(arr.map(function(d) {
+                  return +d.Visits;
+                }));
+                subscribers = sum(arr.map(function(d) {
+                  return +d.Subscribers;
+                }));
+                return {
+                  wurfl_device_id: arr[0].wurfl_device_id,
+                  wurfl_fall_back: arr[0].wurfl_fall_back,
+                  brand_name: arr[0].brand_name,
+                  model_name: arr[0].model_name,
+                  device_os: arr[0].device_os,
+                  visits: visits,
+                  subscribers: subscribers,
+                  method: method,
+                  conv: subscribers / visits
+                };
+              }).value();
+            }).flatten().value();
+            p.resolve(items);
+            return saveCache(fromDate, toDate, country, items);
+          });
+        }
+        return p;
+      };
+    })();
     fromDate = new Date(2013, 6, 1);
     toDate = new Date(2013, 6, 15);
-    timezone = new Date().getTimezoneOffset() * -60 * 1000;
     country = 'om';
-    dates = (toDate.valueOf() - fromDate.valueOf()) / (1000 * 60 * 60 * 24);
-    gets = (function() {
-      _results = [];
-      for (var _i = 0, _ref = dates - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; 0 <= _ref ? _i++ : _i--){ _results.push(_i); }
-      return _results;
-    }).apply(this).map(function(i) {
-      return fromDate.valueOf() + (i * (1000 * 60 * 60 * 24)) + timezone;
-    }).map(function(d) {
-      return {
-        date: d,
-        dateName: new Date(d).toISOString().split('T')[0]
-      };
-    }).map(function(d) {
-      return {
-        date: d.date,
-        dateName: d.dateName,
-        def: $.get('charts/devicedet-controls/data/sa-' + d.dateName + '.csv')
-      };
-    });
-    return $.when.apply(this, gets.map(function(d) {
-      return d.def;
-    })).done(function() {
-      var fresh, items, lastTree, makeGroupByFunction, redraw, redrawSubMethodDeviceChart;
-
-      items = _.chain(Array.prototype.slice.call(arguments, 0).map(function(d) {
-        return d3.csv.parse(d[0]);
-      })).flatten().groupBy('wurfl_device_id').map(function(deviceArr) {
-        return _.chain(deviceArr).groupBy('Method').map(function(arr, method) {
-          var subscribers, visits;
-
-          visits = sum(arr.map(function(d) {
-            return +d.Visits;
-          }));
-          subscribers = sum(arr.map(function(d) {
-            return +d.Subscribers;
-          }));
-          return {
-            wurfl_device_id: arr[0].wurfl_device_id,
-            wurfl_fall_back: arr[0].wurfl_fall_back,
-            brand_name: arr[0].brand_name,
-            model_name: arr[0].model_name,
-            device_os: arr[0].device_os,
-            visits: visits,
-            subscribers: subscribers,
-            method: method,
-            conv: subscribers / visits
-          };
-        }).value();
-      }).flatten().value();
-      fresh = function() {
+    fresh = function() {
+      return query(fromDate, toDate, country).done(function(items) {
         return _.chain(items).map(function(i) {
           i.children = [];
           return i;
         }).clone().value();
-      };
-      window.fresh = fresh;
-      $(function() {
-        var subMethods;
+      });
+    };
+    window.fresh = fresh;
+    fresh().done(function(data) {
+      var subMethods;
 
-        subMethods = _.chain(fresh()).map(function(d) {
-          return d.method;
-        }).uniq().value();
-        subMethods.push('');
-        return d3.select('#submethods').data([subMethods]).on('change', function() {
-          return redraw();
-        }).selectAll('option').data(function(d) {
-          return d;
-        }).enter().append('option').text(function(d) {
-          return d;
+      subMethods = _.chain(data).map(function(d) {
+        return d.method;
+      }).uniq().value();
+      subMethods.push('');
+      return d3.select('#submethods').data([subMethods]).on('change', function() {
+        return redraw();
+      }).selectAll('option').data(function(d) {
+        return d;
+      }).enter().append('option').text(function(d) {
+        return d;
+      });
+    });
+    makeGroupByFunction = function(order, treefy, cutLongTail) {
+      var l, lastF, t;
+
+      order = _(order).reverse();
+      t = treefy ? _.partial(makeTreeByParentId, cutLongTail) : _.identity;
+      l = cutLongTail && !treefy ? reduceLongTail : _.identity;
+      lastF = _.compose(t, l);
+      order.forEach(function(p) {
+        return lastF = _.partial(groupBy, lastF, function(d) {
+          return d[p];
         });
       });
-      makeGroupByFunction = function(order, treefy, cutLongTail) {
-        var l, lastF, t;
-
-        order = _(order).reverse();
-        t = treefy ? _.partial(makeTreeByParentId, cutLongTail) : _.identity;
-        l = cutLongTail && !treefy ? reduceLongTail : _.identity;
-        lastF = _.compose(t, l);
-        order.forEach(function(p) {
-          return lastF = _.partial(groupBy, lastF, function(d) {
-            return d[p];
-          });
-        });
-        return lastF;
-      };
-      lastTree = null;
-      redrawSubMethodDeviceChart = function(tree) {
-        if (tree == null) {
-          tree = null;
-        }
+      return lastF;
+    };
+    lastTree = null;
+    redrawSubMethodDeviceChart = function(tree) {
+      if (tree == null) {
+        tree = null;
+      }
+      return fresh().done(function(data) {
         tree = tree || lastTree;
         lastTree = tree;
-        return drawSubMethodDeviceChart(tree, fresh(), $('#onlyConvertingDevices')[0].checked);
-      };
-      redraw = function() {
+        return drawSubMethodDeviceChart(tree, data, $('#onlyConvertingDevices')[0].checked);
+      });
+    };
+    redraw = function() {
+      return fresh().done(function(data) {
         var groupBys, tree;
 
         groupBys = ($('#groupbys-bin').find('li').map(function() {
           return $(this).attr('data-groupby');
         })).get();
-        tree = draw(fresh(), $("#submethods").val(), makeGroupByFunction(groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked));
+        tree = draw(data, $("#submethods").val(), makeGroupByFunction(groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked));
         return redrawSubMethodDeviceChart(tree);
-      };
-      redraw();
-      return $(function() {
-        $('#groupbys-bin, #groupbys').sortable({
-          connectWith: '.connected'
-        });
-        $('#groupbys-bin, #groupbys').on('dragend', function() {
-          return redraw();
-        });
-        $('#treefy, #collectLongTail').on('change', function() {
-          return redraw();
-        });
-        return $('#onlyConvertingDevices').on('change', function() {
-          return redrawSubMethodDeviceChart();
-        });
+      });
+    };
+    redraw();
+    return $(function() {
+      $('#groupbys-bin, #groupbys').sortable({
+        connectWith: '.connected'
+      });
+      $('#groupbys-bin, #groupbys').on('dragend', function() {
+        return redraw();
+      });
+      $('#treefy, #collectLongTail').on('change', function() {
+        return redraw();
+      });
+      $('#onlyConvertingDevices').on('change', function() {
+        return redrawSubMethodDeviceChart();
+      });
+      return chart.zoomed(function(node) {
+        return redrawSubMethodDeviceChart(node);
       });
     });
   });
