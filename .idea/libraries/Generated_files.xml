@@ -8,6 +8,7 @@
         <item url="file://$PROJECT_DIR$/chart-modules/utils/sum.js" />
         <item url="file://$PROJECT_DIR$/chart-modules/bar-groups/test.js" />
         <item url="file://$PROJECT_DIR$/chart-modules/bar-groups/chart.js" />
+        <item url="file://$PROJECT_DIR$/routes/index.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
@@ -17,6 +18,7 @@
       <root url="file://$PROJECT_DIR$/chart-modules/utils/sum.js" />
       <root url="file://$PROJECT_DIR$/chart-modules/bar-groups/test.js" />
       <root url="file://$PROJECT_DIR$/chart-modules/bar-groups/chart.js" />
+      <root url="file://$PROJECT_DIR$/routes/index.js" />
     </CLASSES>
     <SOURCES />
   </library>

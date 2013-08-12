@@ -51,6 +51,11 @@
         title: 'Device Detection'
       });
     });
+    app.get('/devicedet-controls', function(req, res) {
+      return res.render('../charts/devicedet-controls/view', {
+        title: 'Device Detection with Controls'
+      });
+    });
     app.get('/grouped-bars', function(req, res) {
       return res.render('../charts/grouped-bars/view', {
         title: 'Submethod Groups'
