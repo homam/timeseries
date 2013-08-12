@@ -278,6 +278,16 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       }
 
 
+  makeGroupByFunction = (order, treefy, cutLongTail) ->
+    order = _(order).reverse()
+    t = if treefy then _.partial(makeTreeByParentId, cutLongTail) else _.identity
+    l = if cutLongTail and not treefy then reduceLongTail else _.identity
+    lastF = _.compose(t,l)
+    order.forEach (p) ->
+      lastF = _.partial groupBy, lastF, (d) -> d[p]
+    lastF
+
+
 
   query = do () ->
 
@@ -348,14 +358,6 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       debugger
     )
 
-  makeGroupByFunction = (order, treefy, cutLongTail) ->
-    order = _(order).reverse()
-    t = if treefy then _.partial(makeTreeByParentId, cutLongTail) else _.identity
-    l = if cutLongTail and not treefy then reduceLongTail else _.identity
-    lastF = _.compose(t,l)
-    order.forEach (p) ->
-      lastF = _.partial groupBy, lastF, (d) -> d[p]
-    lastF
 
 
   lastTree = null
@@ -371,8 +373,10 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       if(countryChanged)
         populateSubMethodsSelect data
       groupBys = ($('#groupbys-bin').find('li').map () -> $(this).attr('data-groupby')).get()
-      tree = draw data, $("#submethods").val(),(makeGroupByFunction groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked)
-      redrawSubMethodDeviceChart(tree)
+      setTimeout () ->
+        tree = draw data, $("#submethods").val(),(makeGroupByFunction groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked)
+        redrawSubMethodDeviceChart(tree)
+      ,10 # first update the select then render the graph
 
   redraw(true)
 

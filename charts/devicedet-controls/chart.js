@@ -396,6 +396,20 @@
         };
       });
     };
+    makeGroupByFunction = function(order, treefy, cutLongTail) {
+      var l, lastF, t;
+
+      order = _(order).reverse();
+      t = treefy ? _.partial(makeTreeByParentId, cutLongTail) : _.identity;
+      l = cutLongTail && !treefy ? reduceLongTail : _.identity;
+      lastF = _.compose(t, l);
+      order.forEach(function(p) {
+        return lastF = _.partial(groupBy, lastF, function(d) {
+          return d[p];
+        });
+      });
+      return lastF;
+    };
     query = (function() {
       var cached, cachedKey, getCache, makeCacheKey, saveCache;
 
@@ -512,20 +526,6 @@
         debugger;
       });
     };
-    makeGroupByFunction = function(order, treefy, cutLongTail) {
-      var l, lastF, t;
-
-      order = _(order).reverse();
-      t = treefy ? _.partial(makeTreeByParentId, cutLongTail) : _.identity;
-      l = cutLongTail && !treefy ? reduceLongTail : _.identity;
-      lastF = _.compose(t, l);
-      order.forEach(function(p) {
-        return lastF = _.partial(groupBy, lastF, function(d) {
-          return d[p];
-        });
-      });
-      return lastF;
-    };
     lastTree = null;
     redrawSubMethodDeviceChart = function(tree) {
       if (tree == null) {
@@ -539,7 +539,7 @@
     };
     redraw = function(countryChanged) {
       return fresh().done(function(data) {
-        var groupBys, tree;
+        var groupBys;
 
         if (countryChanged) {
           populateSubMethodsSelect(data);
@@ -547,8 +547,12 @@
         groupBys = ($('#groupbys-bin').find('li').map(function() {
           return $(this).attr('data-groupby');
         })).get();
-        tree = draw(data, $("#submethods").val(), makeGroupByFunction(groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked));
-        return redrawSubMethodDeviceChart(tree);
+        return setTimeout(function() {
+          var tree;
+
+          tree = draw(data, $("#submethods").val(), makeGroupByFunction(groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked));
+          return redrawSubMethodDeviceChart(tree);
+        }, 10);
       });
     };
     redraw(true);
