@@ -6,6 +6,20 @@ require.config({
       'text': 'javascript/libs/require-text'
 })
 
+fromDate = new Date(2013,6,1) # July 1
+toDate = new Date(2013,6,15)
+timezone = new Date().getTimezoneOffset() * -60*1000;
+country = 'om'
+
+for d in [fromDate.valueOf()+timezone...toDate.valueOf()+timezone] by (1000*60*60*24)
+  do () ->
+    date = new Date(d).toISOString().split('T')[0]
+    $.get('charts/devicedet-controls/data/sa-'+date+'.csv').done (txt) ->
+      console.log txt.length,date
+
+console.log 'req csv'
+require ['charts/devicedet-controls/data/sa-2013-08-01.csv'], (f1) ->
+  console.log f1
 
 # this too works: /modules-test/modules/hello/module.js
 require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-modules/pie/chart',
@@ -274,7 +288,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
   d3.select('#chart').call chart
 
 
-  d3.csv 'charts/devicedet/data/iq-pin-android.csv', (raw) ->
+  d3.csv 'charts/devicedet-controls/data/iq-pin-android.csv', (raw) ->
 
     fresh = () ->
       raw.map (d) ->

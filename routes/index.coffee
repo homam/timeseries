@@ -41,7 +41,7 @@ exports.register = (app) ->
 
   app.get '/devicedet-controls', (req, res) ->
     res.render '../charts/devicedet-controls/view',
-      title: 'Device Detection with Controls'
+      title: 'Device Detection with Controls
 
   app.get '/grouped-bars', (req, res) ->
     res.render '../charts/grouped-bars/view',

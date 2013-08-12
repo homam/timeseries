@@ -5,6 +5,7 @@
         <item url="file://$PROJECT_DIR$/charts/devicedet/chart.js" />
         <item url="file://$PROJECT_DIR$/chart-modules/bar/chart.js" />
         <item url="file://$PROJECT_DIR$/charts/devicedet/treemap-zoomable.js" />
+        <item url="file://$PROJECT_DIR$/charts/devicedet-controls/chart.js" />
         <item url="file://$PROJECT_DIR$/chart-modules/utils/sum.js" />
         <item url="file://$PROJECT_DIR$/chart-modules/bar-groups/test.js" />
         <item url="file://$PROJECT_DIR$/chart-modules/bar-groups/chart.js" />
@@ -15,6 +16,7 @@
       <root url="file://$PROJECT_DIR$/charts/devicedet/chart.js" />
       <root url="file://$PROJECT_DIR$/chart-modules/bar/chart.js" />
       <root url="file://$PROJECT_DIR$/charts/devicedet/treemap-zoomable.js" />
+      <root url="file://$PROJECT_DIR$/charts/devicedet-controls/chart.js" />
       <root url="file://$PROJECT_DIR$/chart-modules/utils/sum.js" />
       <root url="file://$PROJECT_DIR$/chart-modules/bar-groups/test.js" />
       <root url="file://$PROJECT_DIR$/chart-modules/bar-groups/chart.js" />
