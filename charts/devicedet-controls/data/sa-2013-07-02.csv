@@ -1,0 +1,1505 @@
+brand_name,model_name,wurfl_device_id,wurfl_fall_back,Method,Visits,Op Sel Visits,Op Sel Visits Only,LP Visits,Submissions,Subscribers,Conv,RealConv,marketing_name,device_os,device_os_version,release_date,mobile_browser
+,,generic,root,CLICKTAG,37,1,0,37,0,0,0,0,,,,2002_january,
+,,generic,root,,1,1,1,0,0,0,0,0,,,,2002_january,
+,,generic,root,SMS_WAP,1,0,0,1,0,0,0,0,,,,2002_january,
+,,generic_mobile,generic,WAPPIN,5,0,0,5,0,0,0,0,,,,2002_january,
+,,generic_mobile,generic,,139,139,139,0,0,0,0,0,,,,2002_january,
+,,generic_mobile,generic,SMS_WAP,300,4,0,300,0,0,0,0,,,,2002_january,
+,,generic_mobile,generic,CLICKTAG,1965,15,0,1965,0,0,0,0,,,,2002_january,
+,,generic_mobile,generic,JAVA_APP,61,0,0,61,0,0,0,0,,,,2002_january,
+generic web browser,,generic_web_browser,generic,CLICKTAG,2,0,0,2,0,0,0,0,,,,1994_january,
+Nokia,,nokia_generic_series60,nokia_generic_series40,SMS_WAP,2,1,0,2,0,0,0,0,,Symbian OS,,2002_january,Nokia
+Nokia,,nokia_generic_series60,nokia_generic_series40,CLICKTAG,42,2,0,42,1,1,0.0238095238095238,0.0238095238095238,,Symbian OS,,2002_january,Nokia
+Nokia,,nokia_generic_series60,nokia_generic_series40,,6,6,6,0,0,0,0,0,,Symbian OS,,2002_january,Nokia
+Mozilla,Firefox for Android Tablet,generic_android_ver2_0_fennec_tablet,generic_android_ver2_2,GooglePlay,11,0,0,11,0,0,0,0,,Android,2.2,2012_june,Fennec
+Mozilla,Firefox for Android Tablet,generic_android_ver2_0_fennec_tablet,generic_android_ver2_2,SMS_WAP,4,0,0,4,0,0,0,0,,Android,2.2,2012_june,Fennec
+Generic,Android 4.1,generic_android_ver4_1,generic_android_ver4,,9,9,9,0,0,0,0,0,,Android,4.1,2011_december,Android Webkit
+Generic,Android 4.1,generic_android_ver4_1,generic_android_ver4,SMS_WAP,15,0,0,15,0,0,0,0,,Android,4.1,2011_december,Android Webkit
+Generic,Android 4.1,generic_android_ver4_1,generic_android_ver4,GooglePlay,69,2,0,69,1,1,0.0144927536231884,0.0144927536231884,,Android,4.1,2011_december,Android Webkit
+Generic,J2ME Midlet,generic_midp_midlet,generic_mobile,,5,5,5,0,0,0,0,0,,,,2006_january,
+Generic,J2ME Midlet,generic_midp_midlet,generic_mobile,SMS_WAP,22,2,0,22,0,0,0,0,,,,2006_january,
+Generic,J2ME Midlet,generic_midp_midlet,generic_mobile,JAVA_APP,8,0,0,8,0,0,0,0,,,,2006_january,
+Generic,J2ME Midlet,generic_midp_midlet,generic_mobile,CLICKTAG,137,1,0,137,0,0,0,0,,,,2006_january,
+Generic,Android 4.0,generic_android_ver4,generic_android_ver2_4,,6,6,6,0,0,0,0,0,,Android,4.0,2011_october,Android Webkit
+Generic,Android 4.0,generic_android_ver4,generic_android_ver2_4,GooglePlay,140,1,0,140,0,0,0,0,,Android,4.0,2011_october,Android Webkit
+Generic,Android 4.0,generic_android_ver4,generic_android_ver2_4,SMS_WAP,33,1,0,33,0,0,0,0,,Android,4.0,2011_october,Android Webkit
+Generic,Android 2.3,generic_android_ver2_3_ucweb,generic_android_ver2_3,SMS_WAP,1,0,0,1,0,0,0,0,,Android,2.3,2010_november,UCWeb
+Generic,Android 2.3,generic_android_ver2_3_ucweb,generic_android_ver2_3,GooglePlay,3,0,0,3,0,0,0,0,,Android,2.3,2010_november,UCWeb
+Generic,Android 2.2,generic_android_ver2_2_ucweb,generic_android_ver2_2,GooglePlay,2,0,0,2,0,0,0,0,,Android,2.2,2009_october,UCWeb
+Generic,Android 2.0,generic_android_ver2_0_ucweb,generic_android_ver2,GooglePlay,1,0,0,1,0,0,0,0,,Android,2.0,2009_october,UCWeb
+Generic,Android 2.0,generic_android_ver2_0_ucweb,generic_android_ver2,SMS_WAP,2,0,0,2,0,0,0,0,,Android,2.0,2009_october,UCWeb
+Mozilla,Firefox for Android,generic_android_ver2_0_fennec,generic_android_ver2_2,,4,4,4,0,0,0,0,0,,Android,2.2,2012_june,Fennec
+Mozilla,Firefox for Android,generic_android_ver2_0_fennec,generic_android_ver2_2,SMS_WAP,13,0,0,13,0,0,0,0,,Android,2.2,2012_june,Fennec
+Mozilla,Firefox for Android,generic_android_ver2_0_fennec,generic_android_ver2_2,GooglePlay,39,0,0,39,1,1,0.0256410256410256,0.0256410256410256,,Android,2.2,2012_june,Fennec
+Opera,Tablet on Android,generic_android_ver3_2_opera_tablet,generic_android_ver3_2,SMS_WAP,2,0,0,2,0,0,0,0,,Android,3.2,2011_february,Opera Tablet
+Opera,Tablet on Android,generic_android_ver3_2_opera_tablet,generic_android_ver3_2,GooglePlay,1,0,0,1,0,0,0,0,,Android,3.2,2011_february,Opera Tablet
+Opera,Mobi for Android,generic_android_ver2_3_opera_mobi_11,generic_android_ver2_3_opera_mobi,GooglePlay,2,0,0,2,0,0,0,0,,Android,2.3,2010_november,Opera Mobi
+Generic,Android 2.0,generic_android_ver2_0_opera_mobi,generic_android_ver2,GooglePlay,140,2,0,140,1,1,0.00714285714285714,0.00714285714285714,,Android,2.0,2009_october,Opera Mobi
+Generic,Android 2.0,generic_android_ver2_0_opera_mobi,generic_android_ver2,,1,1,1,0,0,0,0,0,,Android,2.0,2009_october,Opera Mobi
+Generic,Android 2.0,generic_android_ver2_0_opera_mobi,generic_android_ver2,SMS_WAP,13,1,0,13,0,0,0,0,,Android,2.0,2009_october,Opera Mobi
+Opera,Mini 5,generic_opera_mini_android_version5,generic_opera_mini_android_version4,GooglePlay,12,0,0,12,0,0,0,0,,Android,2.0,2009_september,Opera Mini
+Opera,Mini 5,generic_opera_mini_android_version5,generic_opera_mini_android_version4,SMS_WAP,1,0,0,1,0,0,0,0,,Android,2.0,2009_september,Opera Mini
+Generic,Windows Phone 7.5,generic_ms_phone_os7_5,generic_ms_phone_os7,CLICKTAG,17,2,0,17,0,0,0,0,,Windows Phone OS,7.5,2011_july,IEMobile
+Generic,Windows Phone 7.5,generic_ms_phone_os7_5,generic_ms_phone_os7,,1,1,1,0,0,0,0,0,,Windows Phone OS,7.5,2011_july,IEMobile
+Generic,Windows Phone 7.5,generic_ms_phone_os7_5,generic_ms_phone_os7,SMS_WAP,1,0,0,1,0,0,0,0,,Windows Phone OS,7.5,2011_july,IEMobile
+Generic,Android 2.3,generic_android_ver2_3,generic_android_ver2_2,SMS_WAP,6,0,0,6,0,0,0,0,,Android,2.3,2010_november,Android Webkit
+Generic,Android 2.3,generic_android_ver2_3,generic_android_ver2_2,GooglePlay,98,1,0,98,0,0,0,0,,Android,2.3,2010_november,Android Webkit
+Generic,Android 2.2,generic_android_ver2_2,generic_android_ver2_1,,1,1,1,0,0,0,0,0,,Android,2.2,2009_october,Android Webkit
+Generic,Android 2.2,generic_android_ver2_2,generic_android_ver2_1,GooglePlay,4,0,0,4,0,0,0,0,,Android,2.2,2009_october,Android Webkit
+Generic,Windows Phone 7,generic_ms_phone_os7,generic_xhtml,CLICKTAG,1,0,0,1,0,0,0,0,,Windows Phone OS,7,2010_february,IEMobile
+Robot,Bot or Crawler,generic_web_crawler,generic_web_browser,CLICKTAG,10,0,0,10,0,0,0,0,,,,2000_january,
+Generic,Android,generic_android,generic_xhtml,GooglePlay,23,0,0,23,0,0,0,0,,Android,0.5,2007_september,Android Webkit
+Generic,Android,generic_android,generic_xhtml,SMS_WAP,6,0,0,6,0,0,0,0,,Android,0.5,2007_september,Android Webkit
+Generic,Android,generic_android,generic_xhtml,,1,1,1,0,0,0,0,0,,Android,0.5,2007_september,Android Webkit
+MAUI-based Generic,MAUI WAP Browser,generic_maui_wap_browser,generic_xhtml,CLICKTAG,1,0,0,1,0,0,0,0,,MTK/Nucleus OS,,2006_january,MAUI Wap Browser
+Nokia,3110 classic,nokia_3110c_ver1_sub0491,nokia_3110c_ver1,JAVA_APP,1,0,0,1,0,0,0,0,classic,,,2007_february,Nokia
+Nokia,5610,nokia_5610d_ver1,nokia_generic_series40_dp30,CLICKTAG,1,0,0,1,0,0,0,0,XpressMusic,,,2007_august,Nokia
+Nokia,6120 classic,nokia_6120c_ver1_sub346,nokia_6120c_ver1,CLICKTAG,518,15,0,518,22,22,0.0424710424710425,0.0424710424710425,,Symbian OS,9.2,2007_april,Safari
+Nokia,6120 classic,nokia_6120c_ver1_sub346,nokia_6120c_ver1,SMS_WAP,33,11,0,33,0,0,0,0,,Symbian OS,9.2,2007_april,Safari
+Nokia,6120 classic,nokia_6120c_ver1_sub346,nokia_6120c_ver1,,17,17,17,0,0,0,0,0,,Symbian OS,9.2,2007_april,Safari
+Nokia,6120 classic,nokia_6120c_ver1_sub100,nokia_6120c_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2007_april,Nokia
+Nokia,6120 classic,nokia_6120c_ver1_sub370,nokia_6120c_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2007_april,Safari
+Nokia,6120 classic,nokia_6120c_ver1_sub383,nokia_6120c_ver1,CLICKTAG,15,1,0,15,1,1,0.0666666666666667,0.0666666666666667,,Symbian OS,9.2,2007_april,Safari
+Nokia,6120 classic,nokia_6120c_ver1_sub383,nokia_6120c_ver1,,2,2,2,0,0,0,0,0,,Symbian OS,9.2,2007_april,Safari
+Nokia,6300,nokia_6300_ver1_sub0470,nokia_6300_ver1,CLICKTAG,4,0,0,4,1,1,0.25,0.25,,,,2006_november,Nokia
+Nokia,6630,nokia_6630_ver1_sub1501,nokia_6630_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,8.0,2004_june,Nokia
+Nokia,6680,nokia_6680_ver1_sub30435,nokia_6680_ver1,CLICKTAG,16,0,0,16,0,0,0,0,,Symbian OS,8.0,2005_february,Nokia
+Nokia,6680,nokia_6680_ver1_sub30435,nokia_6680_ver1,,2,2,2,0,0,0,0,0,,Symbian OS,8.0,2005_february,Nokia
+Nokia,1100,nokia_1100_ver1,nokia_generic,,2,2,2,0,0,0,0,0,,,,2002_january,Nokia
+Nokia,1100,nokia_1100_ver1,nokia_generic,CLICKTAG,57,0,0,57,0,0,0,0,,,,2002_january,Nokia
+Nokia,1100,nokia_1100_ver1,nokia_generic,SMS_WAP,5,3,0,5,0,0,0,0,,,,2002_january,Nokia
+Nokia,E50,nokia_e50_ver1_subsafari413,nokia_e50_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.1,2006_may,Nokia
+Nokia,E61,nokia_e61_ver1_submozilla50_sub2,nokia_e61_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.1,2005_october,Nokia
+Nokia,E61i,nokia_e61i_ver1_sub10006331500,nokia_e61i_ver1,CLICKTAG,2,0,0,2,0,0,0,0,,Symbian OS,9.1,2007_february,Nokia
+Nokia,E65,nokia_e65_ver1101063316,nokia_e65_ver1,SMS_WAP,5,0,0,5,0,0,0,0,,Symbian OS,9.1,2007_february,Nokia
+Nokia,E65,nokia_e65_ver1101063316,nokia_e65_ver1,,2,2,2,0,0,0,0,0,,Symbian OS,9.1,2007_february,Nokia
+Nokia,E65,nokia_e65_ver1101063316,nokia_e65_ver1,CLICKTAG,18,0,0,18,0,0,0,0,,Symbian OS,9.1,2007_february,Nokia
+Nokia,E65,nokia_e65_sub106331801,nokia_e65_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.1,2007_february,Nokia
+Nokia,E65,nokia_e65_sub106331801,nokia_e65_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.1,2007_february,Nokia
+Nokia,E65,nokia_e65_ver1_subsafari413,nokia_e65_ver1,CLICKTAG,21,7,0,21,1,1,0.0476190476190476,0.0476190476190476,,Symbian OS,9.1,2008_january,Safari
+Nokia,E65,nokia_e65_ver1_subsafari413,nokia_e65_ver1,SMS_WAP,7,3,0,7,0,0,0,0,,Symbian OS,9.1,2008_january,Safari
+Nokia,E65,nokia_e65_ver1_subsafari413,nokia_e65_ver1,,8,8,8,0,0,0,0,0,,Symbian OS,9.1,2008_january,Safari
+Nokia,N73,nokia_n73_ver1_sub3000000,nokia_n73_ver1,CLICKTAG,5,0,0,5,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N80,nokia_n80_ver1_sub303061108,nokia_n80_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_submozilla50,nokia_n73_ver1,SMS_WAP,22,7,0,22,0,0,0,0,,Symbian OS,9.1,2007_january,Safari
+Nokia,N73,nokia_n73_ver1_submozilla50,nokia_n73_ver1,,50,50,50,0,0,0,0,0,,Symbian OS,9.1,2007_january,Safari
+Nokia,N73,nokia_n73_ver1_submozilla50,nokia_n73_ver1,CLICKTAG,125,41,0,125,9,9,0.072,0.072,,Symbian OS,9.1,2007_january,Safari
+Nokia,N95,nokia_n95_ver1_sub_mozilla_b,nokia_n95_ver1,CLICKTAG,2,1,0,2,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,N95,nokia_n95_ver1_sub_mozilla_c,nokia_n95_ver1,SMS_WAP,2,1,0,2,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,N95,nokia_n95_ver1_sub_mozilla_c,nokia_n95_ver1,CLICKTAG,13,1,0,13,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,N95,nokia_n95_ver1_sub_mozilla_c,nokia_n95_ver1,,2,2,2,0,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Apple,iPhone,apple_iphone_ver1_suba543,apple_iphone_ver1,WAPPIN,1,0,0,1,0,0,0,0,,iOS,1.0,2007_june,Safari
+Apple,iPhone,apple_iphone_ver1_suba543,apple_iphone_ver1,SMS_WAP,4,0,0,4,0,0,0,0,,iOS,1.0,2007_june,Safari
+,,ibrowser_ver1,generic_mobile,CLICKTAG,1,0,0,1,0,0,0,0,,,,2002_january,
+SonyEricsson,K800i,sonyericsson_k800i_ver1_subr1kg,sonyericsson_k800i_ver1,CLICKTAG,1,1,0,1,0,0,0,0,,,,2005_july,Access Netfront
+Nokia,6670,nokia_6670_ver1_sub404374,nokia_6670_ver1,JAVA_APP,1,0,0,1,0,0,0,0,,Symbian OS,7.0s,2004_september,Nokia
+Nokia,N95 8GB,nokia_n95_ver1_sub_mozilla_d,nokia_n95_8gb_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_mozilla_d,nokia_n95_8gb_ver1,CLICKTAG,4,1,0,4,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N73,nokia_n73_ver1_sub40727221,nokia_n73_ver1,CLICKTAG,25,0,0,25,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub40727221,nokia_n73_ver1,,4,4,4,0,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_20628001,nokia_n73_ver1,CLICKTAG,9,0,0,9,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N95,nokia_n95_ver1_sub_mozilla_c200015,nokia_n95_ver1_sub_mozilla_c,CLICKTAG,11,1,0,11,1,1,0.0909090909090909,0.0909090909090909,,Symbian OS,9.2,2006_september,Safari
+Nokia,N95,nokia_n95_ver1_sub_mozilla_c200015,nokia_n95_ver1_sub_mozilla_c,,2,2,2,0,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,N95,nokia_n95_ver1_sub_mozilla_c200015,nokia_n95_ver1_sub_mozilla_c,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_fl3,nokia_n95_8gb_ver1,SMS_WAP,2,0,0,2,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_fl3,nokia_n95_8gb_ver1,CLICKTAG,13,2,0,13,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_fl3,nokia_n95_8gb_ver1,,3,3,3,0,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N82,nokia_n82_ver1_sub100046,nokia_n82_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.2,2007_november,Safari
+Nokia,N82,nokia_n82_ver1_sub100046,nokia_n82_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2007_november,Safari
+Nokia,N82,nokia_n82_ver1_sub100046,nokia_n82_ver1,CLICKTAG,3,1,0,3,0,0,0,0,,Symbian OS,9.2,2007_november,Safari
+Nokia,E60,nokia_e60_ver1_submoz,nokia_e60_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.1,2005_october,Nokia
+Nokia,N81,nokia_n81_ver1_sub110045_subnorthamerica,nokia_n81_ver1_sub110045,CLICKTAG,9,3,0,9,1,1,0.111111111111111,0.111111111111111,,Symbian OS,9.2,2007_august,Safari
+Nokia,E51,nokia_e51_ver1_sub11003420,nokia_e51_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2007_september,Safari
+Nokia,E51,nokia_e51_ver1_sub11003420,nokia_e51_ver1,CLICKTAG,4,1,0,4,0,0,0,0,,Symbian OS,9.2,2007_september,Safari
+Nokia,N73,nokia_n73_ver1_sub40735302,nokia_n73_ver1,,16,16,16,0,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub40735302,nokia_n73_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub40735302,nokia_n73_ver1,CLICKTAG,29,0,0,29,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N81,nokia_n81_ver1_sub100053,nokia_n81_ver1_sub100026,,1,1,1,0,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N81,nokia_n81_ver1_sub100053,nokia_n81_ver1_sub100026,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N82,nokia_n82_ver1_sub110117,nokia_n82_ver1_sub100046,CLICKTAG,3,0,0,3,0,0,0,0,,Symbian OS,9.2,2007_november,Safari
+Nokia,N73,nokia_n73_ver1_sub407473101,nokia_n73_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub407473101,nokia_n73_ver1,CLICKTAG,5,0,0,5,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub407473101,nokia_n73_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_vf3g,nokia_n95_8gb_ver1,CLICKTAG,2,0,0,2,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,6300,nokia_6300_ver1_sub0500,nokia_6300_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,,,2006_november,Nokia
+Nokia,N95,nokia_n95_ver1_sub3_sub210016,nokia_n95_ver1_sub100014,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,6500s,nokia_6500s_ver1_sub0380,nokia_6500s_ver1,CLICKTAG,2,0,0,2,0,0,0,0,Slide,,,2007_june,Nokia
+Nokia,N73,nokia_n73_ver1_sub30704101,nokia_n73_ver1,,4,4,4,0,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub30704101,nokia_n73_ver1,SMS_WAP,4,0,0,4,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub30704101,nokia_n73_ver1,CLICKTAG,31,0,0,31,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub307051031,nokia_n73_ver1,CLICKTAG,13,0,0,13,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub307051031,nokia_n73_ver1,,3,3,3,0,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,7610,nokia_7610_ver1_sub605220,nokia_7610_ver1,JAVA_APP,2,0,0,2,1,1,0.5,0.5,,Symbian OS,7.0s,2004_march,Nokia
+Nokia,N73,nokia_n73_ver1_sub40726201,nokia_n73_ver1,CLICKTAG,17,0,0,17,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub40726201,nokia_n73_ver1,SMS_WAP,5,0,0,5,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub40726201,nokia_n73_ver1,,8,8,8,0,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N70,nokia_n70_ver1_sub50705301,nokia_n70_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,,2005_april,Nokia
+Nokia,N70,nokia_n70_ver1_sub50705301,nokia_n70_ver1,CLICKTAG,5,0,0,5,0,0,0,0,,Symbian OS,,2005_april,Nokia
+Nokia,6500s,nokia_6500s_ver1_sub0481,nokia_6500s_ver1,CLICKTAG,1,0,0,1,0,0,0,0,Slide,,,2007_june,Nokia
+SonyEricsson,W580i,sonyericsson_w580i_ver1_subr2s,sonyericsson_w580i_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,,,2005_july,Access Netfront
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_fl3sub20,nokia_n95_ver1_sub_8gb_fl3,SMS_WAP,4,2,0,4,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_fl3sub20,nokia_n95_ver1_sub_8gb_fl3,,2,2,2,0,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_fl3sub20,nokia_n95_ver1_sub_8gb_fl3,CLICKTAG,21,3,0,21,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,6210,nokia_6210_ver1_submoz50,nokia_6210_ver1,CLICKTAG,2,0,0,2,0,0,0,0,Navigator,Symbian OS,9.3,2008_february,Nokia
+Nokia,N78,nokia_n78_ver1,nokia_generic_series60_dp30_webkit,CLICKTAG,2,0,0,2,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,6220 classic,nokia_6220c_ver1,nokia_generic_series60_dp30_webkit,CLICKTAG,1,0,0,1,0,0,0,0,Classic,Symbian OS,9.3,2008_february,Safari
+Nokia,6220 classic,nokia_6220c_ver1,nokia_generic_series60_dp30_webkit,SMS_WAP,1,0,0,1,0,0,0,0,Classic,Symbian OS,9.3,2008_february,Safari
+Nokia,N82,nokia_n82_ver1_sub200062,nokia_n82_ver1_sub110117,SMS_WAP,8,2,0,8,0,0,0,0,,Symbian OS,9.2,2007_november,Safari
+Nokia,N82,nokia_n82_ver1_sub200062,nokia_n82_ver1_sub110117,CLICKTAG,13,2,0,13,0,0,0,0,,Symbian OS,9.2,2007_november,Safari
+Nokia,N82,nokia_n82_ver1_sub200062,nokia_n82_ver1_sub110117,,1,1,1,0,0,0,0,0,,Symbian OS,9.2,2007_november,Safari
+Nokia,E71,nokia_e71_ver1_sub10000776,nokia_e71_ver1,CLICKTAG,16,5,0,16,1,1,0.0625,0.0625,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub10000776,nokia_e71_ver1,,4,4,4,0,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub10000776,nokia_e71_ver1,SMS_WAP,4,1,0,4,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,1680 classic,nokia_1680c_ver1,nokia_generic_series40_dp50,CLICKTAG,1,0,0,1,0,0,0,0,,,,2008_april,Nokia
+SonyEricsson,C905,sonyericsson_c905_ver1,generic_netfront_ver3_4,CLICKTAG,1,0,0,1,0,0,0,0,,,,2008_september,Access Netfront
+Nokia,N96,nokia_n96_ver1,nokia_n95_ver1,CLICKTAG,5,0,0,5,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,E71-2,nokia_e71_ver1_sub2_1000776,nokia_e71_ver1_sub10000776,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,6110,nokia_6110_ver1_submoz422,nokia_6110_ver1_submoz358,CLICKTAG,3,1,0,3,0,0,0,0,Navigator,Symbian OS,9.2,2007_february,Safari
+Nokia,6120 classic,nokia_6120c_ver1_sub421,nokia_6120c_ver1,CLICKTAG,30,1,0,30,2,2,0.0666666666666667,0.0666666666666667,,Symbian OS,9.2,2007_april,Safari
+Nokia,6120 classic,nokia_6120c_ver1_sub421,nokia_6120c_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.2,2007_april,Safari
+Nokia,6120 classic,nokia_6120c_ver1_sub421,nokia_6120c_ver1,SMS_WAP,5,2,0,5,0,0,0,0,,Symbian OS,9.2,2007_april,Safari
+Nokia,E66,nokia_e66_ver1_subvoda,nokia_e66_ver1_sub1000776,,1,1,1,0,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E66,nokia_e66_ver1_subvoda,nokia_e66_ver1_sub1000776,SMS_WAP,4,1,0,4,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E66,nokia_e66_ver1_subvoda,nokia_e66_ver1_sub1000776,CLICKTAG,15,3,0,15,1,1,0.0666666666666667,0.0666666666666667,,Symbian OS,9.2,2008_june,Safari
+Nokia,N73,nokia_n73_ver1_sub30704101_moz40,nokia_n73_ver1_submozilla50,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.1,2007_january,Safari
+Nokia,E51,nokia_e51_ver1_sub21513420,nokia_e51_ver1,CLICKTAG,54,6,0,54,0,0,0,0,,Symbian OS,9.2,2007_september,Nokia
+Nokia,E51,nokia_e51_ver1_sub21513420,nokia_e51_ver1,,8,8,8,0,0,0,0,0,,Symbian OS,9.2,2007_september,Nokia
+Nokia,E51,nokia_e51_ver1_sub21513420,nokia_e51_ver1,SMS_WAP,4,2,0,4,0,0,0,0,,Symbian OS,9.2,2007_september,Nokia
+Nokia,N85,nokia_n85_ver1,nokia_generic_series60_dp30_webkit,CLICKTAG,2,0,0,2,0,0,0,0,,Symbian OS,9.3,2008_august,Safari
+Nokia,N95,nokia_n95_ver1_subua,nokia_n95_ver1,SMS_WAP,8,3,0,8,0,0,0,0,,Symbian OS,9.2,2008_october,Safari
+Nokia,N95,nokia_n95_ver1_subua,nokia_n95_ver1,CLICKTAG,74,10,0,74,2,2,0.027027027027027,0.027027027027027,,Symbian OS,9.2,2008_october,Safari
+Nokia,N95,nokia_n95_ver1_subua,nokia_n95_ver1,,10,10,10,0,0,0,0,0,,Symbian OS,9.2,2008_october,Safari
+Nokia,N81,nokia_n81_ver1_sub110045,nokia_n81_ver1,CLICKTAG,2,1,0,2,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,E51,nokia_e51_ver1_sub12003436,nokia_e51_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.2,2008_october,Nokia
+Nokia,E51,nokia_e51_ver1_sub12003436,nokia_e51_ver1,CLICKTAG,7,1,0,7,0,0,0,0,,Symbian OS,9.2,2008_october,Nokia
+Nokia,N95,nokia_n95_ver1_sub300015,nokia_n95_ver1,SMS_WAP,3,2,0,3,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,N95,nokia_n95_ver1_sub300015,nokia_n95_ver1,,6,6,6,0,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,N95,nokia_n95_ver1_sub300015,nokia_n95_ver1,CLICKTAG,42,3,0,42,1,1,0.0238095238095238,0.0238095238095238,,Symbian OS,9.2,2006_september,Safari
+Nokia,N95,nokia_n95_ver1_funnyua,nokia_n95_ver1,CLICKTAG,6,0,0,6,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,N81,nokia_n81_ver1_sub100035,nokia_n81_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2008_october,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_fl3sub30,nokia_n95_ver1_sub_8gb_fl3,,1,1,1,0,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_fl3sub30,nokia_n95_ver1_sub_8gb_fl3,SMS_WAP,2,0,0,2,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_fl3sub30,nokia_n95_ver1_sub_8gb_fl3,CLICKTAG,27,2,0,27,1,1,0.037037037037037,0.037037037037037,,Symbian OS,9.2,2007_august,Safari
+Tecno,X850,tecno_x850_ver1_subua,tecno_x850_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,MTK/Nucleus OS,,2010_july,
+SonyEricsson,W705,sonyericsson_w705_ver1,generic_sonyericsson_netfront_ver3_4,CLICKTAG,2,0,0,2,1,1,0.5,0.5,,,,2008_november,Access Netfront
+Nokia,E51,nokia_e51_ver1_sub12203437,nokia_e51_ver1,CLICKTAG,2,0,0,2,0,0,0,0,,Symbian OS,9.2,2007_september,Nokia
+Nokia,E51,nokia_e51_ver1_sub12203437,nokia_e51_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.2,2007_september,Nokia
+Nokia,E66,nokia_e66_ver1_sub111007126,nokia_e66_ver1,,2,2,2,0,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E66,nokia_e66_ver1_sub111007126,nokia_e66_ver1,SMS_WAP,3,0,0,3,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E66,nokia_e66_ver1_sub111007126,nokia_e66_ver1,CLICKTAG,3,0,0,3,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub111007127,nokia_e71_ver1,CLICKTAG,4,0,0,4,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub111007127,nokia_e71_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub111007127,nokia_e71_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,N79,nokia_n79_ver1_110046,nokia_n79_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,,2008_august,Safari
+Nokia,N79,nokia_n79_ver1_110046,nokia_n79_ver1,CLICKTAG,3,0,0,3,0,0,0,0,,Symbian OS,,2008_august,Safari
+Nokia,N96,nokia_n96_ver1_sub1111,nokia_n96_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,6120 classic,nokia_6120c_ver1_sub511,nokia_6120c_ver1,SMS_WAP,4,0,0,4,0,0,0,0,,Symbian OS,9.2,2007_april,Nokia
+Nokia,6120 classic,nokia_6120c_ver1_sub511,nokia_6120c_ver1,CLICKTAG,26,1,0,26,0,0,0,0,,Symbian OS,9.2,2007_april,Nokia
+Nokia,N96,nokia_n96_ver1_sub1110,nokia_n96_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,6300,nokia_6300_ver1_sub0700,nokia_6300_ver1,CLICKTAG,22,0,0,22,1,1,0.0454545454545455,0.0454545454545455,,,,2006_november,Nokia
+Nokia,7100 Supernova,nokia_7100_ver1,nokia_generic_series40,CLICKTAG,1,0,0,1,0,0,0,0,Supernova,,,2008_november,Nokia
+Nokia,N70,nokia_n70_ver1_sub150638301,nokia_n70_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,,2005_april,Nokia
+Nokia,N73,nokia_n73_ver1_sub140812421,nokia_n73_ver1,,12,12,12,0,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub140812421,nokia_n73_ver1,SMS_WAP,9,0,0,9,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub140812421,nokia_n73_ver1,CLICKTAG,28,0,0,28,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N82,nokia_n82_ver1_sub300019,nokia_n82_ver1_sub200062,CLICKTAG,11,1,0,11,0,0,0,0,,Symbian OS,9.2,2007_november,Safari
+Nokia,N82,nokia_n82_ver1_sub300019,nokia_n82_ver1_sub200062,SMS_WAP,3,2,0,3,0,0,0,0,,Symbian OS,9.2,2007_november,Safari
+Nokia,N82,nokia_n82_ver1_sub300019,nokia_n82_ver1_sub200062,,1,1,1,0,0,0,0,0,,Symbian OS,9.2,2007_november,Safari
+Nokia,6300,nokia_6300_ver1_sub0660,nokia_6300_ver1,CLICKTAG,2,0,0,2,0,0,0,0,,,,2006_november,Nokia
+Nokia,E66,nokia_e66_ver1_sub10021108,nokia_e66_ver1,CLICKTAG,3,0,0,3,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E90 Communicator,nokia_e90_ver1_safari_3003484,nokia_e90_ver1_safari_2103475,CLICKTAG,4,0,0,4,0,0,0,0,Communicator,Symbian OS,9.2,2007_february,Safari
+Nokia,6220 classic,nokia_6220c_ver1_submoz10346,nokia_6220c_ver1_submoz10323,SMS_WAP,1,0,0,1,0,0,0,0,Classic,Symbian OS,9.3,2008_february,Safari
+Nokia,N78,nokia_n78_ver1_sub112046,nokia_n78_ver1,CLICKTAG,2,0,0,2,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,6210,nokia_6210_ver1_submoz50_b0308,nokia_6210_ver1_submoz50,CLICKTAG,4,0,0,4,1,1,0.25,0.25,Navigator,Symbian OS,9.3,2008_february,Nokia
+Nokia,6210,nokia_6210_ver1_submoz50_b0308,nokia_6210_ver1_submoz50,,2,2,2,0,0,0,0,0,Navigator,Symbian OS,9.3,2008_february,Nokia
+Nokia,N81,nokia_n81_ver1_sub3200056_2,nokia_n81_ver1_sub3200056,CLICKTAG,8,1,0,8,0,0,0,0,,Symbian OS,9.2,2009_january,Safari
+Nokia,N81,nokia_n81_ver1_sub3200056_2,nokia_n81_ver1_sub3200056,SMS_WAP,2,0,0,2,0,0,0,0,,Symbian OS,9.2,2009_january,Safari
+Nokia,E51,nokia_e51_ver1_sub13003456,nokia_e51_ver1,SMS_WAP,3,1,0,3,0,0,0,0,,Symbian OS,9.2,2007_september,Nokia
+Nokia,E51,nokia_e51_ver1_sub13003456,nokia_e51_ver1,,3,3,3,0,0,0,0,0,,Symbian OS,9.2,2007_september,Nokia
+Nokia,E51,nokia_e51_ver1_sub13003456,nokia_e51_ver1,CLICKTAG,17,3,0,17,1,1,0.0588235294117647,0.0588235294117647,,Symbian OS,9.2,2007_september,Nokia
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub1100008,nokia_5800d_ver1_sub1100006,CLICKTAG,21,0,0,21,1,1,0.0476190476190476,0.0476190476190476,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub200012,nokia_5800d_ver1_sub1100008,SMS_WAP,3,0,0,3,0,0,0,0,XpressMusic,Symbian OS,9.4,2009_february,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub200012,nokia_5800d_ver1_sub1100008,CLICKTAG,6,2,0,6,0,0,0,0,XpressMusic,Symbian OS,9.4,2009_february,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub200012,nokia_5800d_ver1_sub1100008,,3,3,3,0,0,0,0,0,XpressMusic,Symbian OS,9.4,2009_february,Safari
+Nokia,N85,nokia_n85_ver1_sub11047,nokia_n85_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.3,2009_february,Safari
+Nokia,N85,nokia_n85_ver1_sub11047,nokia_n85_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.3,2009_february,Safari
+Nokia,E66,nokia_e66_ver1_sub20021118,nokia_e66_ver1,CLICKTAG,21,3,0,21,1,1,0.0476190476190476,0.0476190476190476,,Symbian OS,9.2,2009_february,Safari
+Nokia,E66,nokia_e66_ver1_sub20021118,nokia_e66_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2009_february,Safari
+Nokia,E66,nokia_e66_ver1_sub20021118,nokia_e66_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.2,2009_february,Safari
+SonyEricsson,W995,sonyericsson_w995_ver1,generic_sonyericsson_netfront_ver3_4,SMS_WAP,1,0,0,1,0,0,0,0,,,,2009_march,Access Netfront
+Nokia,2330 classic,nokia_2330c_ver1,nokia_generic_series40_dp50,JAVA_APP,4,0,0,4,0,0,0,0,,,,2008_november,Nokia
+Nokia,N81,nokia_n81_ver1_sub_8gb_fl3,nokia_n81_ver1_sub1110045,CLICKTAG,2,0,0,2,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N81,nokia_n81_ver1_sub_8gb_fl3,nokia_n81_ver1_sub1110045,,1,1,1,0,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,E71,nokia_e71_ver1_sub21021006,nokia_e71_ver1,,8,8,8,0,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub21021006,nokia_e71_ver1,SMS_WAP,4,1,0,4,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub21021006,nokia_e71_ver1,CLICKTAG,26,4,0,26,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,5320 XpressMusic,nokia_5320_ver1_subua_10413,nokia_5320_ver1_subua,CLICKTAG,5,1,0,5,1,1,0.2,0.2,XpressMusic,Symbian OS,9.3,2008_april,Safari
+Nokia,E60,nokia_e60_ver1_sub306330904,nokia_e60_ver1_sub30106100203,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.1,2005_october,Nokia
+Nokia,N80,nokia_n80_ver1_sub40623022_space,nokia_n80_ver1_sub40623022,,1,1,1,0,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N80,nokia_n80_ver1_sub40623022_space,nokia_n80_ver1_sub40623022,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub408394201,nokia_n73_ver1_sub407473101,CLICKTAG,71,0,0,71,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub408394201,nokia_n73_ver1_sub407473101,,18,18,18,0,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,N73,nokia_n73_ver1_sub408394201,nokia_n73_ver1_sub407473101,SMS_WAP,10,0,0,10,0,0,0,0,,Symbian OS,9.1,2005_november,Nokia
+Nokia,6630,nokia_6630_ver1_sub60308,nokia_6630_ver1_sub60340,CLICKTAG,6,0,0,6,1,1,0.166666666666667,0.166666666666667,,Symbian OS,8.0,2004_june,Nokia
+Nokia,7610 Supernova,nokia_7610_supernova_ver1_sub0520,nokia_7610_supernova_ver1,CLICKTAG,2,0,0,2,0,0,0,0,Supernova,,,2008_june,Nokia
+Nokia,N96,nokia_n96_ver1_sub1120,nokia_n96_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,N96,nokia_n96_ver1_sub1120,nokia_n96_ver1,CLICKTAG,12,0,0,12,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,N95,nokia_n95_ver1_sub300015nosemi,nokia_n95_ver1_sub300015,,22,22,22,0,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,N95,nokia_n95_ver1_sub300015nosemi,nokia_n95_ver1_sub300015,SMS_WAP,16,2,0,16,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,N95,nokia_n95_ver1_sub300015nosemi,nokia_n95_ver1_sub300015,CLICKTAG,178,20,0,178,8,8,0.0449438202247191,0.0449438202247191,,Symbian OS,9.2,2006_september,Safari
+Nokia,N95,nokia_n95_ver1_sub310017,nokia_n95_ver1,,13,13,13,0,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,N95,nokia_n95_ver1_sub310017,nokia_n95_ver1,SMS_WAP,13,2,0,13,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,N95,nokia_n95_ver1_sub310017,nokia_n95_ver1,CLICKTAG,77,9,0,77,1,1,0.012987012987013,0.012987012987013,,Symbian OS,9.2,2006_september,Safari
+RIM,BlackBerry 8900,blackberry8900_ver1_sub461101,blackberry8900_ver1,JAVA_APP,5,0,0,5,0,0,0,0,Curve,RIM OS,4.6,2009_may,BlackBerry
+RIM,BlackBerry 8900,blackberry8900_ver1_sub461101,blackberry8900_ver1,,1,1,1,0,0,0,0,0,Curve,RIM OS,4.6,2009_may,BlackBerry
+RIM,BlackBerry 9000,blackberry9000_ver1_sub460126,blackberry9000_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Bold,RIM OS,4.6,2009_may,BlackBerry
+Nokia,6120 classic,nokia_6120c_ver1_sub601,nokia_6120c_ver1,SMS_WAP,9,3,0,9,0,0,0,0,,Symbian OS,9.2,2009_may,Safari
+Nokia,6120 classic,nokia_6120c_ver1_sub601,nokia_6120c_ver1,,7,7,7,0,0,0,0,0,,Symbian OS,9.2,2009_may,Safari
+Nokia,6120 classic,nokia_6120c_ver1_sub601,nokia_6120c_ver1,CLICKTAG,135,4,0,135,4,4,0.0296296296296296,0.0296296296296296,,Symbian OS,9.2,2009_may,Safari
+Nokia,N70,nokia_n70_ver1_sub13054623,nokia_n70_ver1,CLICKTAG,8,0,0,8,0,0,0,0,,Symbian OS,,2005_april,Nokia
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub210025,nokia_5800d_ver1_sub1100006,CLICKTAG,76,7,0,76,2,2,0.0263157894736842,0.0263157894736842,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub210025,nokia_5800d_ver1_sub1100006,SMS_WAP,15,4,0,15,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub210025,nokia_5800d_ver1_sub1100006,,6,6,6,0,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,N95,nokia_n95_ver1_sub310017nosemi,nokia_n95_ver1_sub310017,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,E75,nokia_e75_ver1_sub1004878,nokia_e75_ver1,,1,1,1,0,0,0,0,0,E75,Symbian OS,9.3,2009_february,Safari
+Nokia,E75,nokia_e75_ver1_sub1004878,nokia_e75_ver1,SMS_WAP,3,0,0,3,0,0,0,0,E75,Symbian OS,9.3,2009_february,Safari
+Nokia,E75,nokia_e75_ver1_sub1004878,nokia_e75_ver1,CLICKTAG,4,0,0,4,1,1,0.25,0.25,E75,Symbian OS,9.3,2009_february,Safari
+Nokia,N81,nokia_n81_ver3,nokia_n81_ver1,CLICKTAG,4,0,0,4,0,0,0,0,,Symbian OS,9.2,2009_june,Safari
+Nokia,N81,nokia_n81_ver3,nokia_n81_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.2,2009_june,Safari
+Nokia,N81,nokia_n81_ver3,nokia_n81_ver1,SMS_WAP,2,0,0,2,0,0,0,0,,Symbian OS,9.2,2009_june,Safari
+Nokia,E66,nokia_e66_ver1_sub21021007,nokia_e66_ver1_sub20021118,CLICKTAG,77,7,0,77,2,2,0.025974025974026,0.025974025974026,,Symbian OS,9.2,2009_february,Safari
+Nokia,E66,nokia_e66_ver1_sub21021007,nokia_e66_ver1_sub20021118,,12,12,12,0,0,0,0,0,,Symbian OS,9.2,2009_february,Safari
+Nokia,E66,nokia_e66_ver1_sub21021007,nokia_e66_ver1_sub20021118,SMS_WAP,13,3,0,13,0,0,0,0,,Symbian OS,9.2,2009_february,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_310015,nokia_n95_8gb_ver1,CLICKTAG,68,5,0,68,3,3,0.0441176470588235,0.0441176470588235,,Symbian OS,9.2,2007_august,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_310015,nokia_n95_8gb_ver1,SMS_WAP,6,0,0,6,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_310015,nokia_n95_8gb_ver1,,11,11,11,0,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,6210,nokia_6210_ver1_sub0413,nokia_6210_ver1_sub0301,CLICKTAG,4,0,0,4,0,0,0,0,Navigator,Symbian OS,9.3,2008_february,Nokia
+Nokia,6220 classic,nokia_6220c_ver1_submoz10413,nokia_6220c_ver1_submoz10346,CLICKTAG,1,0,0,1,0,0,0,0,Classic,Symbian OS,9.3,2008_february,Safari
+Nokia,N96,nokia_n96_ver1_sub200,nokia_n96_ver1,CLICKTAG,7,4,0,7,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,E63,nokia_e63_ver1_sub10021110,nokia_e63_ver1,SMS_WAP,1,1,0,1,0,0,0,0,,Symbian OS,,2008_november,Safari
+Nokia,E63,nokia_e63_ver1_sub10021110,nokia_e63_ver1,CLICKTAG,13,0,0,13,0,0,0,0,,Symbian OS,,2008_november,Safari
+Nokia,E63,nokia_e63_ver1_sub10021110,nokia_e63_ver1,,2,2,2,0,0,0,0,0,,Symbian OS,,2008_november,Safari
+Nokia,N97,nokia_n97_ver1_sub100012,nokia_n97_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.4,2008_december,Safari
+Nokia,N97,nokia_n97_ver1_sub100012,nokia_n97_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.4,2008_december,Safari
+Nokia,N86 8MP,nokia_n86_ver1,nokia_n85_ver1,SMS_WAP,8,1,0,8,0,0,0,0,,Symbian OS,9.3,2009_february,Safari
+Nokia,N86 8MP,nokia_n86_ver1,nokia_n85_ver1,CLICKTAG,59,4,0,59,0,0,0,0,,Symbian OS,9.3,2009_february,Safari
+Nokia,N86 8MP,nokia_n86_ver1,nokia_n85_ver1,,3,3,3,0,0,0,0,0,,Symbian OS,9.3,2009_february,Safari
+Nokia,N78,nokia_n78_ver1_sub121002,nokia_n78_ver1,CLICKTAG,3,1,0,3,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,N78,nokia_n78_ver1_sub121002,nokia_n78_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,6700 classic,nokia_6700c_ver1_2,nokia_6700c_ver1,JAVA_APP,6,0,0,6,0,0,0,0,,,,2009_january,Nokia
+Nokia,6220 classic,nokia_6220c_ver1_submoz10515,nokia_6220c_ver1_submoz10413,SMS_WAP,1,0,0,1,0,0,0,0,Classic,Symbian OS,9.3,2008_february,Safari
+Nokia,6220 classic,nokia_6220c_ver1_submoz10515,nokia_6220c_ver1_submoz10413,CLICKTAG,8,1,0,8,0,0,0,0,Classic,Symbian OS,9.3,2008_february,Safari
+Nokia,E75,nokia_e75_ver1_sub11048125,nokia_e75_ver1_sub1004878,,1,1,1,0,0,0,0,0,E75,Symbian OS,9.3,2009_february,Safari
+Nokia,E75,nokia_e75_ver1_sub11048125,nokia_e75_ver1_sub1004878,CLICKTAG,8,3,0,8,1,1,0.125,0.125,E75,Symbian OS,9.3,2009_february,Safari
+Nokia,N78,nokia_n78_ver1_sub111043,nokia_n78_ver1,CLICKTAG,2,0,0,2,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,N96,nokia_n96_ver1_sub1300,nokia_n96_ver1,CLICKTAG,21,2,0,21,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,N96,nokia_n96_ver1_sub1300,nokia_n96_ver1,SMS_WAP,4,0,0,4,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,N96,nokia_n96_ver1_sub1300,nokia_n96_ver1,,4,4,4,0,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,N82,nokia_n82_ver1_sub310016,nokia_n82_ver1_sub300019,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2007_november,Safari
+Nokia,N82,nokia_n82_ver1_sub310016,nokia_n82_ver1_sub300019,,3,3,3,0,0,0,0,0,,Symbian OS,9.2,2007_november,Safari
+Nokia,N82,nokia_n82_ver1_sub310016,nokia_n82_ver1_sub300019,CLICKTAG,14,1,0,14,0,0,0,0,,Symbian OS,9.2,2007_november,Safari
+Nokia,E71,nokia_e71_ver1_sub130021012,nokia_e71_ver1,SMS_WAP,5,2,0,5,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub130021012,nokia_e71_ver1,CLICKTAG,52,8,0,52,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub130021012,nokia_e71_ver1,,8,8,8,0,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E51,nokia_e51_ver1_sub140034011,nokia_e51_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.2,2007_september,Nokia
+Nokia,E51,nokia_e51_ver1_sub140034011,nokia_e51_ver1,,2,2,2,0,0,0,0,0,,Symbian OS,9.2,2007_september,Nokia
+Nokia,E51,nokia_e51_ver1_sub140034011,nokia_e51_ver1,CLICKTAG,12,1,0,12,0,0,0,0,,Symbian OS,9.2,2007_september,Nokia
+Samsung,GT-I8910,samsung_i8910_ver1_sub30,samsung_i8910_ver1,CLICKTAG,1,0,0,1,0,0,0,0,Omnia HD,Symbian OS,9.4,2009_june,Safari
+Nokia,6760 slide,nokia_6760s_ver1,nokia_generic_series60_dp30_webkit,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,,2009_july,Nokia
+Nokia,N79,nokia_n79_ver1_120174,nokia_n79_ver1,CLICKTAG,6,2,0,6,0,0,0,0,,Symbian OS,,2008_august,Safari
+Nokia,N79,nokia_n79_ver1_111049,nokia_n79_ver1,CLICKTAG,8,1,0,8,0,0,0,0,,Symbian OS,,2008_august,Safari
+Nokia,N79,nokia_n79_ver1_111049,nokia_n79_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,,2008_august,Safari
+Nokia,N86 8MP,nokia_n86_ver1_sub111043,nokia_n86_ver1,CLICKTAG,8,1,0,8,2,2,0.25,0.25,,Symbian OS,9.3,2009_february,Safari
+Nokia,N97,nokia_n97_ver1_sub1110021,nokia_n97_ver1,CLICKTAG,2,0,0,2,0,0,0,0,,Symbian OS,9.4,2008_december,Safari
+Nokia,E71,nokia_e71_ver1_sub120021118,nokia_e71_ver1,CLICKTAG,17,1,0,17,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub120021118,nokia_e71_ver1,SMS_WAP,4,2,0,4,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub120021118,nokia_e71_ver1,,3,3,3,0,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,N95,nokia_n95_ver1_sub100018_full,nokia_n95_ver1_sub100018,CLICKTAG,2,0,0,2,0,0,0,0,,Symbian OS,9.2,2006_september,Safari
+Nokia,N85,nokia_n85_ver1_sub30019,nokia_n85_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.3,2008_august,Safari
+Nokia,N85,nokia_n85_ver1_sub30019,nokia_n85_ver1,SMS_WAP,1,1,0,1,0,0,0,0,,Symbian OS,9.3,2008_august,Safari
+Nokia,N85,nokia_n85_ver1_sub30019,nokia_n85_ver1,CLICKTAG,8,1,0,8,1,1,0.125,0.125,,Symbian OS,9.3,2008_august,Safari
+Nokia,E90 Communicator,nokia_e90_ver1_safari_073802,nokia_e90_ver1_safari,CLICKTAG,1,0,0,1,0,0,0,0,Communicator,Symbian OS,9.2,2007_february,Safari
+Nokia,N79,nokia_n79_ver1_130019,nokia_n79_ver1,SMS_WAP,4,0,0,4,0,0,0,0,,Symbian OS,,2008_august,Safari
+Nokia,N79,nokia_n79_ver1_130019,nokia_n79_ver1,,2,2,2,0,0,0,0,0,,Symbian OS,,2008_august,Safari
+Nokia,N79,nokia_n79_ver1_130019,nokia_n79_ver1,CLICKTAG,26,1,0,26,0,0,0,0,,Symbian OS,,2008_august,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub300011,nokia_5800d_ver1,SMS_WAP,3,1,0,3,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub300011,nokia_5800d_ver1,CLICKTAG,5,1,0,5,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub300011,nokia_5800d_ver1,,3,3,3,0,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,N78,nokia_n78_ver1_sub30011,nokia_n78_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,N78,nokia_n78_ver1_sub30011,nokia_n78_ver1,CLICKTAG,9,0,0,9,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,N78,nokia_n78_ver1_sub30011,nokia_n78_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.3,2008_february,Safari
+Nokia,6720,nokia_6720_ver1_sub012008,nokia_6720_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.3,2009_february,Nokia
+Nokia,E66,nokia_e66_ver1_sub30021012,nokia_e66_ver1,CLICKTAG,14,0,0,14,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E66,nokia_e66_ver1_sub30021012,nokia_e66_ver1,,3,3,3,0,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E66,nokia_e66_ver1_sub30021012,nokia_e66_ver1,SMS_WAP,2,1,0,2,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_300018,nokia_n95_8gb_ver1,CLICKTAG,79,6,0,79,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_300018,nokia_n95_8gb_ver1,,13,13,13,0,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,N95 8GB,nokia_n95_ver1_sub_8gb_300018,nokia_n95_8gb_ver1,SMS_WAP,12,2,0,12,0,0,0,0,,Symbian OS,9.2,2007_august,Safari
+Nokia,5530,nokia_5530_xpressmusic_ver1,nokia_generic_series60_dp50,CLICKTAG,7,0,0,7,0,0,0,0,XpressMusic,Symbian OS,9.4,2009_june,Safari
+RIM,BlackBerry 8520,blackberry8520_ver1,blackberry_generic_ver4_sub60,JAVA_APP,6,1,0,6,0,0,0,0,Curve,RIM OS,4.6.1,2009_august,BlackBerry
+RIM,BlackBerry 8520,blackberry8520_ver1,blackberry_generic_ver4_sub60,,1,1,1,0,0,0,0,0,Curve,RIM OS,4.6.1,2009_august,BlackBerry
+RIM,BlackBerry 8520,blackberry8520_ver1,blackberry_generic_ver4_sub60,SMS_WAP,3,1,0,3,0,0,0,0,Curve,RIM OS,4.6.1,2009_august,BlackBerry
+RIM,BlackBerry 8520,blackberry8520_ver1_subvodafone,blackberry8520_ver1,JAVA_APP,3,0,0,3,0,0,0,0,Curve,RIM OS,4.6.1,2009_august,BlackBerry
+Nokia,2700 classic,nokia_2700c_ver1,nokia_generic_series40_dp50,JAVA_APP,51,0,0,51,1,1,0.0196078431372549,0.0196078431372549,,,,2009_january,Nokia
+Samsung,GT S5233A,samsung_gt_s5233a_ver1,samsung_gt_s5233w_ver1,CLICKTAG,2,1,0,2,0,0,0,0,Star,,,2009_august,Dolfin/Jasmine Webkit
+Nokia,6710,nokia_6710navigator_ver1,nokia_generic_series60_dp30_webkit,CLICKTAG,6,0,0,6,0,0,0,0,Navigator,Symbian OS,9.3,2009_february,Safari
+Nokia,E71,nokia_e71_ver1_sub40021004,nokia_e71_ver1,CLICKTAG,35,3,0,35,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub40021004,nokia_e71_ver1,SMS_WAP,4,2,0,4,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,6710,nokia_6710navigator_sub022002,nokia_6710navigator_ver1,CLICKTAG,1,0,0,1,0,0,0,0,Navigator,Symbian OS,9.3,2009_february,Safari
+Nokia,6710,nokia_6710navigator_sub022002,nokia_6710navigator_ver1,,2,2,2,0,0,0,0,0,Navigator,Symbian OS,9.3,2009_february,Safari
+Nokia,6730 classic,nokia_6730c_ver1_sub021008,nokia_6730c_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,,2009_june,Safari
+Nokia,E52,nokia_e52_ver1_sub021013,nokia_e52_ver1,,21,21,21,0,0,0,0,0,,Symbian OS,,2009_may,Safari
+Nokia,E52,nokia_e52_ver1_sub021013,nokia_e52_ver1,CLICKTAG,120,17,0,120,1,1,0.00833333333333333,0.00833333333333333,,Symbian OS,,2009_may,Safari
+Nokia,E52,nokia_e52_ver1_sub021013,nokia_e52_ver1,SMS_WAP,19,2,0,19,0,0,0,0,,Symbian OS,,2009_may,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub310001,nokia_5800d_ver1,CLICKTAG,28,3,0,28,2,2,0.0714285714285714,0.0714285714285714,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub310001,nokia_5800d_ver1,SMS_WAP,2,0,0,2,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub310001,nokia_5800d_ver1,,6,6,6,0,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub400001,nokia_5800d_ver1,SMS_WAP,5,2,0,5,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub400001,nokia_5800d_ver1,,1,1,1,0,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub400001,nokia_5800d_ver1,CLICKTAG,26,1,0,26,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,E75,nokia_e75_ver1_sub2001234,nokia_e75_ver1,SMS_WAP,3,1,0,3,0,0,0,0,E75,Symbian OS,9.3,2009_february,Safari
+Nokia,E75,nokia_e75_ver1_sub2001234,nokia_e75_ver1,,5,5,5,0,0,0,0,0,E75,Symbian OS,9.3,2009_february,Safari
+Nokia,E75,nokia_e75_ver1_sub2001234,nokia_e75_ver1,CLICKTAG,22,3,0,22,0,0,0,0,E75,Symbian OS,9.3,2009_february,Safari
+Nokia,N86 8MP,nokia_n86_ver1_sub20011,nokia_n86_ver1,SMS_WAP,3,0,0,3,0,0,0,0,,Symbian OS,9.3,2009_february,Safari
+Nokia,N86 8MP,nokia_n86_ver1_sub20011,nokia_n86_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.3,2009_february,Safari
+Nokia,N86 8MP,nokia_n86_ver1_sub20011,nokia_n86_ver1,CLICKTAG,12,0,0,12,0,0,0,0,,Symbian OS,9.3,2009_february,Safari
+Nokia,5630,nokia_5630expressmusic_ver1_sub012002,nokia_5630expressmusic_ver1,CLICKTAG,2,0,0,2,0,0,0,0,XpressMusic,Symbian OS,,2009_february,Safari
+Nokia,5730,nokia_5730expressmusic_ver1_sub10048110,nokia_5730expressmusic_ver1,JAVA_APP,1,0,0,1,0,0,0,0,XpressMusic,Symbian OS,9.3,2009_march,Safari
+Nokia,N97,nokia_n97_ver1_sub200004,nokia_n97_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.4,2008_december,Safari
+Nokia,N97,nokia_n97_ver1_sub200004,nokia_n97_ver1,CLICKTAG,11,3,0,11,0,0,0,0,,Symbian OS,9.4,2008_december,Safari
+Nokia,N97,nokia_n97_ver1_sub200004,nokia_n97_ver1,SMS_WAP,2,0,0,2,0,0,0,0,,Symbian OS,9.4,2008_december,Safari
+Nokia,E72,nokia_e72_ver1_sub021010,nokia_e72_ver1,,181,181,181,0,0,0,0,0,,Symbian OS,9.3,2009_june,Safari
+Nokia,E72,nokia_e72_ver1_sub021010,nokia_e72_ver1,CLICKTAG,870,74,0,870,13,13,0.0149425287356322,0.0149425287356322,,Symbian OS,9.3,2009_june,Safari
+Nokia,E72,nokia_e72_ver1_sub021010,nokia_e72_ver1,SMS_WAP,164,35,0,164,0,0,0,0,,Symbian OS,9.3,2009_june,Safari
+Nokia,E66,nokia_e66_ver1_sub1000752,nokia_e66_ver1,CLICKTAG,61,6,0,61,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E66,nokia_e66_ver1_sub1000752,nokia_e66_ver1,,6,6,6,0,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E66,nokia_e66_ver1_sub1000752,nokia_e66_ver1,SMS_WAP,10,4,0,10,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub310008,nokia_5800d_ver1,CLICKTAG,1,0,0,1,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,E63,nokia_e63_ver1_sub20021012,nokia_e63_ver1,CLICKTAG,21,2,0,21,0,0,0,0,,Symbian OS,,2008_november,Safari
+Nokia,E63,nokia_e63_ver1_sub20021012,nokia_e63_ver1,SMS_WAP,3,1,0,3,0,0,0,0,,Symbian OS,,2008_november,Safari
+Nokia,E63,nokia_e63_ver1_sub20021012,nokia_e63_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,,2008_november,Safari
+Nokia,5230,nokia_5230_ver1,nokia_generic_series60_dp50,,1,1,1,0,0,0,0,0,Nuron,Symbian OS,9.4,2009_august,Safari
+Nokia,5230,nokia_5230_ver1,nokia_generic_series60_dp50,JAVA_APP,2,0,0,2,0,0,0,0,Nuron,Symbian OS,9.4,2009_august,Safari
+Nokia,X6-00,nokia_x6_ver1,nokia_generic_series60_dp50,,4,4,4,0,0,0,0,0,,Symbian OS,9.4,2009_september,Safari
+Nokia,X6-00,nokia_x6_ver1,nokia_generic_series60_dp50,SMS_WAP,1,1,0,1,0,0,0,0,,Symbian OS,9.4,2009_september,Safari
+Nokia,X6-00,nokia_x6_ver1,nokia_generic_series60_dp50,CLICKTAG,7,0,0,7,0,0,0,0,,Symbian OS,9.4,2009_september,Safari
+RIM,BlackBerry 9700,blackberry9700_ver1,blackberry_generic_ver5,JAVA_APP,72,1,0,72,0,0,0,0,Bold,RIM OS,5.0,2009_september,BlackBerry
+RIM,BlackBerry 9700,blackberry9700_ver1,blackberry_generic_ver5,,6,6,6,0,0,0,0,0,Bold,RIM OS,5.0,2009_september,BlackBerry
+RIM,BlackBerry 9700,blackberry9700_ver1,blackberry_generic_ver5,SMS_WAP,8,4,0,8,0,0,0,0,Bold,RIM OS,5.0,2009_september,BlackBerry
+Nokia,N97,nokia_n97_ver1_sub120026,nokia_n97_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.4,2008_december,Safari
+Nokia,N97,nokia_n97_ver1_sub120026,nokia_n97_ver1,,2,2,2,0,0,0,0,0,,Symbian OS,9.4,2008_december,Safari
+Nokia,5630,nokia_5630expressmusic_ver1_sub013006,nokia_5630expressmusic_ver1,CLICKTAG,10,2,0,10,1,1,0.1,0.1,XpressMusic,Symbian OS,,2009_february,Safari
+SonyEricsson,U1i,sonyericsson_u1i_ver1,sonyericsson_generic_symbian_s60,CLICKTAG,1,0,0,1,0,0,0,0,Satio,Symbian OS,9.4,2009_september,Nokia
+SonyEricsson,U1i,sonyericsson_u1i_ver1,sonyericsson_generic_symbian_s60,SMS_WAP,1,0,0,1,0,0,0,0,Satio,Symbian OS,9.4,2009_september,Nokia
+Nokia,5230,nokia_5230_ver1_sub100062,nokia_5230_ver1,JAVA_APP,1,0,0,1,0,0,0,0,Nuron,Symbian OS,9.4,2009_august,Safari
+Nokia,N79,nokia_n79_ver1_sub31002,nokia_n79_ver1,CLICKTAG,4,0,0,4,0,0,0,0,,Symbian OS,,2008_august,Safari
+Nokia,5730,nokia_5730expressmusic_ver1_sub2001280,nokia_5730expressmusic_ver1,JAVA_APP,1,0,0,1,0,0,0,0,XpressMusic,Symbian OS,9.3,2009_march,Safari
+Nokia,E72,nokia_e72_ver1_sub021020,nokia_e72_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.3,2009_june,Safari
+Nokia,N97 mini,nokia_n97_mini_ver1,nokia_generic_series60_dp50,CLICKTAG,85,7,0,85,2,2,0.0235294117647059,0.0235294117647059,N97 mini,Symbian OS,9.4,2009_september,Safari
+Nokia,N97 mini,nokia_n97_mini_ver1,nokia_generic_series60_dp50,SMS_WAP,18,3,0,18,0,0,0,0,N97 mini,Symbian OS,9.4,2009_september,Safari
+Nokia,N97 mini,nokia_n97_mini_ver1,nokia_generic_series60_dp50,,16,16,16,0,0,0,0,0,N97 mini,Symbian OS,9.4,2009_september,Safari
+Nokia,X3-00,nokia_x3_00_ver1_sub0050,nokia_x3_00_ver1,,3,3,3,0,0,0,0,0,,,,2009_september,Nokia
+Nokia,X3-00,nokia_x3_00_ver1_sub0050,nokia_x3_00_ver1,JAVA_APP,31,2,0,31,0,0,0,0,,,,2009_september,Nokia
+Nokia,X3-00,nokia_x3_00_ver1_sub0050,nokia_x3_00_ver1,SMS_WAP,2,0,0,2,0,0,0,0,,,,2009_september,Nokia
+Nokia,E63,nokia_e63_ver1_sub1,nokia_e63_ver1,CLICKTAG,3,0,0,3,0,0,0,0,,Symbian OS,,2008_november,Safari
+SonyEricsson,U5i,sonyericsson_u5i_ver1,sonyericsson_generic_symbian_s60,SMS_WAP,1,0,0,1,0,0,0,0,Vivaz,Symbian OS,9.4,2009_november,Safari
+SonyEricsson,U5i,sonyericsson_u5i_ver1,sonyericsson_generic_symbian_s60,JAVA_APP,3,0,0,3,0,0,0,0,Vivaz,Symbian OS,9.4,2009_november,Safari
+Nokia,N97 mini,nokia_n97_mini_ver1_sub100020,nokia_n97_mini_ver1,CLICKTAG,1,0,0,1,0,0,0,0,N97 mini,Symbian OS,9.4,2009_september,Safari
+Nokia,N97 mini,nokia_n97_mini_ver1_sub100020,nokia_n97_mini_ver1,,4,4,4,0,0,0,0,0,N97 mini,Symbian OS,9.4,2009_september,Safari
+Nokia,N97 mini,nokia_n97_mini_ver1_sub100020,nokia_n97_mini_ver1,SMS_WAP,1,1,0,1,0,0,0,0,N97 mini,Symbian OS,9.4,2009_september,Safari
+Verizon,Droid,verizon_droid_ver1_subua,verizon_droid_ver1,GooglePlay,1,0,0,1,0,0,0,0,,Android,2.0,2009_october,Android Webkit
+Nokia,6700 slide,nokia_6700s_ver1,nokia_generic_series60_dp30_webkit,,2,2,2,0,0,0,0,0,,Symbian OS,,2009_november,Nokia BrowserNG
+Nokia,6700 slide,nokia_6700s_ver1,nokia_generic_series60_dp30_webkit,SMS_WAP,7,4,0,7,0,0,0,0,,Symbian OS,,2009_november,Nokia BrowserNG
+Nokia,6700 slide,nokia_6700s_ver1,nokia_generic_series60_dp30_webkit,JAVA_APP,34,2,0,34,0,0,0,0,,Symbian OS,,2009_november,Nokia BrowserNG
+Nokia,E72,nokia_e72_ver1_sub021024,nokia_e72_ver1_sub021018,SMS_WAP,9,1,0,9,0,0,0,0,,Symbian OS,9.3,2009_june,Safari
+Nokia,E72,nokia_e72_ver1_sub021024,nokia_e72_ver1_sub021018,CLICKTAG,29,0,0,29,0,0,0,0,,Symbian OS,9.3,2009_june,Safari
+Nokia,E72,nokia_e72_ver1_sub021024,nokia_e72_ver1_sub021018,,5,5,5,0,0,0,0,0,,Symbian OS,9.3,2009_june,Safari
+Nokia,5130,nokia_5130_xpressmusic_ver1_sub0694,nokia_5130_xpressmusic_ver1,JAVA_APP,2,0,0,2,0,0,0,0,XpressMusic,,,2008_november,Nokia
+Nokia,5130,nokia_5130_xpressmusic_ver1_sub0791,nokia_5130_xpressmusic_ver1,JAVA_APP,42,0,0,42,1,1,0.0238095238095238,0.0238095238095238,XpressMusic,,,2008_november,Nokia
+Nokia,5530,nokia_5530_xpressmusic_ver2_sub110054,nokia_5530_xpressmusic_ver1,CLICKTAG,7,0,0,7,1,1,0.142857142857143,0.142857142857143,XpressMusic,Symbian OS,9.4,2009_june,Safari
+Nokia,5310 XpressMusic,nokia_5310_xpressmusic_ver1_sub1010,nokia_5310_xpressmusic_ver1,CLICKTAG,2,0,0,2,0,0,0,0,XpressMusic,,,2007_august,Nokia
+Nokia,C5-00,nokia_c5_00_ver1,nokia_generic_series60_dp30_fp2_webkit,CLICKTAG,240,36,0,240,10,10,0.0416666666666667,0.0416666666666667,C5,Symbian OS,9.3,2010_march,Nokia BrowserNG
+Nokia,C5-00,nokia_c5_00_ver1,nokia_generic_series60_dp30_fp2_webkit,,58,58,58,0,0,0,0,0,C5,Symbian OS,9.3,2010_march,Nokia BrowserNG
+Nokia,C5-00,nokia_c5_00_ver1,nokia_generic_series60_dp30_fp2_webkit,SMS_WAP,39,15,0,39,0,0,0,0,C5,Symbian OS,9.3,2010_march,Nokia BrowserNG
+SonyEricsson,U10i,sonyericsson_u10i_ver1_subua2,sonyericsson_u10i_ver1,CLICKTAG,1,0,0,1,0,0,0,0,Aino,,,2010_february,Access Netfront
+Samsung,GT S3600C,samsung_gt_s3600i_ver1,samsung_gt_s3600_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,,,2009_october,Access Netfront
+Apple,iPhone,apple_iphone_ver3_1_3_subenus,apple_iphone_ver3_1_3,WAPPIN,1,0,0,1,0,0,0,0,,iOS,3.1.3,2009_november,Safari
+Nokia,5530,nokia_5530_xpressmusic_ver1_subua,nokia_5530_xpressmusic_ver1,SMS_WAP,1,1,0,1,0,0,0,0,XpressMusic,Symbian OS,9.4,2009_june,Safari
+Nokia,5530,nokia_5530_xpressmusic_ver1_subua,nokia_5530_xpressmusic_ver1,CLICKTAG,23,0,0,23,0,0,0,0,XpressMusic,Symbian OS,9.4,2009_june,Safari
+Nokia,7230,nokia_7230_ver1,nokia_generic_series40_dp60,CLICKTAG,29,0,0,29,0,0,0,0,,,,2009_november,Safari
+SonyEricsson,C902,sonyericsson_c902_ver1_subr3ea,sonyericsson_c902_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,,,2008_january,Access Netfront
+Nokia,2730 classic,nokia_2730c_ver1_sub0760,nokia_2730c_ver1,JAVA_APP,1,0,0,1,0,0,0,0,,,,2009_may,Nokia
+Nokia,2690,nokia_2690_ver1,nokia_generic_series40_dp50,JAVA_APP,12,0,0,12,1,1,0.0833333333333333,0.0833333333333333,,,,2009_november,Nokia
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub500005,nokia_5800d_ver1,CLICKTAG,771,70,0,771,3,3,0.00389105058365759,0.00389105058365759,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub500005,nokia_5800d_ver1,,207,207,207,0,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub500005,nokia_5800d_ver1,SMS_WAP,143,31,0,143,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Apple,iPad,apple_ipad_ver1_subua32,apple_ipad_ver1,WAPPIN,824,2,0,824,3,0,0,0,,iOS,3.2,2010_january,Safari
+Apple,iPad,apple_ipad_ver1_subua32,apple_ipad_ver1,SMS_WAP,160,1,0,160,0,0,0,0,,iOS,3.2,2010_january,Safari
+Apple,iPad,apple_ipad_ver1_subua32,apple_ipad_ver1,,60,59,59,1,0,0,0,0,,iOS,3.2,2010_january,Safari
+Apple,iPad,apple_ipad_ver1_subua32,apple_ipad_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,iOS,3.2,2010_january,Safari
+Nokia,6303i classic,nokia_6303iclassic_ver1,nokia_6303classic_ver1,JAVA_APP,4,0,0,4,0,0,0,0,Classic,,,2010_february,Nokia
+HTC,Desire,htc_desire_ver1_sub21,htc_desire_ver1,GooglePlay,4,0,0,4,0,0,0,0,,Android,2.1,2010_march,Android Webkit
+SonyEricsson,U8i,sonyericsson_u8i_ver1,sonyericsson_generic_symbian_s60,CLICKTAG,1,0,0,1,0,0,0,0,kanna,Symbian OS,9.4,2010_may,Safari
+Nokia,5235,nokia_5235_ver1,nokia_generic_series60_dp50,CLICKTAG,5,0,0,5,0,0,0,0,,Symbian OS,,2009_december,Safari
+Nokia,C3-00,nokia_c3_00_ver1,nokia_generic_series40_dp60,SMS_WAP,20,4,0,20,0,0,0,0,,,,2010_april,Nokia
+Nokia,C3-00,nokia_c3_00_ver1,nokia_generic_series40_dp60,,18,18,18,0,0,0,0,0,,,,2010_april,Nokia
+Nokia,C3-00,nokia_c3_00_ver1,nokia_generic_series40_dp60,CLICKTAG,334,6,0,334,8,8,0.0239520958083832,0.0239520958083832,,,,2010_april,Nokia
+Nokia,N8-00,nokia_n8_00_ver1,nokia_generic_symbian3,,32,32,32,0,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1,nokia_generic_symbian3,SMS_WAP,26,2,0,26,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1,nokia_generic_symbian3,CLICKTAG,153,6,0,153,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+RIM,BlackBerry 9300,blackberry9300_ver1,blackberry_generic_ver5,JAVA_APP,108,4,0,108,0,0,0,0,Curve 3G,RIM OS,5.0,2010_june,BlackBerry
+RIM,BlackBerry 9300,blackberry9300_ver1,blackberry_generic_ver5,,21,21,21,0,0,0,0,0,Curve 3G,RIM OS,5.0,2010_june,BlackBerry
+RIM,BlackBerry 9300,blackberry9300_ver1,blackberry_generic_ver5,SMS_WAP,22,5,0,22,0,0,0,0,Curve 3G,RIM OS,5.0,2010_june,BlackBerry
+Nokia,2710,nokia_2710c_ver1,nokia_generic_series40_dp60,CLICKTAG,1,0,0,1,0,0,0,0,Navigation Edition,,,2009_december,Nokia
+Nokia,5233,nokia_5233_ver1,nokia_generic_series60_dp50,,11,11,11,0,0,0,0,0,,Symbian OS,,2010_june,Safari
+Nokia,5233,nokia_5233_ver1,nokia_generic_series60_dp50,CLICKTAG,32,11,0,32,3,3,0.09375,0.09375,,Symbian OS,,2010_june,Safari
+Nokia,5233,nokia_5233_ver1,nokia_generic_series60_dp50,SMS_WAP,8,2,0,8,0,0,0,0,,Symbian OS,,2010_june,Safari
+Nokia,C6-00,nokia_c6_00_ver1_sub100021,nokia_c6_00_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.4,2010_april,Nokia BrowserNG
+Nokia,C6-00,nokia_c6_00_ver1_sub100021,nokia_c6_00_ver1,CLICKTAG,2,1,0,2,0,0,0,0,,Symbian OS,9.4,2010_april,Nokia BrowserNG
+Apple,iPhone,apple_iphone_ver4_sub405,apple_iphone_ver4,WAPPIN,2,1,0,2,0,0,0,0,,iOS,4.0,2010_july,Safari
+RIM,BlackBerry 8900,blackberry8900_ver1_sub500411,blackberry8900_ver1,JAVA_APP,11,0,0,11,0,0,0,0,Curve,RIM OS,5.0,2010_october,BlackBerry
+RIM,BlackBerry 8900,blackberry8900_ver1_sub500411,blackberry8900_ver1,,1,1,1,0,0,0,0,0,Curve,RIM OS,5.0,2010_october,BlackBerry
+RIM,BlackBerry 9000,blackberry9000_ver1_sub500348,blackberry9000_ver1,JAVA_APP,1,0,0,1,0,0,0,0,Bold,RIM OS,5.0,2007_january,BlackBerry
+RIM,BlackBerry 9700,blackberry9700_ver1_sub500321,blackberry9700_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Bold,RIM OS,5.0,2009_september,BlackBerry
+RIM,BlackBerry 9700,blackberry9700_ver1_sub500321,blackberry9700_ver1,JAVA_APP,8,1,0,8,0,0,0,0,Bold,RIM OS,5.0,2009_september,BlackBerry
+Nokia,E73 Mode,nokia_e73_ver1,nokia_generic_series60_dp30,CLICKTAG,1,0,0,1,0,0,0,0,Mode,Symbian OS,,2010_june,Nokia
+Nokia,E5-00,nokia_e5_ver1,nokia_generic_series60_dp30,CLICKTAG,1662,174,0,1662,35,35,0.0210589651022864,0.0210589651022864,Mystic,Symbian OS,,2010_april,Nokia BrowserNG
+Nokia,E5-00,nokia_e5_ver1,nokia_generic_series60_dp30,,337,337,337,0,0,0,0,0,Mystic,Symbian OS,,2010_april,Nokia BrowserNG
+Nokia,E5-00,nokia_e5_ver1,nokia_generic_series60_dp30,SMS_WAP,293,78,0,293,0,0,0,0,Mystic,Symbian OS,,2010_april,Nokia BrowserNG
+Nokia,C6-00,nokia_c6_00_ver1_sub100001,nokia_c6_00_ver1,,107,107,107,0,0,0,0,0,,Symbian OS,9.4,2010_april,Nokia BrowserNG
+Nokia,C6-00,nokia_c6_00_ver1_sub100001,nokia_c6_00_ver1,SMS_WAP,84,19,0,84,0,0,0,0,,Symbian OS,9.4,2010_april,Nokia BrowserNG
+Nokia,C6-00,nokia_c6_00_ver1_sub100001,nokia_c6_00_ver1,CLICKTAG,350,55,0,350,9,9,0.0257142857142857,0.0257142857142857,,Symbian OS,9.4,2010_april,Nokia BrowserNG
+Nokia,5230,nokia_5230_ver1_sub200005,nokia_5230_ver1,JAVA_APP,134,22,0,134,0,0,0,0,Nuron,Symbian OS,9.4,2010_july,Nokia
+Nokia,5230,nokia_5230_ver1_sub200005,nokia_5230_ver1,,51,51,51,0,0,0,0,0,Nuron,Symbian OS,9.4,2010_july,Nokia
+Nokia,5230,nokia_5230_ver1_sub200005,nokia_5230_ver1,SMS_WAP,21,5,0,21,0,0,0,0,Nuron,Symbian OS,9.4,2010_july,Nokia
+Nokia,5530,nokia_5530_xpressmusic_ver1_sub300009,nokia_5530_xpressmusic_ver1,CLICKTAG,60,2,0,60,1,1,0.0166666666666667,0.0166666666666667,XpressMusic,Symbian OS,9.4,2009_june,Safari
+Nokia,5530,nokia_5530_xpressmusic_ver1_sub300009,nokia_5530_xpressmusic_ver1,,3,3,3,0,0,0,0,0,XpressMusic,Symbian OS,9.4,2009_june,Safari
+Nokia,5530,nokia_5530_xpressmusic_ver1_sub300009,nokia_5530_xpressmusic_ver1,SMS_WAP,4,0,0,4,0,0,0,0,XpressMusic,Symbian OS,9.4,2009_june,Safari
+Samsung,GT-S3653W,samsung_gt_s3653w_ver1_subjpjc4,samsung_gt_s3653w_ver1,CLICKTAG,1,0,0,1,1,1,1,1,Genio,,,2010_july,Dolfin/Jasmine Webkit
+Nokia,5230,nokia_5230_ver1_sub210004,nokia_5230_ver1,JAVA_APP,17,0,0,17,0,0,0,0,Nuron,Symbian OS,9.4,2009_august,Safari
+Nokia,5230,nokia_5230_ver1_sub210004,nokia_5230_ver1,SMS_WAP,4,0,0,4,0,0,0,0,Nuron,Symbian OS,9.4,2009_august,Safari
+Nokia,X6-00,nokia_x6_ver1_sub210004,nokia_x6_ver1,,29,29,29,0,0,0,0,0,,Symbian OS,9.4,2009_september,Safari
+Nokia,X6-00,nokia_x6_ver1_sub210004,nokia_x6_ver1,CLICKTAG,144,14,0,144,2,2,0.0138888888888889,0.0138888888888889,,Symbian OS,9.4,2009_september,Safari
+Nokia,X6-00,nokia_x6_ver1_sub210004,nokia_x6_ver1,SMS_WAP,25,6,0,25,0,0,0,0,,Symbian OS,9.4,2009_september,Safari
+RIM,BlackBerry 9300,blackberry9300_ver1_sub5000845,blackberry9300_ver1,JAVA_APP,12,0,0,12,0,0,0,0,Curve 3G,RIM OS,5.0,2010_june,BlackBerry
+Nokia,6120ci,nokia_6120ci_ver1,nokia_generic_series60_dp30,,1,1,1,0,0,0,0,0,Classic,Symbian OS,9.2,2010_july,Nokia
+Nokia,6120ci,nokia_6120ci_ver1,nokia_generic_series60_dp30,CLICKTAG,16,0,0,16,0,0,0,0,Classic,Symbian OS,9.2,2010_july,Nokia
+RIM,BlackBerry 9800,blackberry9800_ver1,blackberry_generic_ver6,,9,9,9,0,0,0,0,0,Torch,RIM OS,6.0,2010_august,Safari
+RIM,BlackBerry 9800,blackberry9800_ver1,blackberry_generic_ver6,SMS_WAP,10,0,0,10,0,0,0,0,Torch,RIM OS,6.0,2010_august,Safari
+RIM,BlackBerry 9800,blackberry9800_ver1,blackberry_generic_ver6,JAVA_APP,56,0,0,56,1,1,0.0178571428571429,0.0178571428571429,Torch,RIM OS,6.0,2010_august,Safari
+Nokia,310,nokia_310_ver1_subuaovi,nokia_310_ver1,CLICKTAG,1,0,0,1,0,0,0,0,Asha 310,,,2013_july,Nokia/S40Ovi
+Nokia,310,nokia_310_ver1,nokia_generic_series40,CLICKTAG,4,0,0,4,0,0,0,0,Asha 310,,,2013_july,Nokia
+Nokia,E52,nokia_e52_ver1_sub033002,nokia_e52_ver1,,4,4,4,0,0,0,0,0,,Symbian OS,,2009_may,Safari
+Nokia,E52,nokia_e52_ver1_sub033002,nokia_e52_ver1,SMS_WAP,3,1,0,3,0,0,0,0,,Symbian OS,,2009_may,Safari
+Nokia,E52,nokia_e52_ver1_sub033002,nokia_e52_ver1,CLICKTAG,17,1,0,17,0,0,0,0,,Symbian OS,,2009_may,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub502005,nokia_5800d_ver1_sub200012_1,CLICKTAG,1,0,0,1,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5250,nokia_5250_ver1,nokia_generic_series60_dp50,,2,2,2,0,0,0,0,0,,Symbian OS,,2010_august,Safari
+Nokia,5250,nokia_5250_ver1,nokia_generic_series60_dp50,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,,2010_august,Safari
+Nokia,5250,nokia_5250_ver1,nokia_generic_series60_dp50,CLICKTAG,34,4,0,34,1,1,0.0294117647058824,0.0294117647058824,,Symbian OS,,2010_august,Safari
+HTC,A8181,htc_desire_a8181_ver1_suban22,htc_desire_a8181_ver1,GooglePlay,2,0,0,2,0,0,0,0,Desire,Android,2.2,2010_september,Android Webkit
+Nokia,E72,nokia_e72_ver1_sub031023,nokia_e72_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Symbian OS,9.3,2009_june,Safari
+Nokia,C7-00,nokia_c7_00_ver1,nokia_generic_symbian3,CLICKTAG,149,6,0,149,0,0,0,0,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,C7-00,nokia_c7_00_ver1,nokia_generic_symbian3,SMS_WAP,42,6,0,42,0,0,0,0,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,C7-00,nokia_c7_00_ver1,nokia_generic_symbian3,,34,34,34,0,0,0,0,0,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+Samsung,GT-P1000,samsung_galaxy_tab_ver1,generic_android_ver2_2,GooglePlay,57,0,0,57,0,0,0,0,Galaxy Tab,Android,2.2,2010_september,Android Webkit
+Samsung,GT-P1000,samsung_galaxy_tab_ver1,generic_android_ver2_2,,3,3,3,0,0,0,0,0,Galaxy Tab,Android,2.2,2010_september,Android Webkit
+Samsung,GT-P1000,samsung_galaxy_tab_ver1,generic_android_ver2_2,SMS_WAP,14,2,0,14,0,0,0,0,Galaxy Tab,Android,2.2,2010_september,Android Webkit
+Nokia,C1-01,nokia_c1_ver1,nokia_generic_series40_dp60,JAVA_APP,117,0,0,117,7,7,0.0598290598290598,0.0598290598290598,,,,2010_june,Nokia
+Nokia,C1-01,nokia_c1_ver1,nokia_generic_series40_dp60,SMS_WAP,3,2,0,3,0,0,0,0,,,,2010_june,Nokia
+RIM,BlackBerry 9380,blackberry9380_ver1_subos71,blackberry9380_ver1,CLICKTAG,4,0,0,4,0,0,0,0,Blackberry 9380 Curve,RIM OS,7.1,2012_february,BlackBerry
+RIM,BlackBerry 9320,blackberry9320_ver1_subuait,blackberry9320_ver1,CLICKTAG,8,0,0,8,0,0,0,0,BlackBerry Curve 9320,RIM OS,7.0,2012_march,BlackBerry
+SonyEricsson,LT26i,sonyericsson_lt26i_ver1_suban41nose,sonyericsson_lt26i_ver1,GooglePlay,2,0,0,2,0,0,0,0,Xperia Arc HD,Android,4.1,2011_december,Android Webkit
+Samsung,GT-S5570I,samsung_gt_s5570i_ver1_subuau3v9,samsung_gt_s5570i_ver1,GooglePlay,6,0,0,6,0,0,0,0,Galaxy Pop Plus,Android,2.3,2012_may,UCWeb
+Nokia,N8-00,nokia_n8_00_ver1_subuaucweb8,nokia_n8_00_ver1,SMS_WAP,25,0,0,25,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_subuaucweb8,nokia_n8_00_ver1,,5,5,5,0,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_subuaucweb8,nokia_n8_00_ver1,CLICKTAG,189,0,0,189,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+LG,P880,lg_p880_ver1_suban41,lg_p880_ver1,GooglePlay,1,0,0,1,0,0,0,0,Optimus 4X HD,Android,4.1,2012_june,Android Webkit
+HTC,PM3511,htc_one_x_plus_ver1_suban41onexplus,htc_one_x_plus_ver1,GooglePlay,2,0,0,2,0,0,0,0,One X+,Android,4.1,2011_october,Android Webkit
+Huawei,W1-U00,huawei_ascend_w1_ver1,generic_ms_phone_os8,CLICKTAG,2,0,0,2,0,0,0,0,Ascend W1,Windows Phone OS,8,2013_january,IEMobile
+Apple,iPad,apple_ipad_ver1_sub7,apple_ipad_ver1_sub61,WAPPIN,1,1,0,1,0,0,0,0,,iOS,7.0,2012_march,Safari
+Apple,iPhone,apple_iphone_ver7,apple_iphone_ver6,WAPPIN,1,0,0,1,0,0,0,0,,iOS,7.0,2013_june,Safari
+Apple,iPad,apple_ipad_ver1_sub51_subucb3k,apple_ipad_ver1_sub51,,2,2,2,0,0,0,0,0,,iOS,5.1,2011_july,Safari
+Apple,iPad,apple_ipad_ver1_sub51_subucb3k,apple_ipad_ver1_sub51,SMS_WAP,2,0,0,2,0,0,0,0,,iOS,5.1,2011_july,Safari
+Apple,iPad,apple_ipad_ver1_sub51_subucb3k,apple_ipad_ver1_sub51,WAPPIN,25,0,0,25,0,0,0,0,,iOS,5.1,2011_july,Safari
+Nokia,Lumia 510,nokia_lumia_510_ver1_subuaucb2k,nokia_lumia_510_ver1,SMS_WAP,39,0,0,39,0,0,0,0,,Windows Phone OS,7.5,2012_october,IEMobile
+Nokia,Lumia 510,nokia_lumia_510_ver1_subuaucb2k,nokia_lumia_510_ver1,CLICKTAG,357,1,0,357,0,0,0,0,,Windows Phone OS,7.5,2012_october,IEMobile
+Nokia,Lumia 510,nokia_lumia_510_ver1_subuaucb2k,nokia_lumia_510_ver1,,21,21,21,0,0,0,0,0,,Windows Phone OS,7.5,2012_october,IEMobile
+Apple,iPhone,apple_iphone_ver6_1_subuaucb3k,apple_iphone_ver6_1,SMS_WAP,156,7,0,156,0,0,0,0,,iOS,6.1,2012_july,Safari
+Apple,iPhone,apple_iphone_ver6_1_subuaucb3k,apple_iphone_ver6_1,,38,38,38,0,0,0,0,0,,iOS,6.1,2012_july,Safari
+Apple,iPhone,apple_iphone_ver6_1_subuaucb3k,apple_iphone_ver6_1,WAPPIN,998,2,0,998,32,2,0.00200400801603206,0.00200400801603206,,iOS,6.1,2012_july,Safari
+Apple,iPhone,apple_iphone_ver6_1_subuaucb2kiph31,apple_iphone_ver6_1,WAPPIN,6,0,0,6,0,0,0,0,,iOS,6.1,2012_july,Safari
+Apple,iPhone,apple_iphone_ver6_1_subuaucb2kiph31,apple_iphone_ver6_1,CLICKTAG,10,0,0,10,0,0,0,0,,iOS,6.1,2012_july,Safari
+Apple,iPhone,apple_iphone_ver6_1_subuaucb2kiph31,apple_iphone_ver6_1,SMS_WAP,4,0,0,4,0,0,0,0,,iOS,6.1,2012_july,Safari
+Samsung,GT-S5360,samsung_gt_s5360_ver1_subuaucb2k,samsung_gt_s5360_ver1,GooglePlay,10,0,0,10,0,0,0,0,Galaxy Y,Android,2.3,2011_october,UCWeb
+Samsung,GT-S5360,samsung_gt_s5360_ver1_subuaucb2k,samsung_gt_s5360_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Galaxy Y,Android,2.3,2011_october,UCWeb
+Samsung,GT-S5360,samsung_gt_s5360_ver1_subuaucb3k,samsung_gt_s5360_ver1,GooglePlay,8,0,0,8,0,0,0,0,Galaxy Y,Android,2.3,2011_october,UCWeb
+Nokia,C5-03,nokia_c5_03_ver1,nokia_generic_series60_dp50,SMS_WAP,80,21,0,80,0,0,0,0,C5,Symbian OS,9.4,2010_october,Nokia
+Nokia,C5-03,nokia_c5_03_ver1,nokia_generic_series60_dp50,,229,229,229,0,0,0,0,0,C5,Symbian OS,9.4,2010_october,Nokia
+Nokia,C5-03,nokia_c5_03_ver1,nokia_generic_series60_dp50,CLICKTAG,693,78,0,693,6,6,0.00865800865800866,0.00865800865800866,C5,Symbian OS,9.4,2010_october,Nokia
+Nokia,5228,nokia_5228_ver1,nokia_generic_series60_dp50,CLICKTAG,4,0,0,4,0,0,0,0,,Symbian OS,9.4,2010_june,Nokia
+Nokia,5800i,nokia_5800i_ver1_sub352,nokia_5800i_ver1,CLICKTAG,1,0,0,1,0,0,0,0,XpressMusic,Symbian OS,,2008_january,UCWeb
+Nokia,5230,nokia_5230_ver1_subucbrowser,nokia_5230_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Nuron,Symbian OS,9.4,2009_august,UCWeb
+Apple,iPhone,apple_iphone_ver4_1_sub8b117,apple_iphone_ver4_1,WAPPIN,1,0,0,1,0,0,0,0,,iOS,4.1,2010_september,Safari
+RIM,BlackBerry 8900,blackberry8900_ver1_sub461310,blackberry8900_ver1,JAVA_APP,1,0,0,1,0,0,0,0,Curve,RIM OS,4.6,2008_august,BlackBerry
+RIM,BlackBerry 9780,blackberry9780_ver1_sub600214,blackberry9780_ver1,SMS_WAP,7,2,0,7,0,0,0,0,,RIM OS,6.0,2010_september,Safari
+RIM,BlackBerry 9780,blackberry9780_ver1_sub600214,blackberry9780_ver1,,6,6,6,0,0,0,0,0,,RIM OS,6.0,2010_september,Safari
+RIM,BlackBerry 9780,blackberry9780_ver1_sub600214,blackberry9780_ver1,CLICKTAG,40,1,0,40,0,0,0,0,,RIM OS,6.0,2010_september,Safari
+RIM,BlackBerry 9800,blackberry9800_ver1_sub600201,blackberry9800_ver1,JAVA_APP,31,0,0,31,0,0,0,0,Torch,RIM OS,6.0,2010_august,Safari
+RIM,BlackBerry 9800,blackberry9800_ver1_sub600201,blackberry9800_ver1,,2,2,2,0,0,0,0,0,Torch,RIM OS,6.0,2010_august,Safari
+RIM,BlackBerry 9800,blackberry9800_ver1_sub600201,blackberry9800_ver1,SMS_WAP,5,0,0,5,0,0,0,0,Torch,RIM OS,6.0,2010_august,Safari
+RIM,BlackBerry 9800,blackberry9800_ver1_sub600214,blackberry9800_ver1,JAVA_APP,1,0,0,1,0,0,0,0,Torch,RIM OS,6.0,2010_august,Safari
+RIM,BlackBerry 9800,blackberry9800_ver1_sub600246,blackberry9800_ver1,JAVA_APP,7,0,0,7,0,0,0,0,Torch,RIM OS,6.0,2010_august,Safari
+RIM,BlackBerry 9800,blackberry9800_ver1_sub600246,blackberry9800_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Torch,RIM OS,6.0,2010_august,Safari
+Nokia,C5-03,nokia_c5_03_ver1_sub100004,nokia_c5_03_ver1,CLICKTAG,28,4,0,28,0,0,0,0,C5,Symbian OS,9.4,2010_october,Nokia
+Nokia,C5-03,nokia_c5_03_ver1_sub100004,nokia_c5_03_ver1,,16,16,16,0,0,0,0,0,C5,Symbian OS,9.4,2010_october,Nokia
+Nokia,C5-03,nokia_c5_03_ver1_sub100004,nokia_c5_03_ver1,SMS_WAP,7,0,0,7,0,0,0,0,C5,Symbian OS,9.4,2010_october,Nokia
+Nokia,C6-00,nokia_c6_00_ver1_sub110029,nokia_c6_00_ver1,CLICKTAG,3,0,0,3,0,0,0,0,,Symbian OS,9.4,2010_april,Nokia BrowserNG
+Nokia,C6-00,nokia_c6_00_ver1_sub200036,nokia_c6_00_ver1,,8,8,8,0,0,0,0,0,,Symbian OS,9.4,2010_april,Nokia BrowserNG
+Nokia,C6-00,nokia_c6_00_ver1_sub200036,nokia_c6_00_ver1,CLICKTAG,50,6,0,50,1,1,0.02,0.02,,Symbian OS,9.4,2010_april,Nokia BrowserNG
+Nokia,C6-00,nokia_c6_00_ver1_sub200036,nokia_c6_00_ver1,SMS_WAP,9,4,0,9,0,0,0,0,,Symbian OS,9.4,2010_april,Nokia BrowserNG
+Nokia,C6-01,nokia_c6_01_ver1,nokia_generic_symbian3,CLICKTAG,4,0,0,4,0,0,0,0,,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub510006,nokia_5800d_ver1_sub500005,SMS_WAP,13,3,0,13,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub510006,nokia_5800d_ver1_sub500005,,12,12,12,0,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,5800 XpressMusic,nokia_5800d_ver1_sub510006,nokia_5800d_ver1_sub500005,CLICKTAG,74,6,0,74,1,1,0.0135135135135135,0.0135135135135135,XpressMusic,Symbian OS,9.4,2008_october,Safari
+Nokia,C7-00,nokia_c7_00_ver1_sub012001,nokia_c7_00_ver1,SMS_WAP,3,0,0,3,0,0,0,0,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,C7-00,nokia_c7_00_ver1_sub012001,nokia_c7_00_ver1,,7,7,7,0,0,0,0,0,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,C7-00,nokia_c7_00_ver1_sub012001,nokia_c7_00_ver1,CLICKTAG,25,2,0,25,0,0,0,0,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,C7-00,nokia_c7_00_ver1_sub012003,nokia_c7_00_ver1,,14,14,14,0,0,0,0,0,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,C7-00,nokia_c7_00_ver1_sub012003,nokia_c7_00_ver1,SMS_WAP,10,2,0,10,0,0,0,0,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,C7-00,nokia_c7_00_ver1_sub012003,nokia_c7_00_ver1,CLICKTAG,62,6,0,62,0,0,0,0,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,E7-00,nokia_e7_00_ver1,nokia_generic_symbian3,SMS_WAP,9,2,0,9,0,0,0,0,,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,E7-00,nokia_e7_00_ver1,nokia_generic_symbian3,,7,7,7,0,0,0,0,0,,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,E7-00,nokia_e7_00_ver1,nokia_generic_symbian3,JAVA_APP,23,0,0,23,0,0,0,0,,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_sub011010,nokia_n8_00_ver1,SMS_WAP,1,0,0,1,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_sub011012,nokia_n8_00_ver1,SMS_WAP,11,2,0,11,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_sub011012,nokia_n8_00_ver1,CLICKTAG,49,6,0,49,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_sub011012,nokia_n8_00_ver1,,11,11,11,0,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,E63,nokia_e63_ver1_sub41121001,nokia_e63_ver1,CLICKTAG,87,6,0,87,1,1,0.0114942528735632,0.0114942528735632,,Symbian OS,,2008_november,Safari
+Nokia,E63,nokia_e63_ver1_sub41121001,nokia_e63_ver1,SMS_WAP,16,7,0,16,0,0,0,0,,Symbian OS,,2008_november,Safari
+Nokia,E63,nokia_e63_ver1_sub41121001,nokia_e63_ver1,,12,12,12,0,0,0,0,0,,Symbian OS,,2008_november,Safari
+Nokia,E63,nokia_e63_ver1_sub50121001,nokia_e63_ver1,SMS_WAP,116,29,0,116,0,0,0,0,,Symbian OS,,2008_november,Safari
+Nokia,E63,nokia_e63_ver1_sub50121001,nokia_e63_ver1,CLICKTAG,538,47,0,538,11,11,0.0204460966542751,0.0204460966542751,,Symbian OS,,2008_november,Safari
+Nokia,E63,nokia_e63_ver1_sub50121001,nokia_e63_ver1,,72,72,72,0,0,0,0,0,,Symbian OS,,2008_november,Safari
+Nokia,E63,nokia_e63_ver1_sub50121001_sub2,nokia_e63_ver1_sub50121001,CLICKTAG,2,0,0,2,0,0,0,0,,Symbian OS,,2008_november,Safari
+Nokia,E66,nokia_e66_ver1_sub50121001,nokia_e66_ver1,SMS_WAP,18,2,0,18,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E66,nokia_e66_ver1_sub50121001,nokia_e66_ver1,,16,16,16,0,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E66,nokia_e66_ver1_sub50121001,nokia_e66_ver1,CLICKTAG,106,9,0,106,3,3,0.0283018867924528,0.0283018867924528,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub41121001,nokia_e71_ver1,CLICKTAG,24,1,0,24,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub41121001,nokia_e71_ver1,,6,6,6,0,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub41121001,nokia_e71_ver1,SMS_WAP,4,1,0,4,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub50121001,nokia_e71_ver1,,60,60,60,0,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub50121001,nokia_e71_ver1,SMS_WAP,76,14,0,76,0,0,0,0,,Symbian OS,9.2,2008_june,Safari
+Nokia,E71,nokia_e71_ver1_sub50121001,nokia_e71_ver1,CLICKTAG,329,30,0,329,2,2,0.0060790273556231,0.0060790273556231,,Symbian OS,9.2,2008_june,Safari
+Nokia,N97,nokia_n97_ver1_sub_220110,nokia_n97_ver1,CLICKTAG,74,14,0,74,1,1,0.0135135135135135,0.0135135135135135,,Symbian OS,9.4,2008_december,Safari
+Nokia,N97,nokia_n97_ver1_sub_220110,nokia_n97_ver1,,24,24,24,0,0,0,0,0,,Symbian OS,9.4,2008_december,Safari
+Nokia,N97,nokia_n97_ver1_sub_220110,nokia_n97_ver1,SMS_WAP,9,2,0,9,0,0,0,0,,Symbian OS,9.4,2008_december,Safari
+Nokia,6700 slide,nokia_6700s_ver1_sub061002,nokia_6700s_ver1,SMS_WAP,4,0,0,4,0,0,0,0,,Symbian OS,,2009_november,Nokia BrowserNG
+Nokia,6700 slide,nokia_6700s_ver1_sub061002,nokia_6700s_ver1,,2,2,2,0,0,0,0,0,,Symbian OS,,2009_november,Nokia BrowserNG
+Nokia,6700 slide,nokia_6700s_ver1_sub061002,nokia_6700s_ver1,JAVA_APP,11,0,0,11,0,0,0,0,,Symbian OS,,2009_november,Nokia BrowserNG
+Google,Nexus One,google_nexusone_ver1_suban22,google_nexusone_ver1,GooglePlay,2,0,0,2,0,0,0,0,HTC Nexus One,Android,2.2,2009_october,Android Webkit
+Nokia,6303i classic,nokia_6303iclassic_ver1_sub0710,nokia_6303iclassic_ver1,JAVA_APP,1,0,0,1,0,0,0,0,Classic,,,2010_february,Nokia
+Nokia,X2-00,nokia_x2_00_ver1_sub500480,nokia_x2_00_ver1,CLICKTAG,35,0,0,35,0,0,0,0,,,,2010_april,Nokia
+Nokia,X2-00,nokia_x2_00_ver1_sub500480,nokia_x2_00_ver1,,3,3,3,0,0,0,0,0,,,,2010_april,Nokia
+Nokia,X3-02,nokia_x3_02_ver1,nokia_generic_series40_dp60,JAVA_APP,3,0,0,3,0,0,0,0,,,,2010_august,Nokia
+Nokia,X3-02,nokia_x3_02_ver1,nokia_generic_series40_dp60,SMS_WAP,1,0,0,1,0,0,0,0,,,,2010_august,Nokia
+RIM,BlackBerry 9780,blackberry9780_ver1_sub600131,blackberry9780_ver1,CLICKTAG,6,0,0,6,0,0,0,0,,RIM OS,6.0,2010_september,Safari
+RIM,BlackBerry 9780,blackberry9780_ver1_sub600131,blackberry9780_ver1,SMS_WAP,2,0,0,2,0,0,0,0,,RIM OS,6.0,2010_september,Safari
+Samsung,GT S5233S,samsung_gt_s5233s_ver1_subua_datauri,samsung_gt_s5233s_ver1_subua,CLICKTAG,1,0,0,1,0,0,0,0,,,,2009_august,Dolfin/Jasmine Webkit
+SonyEricsson,J20i,sonyericsson_j20i_ver1_subr7ca,sonyericsson_j20i_ver1,CLICKTAG,2,0,0,2,0,0,0,0,,,,2010_january,Access Netfront
+RIM,BlackBerry 8520,blackberry8520_ver1_sub461314,blackberry8520_ver1,,20,20,20,0,0,0,0,0,Curve,RIM OS,4.6.1,2009_august,BlackBerry
+RIM,BlackBerry 8520,blackberry8520_ver1_sub461314,blackberry8520_ver1,JAVA_APP,147,5,0,147,3,3,0.0204081632653061,0.0204081632653061,Curve,RIM OS,4.6.1,2009_august,BlackBerry
+RIM,BlackBerry 8520,blackberry8520_ver1_sub461314,blackberry8520_ver1,SMS_WAP,23,2,0,23,0,0,0,0,Curve,RIM OS,4.6.1,2009_august,BlackBerry
+RIM,BlackBerry 8520,blackberry8520_ver1_sub500822,blackberry8520_ver1,JAVA_APP,1120,42,0,1120,5,5,0.00446428571428571,0.00446428571428571,Curve,RIM OS,5.0,2009_august,BlackBerry
+RIM,BlackBerry 8520,blackberry8520_ver1_sub500822,blackberry8520_ver1,SMS_WAP,191,37,0,191,0,0,0,0,Curve,RIM OS,5.0,2009_august,BlackBerry
+RIM,BlackBerry 8520,blackberry8520_ver1_sub500822,blackberry8520_ver1,,117,116,116,1,0,0,0,0,Curve,RIM OS,5.0,2009_august,BlackBerry
+RIM,BlackBerry 9000,blackberry9000_ver1_sub500681,blackberry9000_ver1,,2,2,2,0,0,0,0,0,Bold,RIM OS,5.0,2007_january,BlackBerry
+RIM,BlackBerry 9000,blackberry9000_ver1_sub500681,blackberry9000_ver1,JAVA_APP,3,0,0,3,0,0,0,0,Bold,RIM OS,5.0,2007_january,BlackBerry
+RIM,BlackBerry 9105,blackberry9105_ver1_sub500882,blackberry9105_ver1,CLICKTAG,2,0,0,2,0,0,0,0,Pearl 3G,RIM OS,5.0,2010_may,BlackBerry
+Samsung,GT-B7722,samsung_gt_b7722_ver1,generic_dolfin1_5,CLICKTAG,1,1,0,1,0,0,0,0,,,,2010_october,Dolfin/Jasmine Webkit
+Opera,Opera for Series 60,opera_nokia_series60_sub934fr,opera_nokia_series60_sub452,CLICKTAG,21,0,0,21,0,0,0,0,,Symbian OS,,2010_december,Opera
+Opera,Opera for Series 60,opera_nokia_series60_sub934fr,opera_nokia_series60_sub452,,2,2,2,0,0,0,0,0,,Symbian OS,,2010_december,Opera
+RIM,BlackBerry 9300,blackberry9300_ver1_sub_os6,blackberry9300_ver1,SMS_WAP,16,4,0,16,0,0,0,0,Curve 3G,RIM OS,6.0,2010_november,BlackBerry
+RIM,BlackBerry 9300,blackberry9300_ver1_sub_os6,blackberry9300_ver1,JAVA_APP,129,5,0,129,2,2,0.0155038759689922,0.0155038759689922,Curve 3G,RIM OS,6.0,2010_november,BlackBerry
+RIM,BlackBerry 9300,blackberry9300_ver1_sub_os6,blackberry9300_ver1,,9,9,9,0,0,0,0,0,Curve 3G,RIM OS,6.0,2010_november,BlackBerry
+Samsung,GT-P3100,samsung_gt_p3100_ver1_suban41sam,samsung_gt_p3100_ver1,GooglePlay,1,0,0,1,0,0,0,0,Galaxy Tab 2 7.0,Android,4.0,2012_april,Android Webkit
+Nokia,C5-00,nokia_c5_00_ver1_subuanok,nokia_c5_00_ver1,,1,1,1,0,0,0,0,0,C5,Symbian OS,9.3,2010_march,Nokia BrowserNG
+Nokia,C5-00,nokia_c5_00_ver1_subuanok,nokia_c5_00_ver1,CLICKTAG,1,0,0,1,0,0,0,0,C5,Symbian OS,9.3,2010_march,Nokia BrowserNG
+Apple,iPad,apple_ipad_ver1_sub421,apple_ipad_ver1_sub42,WAPPIN,32,0,0,32,0,0,0,0,,iOS,4.2.1,2010_november,Safari
+Apple,iPad,apple_ipad_ver1_sub421,apple_ipad_ver1_sub42,SMS_WAP,7,0,0,7,0,0,0,0,,iOS,4.2.1,2010_november,Safari
+Apple,iPad,apple_ipad_ver1_sub421,apple_ipad_ver1_sub42,,1,1,1,0,0,0,0,0,,iOS,4.2.1,2010_november,Safari
+Nokia,C6-01,nokia_c6_01_ver1_sub3,nokia_c6_01_ver1,CLICKTAG,32,3,0,32,1,1,0.03125,0.03125,,Symbian OS,S3,2010_december,Nokia BrowserNG
+Nokia,C6-01,nokia_c6_01_ver1_sub3,nokia_c6_01_ver1,SMS_WAP,4,0,0,4,0,0,0,0,,Symbian OS,S3,2010_december,Nokia BrowserNG
+Nokia,C6-01,nokia_c6_01_ver1_sub3,nokia_c6_01_ver1,,8,8,8,0,0,0,0,0,,Symbian OS,S3,2010_december,Nokia BrowserNG
+Apple,iPhone,apple_iphone_ver4_2_1,apple_iphone_ver4_2,WAPPIN,3,0,0,3,0,0,0,0,,iOS,4.2.1,2010_november,Safari
+Nokia,C3-01,nokia_c3_01_ver1,nokia_c3_00_ver1,CLICKTAG,7,0,0,7,0,0,0,0,,,,2010_september,Nokia
+Nokia,C3-01,nokia_c3_01_ver1,nokia_c3_00_ver1,,1,1,1,0,0,0,0,0,,,,2010_september,Nokia
+Motorola,Droid 2 Global,mot_droid2global_ver1,mot_droid2_ver1,,1,1,1,0,0,0,0,0,,Android,2.2,2010_december,Android Webkit
+Samsung,GT-S3850,samsung_gt_s3850_ver1,generic_dolfin2_0,SMS_WAP,1,0,0,1,0,0,0,0,,,,2011_january,Dolfin/Jasmine Webkit
+Samsung,GT-I9000,samsung_gt_i9000_ver1_suban221,samsung_gt_i9000_ver1_suban22,,1,1,1,0,0,0,0,0,Galaxy S,Android,2.2,2010_march,Android Webkit
+Samsung,GT-I9000,samsung_gt_i9000_ver1_suban221,samsung_gt_i9000_ver1_suban22,SMS_WAP,4,0,0,4,0,0,0,0,Galaxy S,Android,2.2,2010_march,Android Webkit
+Samsung,GT-I9000,samsung_gt_i9000_ver1_suban221,samsung_gt_i9000_ver1_suban22,GooglePlay,57,3,0,57,0,0,0,0,Galaxy S,Android,2.2,2010_march,Android Webkit
+Apple,iPhone,apple_iphone_ver4_3,apple_iphone_ver4_2_1,WAPPIN,4,0,0,4,0,0,0,0,,iOS,4.3,2011_april,Safari
+Apple,iPod Touch,apple_ipod_touch_ver4_2_1_subua,apple_ipod_touch_ver4_2_1,WAPPIN,1,0,0,1,0,0,0,0,,iOS,4.2.1,2010_november,Safari
+LG,P970,lg_p970_ver1,generic_android_ver2_2,SMS_WAP,1,0,0,1,0,0,0,0,Optimus Black,Android,2.2,2010_october,Android Webkit
+LG,P970,lg_p970_ver1,generic_android_ver2_2,GooglePlay,1,0,0,1,0,0,0,0,Optimus Black,Android,2.2,2010_october,Android Webkit
+SonyEricsson,E15i,sonyericsson_e15i_ver1_sub21,sonyericsson_e15i_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia X8,Android,2.1,2010_october,Android Webkit
+Samsung,GT-I9100,samsung_gt_i9100_ver1,generic_android_ver2_3,,17,17,17,0,0,0,0,0,Galaxy S II,Android,2.3,2010_november,Android Webkit
+Samsung,GT-I9100,samsung_gt_i9100_ver1,generic_android_ver2_3,GooglePlay,370,10,0,370,2,2,0.00540540540540541,0.00540540540540541,Galaxy S II,Android,2.3,2010_november,Android Webkit
+Samsung,GT-I9100,samsung_gt_i9100_ver1,generic_android_ver2_3,SMS_WAP,59,3,0,59,0,0,0,0,Galaxy S II,Android,2.3,2010_november,Android Webkit
+Samsung,GT-S5570,samsung_gt_s5570_ver1_sub221,samsung_gt_s5570_ver1,,1,1,1,0,0,0,0,0,Galaxy Mini,Android,2.2,2011_january,Android Webkit
+Samsung,GT-S5570,samsung_gt_s5570_ver1_sub221,samsung_gt_s5570_ver1,SMS_WAP,7,0,0,7,0,0,0,0,Galaxy Mini,Android,2.2,2011_january,Android Webkit
+Samsung,GT-S5570,samsung_gt_s5570_ver1_sub221,samsung_gt_s5570_ver1,GooglePlay,44,1,0,44,0,0,0,0,Galaxy Mini,Android,2.2,2011_january,Android Webkit
+Motorola,MB525,mot_mb525_ver1_sub_android221,mot_mb525_ver1_sub_android22,,1,1,1,0,0,0,0,0,DEFY,Android,2.2.1,2010_october,Android Webkit
+Samsung,GT-I9003,samsung_gt_i9003_ver1,generic_android_ver2_2,GooglePlay,40,0,0,40,0,0,0,0,Galaxy SL,Android,2.2,2011_april,Android Webkit
+Samsung,GT-I9003,samsung_gt_i9003_ver1,generic_android_ver2_2,SMS_WAP,4,0,0,4,0,0,0,0,Galaxy SL,Android,2.2,2011_april,Android Webkit
+HTC,A510,htc_wildfire_s_ver1,generic_android_ver2_3,SMS_WAP,1,0,0,1,0,0,0,0,Wildfire S,Android,2.3,2011_may,Android Webkit
+Nokia,Lumia 720,nokia_lumia_720_ver1,generic_ms_phone_os8,SMS_WAP,2,0,0,2,0,0,0,0,,Windows Phone OS,8,2013_march,IEMobile
+Nokia,Lumia 720,nokia_lumia_720_ver1,generic_ms_phone_os8,CLICKTAG,21,0,0,21,0,0,0,0,,Windows Phone OS,8,2013_march,IEMobile
+Nokia,C7-00,nokia_c7_00_ver1_subbrowserng73,nokia_c7_00_ver1,SMS_WAP,67,8,0,67,0,0,0,0,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,C7-00,nokia_c7_00_ver1_subbrowserng73,nokia_c7_00_ver1,,68,68,68,0,0,0,0,0,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,C7-00,nokia_c7_00_ver1_subbrowserng73,nokia_c7_00_ver1,CLICKTAG,281,18,0,281,2,2,0.00711743772241993,0.00711743772241993,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+SonyEricsson,LT15i,sonyericsson_lt15i_ver1_suban233,sonyericsson_lt15i_ver1,GooglePlay,5,0,0,5,0,0,0,0,Xperia Arc,Android,2.3,2011_january,Android Webkit
+SonyEricsson,MT15i,sonyericsson_mt15i_ver1_suban233,sonyericsson_mt15i_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia Neo,Android,2.3,2011_february,Android Webkit
+SonyEricsson,MT15i,sonyericsson_mt15i_ver1_suban233,sonyericsson_mt15i_ver1,SMS_WAP,1,1,0,1,0,0,0,0,Xperia Neo,Android,2.3,2011_february,Android Webkit
+Nokia,E6-00,nokia_e6_00_ver1,nokia_generic_symbian3,,32,32,32,0,0,0,0,0,E6,Symbian OS,S3,2011_april,Nokia BrowserNG
+Nokia,E6-00,nokia_e6_00_ver1,nokia_generic_symbian3,SMS_WAP,10,1,0,10,0,0,0,0,E6,Symbian OS,S3,2011_april,Nokia BrowserNG
+Nokia,E6-00,nokia_e6_00_ver1,nokia_generic_symbian3,CLICKTAG,75,4,0,75,1,1,0.0133333333333333,0.0133333333333333,E6,Symbian OS,S3,2011_april,Nokia BrowserNG
+Huawei,Vodafone 858,huawei_v858_ver1,generic_android_ver2_2,GooglePlay,1,0,0,1,0,0,0,0,,Android,2.2,2011_april,Android Webkit
+Nokia,X7-00,nokia_x7_00_ver1,nokia_generic_symbian3,CLICKTAG,25,2,0,25,0,0,0,0,X7,Symbian OS,S3,2011_april,Nokia BrowserNG
+Nokia,X7-00,nokia_x7_00_ver1,nokia_generic_symbian3,,6,6,6,0,0,0,0,0,X7,Symbian OS,S3,2011_april,Nokia BrowserNG
+Nokia,X7-00,nokia_x7_00_ver1,nokia_generic_symbian3,SMS_WAP,5,1,0,5,0,0,0,0,X7,Symbian OS,S3,2011_april,Nokia BrowserNG
+RIM,BlackBerry 9700,blackberry9700_ver1_subos6,blackberry9700_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Bold,RIM OS,6.0,2011_january,BlackBerry
+RIM,BlackBerry 9700,blackberry9700_ver1_subos6,blackberry9700_ver1,,3,3,3,0,0,0,0,0,Bold,RIM OS,6.0,2011_january,BlackBerry
+RIM,BlackBerry 9700,blackberry9700_ver1_subos6,blackberry9700_ver1,JAVA_APP,23,1,0,23,0,0,0,0,Bold,RIM OS,6.0,2011_january,BlackBerry
+RIM,BlackBerry 9780,blackberry9780_ver1_submozua,blackberry9780_ver1,SMS_WAP,20,3,0,20,0,0,0,0,,RIM OS,6.0,2010_september,Safari
+RIM,BlackBerry 9780,blackberry9780_ver1_submozua,blackberry9780_ver1,,5,5,5,0,0,0,0,0,,RIM OS,6.0,2010_september,Safari
+RIM,BlackBerry 9780,blackberry9780_ver1_submozua,blackberry9780_ver1,CLICKTAG,82,1,0,82,2,2,0.024390243902439,0.024390243902439,,RIM OS,6.0,2010_september,Safari
+Acer,A500,acer_iconia_tab_a500_ver1,generic_android_ver3_0,GooglePlay,1,0,0,1,0,0,0,0,Picasso,Android,3.0.1,2011_march,Android Webkit
+Samsung,GT-S5830,samsung_gt_s5830_ver1_suban22,samsung_gt_s5830_ver1,,1,1,1,0,0,0,0,0,Galaxy Ace,Android,2.2,2011_january,Android Webkit
+Samsung,GT-S5830,samsung_gt_s5830_ver1_suban22,samsung_gt_s5830_ver1,GooglePlay,18,0,0,18,0,0,0,0,Galaxy Ace,Android,2.2,2011_january,Android Webkit
+Nokia,X2-01,nokia_x2_01_ver1,nokia_generic_series40_dp60,SMS_WAP,1,1,0,1,0,0,0,0,,,,2010_november,Nokia
+Nokia,X2-01,nokia_x2_01_ver1,nokia_generic_series40_dp60,CLICKTAG,86,2,0,86,4,4,0.0465116279069767,0.0465116279069767,,,,2010_november,Nokia
+Nokia,X2-01,nokia_x2_01_ver1,nokia_generic_series40_dp60,,6,6,6,0,0,0,0,0,,,,2010_november,Nokia
+Nokia,N900,nokia_n900_ver1_sub1923,nokia_n900_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Linux Smartphone OS,,2009_august,Firefox
+Nokia,C2-01,nokia_c2_01_ver1,nokia_generic_series40_dp60,JAVA_APP,196,3,0,196,6,6,0.0306122448979592,0.0306122448979592,,,,2010_november,Nokia
+Nokia,C2-01,nokia_c2_01_ver1,nokia_generic_series40_dp60,SMS_WAP,2,1,0,2,0,0,0,0,,,,2010_november,Nokia
+Nokia,C2-01,nokia_c2_01_ver1,nokia_generic_series40_dp60,,12,12,12,0,0,0,0,0,,,,2010_november,Nokia
+Apple,iPad,apple_ipad_ver1_sub432,apple_ipad_ver1_sub431,WAPPIN,15,0,0,15,1,0,0,0,,iOS,4.3.2,2011_may,Safari
+Apple,iPad,apple_ipad_ver1_sub432,apple_ipad_ver1_sub431,,3,3,3,0,0,0,0,0,,iOS,4.3.2,2011_may,Safari
+Samsung,GT-E2652W,samsung_gte2652w_ver1,generic_netfront_ver3_5,SMS_WAP,1,0,0,1,0,0,0,0,,,,2011_may,Access Netfront
+Samsung,GT-E2652W,samsung_gte2652w_ver1,generic_netfront_ver3_5,JAVA_APP,1,0,0,1,0,0,0,0,,,,2011_may,Access Netfront
+Samsung,GT-S5670,samsung_gt_s5670_ver1,generic_android_ver2_2,SMS_WAP,1,0,0,1,0,0,0,0,Galaxy Fit,Android,2.2,2009_october,Android Webkit
+Samsung,GT-S5670,samsung_gt_s5670_ver1,generic_android_ver2_2,GooglePlay,5,0,0,5,0,0,0,0,Galaxy Fit,Android,2.2,2009_october,Android Webkit
+Apple,iPhone,apple_iphone_ver4_3_1,apple_iphone_ver4_3,WAPPIN,5,0,0,5,0,0,0,0,,iOS,4.3.1,2011_april,Safari
+Apple,iPhone,apple_iphone_ver4_3_1,apple_iphone_ver4_3,SMS_WAP,2,0,0,2,0,0,0,0,,iOS,4.3.1,2011_april,Safari
+Apple,iPhone,apple_iphone_ver4_3_2,apple_iphone_ver4_3_1,WAPPIN,7,0,0,7,0,0,0,0,,iOS,4.3.2,2011_april,Safari
+Apple,iPhone,apple_iphone_ver4_3_3,apple_iphone_ver4_3_2,WAPPIN,20,1,0,20,1,0,0,0,,iOS,4.3.3,2011_april,Safari
+Apple,iPhone,apple_iphone_ver4_3_3,apple_iphone_ver4_3_2,SMS_WAP,3,0,0,3,0,0,0,0,,iOS,4.3.3,2011_april,Safari
+Apple,iPod Touch,apple_ipod_touch_ver4_3_3_subua,apple_ipod_touch_ver4_3_3,WAPPIN,5,0,0,5,0,0,0,0,,iOS,4.3.3,2011_april,Safari
+Samsung,GT-I9001,samsung_gt_i9001_ver1,generic_android_ver2_3,GooglePlay,161,5,0,161,1,1,0.0062111801242236,0.0062111801242236,,Android,2.3,2011_june,Android Webkit
+Samsung,GT-I9001,samsung_gt_i9001_ver1,generic_android_ver2_3,,10,10,10,0,0,0,0,0,,Android,2.3,2011_june,Android Webkit
+Samsung,GT-I9001,samsung_gt_i9001_ver1,generic_android_ver2_3,SMS_WAP,23,2,0,23,0,0,0,0,,Android,2.3,2011_june,Android Webkit
+Samsung,GT-C3303,samsung_gt_c3303_ver1_subua3303i,samsung_gt_c3303_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,,,2010_september,Access Netfront
+Nokia,E7-00,nokia_e7_00_ver1_subbrowserng73,nokia_e7_00_ver1,JAVA_APP,36,1,0,36,1,1,0.0277777777777778,0.0277777777777778,,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,E7-00,nokia_e7_00_ver1_subbrowserng73,nokia_e7_00_ver1,SMS_WAP,5,2,0,5,0,0,0,0,,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,E7-00,nokia_e7_00_ver1_subbrowserng73,nokia_e7_00_ver1,,12,12,12,0,0,0,0,0,,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_subbrowserng73,nokia_n8_00_ver1,CLICKTAG,388,28,0,388,6,6,0.0154639175257732,0.0154639175257732,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_subbrowserng73,nokia_n8_00_ver1,,71,71,71,0,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_subbrowserng73,nokia_n8_00_ver1,SMS_WAP,71,8,0,71,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,C6-01,nokia_c6_01_ver1_sub3_subbrowserng73,nokia_c6_01_ver1_sub3,,26,26,26,0,0,0,0,0,,Symbian OS,S3,2010_december,Nokia BrowserNG
+Nokia,C6-01,nokia_c6_01_ver1_sub3_subbrowserng73,nokia_c6_01_ver1_sub3,CLICKTAG,76,8,0,76,1,1,0.0131578947368421,0.0131578947368421,,Symbian OS,S3,2010_december,Nokia BrowserNG
+Nokia,C6-01,nokia_c6_01_ver1_sub3_subbrowserng73,nokia_c6_01_ver1_sub3,SMS_WAP,19,7,0,19,0,0,0,0,,Symbian OS,S3,2010_december,Nokia BrowserNG
+Samsung,GT-B7510,samsung_gt_b7510_ver1,generic_android_ver2_2,GooglePlay,3,0,0,3,0,0,0,0,,Android,2.2,2011_june,Android Webkit
+Samsung,GT-I9000,samsung_gt_i9000_ver1_suban233bis,samsung_gt_i9000_ver1_suban233,SMS_WAP,8,0,0,8,0,0,0,0,Galaxy S,Android,2.3.3,2010_march,Android Webkit
+Samsung,GT-I9000,samsung_gt_i9000_ver1_suban233bis,samsung_gt_i9000_ver1_suban233,GooglePlay,72,3,0,72,1,1,0.0138888888888889,0.0138888888888889,Galaxy S,Android,2.3.3,2010_march,Android Webkit
+Samsung,GT-I9000,samsung_gt_i9000_ver1_suban233bis,samsung_gt_i9000_ver1_suban233,,7,7,7,0,0,0,0,0,Galaxy S,Android,2.3.3,2010_march,Android Webkit
+Samsung,GT-P1000,samsung_galaxy_tab_ver1_suban23,samsung_galaxy_tab_ver1,SMS_WAP,7,0,0,7,0,0,0,0,Galaxy Tab,Android,2.3,2010_september,Android Webkit
+Samsung,GT-P1000,samsung_galaxy_tab_ver1_suban23,samsung_galaxy_tab_ver1,GooglePlay,21,0,0,21,0,0,0,0,Galaxy Tab,Android,2.3,2010_september,Android Webkit
+Motorola,Xoom,motorola_xoom_ver1_suban31,motorola_xoom_ver1,GooglePlay,4,0,0,4,0,0,0,0,,Android,3.1,2011_february,Android Webkit
+Nokia,N9,nokia_n9_ver1_sub534,nokia_n9_ver1,CLICKTAG,28,0,0,28,0,0,0,0,,MeeGo,1.2,2011_june,
+Nokia,N9,nokia_n9_ver1_sub534,nokia_n9_ver1,SMS_WAP,2,0,0,2,0,0,0,0,,MeeGo,1.2,2011_june,
+SonyEricsson,X10i,sonyericsson_x10i_ver1_suban21b_02,sonyericsson_x10i_ver1_suban21b,,1,1,1,0,0,0,0,0,Xperia X10,Android,2.1,2010_september,Android Webkit
+SonyEricsson,E15i,sonyericsson_e15i_ver1_sub21_01,sonyericsson_e15i_ver1_sub21,GooglePlay,1,0,0,1,0,0,0,0,Xperia X8,Android,2.1,2010_october,Android Webkit
+HTC,Desire HD,htc_desirehd_ver1_suban23,htc_desirehd_ver1,,1,1,1,0,0,0,0,0,,Android,2.3,2010_october,Android Webkit
+HTC,Desire HD,htc_desirehd_ver1_suban23,htc_desirehd_ver1,GooglePlay,4,1,0,4,1,1,0.25,0.25,,Android,2.3,2010_october,Android Webkit
+SonyEricsson,E10i,sonyericsson_e10i_ver1_suban21_02,sonyericsson_e10i_ver1_suban21,GooglePlay,2,0,0,2,0,0,0,0,Xperia X10 Mini,Android,2.1,2010_september,Android Webkit
+HTC,Desire HD,htc_desirehd_ver1_sub233,htc_desirehd_ver1_sub23,GooglePlay,2,0,0,2,0,0,0,0,,Android,2.3.3,2009_october,Android Webkit
+HTC,S510e,htc_s510e_ver1_subdesires,htc_s510e_ver1,GooglePlay,2,0,0,2,0,0,0,0,Desire S,Android,2.3,2011_january,Android Webkit
+HTC,S510e,htc_s510e_ver1_subdesires,htc_s510e_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Desire S,Android,2.3,2011_january,Android Webkit
+Samsung,GT-E2232,samsung_gt_e2232_ver1,opwv_v62_generic,CLICKTAG,2,0,0,2,0,0,0,0,,,,2011_july,Openwave Mobile Browser
+RIM,BlackBerry Torch 9860,blackberry9860_ver1_subveros7,blackberry9860_ver1,CLICKTAG,5,0,0,5,0,0,0,0,Monza,RIM OS,7.0,2011_april,Safari
+RIM,BlackBerry Bold Touch 9900,blackberry9900_ver1_sub_os7,blackberry9900_ver1,CLICKTAG,29,0,0,29,0,0,0,0,Dakota,RIM OS,7.0,2011_may,BlackBerry
+RIM,BlackBerry Bold Touch 9900,blackberry9900_ver1_sub_os7,blackberry9900_ver1,,6,6,6,0,0,0,0,0,Dakota,RIM OS,7.0,2011_may,BlackBerry
+RIM,BlackBerry Bold Touch 9900,blackberry9900_ver1_sub_os7,blackberry9900_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Dakota,RIM OS,7.0,2011_may,BlackBerry
+Nokia,C5-00,nokia_c5_00_ver1_subuadot2,nokia_c5_00_ver1,,327,327,327,0,0,0,0,0,C5,Symbian OS,9.3,2010_march,Nokia BrowserNG
+Nokia,C5-00,nokia_c5_00_ver1_subuadot2,nokia_c5_00_ver1,SMS_WAP,157,62,0,157,0,0,0,0,C5,Symbian OS,9.3,2010_march,Nokia BrowserNG
+Nokia,C5-00,nokia_c5_00_ver1_subuadot2,nokia_c5_00_ver1,CLICKTAG,1179,171,0,1179,31,31,0.0262934690415606,0.0262934690415606,C5,Symbian OS,9.3,2010_march,Nokia BrowserNG
+Samsung,GT-I9200,samsung_gt_i9200_ver1,generic_android_ver4_2,GooglePlay,1,0,0,1,0,0,0,0,Galaxy Mega 6.3,Android,4.2,2013_may,Android Webkit
+Nokia,C2-00,nokia_c2_00_ver1,nokia_generic_series40_dp60,CLICKTAG,11,0,0,11,0,0,0,0,,,,2010_june,Nokia
+Nokia,C2-00,nokia_c2_00_ver1,nokia_generic_series40_dp60,,1,1,1,0,0,0,0,0,,,,2010_june,Nokia
+Apple,iPad,apple_ipad_ver1_sub5,apple_ipad_ver1_sub432,SMS_WAP,4,0,0,4,0,0,0,0,,iOS,5,2011_july,Safari
+Apple,iPad,apple_ipad_ver1_sub5,apple_ipad_ver1_sub432,,3,3,3,0,0,0,0,0,,iOS,5,2011_july,Safari
+Apple,iPad,apple_ipad_ver1_sub5,apple_ipad_ver1_sub432,WAPPIN,28,0,0,28,0,0,0,0,,iOS,5,2011_july,Safari
+Nokia,500,nokia_500_ver1,nokia_generic_symbian_anna,CLICKTAG,55,7,0,55,0,0,0,0,,Symbian OS,Anna,2011_august,Nokia BrowserNG
+Nokia,500,nokia_500_ver1,nokia_generic_symbian_anna,,14,14,14,0,0,0,0,0,,Symbian OS,Anna,2011_august,Nokia BrowserNG
+Nokia,500,nokia_500_ver1,nokia_generic_symbian_anna,SMS_WAP,11,1,0,11,0,0,0,0,,Symbian OS,Anna,2011_august,Nokia BrowserNG
+Samsung,GT-P1010,samsung_galaxy_tab_ver1_subp1010,samsung_galaxy_tab_ver1,GooglePlay,9,0,0,9,0,0,0,0,Galaxy Tab,Android,2.2,2010_september,Android Webkit
+Samsung,GT-S5830,samsung_gt_s5830_ver1_suban23,samsung_gt_s5830_ver1_suban22,GooglePlay,37,1,0,37,0,0,0,0,Galaxy Ace,Android,2.3,2011_august,Android Webkit
+Samsung,GT-S5830,samsung_gt_s5830_ver1_suban23,samsung_gt_s5830_ver1_suban22,SMS_WAP,4,1,0,4,0,0,0,0,Galaxy Ace,Android,2.3,2011_august,Android Webkit
+Samsung,GT-S5830,samsung_gt_s5830_ver1_suban23,samsung_gt_s5830_ver1_suban22,,1,1,1,0,0,0,0,0,Galaxy Ace,Android,2.3,2011_august,Android Webkit
+Samsung,GT-S5570,samsung_gt_s5570_ver1_suban234b,samsung_gt_s5570_ver1_suban234,SMS_WAP,2,1,0,2,0,0,0,0,Galaxy Mini,Android,2.3,2011_january,Android Webkit
+Samsung,GT-S5570,samsung_gt_s5570_ver1_suban234b,samsung_gt_s5570_ver1_suban234,,5,5,5,0,0,0,0,0,Galaxy Mini,Android,2.3,2011_january,Android Webkit
+Samsung,GT-S5570,samsung_gt_s5570_ver1_suban234b,samsung_gt_s5570_ver1_suban234,GooglePlay,106,2,0,106,1,1,0.00943396226415094,0.00943396226415094,Galaxy Mini,Android,2.3,2011_january,Android Webkit
+HTC,Inspire 4G,htc_inspire4g_ver1_suban23,htc_inspire4g_ver1,GooglePlay,1,0,0,1,0,0,0,0,,Android,2.3,2011_may,Android Webkit
+RIM,BlackBerry 9810,blackberry9810_ver1,blackberry_generic_ver7,,7,7,7,0,0,0,0,0,Torch 4G,RIM OS,7.0,2011_august,BlackBerry
+RIM,BlackBerry 9810,blackberry9810_ver1,blackberry_generic_ver7,CLICKTAG,89,0,0,89,1,1,0.0112359550561798,0.0112359550561798,Torch 4G,RIM OS,7.0,2011_august,BlackBerry
+RIM,BlackBerry 9810,blackberry9810_ver1,blackberry_generic_ver7,SMS_WAP,13,0,0,13,0,0,0,0,Torch 4G,RIM OS,7.0,2011_august,BlackBerry
+Nokia,C2-03,nokia_c2_03_ver1,nokia_generic_series40_dp70,CLICKTAG,44,0,0,44,0,0,0,0,,,,2011_june,Nokia
+Nokia,C2-03,nokia_c2_03_ver1_subovibrsr1,nokia_c2_03_ver1,,12,12,12,0,0,0,0,0,,,,2011_june,Nokia Proxy Browser
+Nokia,C2-03,nokia_c2_03_ver1_subovibrsr1,nokia_c2_03_ver1,CLICKTAG,121,5,0,121,0,0,0,0,,,,2011_june,Nokia Proxy Browser
+Nokia,X2-00,nokia_x2_00_ver1_subovibrsr1,nokia_x2_00_ver1,CLICKTAG,2,0,0,2,0,0,0,0,,,,2010_april,Nokia
+Nokia,X2-01,nokia_x2_01_ver1_subovibrsr2,nokia_x2_01_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,,,2010_november,Nokia
+Nokia,X2-02,nokia_x2_02_ver1,nokia_generic_series40_dp60,CLICKTAG,59,0,0,59,0,0,0,0,,,,2011_december,Nokia
+Nokia,C6-00,nokia_c6_00_ver1_subdot1,nokia_c6_00_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,9.4,2010_april,Nokia BrowserNG
+Nokia,C3-00,nokia_c3_00_ver1_subovibrsr,nokia_c3_00_ver1,,6,6,6,0,0,0,0,0,,,,2011_august,Nokia Proxy Browser
+Nokia,C3-00,nokia_c3_00_ver1_subovibrsr,nokia_c3_00_ver1,CLICKTAG,40,2,0,40,0,0,0,0,,,,2011_august,Nokia Proxy Browser
+Apple,iPad,apple_ipad_ver1_sub435,apple_ipad_ver1_sub432,WAPPIN,11,0,0,11,0,0,0,0,,iOS,4.3.5,2011_may,Safari
+Apple,iPod Touch,apple_ipod_touch_ver4_3_5,apple_ipod_touch_ver4_3_4,WAPPIN,1,0,0,1,0,0,0,0,,iOS,4.3.5,2011_april,Safari
+Apple,iPhone,apple_iphone_ver4_3_5,apple_iphone_ver4_3_4,WAPPIN,9,0,0,9,0,0,0,0,,iOS,4.3.5,2011_april,Safari
+Apple,iPhone,apple_iphone_ver4_3_5,apple_iphone_ver4_3_4,SMS_WAP,2,0,0,2,0,0,0,0,,iOS,4.3.5,2011_april,Safari
+Nokia,700,nokia_700_ver1_subos53,nokia_700_ver1,CLICKTAG,61,8,0,61,1,1,0.0163934426229508,0.0163934426229508,,Symbian OS,5.3,2011_august,Nokia BrowserNG
+Nokia,700,nokia_700_ver1_subos53,nokia_700_ver1,SMS_WAP,11,4,0,11,0,0,0,0,,Symbian OS,5.3,2011_august,Nokia BrowserNG
+Nokia,700,nokia_700_ver1_subos53,nokia_700_ver1,,23,23,23,0,0,0,0,0,,Symbian OS,5.3,2011_august,Nokia BrowserNG
+LG,LG-P525,lg_p525_ver1,lg_generic_obigo_q7,CLICKTAG,2,0,0,2,0,0,0,0,,,,2011_september,Teleca-Obigo
+Nokia,701,nokia_701_ver1,nokia_generic_symbian_belle,,8,8,8,0,0,0,0,0,,Symbian OS,Belle,2011_august,Nokia BrowserNG
+Nokia,701,nokia_701_ver1,nokia_generic_symbian_belle,CLICKTAG,27,0,0,27,0,0,0,0,,Symbian OS,Belle,2011_august,Nokia BrowserNG
+Nokia,701,nokia_701_ver1,nokia_generic_symbian_belle,SMS_WAP,4,0,0,4,0,0,0,0,,Symbian OS,Belle,2011_august,Nokia BrowserNG
+SonyEricsson,LT28i,sonyericsson_lt28i_ver1_suban40hnosony,sonyericsson_lt28i_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Xperia Ion,Android,4.0,2012_january,Android Webkit
+SonyEricsson,LT28i,sonyericsson_lt28i_ver1_suban40hnosony,sonyericsson_lt28i_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia Ion,Android,4.0,2012_january,Android Webkit
+Motorola,XT530,mot_xt530_ver1,generic_android_ver2_3,GooglePlay,4,0,0,4,0,0,0,0,,Android,2.3,2011_october,Android Webkit
+Apple,iPhone,apple_iphone_ver5,apple_iphone_ver4,SMS_WAP,2,0,0,2,0,0,0,0,,iOS,5.0,2011_october,Safari
+Apple,iPhone,apple_iphone_ver5,apple_iphone_ver4,WAPPIN,10,0,0,10,0,0,0,0,,iOS,5.0,2011_october,Safari
+Apple,iPod Touch,apple_ipod_touch_ver5,apple_ipod_touch_ver4,,3,3,3,0,0,0,0,0,,iOS,5.0,2011_october,Safari
+Apple,iPod Touch,apple_ipod_touch_ver5,apple_ipod_touch_ver4,WAPPIN,113,1,0,113,2,0,0,0,,iOS,5.0,2011_october,Safari
+Apple,iPod Touch,apple_ipod_touch_ver5,apple_ipod_touch_ver4,SMS_WAP,15,0,0,15,0,0,0,0,,iOS,5.0,2011_october,Safari
+HTC,A510,htc_wildfire_s_ver1_subua2,htc_wildfire_s_ver1,GooglePlay,1,0,0,1,0,0,0,0,Wildfire S,Android,2.3,2011_may,Android Webkit
+RIM,BlackBerry 9360,blackberry9360_ver1,blackberry_generic_ver7,SMS_WAP,4,0,0,4,0,0,0,0,Curve,RIM OS,7.0,2011_october,BlackBerry
+RIM,BlackBerry 9360,blackberry9360_ver1,blackberry_generic_ver7,CLICKTAG,35,1,0,35,0,0,0,0,Curve,RIM OS,7.0,2011_october,BlackBerry
+RIM,BlackBerry 9360,blackberry9360_ver1,blackberry_generic_ver7,,2,2,2,0,0,0,0,0,Curve,RIM OS,7.0,2011_october,BlackBerry
+Samsung,Galaxy Nexus,samsung_galaxy_nexus_ver1,generic_android_ver4,GooglePlay,1,0,0,1,0,0,0,0,,Android,4.0,2011_october,Android Webkit
+Samsung,GT-S5660,samsung_gt_s5660_ver1_suban23,samsung_gt_s5660_ver1,GooglePlay,3,0,0,3,0,0,0,0,Galaxy Gio,Android,2.3.5,2011_october,Android Webkit
+Samsung,GT-S5660,samsung_gt_s5660_ver1_suban23,samsung_gt_s5660_ver1,SMS_WAP,1,1,0,1,0,0,0,0,Galaxy Gio,Android,2.3.5,2011_october,Android Webkit
+SonyEricsson,WT13i,sonyericsson_wt13i_ver1,lg_generic_obigo_q7,SMS_WAP,1,0,0,1,0,0,0,0,,,,2011_november,Teleca-Obigo
+SonyEricsson,WT13i,sonyericsson_wt13i_ver1,lg_generic_obigo_q7,CLICKTAG,1,0,0,1,0,0,0,0,,,,2011_november,Teleca-Obigo
+Samsung,GT-I9103,samsung_gt_i9103_ver1,generic_android_ver2_3,SMS_WAP,3,0,0,3,0,0,0,0,Galaxy SII,Android,2.3,2011_november,Android Webkit
+Samsung,GT-I9103,samsung_gt_i9103_ver1,generic_android_ver2_3,GooglePlay,4,0,0,4,0,0,0,0,Galaxy SII,Android,2.3,2011_november,Android Webkit
+Nokia,C2-06,nokia_c2_06_ver1,nokia_generic_series40_dp60,CLICKTAG,4,0,0,4,0,0,0,0,,,,2011_june,Nokia
+Nokia,7230,nokia_7230_ver1_subovibrsr,nokia_7230_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,,,2009_november,Nokia Proxy Browser
+Nokia,C1-01,nokia_c1_ver1_subovibrsr,nokia_c1_ver1,JAVA_APP,3,0,0,3,0,0,0,0,,,,2010_june,Nokia Proxy Browser
+Nokia,C1-01,nokia_c1_ver1_subovibrsr,nokia_c1_ver1,,1,1,1,0,0,0,0,0,,,,2010_june,Nokia Proxy Browser
+Nokia,C2-00,nokia_c2_00_ver1_subovibrsr,nokia_c2_00_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,,,2010_june,Nokia Proxy Browser
+Nokia,C2-01,nokia_c2_01_ver1_subovibrsr,nokia_c2_01_ver1,,1,1,1,0,0,0,0,0,,,,2010_november,Nokia Proxy Browser
+Nokia,C2-01,nokia_c2_01_ver1_subovibrsr,nokia_c2_01_ver1,JAVA_APP,6,0,0,6,1,1,0.166666666666667,0.166666666666667,,,,2010_november,Nokia Proxy Browser
+Nokia,C2-05,nokia_c2_05_ver1_subovibrsr,nokia_c2_05_ver1,,5,5,5,0,0,0,0,0,,,,2011_october,Nokia Proxy Browser
+Nokia,C2-05,nokia_c2_05_ver1_subovibrsr,nokia_c2_05_ver1,CLICKTAG,62,1,0,62,0,0,0,0,,,,2011_october,Nokia Proxy Browser
+Nokia,C3-01,nokia_c3_01_ver1_subovibrsr2,nokia_c3_01_ver1,CLICKTAG,1,0,0,1,0,0,0,0,C3-01 Gold Edition,,,2010_september,Nokia
+Nokia,X2-01,nokia_x2_01_ver1_subovibrsr,nokia_x2_01_ver1,CLICKTAG,2,0,0,2,0,0,0,0,,,,2010_november,Nokia Proxy Browser
+Nokia,X2-02,nokia_x2_02_ver1_subovibrsr,nokia_x2_02_ver1,SMS_WAP,1,1,0,1,0,0,0,0,,,,2011_december,Nokia Proxy Browser
+Nokia,X2-02,nokia_x2_02_ver1_subovibrsr,nokia_x2_02_ver1,CLICKTAG,176,6,0,176,0,0,0,0,,,,2011_december,Nokia Proxy Browser
+Nokia,X2-02,nokia_x2_02_ver1_subovibrsr,nokia_x2_02_ver1,,9,9,9,0,0,0,0,0,,,,2011_december,Nokia Proxy Browser
+Nokia,X3-02,nokia_x3_02_ver1_subovibrsr,nokia_x3_02_ver1,JAVA_APP,1,0,0,1,0,0,0,0,,,,2010_august,Nokia Proxy Browser
+Nokia,X3-02,nokia_x3_02_ver1_subovibrsr2,nokia_x3_02_ver1,JAVA_APP,2,0,0,2,0,0,0,0,,,,2010_august,Nokia
+Nokia,5130,nokia_5130_xpressmusic_ver1_subovibrosr1,nokia_5130_xpressmusic_ver1,JAVA_APP,5,0,0,5,1,1,0.2,0.2,XpressMusic,,,2008_november,Nokia
+Nokia,C2-06,nokia_c2_06_ver1_subovibrsr,nokia_c2_06_ver1,,1,1,1,0,0,0,0,0,,,,2011_june,Nokia Proxy Browser
+Nokia,C2-06,nokia_c2_06_ver1_subovibrsr,nokia_c2_06_ver1,CLICKTAG,2,1,0,2,0,0,0,0,,,,2011_june,Nokia Proxy Browser
+SonyEricsson,LT26i,sonyericsson_lt26i_ver1,generic_android_ver2_3,GooglePlay,3,0,0,3,0,0,0,0,Xperia Arc HD,Android,2.3,2011_december,Android Webkit
+SonyEricsson,LT26i,sonyericsson_lt26i_ver1,generic_android_ver2_3,SMS_WAP,1,0,0,1,0,0,0,0,Xperia Arc HD,Android,2.3,2011_december,Android Webkit
+Sony,Tablet S,sony_tablet_s_ver1_suban22,sony_tablet_s_ver1,GooglePlay,1,0,0,1,0,0,0,0,,Android,3.2,2011_november,Android Webkit
+Samsung,GT-N7000,samsung_gt_n7000_ver1,generic_android_ver2_3,,16,16,16,0,0,0,0,0,Galaxy Note,Android,2.3,2011_december,Android Webkit
+Samsung,GT-N7000,samsung_gt_n7000_ver1,generic_android_ver2_3,GooglePlay,84,1,0,84,2,2,0.0238095238095238,0.0238095238095238,Galaxy Note,Android,2.3,2011_december,Android Webkit
+Samsung,GT-N7000,samsung_gt_n7000_ver1,generic_android_ver2_3,SMS_WAP,18,1,0,18,0,0,0,0,Galaxy Note,Android,2.3,2011_december,Android Webkit
+Nokia,Nokia Asha 200,nokia_200_ver1,nokia_generic_series40_dp60,CLICKTAG,22,0,0,22,0,0,0,0,Nokia Asha 200,,,2011_october,Nokia
+Nokia,Asha 300,nokia_300_ver1,nokia_generic_series40_dp60,CLICKTAG,9,0,0,9,0,0,0,0,Nokia Asha 300,,,2011_october,Nokia
+Nokia,Asha 300,nokia_300_ver1,nokia_generic_series40_dp60,,1,1,1,0,0,0,0,0,Nokia Asha 300,,,2011_october,Nokia
+Nokia,Asha 300,nokia_300_ver1,nokia_generic_series40_dp60,SMS_WAP,2,1,0,2,0,0,0,0,Nokia Asha 300,,,2011_october,Nokia
+HTC,SensationXE Beats Z715e,htc_sensationxe_z715e_ver1_suban40,htc_sensationxe_z715e_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Sensation,Android,4.0,2011_december,Android Webkit
+Samsung,GT-P7300,samsung_gt_p7300_ver1,generic_android_ver3_1,SMS_WAP,6,0,0,6,0,0,0,0,Galaxy Tab 8.9,Android,3.1,2011_december,Android Webkit
+Samsung,GT-P7300,samsung_gt_p7300_ver1,generic_android_ver3_1,GooglePlay,11,0,0,11,0,0,0,0,Galaxy Tab 8.9,Android,3.1,2011_december,Android Webkit
+HTC,T9292,htc_t9292_ver1_subos75,htc_t9292_ver1,SMS_WAP,2,0,0,2,0,0,0,0,HD7,Windows Phone OS,7.5,2011_december,IEMobile
+HTC,T9292,htc_t9292_ver1_subos75,htc_t9292_ver1,CLICKTAG,1,0,0,1,0,0,0,0,HD7,Windows Phone OS,7.5,2011_december,IEMobile
+HTC,X310e,htc_titan_x310e_ver1,generic_ms_phone_os7_5,CLICKTAG,1,0,0,1,0,0,0,0,Titan,Windows Phone OS,7.5,2011_december,IEMobile
+Nokia,E5-00,nokia_e5_ver1_subua,nokia_e5_ver1,CLICKTAG,7,1,0,7,1,1,0.142857142857143,0.142857142857143,Mystic,Symbian OS,,2010_april,Nokia BrowserNG
+Samsung,GT-S5360,samsung_gt_s5360_ver1_subua,samsung_gt_s5360_ver1,GooglePlay,381,11,0,381,1,1,0.0026246719160105,0.0026246719160105,Galaxy Y,Android,2.3,2011_october,Android Webkit
+Samsung,GT-S5360,samsung_gt_s5360_ver1_subua,samsung_gt_s5360_ver1,SMS_WAP,44,3,0,44,0,0,0,0,Galaxy Y,Android,2.3,2011_october,Android Webkit
+Samsung,GT-S5360,samsung_gt_s5360_ver1_subua,samsung_gt_s5360_ver1,,9,9,9,0,0,0,0,0,Galaxy Y,Android,2.3,2011_october,Android Webkit
+Samsung,GT-S5830,samsung_gt_s5830_ver1_suban23_subshwm240s,samsung_gt_s5830_ver1_suban23,GooglePlay,1,0,0,1,0,0,0,0,Galaxy Ace,Android,2.3,2011_august,Android Webkit
+Nokia,6260 slide,nokia_6260s_ver1_submix,nokia_6260s_ver1,CLICKTAG,2,0,0,2,0,0,0,0,Slide,,,2008_november,Nokia
+SonyEricsson,LT15i,sonyericsson_lt15i_ver1_subuc,sonyericsson_lt15i_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia Arc,Android,2.3,2011_january,Android Webkit
+Nokia,Nokia Asha 200,nokia_200_ver1_subovibrsr,nokia_200_ver1,,7,7,7,0,0,0,0,0,Nokia Asha 200,,,2011_october,Nokia Proxy Browser
+Nokia,Nokia Asha 200,nokia_200_ver1_subovibrsr,nokia_200_ver1,CLICKTAG,49,0,0,49,0,0,0,0,Nokia Asha 200,,,2011_october,Nokia Proxy Browser
+Nokia,Nokia Asha 200,nokia_200_ver1_subovibrsr,nokia_200_ver1,SMS_WAP,1,1,0,1,0,0,0,0,Nokia Asha 200,,,2011_october,Nokia Proxy Browser
+Nokia,Lumia 710,nokia_lumia_710_ver1,generic_ms_nokia_phone_os7_5,CLICKTAG,2,0,0,2,0,0,0,0,,Windows Phone OS,7.5,2011_october,IEMobile
+HTC,Radar,htc_radar_ver1_suborange,htc_radar_ver1,CLICKTAG,1,0,0,1,0,0,0,0,,Windows Phone OS,7.5,2012_january,IEMobile
+Samsung,GT-3770,samsung_gt_s3770_ver1,generic_netfront_ver4_1,CLICKTAG,1,0,0,1,0,0,0,0,Champ 3.5G,,,2002_july,Access Netfront
+Samsung,GT-3770,samsung_gt_s3770_ver1,generic_netfront_ver4_1,,1,1,1,0,0,0,0,0,Champ 3.5G,,,2002_july,Access Netfront
+SonyEricsson,E16i,sonyericsson_w8_ver1,generic_android_ver2_1,GooglePlay,1,0,0,1,0,0,0,0,Walkman 8,Android,2.1,2012_january,Android Webkit
+Samsung,GT-I9100,samsung_gt_i9100_ver1_suban40rom,samsung_gt_i9100_ver1,,43,43,43,0,0,0,0,0,Galaxy S II,Android,4.0,2010_november,Android Webkit
+Samsung,GT-I9100,samsung_gt_i9100_ver1_suban40rom,samsung_gt_i9100_ver1,SMS_WAP,83,2,0,83,0,0,0,0,Galaxy S II,Android,4.0,2010_november,Android Webkit
+Samsung,GT-I9100,samsung_gt_i9100_ver1_suban40rom,samsung_gt_i9100_ver1,GooglePlay,389,10,0,389,0,0,0,0,Galaxy S II,Android,4.0,2010_november,Android Webkit
+Apple,iPhone,apple_iphone_ver5_subua,apple_iphone_ver5,,1,1,1,0,0,0,0,0,,iOS,5.0,2011_october,Safari
+Apple,iPhone,apple_iphone_ver5_subua,apple_iphone_ver5,SMS_WAP,4,0,0,4,0,0,0,0,,iOS,5.0,2011_october,Safari
+Apple,iPhone,apple_iphone_ver5_subua,apple_iphone_ver5,WAPPIN,63,1,0,63,2,0,0,0,,iOS,5.0,2011_october,Safari
+Nokia,Asha 303,nokia_303_ver1_subovibrsr,nokia_303_ver1,,3,3,3,0,0,0,0,0,Asha 303,,,2011_october,OviBrowser (Nokia S40)
+Nokia,Asha 303,nokia_303_ver1_subovibrsr,nokia_303_ver1,CLICKTAG,36,2,0,36,0,0,0,0,Asha 303,,,2011_october,OviBrowser (Nokia S40)
+Nokia,X2-05,nokia_x2_05_ver1_subovibrsr,nokia_x2_05_ver1,CLICKTAG,14,0,0,14,0,0,0,0,,,,2012_january,Nokia
+Nokia,Asha 300,nokia_300_ver1_subovibrsr,nokia_300_ver1,CLICKTAG,3,0,0,3,0,0,0,0,Nokia Asha 300,,,2011_october,Nokia/S40Ovi
+Nokia,N8-00,nokia_n8_00_ver1_subs53,nokia_n8_00_ver1,,193,193,193,0,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_subs53,nokia_n8_00_ver1,SMS_WAP,153,20,0,153,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_subs53,nokia_n8_00_ver1,CLICKTAG,892,31,0,892,8,8,0.00896860986547085,0.00896860986547085,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,5235,nokia_5235_ver1_sub1b,nokia_5235_ver1,,6,6,6,0,0,0,0,0,,Symbian OS,,2009_december,Safari
+Nokia,5235,nokia_5235_ver1_sub1b,nokia_5235_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,,2009_december,Safari
+Nokia,5235,nokia_5235_ver1_sub1b,nokia_5235_ver1,CLICKTAG,14,2,0,14,0,0,0,0,,Symbian OS,,2009_december,Safari
+Nokia,C5-03,nokia_c5_03_ver1_subdot2,nokia_c5_03_ver1,CLICKTAG,3,0,0,3,0,0,0,0,C5,Symbian OS,9.4,2010_october,Nokia
+Nokia,C5-03,nokia_c5_03_ver1_subdot2,nokia_c5_03_ver1,SMS_WAP,1,1,0,1,0,0,0,0,C5,Symbian OS,9.4,2010_october,Nokia
+Nokia,Asha 303,nokia_303_ver1_subua,nokia_303_ver1,CLICKTAG,14,0,0,14,0,0,0,0,Asha 303,,,2011_october,OviBrowser (Nokia S40)
+Nokia,Asha 303,nokia_303_ver1_subua,nokia_303_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Asha 303,,,2011_october,OviBrowser (Nokia S40)
+Dell,Streak 7,dell_streak_7_ver1_suban32,dell_streak_7_ver1,GooglePlay,2,0,0,2,0,0,0,0,,Android,3.2,2009_october,Android Webkit
+Samsung,GT-I9000,samsung_gt_i9000_ver1_subt23,samsung_gt_i9000_ver1,GooglePlay,1,0,0,1,0,0,0,0,Galaxy S,Android,2.3,2010_march,Android Webkit
+Nokia,X2-05,nokia_x2_05_ver1,nokia_generic_series40_dp70,CLICKTAG,11,0,0,11,0,0,0,0,,,,2011_october,Nokia
+Samsung,GT-I9003,samsung_gt_i9003_ver1_suban23,samsung_gt_i9003_ver1,SMS_WAP,10,1,0,10,0,0,0,0,Galaxy SL,Android,2.3,2011_april,Android Webkit
+Samsung,GT-I9003,samsung_gt_i9003_ver1_suban23,samsung_gt_i9003_ver1,GooglePlay,45,0,0,45,0,0,0,0,Galaxy SL,Android,2.3,2011_april,Android Webkit
+Samsung,GT-P7500,samsung_galaxy_tab_p4_ver1_suban31,samsung_galaxy_tab_p4_ver1,SMS_WAP,11,0,0,11,0,0,0,0,Galaxy Tab 10.1,Android,3.1,2011_june,Android Webkit
+Samsung,GT-P7500,samsung_galaxy_tab_p4_ver1_suban31,samsung_galaxy_tab_p4_ver1,GooglePlay,23,0,0,23,0,0,0,0,Galaxy Tab 10.1,Android,3.1,2011_june,Android Webkit
+Samsung,GT-P7500,samsung_galaxy_tab_p4_ver1_suban32,samsung_galaxy_tab_p4_ver1,GooglePlay,14,0,0,14,0,0,0,0,Galaxy Tab 10.1,Android,3.2,2011_june,Android Webkit
+Samsung,GT-P7500,samsung_galaxy_tab_p4_ver1_suban32,samsung_galaxy_tab_p4_ver1,SMS_WAP,1,1,0,1,0,0,0,0,Galaxy Tab 10.1,Android,3.2,2011_june,Android Webkit
+Samsung,GT-S5670,samsung_gt_s5670_ver1_suban23,samsung_gt_s5670_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Galaxy Fit,Android,2.3,2009_october,Android Webkit
+Samsung,GT-S5670,samsung_gt_s5670_ver1_suban23,samsung_gt_s5670_ver1,GooglePlay,20,0,0,20,0,0,0,0,Galaxy Fit,Android,2.3,2009_october,Android Webkit
+HTC,Z710,htc_sensation_ver1_subz710e_b_suban40rom,htc_sensation_ver1_subz710e_b,SMS_WAP,1,0,0,1,0,0,0,0,Sensation,Android,4.0,2011_june,Android Webkit
+LG,P970,lg_p970_ver1_suban23,lg_p970_ver1,GooglePlay,2,0,0,2,0,0,0,0,Optimus Black,Android,2.3,2010_october,Android Webkit
+SonyEricsson,MT11i,sonyericsson_mt11i_ver1_subuai,sonyericsson_mt11i_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Xperia Neo V,Android,2.3,2011_october,Android Webkit
+SonyEricsson,MT11i,sonyericsson_mt11i_ver1_subuai,sonyericsson_mt11i_ver1,GooglePlay,4,0,0,4,0,0,0,0,Xperia Neo V,Android,2.3,2011_october,Android Webkit
+SonyEricsson,X10i,sonyericsson_x10i_ver1_suban23,sonyericsson_x10i_ver1,GooglePlay,2,0,0,2,0,0,0,0,Xperia X10,Android,2.3,2009_november,Android Webkit
+SonyEricsson,X10i,sonyericsson_x10i_ver1_suban23,sonyericsson_x10i_ver1,,1,1,1,0,0,0,0,0,Xperia X10,Android,2.3,2009_november,Android Webkit
+Nokia,X3-02,nokia_x3_02_ver1_subua673,nokia_x3_02_ver1,JAVA_APP,1,1,0,1,0,0,0,0,,,,2010_august,Nokia
+SonyEricsson,LT18i,sonyericsson_lt18i_ver1_subuai,sonyericsson_lt18i_ver1,GooglePlay,3,0,0,3,0,0,0,0,Xperia Arc,Android,2.3,2011_september,Android Webkit
+SonyEricsson,LT18i,sonyericsson_lt18i_ver1_subuai,sonyericsson_lt18i_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Xperia Arc,Android,2.3,2011_september,Android Webkit
+Samsung,GT-P6200,samsung_gt_p6200_ver1,generic_android_ver3_2,,9,9,9,0,0,0,0,0,GALAXY Tab 7.0 Plus,Android,3.2,2012_february,Android Webkit
+Samsung,GT-P6200,samsung_gt_p6200_ver1,generic_android_ver3_2,GooglePlay,47,0,0,47,0,0,0,0,GALAXY Tab 7.0 Plus,Android,3.2,2012_february,Android Webkit
+Samsung,GT-P6200,samsung_gt_p6200_ver1,generic_android_ver3_2,SMS_WAP,10,0,0,10,0,0,0,0,GALAXY Tab 7.0 Plus,Android,3.2,2012_february,Android Webkit
+Samsung,GT-P6800,samsung_gt_p6800_ver1,generic_android_ver3_2,GooglePlay,6,0,0,6,0,0,0,0,Galaxy Tab 7.7,Android,3.2,2012_february,Android Webkit
+Samsung,GT-P6800,samsung_gt_p6800_ver1,generic_android_ver3_2,SMS_WAP,5,0,0,5,0,0,0,0,Galaxy Tab 7.7,Android,3.2,2012_february,Android Webkit
+Samsung,GT-P6800,samsung_gt_p6800_ver1,generic_android_ver3_2,,1,1,1,0,0,0,0,0,Galaxy Tab 7.7,Android,3.2,2012_february,Android Webkit
+RIM,BlackBerry 9380,blackberry9380_ver1,blackberry_generic_ver7,CLICKTAG,3,0,0,3,0,0,0,0,Blackberry 9380 Curve,RIM OS,7.0,2012_february,BlackBerry
+RIM,BlackBerry 9380,blackberry9380_ver1,blackberry_generic_ver7,SMS_WAP,2,0,0,2,0,0,0,0,Blackberry 9380 Curve,RIM OS,7.0,2012_february,BlackBerry
+RIM,BlackBerry 9790,blackberry9790_ver1,blackberry_generic_ver7,SMS_WAP,6,0,0,6,0,0,0,0,BlackBerry Bold 9790,RIM OS,7.0,2012_february,BlackBerry
+RIM,BlackBerry 9790,blackberry9790_ver1,blackberry_generic_ver7,CLICKTAG,59,2,0,59,0,0,0,0,BlackBerry Bold 9790,RIM OS,7.0,2012_february,BlackBerry
+RIM,BlackBerry 9790,blackberry9790_ver1,blackberry_generic_ver7,,5,5,5,0,0,0,0,0,BlackBerry Bold 9790,RIM OS,7.0,2012_february,BlackBerry
+Samsung,GT-P7300,samsung_gt_p7300_ver1_suban32,samsung_gt_p7300_ver1,,1,1,1,0,0,0,0,0,Galaxy Tab 8.9,Android,3.2,2011_december,Android Webkit
+Nokia,N8-00,nokia_n8_00_ver1_suboldstyleua,nokia_n8_00_ver1,CLICKTAG,1,0,0,1,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_suboldstyleua,nokia_n8_00_ver1,,1,1,1,0,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_suboldstyleua,nokia_n8_00_ver1,SMS_WAP,1,1,0,1,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_subbrowserng73_suboldstyle,nokia_n8_00_ver1_subbrowserng73,CLICKTAG,1,0,0,1,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Samsung,GT-I8150,samsung_gt_i8150_ver1,generic_android_ver2_3,SMS_WAP,9,0,0,9,0,0,0,0,Galaxy W,Android,2.3,2012_february,Android Webkit
+Samsung,GT-I8150,samsung_gt_i8150_ver1,generic_android_ver2_3,GooglePlay,25,2,0,25,2,2,0.08,0.08,Galaxy W,Android,2.3,2012_february,Android Webkit
+Samsung,GT-I8150,samsung_gt_i8150_ver1,generic_android_ver2_3,,4,4,4,0,0,0,0,0,Galaxy W,Android,2.3,2012_february,Android Webkit
+SonyEricsson,LT18i,sonyericsson_lt18i_ver1_subuai_subuamodel,sonyericsson_lt18i_ver1_subuai,GooglePlay,1,0,0,1,0,0,0,0,Xperia Arc,Android,2.3,2011_september,Android Webkit
+SonyEricsson,E16i,sonyericsson_w8_ver1_subuamodel,sonyericsson_w8_ver1,GooglePlay,1,0,0,1,0,0,0,0,Walkman 8,Android,2.1,2012_january,Android Webkit
+Nokia,E72,nokia_e72_ver1_subuae72,nokia_e72_ver1,CLICKTAG,6,0,0,6,0,0,0,0,,Symbian OS,9.3,2009_june,Safari
+Samsung,GT-S6102,samsung_gt_s6102_ver1,generic_android_ver2_3,GooglePlay,47,0,0,47,1,1,0.0212765957446809,0.0212765957446809,Galaxy Y Duos,Android,2.3,2012_february,Android Webkit
+Samsung,GT-S6102,samsung_gt_s6102_ver1,generic_android_ver2_3,,9,9,9,0,0,0,0,0,Galaxy Y Duos,Android,2.3,2012_february,Android Webkit
+Samsung,GT-S6102,samsung_gt_s6102_ver1,generic_android_ver2_3,SMS_WAP,6,3,0,6,0,0,0,0,Galaxy Y Duos,Android,2.3,2012_february,Android Webkit
+LG,E400,lg_e400_ver1,generic_android_ver2_3,GooglePlay,3,1,0,3,1,1,0.333333333333333,0.333333333333333,Optimus L3,Android,2.3,2012_february,Android Webkit
+Nokia,500,nokia_n500_ver1,nokia_generic_symbian_belle,,96,96,96,0,0,0,0,0,,Symbian OS,Belle,2012_february,Nokia BrowserNG
+Nokia,500,nokia_n500_ver1,nokia_generic_symbian_belle,CLICKTAG,193,16,0,193,2,2,0.0103626943005181,0.0103626943005181,,Symbian OS,Belle,2012_february,Nokia BrowserNG
+Nokia,500,nokia_n500_ver1,nokia_generic_symbian_belle,SMS_WAP,24,3,0,24,0,0,0,0,,Symbian OS,Belle,2012_february,Nokia BrowserNG
+Apple,iPad,apple_ipad_ver1_sub5_subu,apple_ipad_ver1_sub5,SMS_WAP,2,0,0,2,0,0,0,0,,iOS,5,2011_july,Safari
+Apple,iPad,apple_ipad_ver1_sub5_subu,apple_ipad_ver1_sub5,WAPPIN,14,0,0,14,0,0,0,0,,iOS,5,2011_july,Safari
+Nokia,E7-00,nokia_e7_00_ver1_subua53,nokia_e7_00_ver1,,35,35,35,0,0,0,0,0,,Symbian OS,S3,2010_september,Nokia Browser
+Nokia,E7-00,nokia_e7_00_ver1_subua53,nokia_e7_00_ver1,JAVA_APP,115,5,0,115,1,1,0.00869565217391304,0.00869565217391304,,Symbian OS,S3,2010_september,Nokia Browser
+Nokia,E7-00,nokia_e7_00_ver1_subua53,nokia_e7_00_ver1,SMS_WAP,27,3,0,27,0,0,0,0,,Symbian OS,S3,2010_september,Nokia Browser
+Mozilla,Firefox,firefox_3_0,firefox_2_0,CLICKTAG,17,0,0,17,0,0,0,0,,Desktop,,2008_june,Firefox Desktop
+Mozilla,Firefox,firefox_3_0,firefox_2_0,SMS_WAP,1,0,0,1,0,0,0,0,,Desktop,,2008_june,Firefox Desktop
+Mozilla,Firefox,firefox_4_0,firefox_3_5,CLICKTAG,2,0,0,2,0,0,0,0,,Desktop,,2011_march,Firefox Desktop
+Mozilla,Firefox,firefox_12_0,firefox_11_0,SMS_WAP,1,0,0,1,0,0,0,0,,Desktop,,2012_april,Firefox Desktop
+Opera Software,Opera,opera_12,opera_11,CLICKTAG,5,0,0,5,0,0,0,0,,Desktop,,2012_june,
+Opera Software,Opera,opera_12,opera_11,SMS_WAP,2,0,0,2,0,0,0,0,,Desktop,,2012_june,
+Microsoft,Internet Explorer,msie_7,msie_6,CLICKTAG,4,0,0,4,0,0,0,0,,,,2006_october,MSIE
+Microsoft,Internet Explorer,msie_8,msie_7,CLICKTAG,14,0,0,14,0,0,0,0,,,,2007_january,MSIE
+Microsoft,Internet Explorer,msie_9,msie_8,CLICKTAG,2,0,0,2,0,0,0,0,,,,2007_january,MSIE
+Google,Chrome,google_chrome_1,google_chrome_0,CLICKTAG,1,0,0,1,0,0,0,0,,Desktop,0,2008_december,
+Google,Chrome,google_chrome_10,google_chrome_9,CLICKTAG,1,0,0,1,0,0,0,0,,Desktop,0,2011_may,
+Google,Chrome,google_chrome_11,google_chrome_10,,21,21,21,0,0,0,0,0,,Desktop,0,2011_april,
+Google,Chrome,google_chrome_11,google_chrome_10,SMS_WAP,43,1,0,43,0,0,0,0,,Desktop,0,2011_april,
+Google,Chrome,google_chrome_11,google_chrome_10,CLICKTAG,252,1,0,252,1,1,0.00396825396825397,0.00396825396825397,,Desktop,0,2011_april,
+Mozilla,Firefox,firefox_9_0,firefox_8_0,CLICKTAG,1,0,0,1,0,0,0,0,,Desktop,,2011_december,Firefox Desktop
+Asus,TF101,asus_eee_pad_tf101_ver1_suban40,asus_eee_pad_tf101_ver1,GooglePlay,3,0,0,3,0,0,0,0,Eee Pad Transformer TF101,Android,4.0,2011_april,Android Webkit
+Asus,TF101,asus_eee_pad_tf101_ver1_suban40,asus_eee_pad_tf101_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Eee Pad Transformer TF101,Android,4.0,2011_april,Android Webkit
+Samsung,GT-B5512,samsung_gt_b5512_ver1,generic_android_ver2_3,GooglePlay,1,0,0,1,0,0,0,0,,Android,2.3,2012_february,Android Webkit
+Samsung,GT-B5512,samsung_gt_b5512_ver1,generic_android_ver2_3,SMS_WAP,2,0,0,2,0,0,0,0,,Android,2.3,2012_february,Android Webkit
+RIM,BlackBerry 9320,blackberry9320_ver1,blackberry_generic_ver7,SMS_WAP,1,0,0,1,0,0,0,0,BlackBerry Curve 9320,RIM OS,7.0,2012_march,BlackBerry
+RIM,BlackBerry 9320,blackberry9320_ver1,blackberry_generic_ver7,CLICKTAG,15,0,0,15,0,0,0,0,BlackBerry Curve 9320,RIM OS,7.0,2012_march,BlackBerry
+Nokia,Asha 302,nokia_302_ver1,nokia_generic_series40_ovibrosr_dp71,CLICKTAG,57,4,0,57,0,0,0,0,Asha 302,,,2012_february,Nokia Proxy Browser
+Nokia,Asha 302,nokia_302_ver1,nokia_generic_series40_ovibrosr_dp71,,3,3,3,0,0,0,0,0,Asha 302,,,2012_february,Nokia Proxy Browser
+Samsung,GT-C3312,samsung_gt_c3312_ver1,samsung_gt_c3332_ver1,CLICKTAG,2,0,0,2,0,0,0,0,,,,2012_march,Access Netfront
+Samsung,GT-I9100G,samsung_gt_i9100_ver1_subuag,samsung_gt_i9100_ver1,SMS_WAP,15,0,0,15,0,0,0,0,Galaxy S II,Android,2.3,2010_november,Android Webkit
+Samsung,GT-I9100G,samsung_gt_i9100_ver1_subuag,samsung_gt_i9100_ver1,GooglePlay,102,1,0,102,1,1,0.00980392156862745,0.00980392156862745,Galaxy S II,Android,2.3,2010_november,Android Webkit
+Samsung,GT-I9100G,samsung_gt_i9100_ver1_subuag,samsung_gt_i9100_ver1,,2,2,2,0,0,0,0,0,Galaxy S II,Android,2.3,2010_november,Android Webkit
+Apple,iPhone,apple_iphone_ver5_1,apple_iphone_ver5,WAPPIN,170,2,0,170,6,3,0.0176470588235294,0.0176470588235294,,iOS,5.1,2011_october,Safari
+Apple,iPhone,apple_iphone_ver5_1,apple_iphone_ver5,,2,2,2,0,0,0,0,0,,iOS,5.1,2011_october,Safari
+Apple,iPhone,apple_iphone_ver5_1,apple_iphone_ver5,SMS_WAP,34,0,0,34,0,0,0,0,,iOS,5.1,2011_october,Safari
+Apple,iPad,apple_ipad_ver1_sub51,apple_ipad_ver1_sub5,SMS_WAP,69,1,0,69,0,0,0,0,,iOS,5.1,2011_july,Safari
+Apple,iPad,apple_ipad_ver1_sub51,apple_ipad_ver1_sub5,WAPPIN,299,0,0,299,1,0,0,0,,iOS,5.1,2011_july,Safari
+Apple,iPad,apple_ipad_ver1_sub51,apple_ipad_ver1_sub5,,27,27,27,0,0,0,0,0,,iOS,5.1,2011_july,Safari
+Apple,iPad,apple_ipad_ver1_sub6,apple_ipad_ver1_sub51,GooglePlay,1,0,0,1,0,0,0,0,,iOS,6.0,2012_march,Safari
+Apple,iPad,apple_ipad_ver1_sub6,apple_ipad_ver1_sub51,SMS_WAP,98,2,0,98,0,0,0,0,,iOS,6.0,2012_march,Safari
+Apple,iPad,apple_ipad_ver1_sub6,apple_ipad_ver1_sub51,,31,31,31,0,0,0,0,0,,iOS,6.0,2012_march,Safari
+Apple,iPad,apple_ipad_ver1_sub6,apple_ipad_ver1_sub51,WAPPIN,601,1,0,601,2,0,0,0,,iOS,6.0,2012_march,Safari
+Samsung,GT-S5830i,samsung_gt_s5830_ver1_subuai,samsung_gt_s5830_ver1,GooglePlay,426,17,0,426,2,2,0.00469483568075117,0.00469483568075117,Galaxy Ace,Android,2.3,2011_january,Android Webkit
+Samsung,GT-S5830i,samsung_gt_s5830_ver1_subuai,samsung_gt_s5830_ver1,SMS_WAP,61,7,0,61,0,0,0,0,Galaxy Ace,Android,2.3,2011_january,Android Webkit
+Samsung,GT-S5830i,samsung_gt_s5830_ver1_subuai,samsung_gt_s5830_ver1,,32,31,31,1,0,0,0,0,Galaxy Ace,Android,2.3,2011_january,Android Webkit
+HTC,A810e,htc_chacha_ver1_subuauscore,htc_chacha_ver1,GooglePlay,2,0,0,2,0,0,0,0,ChaCha,Android,2.3,2011_june,Android Webkit
+Huawei,U8815,huawei_u8815_ver1,generic_android_ver2_3,SMS_WAP,2,0,0,2,0,0,0,0,Ascent G 300,Android,2.3,2012_march,Android Webkit
+Huawei,U8815,huawei_u8815_ver1,generic_android_ver2_3,GooglePlay,10,1,0,10,0,0,0,0,Ascent G 300,Android,2.3,2012_march,Android Webkit
+LG,P698F,lg_p698f_ver1,generic_android_ver2_3,GooglePlay,1,0,0,1,0,0,0,0,Optimus Dual Sim,Android,2.3,2012_march,Android Webkit
+HTC,A310e,htc_a310e_ver1_subuauscore,htc_a310e_ver1,GooglePlay,1,0,0,1,0,0,0,0,Explorer,Android,2.3,2010_november,Android Webkit
+Huawei,U8850,huawei_u8850_ver1,generic_android_ver2_3,GooglePlay,1,0,0,1,0,0,0,0,Vision,Android,2.3,2010_november,Android Webkit
+Motorola,XT910,mot_xt910_ver1_subuamot,mot_xt910_ver1,GooglePlay,1,0,0,1,0,0,0,0,RAZR XT910 Spider,Android,2.3,2011_december,Android Webkit
+Motorola,XT910,mot_xt910_ver1_subuamot,mot_xt910_ver1,,1,1,1,0,0,0,0,0,RAZR XT910 Spider,Android,2.3,2011_december,Android Webkit
+Samsung,GT-I9000,samsung_gt_i9000_ver1_suban40rom,samsung_gt_i9000_ver1,GooglePlay,1,0,0,1,0,0,0,0,Galaxy S,Android,4.0,2010_march,Android Webkit
+Samsung,GT-P7510,samsung_gt_p7510_ver1_suban40rom,samsung_gt_p7510_ver1,,3,3,3,0,0,0,0,0,Galaxy Tab 10.1,Android,4.0,2011_june,Android Webkit
+Samsung,GT-P7510,samsung_gt_p7510_ver1_suban40rom,samsung_gt_p7510_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Galaxy Tab 10.1,Android,4.0,2011_june,Android Webkit
+HTC,PJ83100,htc_one_x_ver1,generic_android_ver4,SMS_WAP,1,0,0,1,0,0,0,0,One X,Android,4.0,2011_october,Android Webkit
+HTC,PJ83100,htc_one_x_ver1,generic_android_ver4,GooglePlay,4,0,0,4,0,0,0,0,One X,Android,4.0,2011_october,Android Webkit
+Nokia,Nokia Asha 201,nokia_201_ver1,nokia_generic_series40_ovibrosr_dp71,CLICKTAG,1,0,0,1,0,0,0,0,Asha 201,,,2011_october,Nokia Proxy Browser
+Nokia,Asha 202,nokia_202_ver1,nokia_generic_series40_ovibrosr_dp71,CLICKTAG,13,1,0,13,0,0,0,0,Asha 202,,,2012_february,Nokia Proxy Browser
+Nokia,Asha 203,nokia_203_ver1,nokia_generic_series40_ovibrosr_dp71,CLICKTAG,1,0,0,1,0,0,0,0,Asha 203,,,2012_february,Nokia Proxy Browser
+Acer,A500,acer_iconia_tab_a500_ver1_suban40,acer_iconia_tab_a500_ver1,GooglePlay,2,0,0,2,0,0,0,0,Picasso,Android,4.0,2012_march,Android Webkit
+HTC,Z710,htc_sensation_ver1_subz710e_suban40,htc_sensation_ver1_subz710e,GooglePlay,1,0,0,1,0,0,0,0,Sensation,Android,4.0,2011_june,Android Webkit
+Samsung,SHW-M250S,samsung_shw_m250s_ver1_suban40,samsung_shw_m250s_ver1,GooglePlay,1,0,0,1,0,0,0,0,GALAXY S II (SKT),Android,4.0,2010_november,Android Webkit
+SonyEricsson,MT11i,sonyericsson_mt11i_ver1_subuanose,sonyericsson_mt11i_ver1,GooglePlay,2,0,0,2,0,0,0,0,Xperia Neo V,Android,2.3,2011_october,Android Webkit
+SonyEricsson,ST18i,sonyericsson_st18i_ver1_subuai,sonyericsson_st18i_ver1,GooglePlay,1,0,0,1,0,0,0,0,Urushi,Android,2.3,2011_july,Android Webkit
+SonyEricsson,ST18i,sonyericsson_st18i_ver1_subuaise,sonyericsson_st18i_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Urushi,Android,2.3,2011_july,Android Webkit
+SonyEricsson,ST18i,sonyericsson_st18i_ver1_subuaise,sonyericsson_st18i_ver1,GooglePlay,7,0,0,7,0,0,0,0,Urushi,Android,2.3,2011_july,Android Webkit
+SonyEricsson,WT19i,sonyericsson_wt19i_ver1_subuanose,sonyericsson_wt19i_ver1,SMS_WAP,1,1,0,1,0,0,0,0,Live,Android,2.3,2012_february,Android Webkit
+SonyEricsson,WT19i,sonyericsson_wt19i_ver1_subuanose,sonyericsson_wt19i_ver1,,1,1,1,0,0,0,0,0,Live,Android,2.3,2012_february,Android Webkit
+Nokia,603,nokia_603_ver1_subuas60,nokia_603_ver1,,2,2,2,0,0,0,0,0,,Symbian OS,S3,2011_october,Safari
+Nokia,603,nokia_603_ver1_subuas60,nokia_603_ver1,CLICKTAG,24,2,0,24,0,0,0,0,,Symbian OS,S3,2011_october,Safari
+Nokia,603,nokia_603_ver1_subuas60,nokia_603_ver1,SMS_WAP,2,0,0,2,0,0,0,0,,Symbian OS,S3,2011_october,Safari
+Nokia,C6-01,nokia_c6_01_ver1_subuaseries53,nokia_c6_01_ver1,CLICKTAG,91,5,0,91,0,0,0,0,,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,C6-01,nokia_c6_01_ver1_subuaseries53,nokia_c6_01_ver1,,21,21,21,0,0,0,0,0,,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,C6-01,nokia_c6_01_ver1_subuaseries53,nokia_c6_01_ver1,SMS_WAP,17,2,0,17,0,0,0,0,,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,C7-00,nokia_c7_00_ver1_subuaseries53,nokia_c7_00_ver1,CLICKTAG,571,31,0,571,0,0,0,0,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,C7-00,nokia_c7_00_ver1_subuaseries53,nokia_c7_00_ver1,,104,104,104,0,0,0,0,0,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,C7-00,nokia_c7_00_ver1_subuaseries53,nokia_c7_00_ver1,SMS_WAP,88,13,0,88,0,0,0,0,Astound,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_subuaseries53,nokia_n8_00_ver1,CLICKTAG,10,0,0,10,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_subuaseries53,nokia_n8_00_ver1,,2,2,2,0,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,N8-00,nokia_n8_00_ver1_subuaseries53,nokia_n8_00_ver1,SMS_WAP,5,2,0,5,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Nokia,C5-05,nokia_c5_05_ver1_subuanonu,nokia_c5_05_ver1,CLICKTAG,7,3,0,7,0,0,0,0,,Symbian OS,9.4,2011_october,Nokia
+Nokia,C5-05,nokia_c5_05_ver1_subuanonu,nokia_c5_05_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.4,2011_october,Nokia
+Nokia,C5-06,nokia_c5_06_ver1_subuanonu,nokia_c5_06_ver1,SMS_WAP,5,2,0,5,0,0,0,0,,Symbian OS,9.4,2011_october,Nokia
+Nokia,C5-06,nokia_c5_06_ver1_subuanonu,nokia_c5_06_ver1,CLICKTAG,35,2,0,35,2,2,0.0571428571428571,0.0571428571428571,,Symbian OS,9.4,2011_october,Nokia
+Nokia,C5-06,nokia_c5_06_ver1_subuanonu,nokia_c5_06_ver1,,10,10,10,0,0,0,0,0,,Symbian OS,9.4,2011_october,Nokia
+Nokia,C3-01,nokia_c3_01_ver1_subua1dot5,nokia_c3_01_ver1,CLICKTAG,6,0,0,6,0,0,0,0,,,,2010_september,Nokia
+SonyEricsson,LT18i,sonyericsson_lt18i_ver1_suban40,sonyericsson_lt18i_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Xperia Arc,Android,4.0,2011_september,Android Webkit
+SonyEricsson,LT18i,sonyericsson_lt18i_ver1_suban40,sonyericsson_lt18i_ver1,GooglePlay,3,0,0,3,0,0,0,0,Xperia Arc,Android,4.0,2011_september,Android Webkit
+SonyEricsson,LT18i,sonyericsson_lt18i_ver1_subua40nose,sonyericsson_lt18i_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia Arc,Android,4.0,2011_september,Android Webkit
+HTC,X315e,htc_x315e_ver1_suban40,htc_x315e_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Sensation XL with Beats Audio,Android,4.0,2010_november,Android Webkit
+SonyEricsson,LT26i,sonyericsson_lt26i_ver1_suban40,sonyericsson_lt26i_ver1,SMS_WAP,16,0,0,16,0,0,0,0,Xperia Arc HD,Android,4.0,2011_december,Android Webkit
+SonyEricsson,LT26i,sonyericsson_lt26i_ver1_suban40,sonyericsson_lt26i_ver1,,10,10,10,0,0,0,0,0,Xperia Arc HD,Android,4.0,2011_december,Android Webkit
+SonyEricsson,LT26i,sonyericsson_lt26i_ver1_suban40,sonyericsson_lt26i_ver1,GooglePlay,41,0,0,41,0,0,0,0,Xperia Arc HD,Android,4.0,2011_december,Android Webkit
+Samsung,GT-N8000,samsung_gt_n8000_ver1,generic_android_ver4,SMS_WAP,5,0,0,5,0,0,0,0,Galaxy Note 10.1,Android,4.0,2012_april,Android Webkit
+Samsung,GT-N8000,samsung_gt_n8000_ver1,generic_android_ver4,,1,1,1,0,0,0,0,0,Galaxy Note 10.1,Android,4.0,2012_april,Android Webkit
+Samsung,GT-N8000,samsung_gt_n8000_ver1,generic_android_ver4,GooglePlay,12,0,0,12,0,0,0,0,Galaxy Note 10.1,Android,4.0,2012_april,Android Webkit
+RIM,BlackBerry 9981,blackberry9981_ver1,blackberry_generic_ver7,CLICKTAG,3,0,0,3,0,0,0,0,Porsche Design P’9981,RIM OS,7.0,2012_april,BlackBerry
+RIM,BlackBerry 9981,blackberry9981_ver1,blackberry_generic_ver7,SMS_WAP,1,0,0,1,0,0,0,0,Porsche Design P’9981,RIM OS,7.0,2012_april,BlackBerry
+HTC,A810e,htc_chacha_ver1_subuaorange,htc_chacha_ver1,GooglePlay,1,0,0,1,0,0,0,0,ChaCha,Android,2.3,2011_june,Android Webkit
+Samsung,GT-S5222,samsung_gt_s5222_ver1,generic_netfront_ver4_1,CLICKTAG,3,0,0,3,0,0,0,0,Star III Duos,,,2012_april,Access Netfront
+SonyEricsson,ST15i,sonyericsson_st15i_ver1_subuanose,sonyericsson_st15i_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia Mini,Android,2.3,2011_august,Android Webkit
+RIM,PlayBook,rim_playbook_android_ver1,generic_android_ver2_3,SMS_WAP,1,0,0,1,0,0,0,0,,Android,2.3,2010_november,Android Webkit
+Nokia,808 PureView,nokia_808_ver1,nokia_generic_symbian_belle,CLICKTAG,12,0,0,12,0,0,0,0,,Symbian OS,Belle,2012_february,Nokia BrowserNG
+HTC,SensationXE Beats Z715e,htc_sensationxe_z715e_ver1_subuanohtc,htc_sensationxe_z715e_ver1,GooglePlay,1,0,0,1,0,0,0,0,Sensation,Android,4.0,2011_october,Android Webkit
+Samsung,GT-P7500,samsung_galaxy_tab_p4_ver1_suban40rom,samsung_galaxy_tab_p4_ver1,GooglePlay,7,0,0,7,0,0,0,0,Galaxy Tab 10.1,Android,4.0,2011_june,Android Webkit
+Samsung,GT-P7500,samsung_galaxy_tab_p4_ver1_suban40rom,samsung_galaxy_tab_p4_ver1,SMS_WAP,6,0,0,6,0,0,0,0,Galaxy Tab 10.1,Android,4.0,2011_june,Android Webkit
+Samsung,GT-P7500,samsung_galaxy_tab_p4_ver1_suban40rom,samsung_galaxy_tab_p4_ver1,,1,1,1,0,0,0,0,0,Galaxy Tab 10.1,Android,4.0,2011_june,Android Webkit
+Samsung,GT-N7000,samsung_gt_n7000_ver1_suban40,samsung_gt_n7000_ver1,GooglePlay,161,4,0,161,1,1,0.0062111801242236,0.0062111801242236,Galaxy Note,Android,4.0,2011_december,Android Webkit
+Samsung,GT-N7000,samsung_gt_n7000_ver1_suban40,samsung_gt_n7000_ver1,,19,19,19,0,0,0,0,0,Galaxy Note,Android,4.0,2011_december,Android Webkit
+Samsung,GT-N7000,samsung_gt_n7000_ver1_suban40,samsung_gt_n7000_ver1,SMS_WAP,54,0,0,54,0,0,0,0,Galaxy Note,Android,4.0,2011_december,Android Webkit
+Samsung,GT-P3100,samsung_gt_p3100_ver1,generic_android_ver4,,51,51,51,0,0,0,0,0,Galaxy Tab 2 7.0,Android,4.0,2012_april,Android Webkit
+Samsung,GT-P3100,samsung_gt_p3100_ver1,generic_android_ver4,SMS_WAP,178,2,0,178,0,0,0,0,Galaxy Tab 2 7.0,Android,4.0,2012_april,Android Webkit
+Samsung,GT-P3100,samsung_gt_p3100_ver1,generic_android_ver4,GooglePlay,381,4,0,381,1,1,0.0026246719160105,0.0026246719160105,Galaxy Tab 2 7.0,Android,4.0,2012_april,Android Webkit
+Samsung,GT-P5100,samsung_gt_p5100_ver1,generic_android_ver4,SMS_WAP,74,0,0,74,0,0,0,0,Galaxy Tab 2 10.1,Android,4.0,2012_april,Android Webkit
+Samsung,GT-P5100,samsung_gt_p5100_ver1,generic_android_ver4,,37,37,37,0,0,0,0,0,Galaxy Tab 2 10.1,Android,4.0,2012_april,Android Webkit
+Samsung,GT-P5100,samsung_gt_p5100_ver1,generic_android_ver4,GooglePlay,148,3,0,148,0,0,0,0,Galaxy Tab 2 10.1,Android,4.0,2012_april,Android Webkit
+HTC,PJ83100,htc_one_x_ver1_subuanouscore,htc_one_x_ver1,GooglePlay,1,0,0,1,0,0,0,0,One X,Android,4.0,2011_october,Android Webkit
+Samsung,GT-I9300,samsung_gt_i9300_ver1,generic_android_ver4,SMS_WAP,20,0,0,20,0,0,0,0,Galaxy SIII,Android,4.0,2012_may,Android Webkit
+Samsung,GT-I9300,samsung_gt_i9300_ver1,generic_android_ver4,,2,2,2,0,0,0,0,0,Galaxy SIII,Android,4.0,2012_may,Android Webkit
+Samsung,GT-I9300,samsung_gt_i9300_ver1,generic_android_ver4,GooglePlay,72,3,0,72,0,0,0,0,Galaxy SIII,Android,4.0,2012_may,Android Webkit
+RIM,BlackBerry 9220,blackberry9220_ver1,blackberry_generic_ver7,,5,5,5,0,0,0,0,0,,RIM OS,7.0,2012_april,BlackBerry
+RIM,BlackBerry 9220,blackberry9220_ver1,blackberry_generic_ver7,SMS_WAP,4,1,0,4,0,0,0,0,,RIM OS,7.0,2012_april,BlackBerry
+RIM,BlackBerry 9220,blackberry9220_ver1,blackberry_generic_ver7,CLICKTAG,49,0,0,49,1,1,0.0204081632653061,0.0204081632653061,,RIM OS,7.0,2012_april,BlackBerry
+SonyEricsson,ST25i,sonyericsson_st25i_ver1,generic_android_ver2_3,SMS_WAP,2,0,0,2,0,0,0,0,Xperia U,Android,2.3,2012_may,Android Webkit
+SonyEricsson,ST25i,sonyericsson_st25i_ver1,generic_android_ver2_3,GooglePlay,11,0,0,11,0,0,0,0,Xperia U,Android,2.3,2012_may,Android Webkit
+Nokia,700,nokia_700_ver1_subos54,nokia_700_ver1,SMS_WAP,7,1,0,7,0,0,0,0,,Symbian OS,5.4,2011_august,Nokia BrowserNG
+Nokia,700,nokia_700_ver1_subos54,nokia_700_ver1,CLICKTAG,57,11,0,57,1,1,0.0175438596491228,0.0175438596491228,,Symbian OS,5.4,2011_august,Nokia BrowserNG
+Nokia,700,nokia_700_ver1_subos54,nokia_700_ver1,,16,16,16,0,0,0,0,0,,Symbian OS,5.4,2011_august,Nokia BrowserNG
+Samsung,GT-B5510,samsung_gt_b5510_ver1_subuanosam,samsung_gt_b5510_ver1,GooglePlay,2,0,0,2,0,0,0,0,Galaxy Y,Android,2.3,2012_march,Android Webkit
+Samsung,GT-I8530,samsung_gt_i8530_ver1,generic_android_ver2_3,SMS_WAP,32,4,0,32,0,0,0,0,,Android,2.3,2012_may,Android Webkit
+Samsung,GT-I8530,samsung_gt_i8530_ver1,generic_android_ver2_3,,7,7,7,0,0,0,0,0,,Android,2.3,2012_may,Android Webkit
+Samsung,GT-I8530,samsung_gt_i8530_ver1,generic_android_ver2_3,GooglePlay,129,3,0,129,0,0,0,0,,Android,2.3,2012_may,Android Webkit
+Samsung,GT-I9070,samsung_gt_i9070_ver1_subuanosamsung,samsung_gt_i9070_ver1,,25,25,25,0,0,0,0,0,Galaxy S Advance,Android,2.3,2012_may,Android Webkit
+Samsung,GT-I9070,samsung_gt_i9070_ver1_subuanosamsung,samsung_gt_i9070_ver1,GooglePlay,312,18,0,312,4,4,0.0128205128205128,0.0128205128205128,Galaxy S Advance,Android,2.3,2012_may,Android Webkit
+Samsung,GT-I9070,samsung_gt_i9070_ver1_subuanosamsung,samsung_gt_i9070_ver1,SMS_WAP,41,5,0,41,0,0,0,0,Galaxy S Advance,Android,2.3,2012_may,Android Webkit
+Samsung,GT-S5300,samsung_gt_s5300_ver1,generic_android_ver2_3,GooglePlay,161,3,0,161,1,1,0.0062111801242236,0.0062111801242236,Galaxy Pocket,Android,2.3,2012_may,Android Webkit
+Samsung,GT-S5300,samsung_gt_s5300_ver1,generic_android_ver2_3,,7,7,7,0,0,0,0,0,Galaxy Pocket,Android,2.3,2012_may,Android Webkit
+Samsung,GT-S5300,samsung_gt_s5300_ver1,generic_android_ver2_3,SMS_WAP,13,1,0,13,0,0,0,0,Galaxy Pocket,Android,2.3,2012_may,Android Webkit
+Samsung,GT-S5570I,samsung_gt_s5570i_ver1,generic_android_ver2_3,SMS_WAP,22,2,0,22,0,0,0,0,Galaxy Pop Plus,Android,2.3,2012_may,Android Webkit
+Samsung,GT-S5570I,samsung_gt_s5570i_ver1,generic_android_ver2_3,,11,11,11,0,0,0,0,0,Galaxy Pop Plus,Android,2.3,2012_may,Android Webkit
+Samsung,GT-S5570I,samsung_gt_s5570i_ver1,generic_android_ver2_3,GooglePlay,277,5,0,277,4,4,0.0144404332129964,0.0144404332129964,Galaxy Pop Plus,Android,2.3,2012_may,Android Webkit
+LG,C660h,lg_c660_ver1_subuah,lg_c660_ver1,,1,1,1,0,0,0,0,0,Optimus Pro,Android,2.3,2012_april,Android Webkit
+Microsoft,Internet Explorer,msie_10,msie_9,CLICKTAG,4,0,0,4,0,0,0,0,,,,2012_may,MSIE
+Microsoft,Internet Explorer,msie_10,msie_9,SMS_WAP,1,0,0,1,0,0,0,0,,,,2012_may,MSIE
+HTC,One V,htc_one_v_ver1,generic_android_ver4,SMS_WAP,1,0,0,1,0,0,0,0,,Android,4.0,2012_may,Android Webkit
+HTC,One V,htc_one_v_ver1,generic_android_ver4,GooglePlay,1,0,0,1,0,0,0,0,,Android,4.0,2012_may,Android Webkit
+Google,Bot,google_bot,generic_web_crawler,CLICKTAG,1,0,0,1,0,0,0,0,,,,2000_january,
+Nokia,C2-05,nokia_c2_05_ver1_subuanomoz,nokia_c2_05_ver1,CLICKTAG,25,0,0,25,0,0,0,0,,,,2011_october,Nokia Proxy Browser
+Huawei,U9200,huawei_u9200_ver1,generic_android_ver4,GooglePlay,2,0,0,2,0,0,0,0,Ascend P1,Android,4.0,2012_june,Android Webkit
+Nokia,110,nokia_110_ver1,nokia_generic_series40_ovibrosr_dp60,CLICKTAG,112,3,0,112,0,0,0,0,,,,2012_june,Nokia Proxy Browser
+Nokia,110,nokia_110_ver1,nokia_generic_series40_ovibrosr_dp60,,13,13,13,0,0,0,0,0,,,,2012_june,Nokia Proxy Browser
+Nokia,311,nokia_311_ver1,nokia_generic_series40_ovibrosr_dp80,,4,4,4,0,0,0,0,0,Asha 311,,,2012_june,Nokia Proxy Browser
+Nokia,311,nokia_311_ver1,nokia_generic_series40_ovibrosr_dp80,SMS_WAP,1,1,0,1,0,0,0,0,Asha 311,,,2012_june,Nokia Proxy Browser
+Nokia,311,nokia_311_ver1,nokia_generic_series40_ovibrosr_dp80,CLICKTAG,66,2,0,66,0,0,0,0,Asha 311,,,2012_june,Nokia Proxy Browser
+Sony,Tablet S,sony_tablet_s_ver1_suban40,sony_tablet_s_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Android,4.0,2011_november,Android Webkit
+Sony,Tablet S,sony_tablet_s_ver1_suban40,sony_tablet_s_ver1,GooglePlay,5,0,0,5,0,0,0,0,,Android,4.0,2011_november,Android Webkit
+Nokia,Asha 302,nokia_302_ver1_subuanok,nokia_302_ver1,SMS_WAP,4,1,0,4,0,0,0,0,Asha 302,,,2012_february,Nokia
+Nokia,Asha 302,nokia_302_ver1_subuanok,nokia_302_ver1,,8,8,8,0,0,0,0,0,Asha 302,,,2012_february,Nokia
+Nokia,Asha 302,nokia_302_ver1_subuanok,nokia_302_ver1,CLICKTAG,65,1,0,65,0,0,0,0,Asha 302,,,2012_february,Nokia
+Nokia,Nokia Asha 201,nokia_201_ver1_subuanok,nokia_201_ver1,CLICKTAG,1,0,0,1,0,0,0,0,Asha 201,,,2011_october,Nokia Proxy Browser
+Nokia,5230,nokia_5230_ver1_subuad,nokia_5230_ver1,JAVA_APP,1,1,0,1,0,0,0,0,Nuron,Symbian OS,9.4,2009_august,Safari
+SonyEricsson,LT28h,sonyericsson_lt28i_ver1_suban40h,sonyericsson_lt28i_ver1,,1,1,1,0,0,0,0,0,Xperia Ion,Android,4.0,2012_january,Android Webkit
+SonyEricsson,LT28h,sonyericsson_lt28i_ver1_suban40h,sonyericsson_lt28i_ver1,GooglePlay,6,0,0,6,0,0,0,0,Xperia Ion,Android,4.0,2012_january,Android Webkit
+SonyEricsson,LT26w,sonyericsson_lt26i_subuaw,sonyericsson_lt26i_ver1,GooglePlay,17,0,0,17,0,0,0,0,Xperia Acro S,Android,4.0,2011_december,Android Webkit
+SonyEricsson,LT26w,sonyericsson_lt26i_subuaw,sonyericsson_lt26i_ver1,SMS_WAP,4,0,0,4,0,0,0,0,Xperia Acro S,Android,4.0,2011_december,Android Webkit
+SonyEricsson,LT26w,sonyericsson_lt26i_subuaw,sonyericsson_lt26i_ver1,,3,3,3,0,0,0,0,0,Xperia Acro S,Android,4.0,2011_december,Android Webkit
+SonyEricsson,ST27i,sonyericsson_st27_ver1,generic_android_ver2_3,GooglePlay,8,1,0,8,0,0,0,0,,Android,2.3,2012_may,Android Webkit
+SonyEricsson,ST27i,sonyericsson_st27_ver1_subuanose,sonyericsson_st27_ver1,GooglePlay,2,0,0,2,0,0,0,0,,Android,2.3,2012_may,Android Webkit
+SonyEricsson,ST27i,sonyericsson_st27_ver1_subua40,sonyericsson_st27_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Android,4.0,2012_may,Android Webkit
+SonyEricsson,ST27i,sonyericsson_st27_ver1_subua40,sonyericsson_st27_ver1,GooglePlay,1,0,0,1,0,0,0,0,,Android,4.0,2012_may,Android Webkit
+SonyEricsson,LT22i,sonyericsson_lt22i_ver1_suban40,sonyericsson_lt22i_ver1,GooglePlay,6,0,0,6,0,0,0,0,Xperia P LT22i,Android,4.0,2012_may,Android Webkit
+SonyEricsson,LT22i,sonyericsson_lt22i_ver1_suban40,sonyericsson_lt22i_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Xperia P LT22i,Android,4.0,2012_may,Android Webkit
+SonyEricsson,LT22i,sonyericsson_lt22i_ver1_subua40,sonyericsson_lt22i_ver1,GooglePlay,6,0,0,6,0,0,0,0,Xperia P LT22i,Android,4.0,2012_may,Android Webkit
+SonyEricsson,MT27i,sonyericsson_mt27i_ver1,generic_android_ver2_3,GooglePlay,3,0,0,3,0,0,0,0,Xperia Sola,Android,2.3,2012_july,Android Webkit
+SonyEricsson,MT25i,sonyericsson_mt25i_ver1,generic_android_ver4,GooglePlay,2,1,0,2,0,0,0,0,Xperia neo L,Android,4.0,2011_october,Android Webkit
+SonyEricsson,MT25i,sonyericsson_mt25i_ver1,generic_android_ver4,,1,1,1,0,0,0,0,0,Xperia neo L,Android,4.0,2011_october,Android Webkit
+Sony,ST21i2,sony_st21iv_ver1_subuai2,sony_st21iv_ver1,,1,1,1,0,0,0,0,0,Xperia Tipo Dual,Android,4.0,2012_july,Android Webkit
+Sony,ST21i2,sony_st21iv_ver1_subuai2,sony_st21iv_ver1,GooglePlay,2,0,0,2,0,0,0,0,Xperia Tipo Dual,Android,4.0,2012_july,Android Webkit
+Sony,ST23i,sony_st23i_ver1,generic_android_ver4,SMS_WAP,5,0,0,5,0,0,0,0,Xperia miro,Android,4.0,2012_july,Android Webkit
+Sony,ST23i,sony_st23i_ver1,generic_android_ver4,GooglePlay,9,0,0,9,0,0,0,0,Xperia miro,Android,4.0,2012_july,Android Webkit
+Sony,ST23i,sony_st23i_ver1,generic_android_ver4,,2,2,2,0,0,0,0,0,Xperia miro,Android,4.0,2012_july,Android Webkit
+Nokia,311,nokia_311_ver1_subuanomoz,nokia_311_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Asha 311,,,2012_june,Nokia Proxy Browser
+Nokia,311,nokia_311_ver1_subuanomoz,nokia_311_ver1,CLICKTAG,57,0,0,57,0,0,0,0,Asha 311,,,2012_june,Nokia Proxy Browser
+Apple,iPhone,apple_iphone_ver6,apple_iphone_ver5,WAPPIN,243,1,0,243,11,1,0.00411522633744856,0.00411522633744856,,iOS,6.0,2012_july,Safari
+Apple,iPhone,apple_iphone_ver6,apple_iphone_ver5,SMS_WAP,45,2,0,45,0,0,0,0,,iOS,6.0,2012_july,Safari
+Apple,iPhone,apple_iphone_ver6,apple_iphone_ver5,,13,13,13,0,0,0,0,0,,iOS,6.0,2012_july,Safari
+Toshiba,AT200,toshiba_at200_ver1_suban40,toshiba_at200_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Excite AT200,Android,4.0,2012_january,Android Webkit
+Samsung,GT-P5110,samsung_gt_p5100_ver1_subua5110,samsung_gt_p5100_ver1,GooglePlay,1,0,0,1,0,0,0,0,Galaxy Tab 2 10.1,Android,4.0,2012_april,Android Webkit
+Samsung,GT-P3110,samsung_gt_p3100_ver1_subua3110,samsung_gt_p3100_ver1,GooglePlay,3,0,0,3,0,0,0,0,Galaxy Tab 2 7.0,Android,4.0,2012_april,Android Webkit
+LG,P705,lg_p700_ver1_subuap705,lg_p700_ver1,,1,1,1,0,0,0,0,0,Optimus L7,Android,4.0,2012_may,Android Webkit
+LG,P705,lg_p700_ver1_subuap705,lg_p700_ver1,GooglePlay,5,0,0,5,0,0,0,0,Optimus L7,Android,4.0,2012_may,Android Webkit
+LG,P705,lg_p700_ver1_subuap705,lg_p700_ver1,SMS_WAP,3,0,0,3,0,0,0,0,Optimus L7,Android,4.0,2012_may,Android Webkit
+LG,P880,lg_p880_ver1,generic_android_ver4,GooglePlay,2,0,0,2,0,0,0,0,Optimus 4X HD,Android,4.0,2012_june,Android Webkit
+Samsung,GT-S6802,samsung_gt_s6802_ver1,generic_android_ver2_3,,1,1,1,0,0,0,0,0,Galaxy Ace Duos,Android,2.3,2012_august,Android Webkit
+Samsung,GT-S6802,samsung_gt_s6802_ver1,generic_android_ver2_3,SMS_WAP,5,1,0,5,0,0,0,0,Galaxy Ace Duos,Android,2.3,2012_august,Android Webkit
+Samsung,GT-S6802,samsung_gt_s6802_ver1,generic_android_ver2_3,GooglePlay,28,0,0,28,0,0,0,0,Galaxy Ace Duos,Android,2.3,2012_august,Android Webkit
+Samsung,GT-I9100,samsung_gt_i9100_ver1_suban40chrome,samsung_gt_i9100_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Galaxy S II,Android,4.0,2010_november,Chrome Mobile
+Samsung,GT-I9100,samsung_gt_i9100_ver1_suban40chrome,samsung_gt_i9100_ver1,GooglePlay,4,0,0,4,0,0,0,0,Galaxy S II,Android,4.0,2010_november,Chrome Mobile
+Google,Chrome,google_chrome_22,google_chrome_21,,1,1,1,0,0,0,0,0,,Desktop,0,2012_september,
+Samsung,Galaxy Nexus,samsung_galaxy_nexus_ver1_suban41stock,samsung_galaxy_nexus_ver1,GooglePlay,2,0,0,2,0,0,0,0,,Android,4.1,2011_october,Android Webkit
+LG,E612,lg_e612_ver1,generic_android_ver4,GooglePlay,2,0,0,2,0,0,0,0,Optimus L5,Android,4.0,2012_may,Android Webkit
+LG,E612,lg_e612_ver1,generic_android_ver4,SMS_WAP,2,1,0,2,0,0,0,0,Optimus L5,Android,4.0,2012_may,Android Webkit
+Samsung,GT-I8160,samsung_gt_i8160_ver1,generic_android_ver2_3,,7,7,7,0,0,0,0,0,Galaxy Ace 2,Android,2.3,2012_april,Android Webkit
+Samsung,GT-I8160,samsung_gt_i8160_ver1,generic_android_ver2_3,SMS_WAP,14,1,0,14,0,0,0,0,Galaxy Ace 2,Android,2.3,2012_april,Android Webkit
+Samsung,GT-I8160,samsung_gt_i8160_ver1,generic_android_ver2_3,GooglePlay,115,9,0,115,2,2,0.0173913043478261,0.0173913043478261,Galaxy Ace 2,Android,2.3,2012_april,Android Webkit
+Samsung,GT-I9300,samsung_gt_i9300_ver1_suban41,samsung_gt_i9300_ver1,SMS_WAP,188,5,0,188,0,0,0,0,Galaxy SIII,Android,4.1.1,2012_August,Android Webkit
+Samsung,GT-I9300,samsung_gt_i9300_ver1_suban41,samsung_gt_i9300_ver1,GooglePlay,1151,13,0,1151,5,5,0.00434404865334492,0.00434404865334492,Galaxy SIII,Android,4.1.1,2012_August,Android Webkit
+Samsung,GT-I9300,samsung_gt_i9300_ver1_suban41,samsung_gt_i9300_ver1,,78,78,78,0,0,0,0,0,Galaxy SIII,Android,4.1.1,2012_August,Android Webkit
+Samsung,EK-GC100,samsung_ek_gc100_ver1_subua41,samsung_ek_gc100_ver1,GooglePlay,1,0,0,1,0,0,0,0,Galaxy Camera,Android,4.1,2012_august,Android Webkit
+Samsung,GT-N7100,samsung_gt_n7100_ver1,generic_android_ver4_1,GooglePlay,469,5,0,469,2,2,0.00426439232409382,0.00426439232409382,Galaxy Note II,Android,4.1,2012_september,Android Webkit
+Samsung,GT-N7100,samsung_gt_n7100_ver1,generic_android_ver4_1,SMS_WAP,88,1,0,88,0,0,0,0,Galaxy Note II,Android,4.1,2012_september,Android Webkit
+Samsung,GT-N7100,samsung_gt_n7100_ver1,generic_android_ver4_1,,46,46,46,0,0,0,0,0,Galaxy Note II,Android,4.1,2012_september,Android Webkit
+Samsung,GT-S6500D,samsung_gt_s6500_ver1_subuad,samsung_gt_s6500_ver1,GooglePlay,13,0,0,13,0,0,0,0,Galaxy Mini 2,Android,2.3,2012_may,Android Webkit
+Samsung,GT-I9100,samsung_gt_i9100_ver1_suban40t,samsung_gt_i9100_ver1,GooglePlay,1,0,0,1,0,0,0,0,Galaxy S II,Android,4.0,2010_november,Android Webkit
+Samsung,GT-S7500,samsung_gt_s7500_ver1_subuanosam,samsung_gt_s7500_ver1,GooglePlay,37,0,0,37,1,1,0.027027027027027,0.027027027027027,Galaxy Ace Plus,Android,2.3,2012_march,Android Webkit
+Samsung,GT-S7500,samsung_gt_s7500_ver1_subuanosam,samsung_gt_s7500_ver1,SMS_WAP,6,0,0,6,0,0,0,0,Galaxy Ace Plus,Android,2.3,2012_march,Android Webkit
+Samsung,GT-S7500,samsung_gt_s7500_ver1_subuanosam,samsung_gt_s7500_ver1,,5,5,5,0,0,0,0,0,Galaxy Ace Plus,Android,2.3,2012_march,Android Webkit
+HTC,X315e,htc_x315e_ver1_suban40uscore,htc_x315e_ver1,GooglePlay,2,0,0,2,0,0,0,0,Sensation XL with Beats Audio,Android,4.0,2010_november,Android Webkit
+HTC,X315e,htc_x315e_ver1_suban40uscore,htc_x315e_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Sensation XL with Beats Audio,Android,4.0,2010_november,Android Webkit
+Samsung,GT-I9305,samsung_gt_i9305_ver1_suban41,samsung_gt_i9305_ver1,GooglePlay,7,1,0,7,0,0,0,0,Galaxy S3 LTE International,Android,4.1,2012_september,Android Webkit
+Samsung,GT-P3100,samsung_gt_p3100_ver1_suban41,samsung_gt_p3100_ver1,SMS_WAP,3,0,0,3,0,0,0,0,Galaxy Tab 2 7.0,Android,4.1,2012_april,Android Webkit
+Samsung,GT-P3100,samsung_gt_p3100_ver1_suban41,samsung_gt_p3100_ver1,GooglePlay,27,0,0,27,0,0,0,0,Galaxy Tab 2 7.0,Android,4.1,2012_april,Android Webkit
+Samsung,GT-P5100,samsung_gt_p5100_ver1_suban41,samsung_gt_p5100_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Galaxy Tab 2 10.1,Android,4.1,2012_april,Android Webkit
+Samsung,GT-P5100,samsung_gt_p5100_ver1_suban41,samsung_gt_p5100_ver1,GooglePlay,1,0,0,1,0,0,0,0,Galaxy Tab 2 10.1,Android,4.1,2012_april,Android Webkit
+Samsung,GT-N8000,samsung_gt_n8000_ver1_suban41,samsung_gt_n8000_ver1,GooglePlay,95,2,0,95,0,0,0,0,Galaxy Note 10.1,Android,4.1,2012_april,Android Webkit
+Samsung,GT-N8000,samsung_gt_n8000_ver1_suban41,samsung_gt_n8000_ver1,SMS_WAP,25,0,0,25,0,0,0,0,Galaxy Note 10.1,Android,4.1,2012_april,Android Webkit
+Samsung,GT-N8000,samsung_gt_n8000_ver1_suban41,samsung_gt_n8000_ver1,,7,7,7,0,0,0,0,0,Galaxy Note 10.1,Android,4.1,2012_april,Android Webkit
+Nokia,Lumia 920,nokia_lumia_920_ver1,generic_ms_phone_os8,SMS_WAP,9,0,0,9,0,0,0,0,,Windows Phone OS,8,2012_october,IEMobile
+Nokia,Lumia 920,nokia_lumia_920_ver1,generic_ms_phone_os8,CLICKTAG,26,0,0,26,0,0,0,0,,Windows Phone OS,8,2012_october,IEMobile
+Samsung,GT-I9100,samsung_gt_i9100_ver1_suban41rom,samsung_gt_i9100_ver1,SMS_WAP,21,1,0,21,0,0,0,0,Galaxy S II,Android,4.1,2010_november,Android Webkit
+Samsung,GT-I9100,samsung_gt_i9100_ver1_suban41rom,samsung_gt_i9100_ver1,GooglePlay,140,2,0,140,0,0,0,0,Galaxy S II,Android,4.1,2010_november,Android Webkit
+Samsung,GT-I9100,samsung_gt_i9100_ver1_suban41rom,samsung_gt_i9100_ver1,,7,7,7,0,0,0,0,0,Galaxy S II,Android,4.1,2010_november,Android Webkit
+Nokia,305,nokia_305_ver1,nokia_generic_series40_dp60,CLICKTAG,12,0,0,12,0,0,0,0,,,,2012_september,Nokia
+Huawei,U8185,huawei_u8185_ver1,generic_android_ver2_3,GooglePlay,2,0,0,2,0,0,0,0,Ascend Y100,Android,2.3,2012_may,Android Webkit
+Samsung,GT-S7562,samsung_gt_s7562_ver1,generic_android_ver4,,11,11,11,0,0,0,0,0,Galaxy S Duos,Android,4.0,2012_august,Android Webkit
+Samsung,GT-S7562,samsung_gt_s7562_ver1,generic_android_ver4,SMS_WAP,34,2,0,34,0,0,0,0,Galaxy S Duos,Android,4.0,2012_august,Android Webkit
+Samsung,GT-S7562,samsung_gt_s7562_ver1,generic_android_ver4,GooglePlay,170,2,0,170,2,2,0.0117647058823529,0.0117647058823529,Galaxy S Duos,Android,4.0,2012_august,Android Webkit
+Sony Ericsson,LT26ii,sonyericsson_lt26ii_ver1,generic_android_ver4,SMS_WAP,3,0,0,3,0,0,0,0,Xperia SL,Android,4.0,2012_september,Android Webkit
+Sony Ericsson,LT26ii,sonyericsson_lt26ii_ver1,generic_android_ver4,GooglePlay,7,0,0,7,0,0,0,0,Xperia SL,Android,4.0,2012_september,Android Webkit
+Sony Ericsson,LT26ii,sonyericsson_lt26ii_ver1_subuanose,sonyericsson_lt26ii_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia SL,Android,4.0,2012_september,Android Webkit
+Nokia,Lumia 610,nokia_lumia_610_ver1_subuavodafone,nokia_lumia_610_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Windows Phone OS,7.5,2011_july,IEMobile
+Motorola,XT910,mot_xt910_ver1_suban40,mot_xt910_ver1,GooglePlay,1,0,0,1,0,0,0,0,RAZR XT910 Spider,Android,4.0,2011_december,Android Webkit
+Huawei,U8860,huawei_u8860_ver1_suban40noh,huawei_u8860_ver1,SMS_WAP,2,1,0,2,0,0,0,0,Honor,Android,2.3,2012_april,Android Webkit
+Huawei,U8860,huawei_u8860_ver1_suban40noh,huawei_u8860_ver1,GooglePlay,6,0,0,6,0,0,0,0,Honor,Android,2.3,2012_april,Android Webkit
+SonyEricsson,LT15i,sonyericsson_lt15i_ver1_suban40,sonyericsson_lt15i_ver1,GooglePlay,2,0,0,2,0,0,0,0,Xperia Arc,Android,4.0,2011_january,Android Webkit
+SonyEricsson,ST18i,sonyericsson_st18i_ver1_suban40i,sonyericsson_st18i_ver1,GooglePlay,2,0,0,2,0,0,0,0,Urushi,Android,4.0,2011_july,Android Webkit
+SonyEricsson,ST15i,sonyericsson_st15i_ver1_suban40,sonyericsson_st15i_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia Mini,Android,4.0,2011_august,Android Webkit
+SonyEricsson,MT15i,sonyericsson_mt15i_ver1_suban40i,sonyericsson_mt15i_ver1,,1,1,1,0,0,0,0,0,Xperia Neo,Android,4.0,2011_february,Android Webkit
+SonyEricsson,MT15i,sonyericsson_mt15i_ver1_suban40i,sonyericsson_mt15i_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia Neo,Android,4.0,2011_february,Android Webkit
+SonyEricsson,MT11i,sonyericsson_mt11i_ver1_suban40i,sonyericsson_mt11i_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Xperia Neo V,Android,4.0,2011_october,Android Webkit
+SonyEricsson,ST25i,sonyericsson_st25i_ver1_subuanose,sonyericsson_st25i_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Xperia U,Android,2.3,2012_may,Android Webkit
+SonyEricsson,ST25i,sonyericsson_st25i_ver1_subuanose,sonyericsson_st25i_ver1,GooglePlay,7,0,0,7,0,0,0,0,Xperia U,Android,2.3,2012_may,Android Webkit
+Samsung,SHV-E160S,samsung_shv_e160s_ver1_suban40,samsung_shv_e160s_ver1,,1,1,1,0,0,0,0,0,Galaxy Note,Android,4.0,2010_november,Android Webkit
+Samsung,SHV-E160S,samsung_shv_e160s_ver1_suban40,samsung_shv_e160s_ver1,GooglePlay,1,0,0,1,0,0,0,0,Galaxy Note,Android,4.0,2010_november,Android Webkit
+Apple,iPod Touch,apple_ipod_touch_ver6,apple_ipod_touch_ver5_1,WAPPIN,80,1,0,80,3,0,0,0,,iOS,6.0,2011_october,Safari
+Apple,iPod Touch,apple_ipod_touch_ver6,apple_ipod_touch_ver5_1,,1,1,1,0,0,0,0,0,,iOS,6.0,2011_october,Safari
+Apple,iPod Touch,apple_ipod_touch_ver6,apple_ipod_touch_ver5_1,SMS_WAP,17,0,0,17,0,0,0,0,,iOS,6.0,2011_october,Safari
+Nokia,Asha 202,nokia_202_ver1_subuanok,nokia_202_ver1,CLICKTAG,6,0,0,6,0,0,0,0,Asha 202,,,2012_february,Nokia Proxy Browser
+Sony,ST26i,sony_st26i_ver1,generic_android_ver4,GooglePlay,4,0,0,4,0,0,0,0,Xperia J,Android,4.0,2012_july,Android Webkit
+Nokia,N8-00,nokia_n8_00_ver1_subuashort,nokia_n8_00_ver1,CLICKTAG,3,0,0,3,0,0,0,0,N8,Symbian OS,S3,2010_april,Nokia BrowserNG
+Apple,iPhone,apple_iphone_ver6_subuau,apple_iphone_ver6,WAPPIN,17,0,0,17,0,0,0,0,,iOS,6.0,2012_july,Safari
+Nokia,112,nokia_112_ver1,generic_xhtml,SMS_WAP,1,0,0,1,0,0,0,0,,,,2012_october,
+Nokia,112,nokia_112_ver1,generic_xhtml,CLICKTAG,16,1,0,16,0,0,0,0,,,,2012_october,
+Nokia,306,nokia_306_ver1,nokia_generic_series40_ovibrosr,CLICKTAG,13,0,0,13,0,0,0,0,,,,2012_october,Nokia Proxy Browser
+Nokia,306,nokia_306_ver1,nokia_generic_series40_ovibrosr,SMS_WAP,1,0,0,1,0,0,0,0,,,,2012_october,Nokia Proxy Browser
+Samsung,GT-S5302,samsung_gt_s5302_ver1,generic_android_ver2_3,SMS_WAP,2,0,0,2,0,0,0,0,Galaxy Pocket Duos,Android,2.3,2012_october,Android Webkit
+Samsung,GT-S5302,samsung_gt_s5302_ver1,generic_android_ver2_3,GooglePlay,25,0,0,25,1,1,0.04,0.04,Galaxy Pocket Duos,Android,2.3,2012_october,Android Webkit
+Samsung,GT-S5302,samsung_gt_s5302_ver1,generic_android_ver2_3,,1,1,1,0,0,0,0,0,Galaxy Pocket Duos,Android,2.3,2012_october,Android Webkit
+Nokia,808 PureView,nokia_808_ver1_subua113,nokia_808_ver1,SMS_WAP,3,0,0,3,0,0,0,0,,Symbian OS,Belle,2012_february,Nokia BrowserNG
+Nokia,808 PureView,nokia_808_ver1_subua113,nokia_808_ver1,CLICKTAG,21,0,0,21,0,0,0,0,,Symbian OS,Belle,2012_february,Nokia BrowserNG
+SonyEricsson,LT26i,sonyericsson_lt26i_ver1_suban40nose,sonyericsson_lt26i_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia Arc HD,Android,4.0,2011_december,Android Webkit
+SonyEricsson,LT26i,sonyericsson_lt26i_ver1_suban40nose,sonyericsson_lt26i_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Xperia Arc HD,Android,4.0,2011_december,Android Webkit
+Samsung,GT-I8190,samsung_gt_i8190_ver1_suban41,samsung_gt_i8190_ver1,SMS_WAP,28,4,0,28,0,0,0,0,Galaxy S III Mini,Android,4.1,2012_october,Android Webkit
+Samsung,GT-I8190,samsung_gt_i8190_ver1_suban41,samsung_gt_i8190_ver1,,5,5,5,0,0,0,0,0,Galaxy S III Mini,Android,4.1,2012_october,Android Webkit
+Samsung,GT-I8190,samsung_gt_i8190_ver1_suban41,samsung_gt_i8190_ver1,GooglePlay,144,5,0,144,0,0,0,0,Galaxy S III Mini,Android,4.1,2012_october,Android Webkit
+Nokia,Lumia 820,nokia_lumia_820_ver1,generic_ms_phone_os8,SMS_WAP,8,0,0,8,0,0,0,0,,Windows Phone OS,8,2012_october,IEMobile
+Nokia,Lumia 820,nokia_lumia_820_ver1,generic_ms_phone_os8,CLICKTAG,25,0,0,25,0,0,0,0,,Windows Phone OS,8,2012_october,IEMobile
+Nokia,701,nokia_701_ver1_subua113,nokia_701_ver1,SMS_WAP,23,3,0,23,0,0,0,0,,Symbian OS,Belle,2011_august,Nokia BrowserNG
+Nokia,701,nokia_701_ver1_subua113,nokia_701_ver1,,44,44,44,0,0,0,0,0,,Symbian OS,Belle,2011_august,Nokia BrowserNG
+Nokia,701,nokia_701_ver1_subua113,nokia_701_ver1,CLICKTAG,128,9,0,128,2,2,0.015625,0.015625,,Symbian OS,Belle,2011_august,Nokia BrowserNG
+Nokia,701,nokia_701_ver1_subua112,nokia_701_ver1,SMS_WAP,42,6,0,42,0,0,0,0,,Symbian OS,Belle,2011_august,Nokia BrowserNG
+Nokia,701,nokia_701_ver1_subua112,nokia_701_ver1,,90,90,90,0,0,0,0,0,,Symbian OS,Belle,2011_august,Nokia BrowserNG
+Nokia,701,nokia_701_ver1_subua112,nokia_701_ver1,CLICKTAG,229,15,0,229,1,1,0.00436681222707424,0.00436681222707424,,Symbian OS,Belle,2011_august,Nokia BrowserNG
+RIM,BlackBerry Bold Touch 9900,blackberry9900_ver1_subua71,blackberry9900_ver1,,11,11,11,0,0,0,0,0,Dakota,RIM OS,7.1,2011_september,BlackBerry
+RIM,BlackBerry Bold Touch 9900,blackberry9900_ver1_subua71,blackberry9900_ver1,SMS_WAP,23,2,0,23,0,0,0,0,Dakota,RIM OS,7.1,2011_september,BlackBerry
+RIM,BlackBerry Bold Touch 9900,blackberry9900_ver1_subua71,blackberry9900_ver1,CLICKTAG,200,3,0,200,1,1,0.005,0.005,Dakota,RIM OS,7.1,2011_september,BlackBerry
+Apple,Safari,safari_5_0_mac,safari_4_0_mac,CLICKTAG,1,0,0,1,0,0,0,0,,Desktop,,2010_june,
+Apple,Safari,safari_6_0_mac,safari_5_0_mac,CLICKTAG,1,0,0,1,0,0,0,0,,Desktop,,2012_july,
+Samsung,Galaxy Nexus,samsung_galaxy_nexus_ver1_suban42,samsung_galaxy_nexus_ver1,GooglePlay,2,0,0,2,0,0,0,0,,Android,4.2,2011_october,Android Webkit
+Samsung,Galaxy Nexus,samsung_galaxy_nexus_ver1_suban42,samsung_galaxy_nexus_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Android,4.2,2011_october,Android Webkit
+Google,Nexus 4,lg_nexus4_ver1,generic_android_ver4_2,GooglePlay,1,0,0,1,0,0,0,0,,Android,4.2,2012_june,Android Webkit
+RIM,BlackBerry 9360,blackberry9360_ver1_subos71,blackberry9360_ver1,,3,3,3,0,0,0,0,0,Curve,RIM OS,7.1,2011_october,BlackBerry
+RIM,BlackBerry 9360,blackberry9360_ver1_subos71,blackberry9360_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Curve,RIM OS,7.1,2011_october,BlackBerry
+RIM,BlackBerry 9360,blackberry9360_ver1_subos71,blackberry9360_ver1,CLICKTAG,50,2,0,50,0,0,0,0,Curve,RIM OS,7.1,2011_october,BlackBerry
+Apple,iPhone,apple_iphone_ver3_subuabot,apple_iphone_ver3,WAPPIN,1,0,0,1,0,0,0,0,,iOS,3.0,2009_june,Safari
+Nokia,5233,nokia_5233_ver1_subuaucbrowser,nokia_5233_ver1,CLICKTAG,2,0,0,2,0,0,0,0,,Symbian OS,,2010_june,UCWeb
+Nokia,X7-00,nokia_x7_00_ver1_subua53,nokia_x7_00_ver1,CLICKTAG,32,1,0,32,0,0,0,0,X7,Symbian OS,S3,2011_april,Nokia BrowserNG
+Nokia,X7-00,nokia_x7_00_ver1_subua53,nokia_x7_00_ver1,SMS_WAP,9,1,0,9,0,0,0,0,X7,Symbian OS,S3,2011_april,Nokia BrowserNG
+Nokia,X7-00,nokia_x7_00_ver1_subua53,nokia_x7_00_ver1,,10,10,10,0,0,0,0,0,X7,Symbian OS,S3,2011_april,Nokia BrowserNG
+Nokia,308,nokia_308_ver1,nokia_generic_series40_ovibrosr_dp80,CLICKTAG,4,0,0,4,0,0,0,0,Asha 308,,,2012_september,Nokia Proxy Browser
+Nokia,308,nokia_308_ver1_subuanomoz,nokia_308_ver1,CLICKTAG,5,0,0,5,0,0,0,0,Asha 308,,,2012_september,Nokia Proxy Browser
+Nokia,603,nokia_603_ver1_subua5_5,nokia_603_ver1,,2,2,2,0,0,0,0,0,,Symbian OS,S3,2011_october,Safari
+Nokia,603,nokia_603_ver1_subua5_5,nokia_603_ver1,CLICKTAG,35,2,0,35,0,0,0,0,,Symbian OS,S3,2011_october,Safari
+Nokia,603,nokia_603_ver1_subua5_5,nokia_603_ver1,SMS_WAP,1,1,0,1,0,0,0,0,,Symbian OS,S3,2011_october,Safari
+Nokia,603,nokia_603_ver1_subua5_4,nokia_603_ver1,CLICKTAG,10,0,0,10,0,0,0,0,,Symbian OS,S3,2011_october,Safari
+Nokia,603,nokia_603_ver1_subua5_4,nokia_603_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,S3,2011_october,Safari
+Samsung,GT-S6102,samsung_gt_s6102_ver1_subuaucweb,samsung_gt_s6102_ver1,,1,1,1,0,0,0,0,0,Galaxy Y Duos,Android,2.3,2012_february,UCWeb
+Samsung,GT-I9100G,samsung_gt_i9100_ver1_suban40g,samsung_gt_i9100_ver1,SMS_WAP,5,1,0,5,0,0,0,0,Galaxy S II,Android,4.0,2010_november,Android Webkit
+Samsung,GT-I9100G,samsung_gt_i9100_ver1_suban40g,samsung_gt_i9100_ver1,,1,1,1,0,0,0,0,0,Galaxy S II,Android,4.0,2010_november,Android Webkit
+Samsung,GT-I9100G,samsung_gt_i9100_ver1_suban40g,samsung_gt_i9100_ver1,GooglePlay,34,0,0,34,0,0,0,0,Galaxy S II,Android,4.0,2010_november,Android Webkit
+Micromax,A87,micromax_a87_ver1,generic_android_ver2_3,GooglePlay,8,0,0,8,0,0,0,0,Ninja 4,Android,2.3,2012_september,Android Webkit
+Nokia,700,nokia_700_ver1_subua55,nokia_700_ver1,,31,31,31,0,0,0,0,0,,Symbian OS,5.2,2011_august,Nokia BrowserNG
+Nokia,700,nokia_700_ver1_subua55,nokia_700_ver1,CLICKTAG,57,4,0,57,0,0,0,0,,Symbian OS,5.2,2011_august,Nokia BrowserNG
+Nokia,700,nokia_700_ver1_subua55,nokia_700_ver1,SMS_WAP,16,4,0,16,0,0,0,0,,Symbian OS,5.2,2011_august,Nokia BrowserNG
+Nokia,E6-00,nokia_e6_00_ver1_subua53,nokia_e6_00_ver1,,22,22,22,0,0,0,0,0,E6,Symbian OS,S3,2011_april,Nokia BrowserNG
+Nokia,E6-00,nokia_e6_00_ver1_subua53,nokia_e6_00_ver1,CLICKTAG,40,1,0,40,0,0,0,0,E6,Symbian OS,S3,2011_april,Nokia BrowserNG
+Nokia,E6-00,nokia_e6_00_ver1_subua53,nokia_e6_00_ver1,SMS_WAP,16,0,0,16,0,0,0,0,E6,Symbian OS,S3,2011_april,Nokia BrowserNG
+Pantech,IM-A770K,pantech_im_a770k_ver1_suban40,pantech_im_a770k_ver1,GooglePlay,1,0,0,1,0,0,0,0,SKY Vega Racer (KT),Android,4.0,2010_november,Android Webkit
+Samsung,GT-I9300,samsung_gt_i9300_ver1_subuachrome,samsung_gt_i9300_ver1,GooglePlay,4,0,0,4,0,0,0,0,Galaxy SIII,Android,4.0,2012_may,Chrome Mobile
+Samsung,GT-I9100,samsung_gt_i9100_ver1_suban41romg,samsung_gt_i9100_ver1,GooglePlay,1,0,0,1,0,0,0,0,Galaxy S II,Android,4.1,2010_november,Android Webkit
+FaceBook,Bot,facebook_bot,generic_web_crawler,CLICKTAG,3,0,0,3,0,0,0,0,,,,2000_january,
+Asus,TF101,asus_eee_pad_tf101_ver1_suban40chrome,asus_eee_pad_tf101_ver1_suban40,GooglePlay,1,0,0,1,0,0,0,0,Eee Pad Transformer TF101,Android,4.0,2011_april,Chrome Mobile
+Coby,MID1042,coby_mid1042_ver1_subuachrome,coby_mid1042_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Kyros MID1042,Android,4.0,2012_june,Chrome Mobile
+Coby,MID1042,coby_mid1042_ver1_subuachrome,coby_mid1042_ver1,GooglePlay,2,0,0,2,0,0,0,0,Kyros MID1042,Android,4.0,2012_june,Chrome Mobile
+HTC,SensationXE Beats Z715e,htc_sensationxe_z715e_ver1_suban40_subuachrome,htc_sensationxe_z715e_ver1_suban40,GooglePlay,1,0,0,1,0,0,0,0,Sensation,Android,4.0,2011_december,Chrome Mobile
+LG,P705,lg_p700_ver1_subuap705_subuachrome,lg_p700_ver1_subuap705,GooglePlay,1,1,0,1,0,0,0,0,Optimus L7,Android,4.0,2012_may,Chrome Mobile
+Samsung,GT-P7500,samsung_galaxy_tab_p4_ver1_suban41rom_subuachrome,samsung_galaxy_tab_p4_ver1_suban41rom,GooglePlay,1,0,0,1,0,0,0,0,Galaxy Tab 10.1,Android,4.1,2011_june,Chrome Mobile
+Samsung,GT-I9100G,samsung_gt_i9100_ver1_suban40g_subuachrome,samsung_gt_i9100_ver1_suban40g,GooglePlay,4,0,0,4,0,0,0,0,Galaxy S II,Android,4.0,2010_november,Chrome Mobile
+Samsung,GT-I9100,samsung_gt_i9100_ver1_suban41rom_subuachrome,samsung_gt_i9100_ver1_suban41rom,SMS_WAP,1,0,0,1,0,0,0,0,Galaxy S II,Android,4.1,2010_november,Chrome Mobile
+Samsung,GT-I9100,samsung_gt_i9100_ver1_suban41rom_subuachrome,samsung_gt_i9100_ver1_suban41rom,GooglePlay,9,0,0,9,0,0,0,0,Galaxy S II,Android,4.1,2010_november,Chrome Mobile
+Samsung,GT-I9300,samsung_gt_i9300_ver1_suban41_subuachrome,samsung_gt_i9300_ver1_suban41,SMS_WAP,13,1,0,13,0,0,0,0,Galaxy SIII,Android,4.1.1,2012_August,Chrome Mobile
+Samsung,GT-I9300,samsung_gt_i9300_ver1_suban41_subuachrome,samsung_gt_i9300_ver1_suban41,GooglePlay,76,3,0,76,0,0,0,0,Galaxy SIII,Android,4.1.1,2012_August,Chrome Mobile
+Samsung,GT-I9300,samsung_gt_i9300_ver1_suban41_subuachrome,samsung_gt_i9300_ver1_suban41,,1,1,1,0,0,0,0,0,Galaxy SIII,Android,4.1.1,2012_August,Chrome Mobile
+Samsung,GT-N7000,samsung_gt_n7000_ver1_suban40_subuachrome,samsung_gt_n7000_ver1_suban40,GooglePlay,4,0,0,4,0,0,0,0,Galaxy Note,Android,4.0,2011_december,Chrome Mobile
+Samsung,GT-N7000,samsung_gt_n7000_ver1_suban40_subuachrome,samsung_gt_n7000_ver1_suban40,SMS_WAP,1,0,0,1,0,0,0,0,Galaxy Note,Android,4.0,2011_december,Chrome Mobile
+Samsung,GT-N7100,samsung_gt_n7100_ver1_subuachrome,samsung_gt_n7100_ver1,SMS_WAP,11,0,0,11,0,0,0,0,Galaxy Note II,Android,4.1,2012_september,Chrome Mobile
+Samsung,GT-N7100,samsung_gt_n7100_ver1_subuachrome,samsung_gt_n7100_ver1,GooglePlay,77,2,0,77,1,1,0.012987012987013,0.012987012987013,Galaxy Note II,Android,4.1,2012_september,Chrome Mobile
+Samsung,GT-N7100,samsung_gt_n7100_ver1_subuachrome,samsung_gt_n7100_ver1,,1,1,1,0,0,0,0,0,Galaxy Note II,Android,4.1,2012_september,Chrome Mobile
+Samsung,GT-P3100,samsung_gt_p3100_ver1_subuachrome,samsung_gt_p3100_ver1,GooglePlay,3,0,0,3,0,0,0,0,Galaxy Tab 2 7.0,Android,4.0,2012_april,Chrome Mobile
+Samsung,GT-P3100,samsung_gt_p3100_ver1_suban41_subuachrome,samsung_gt_p3100_ver1_suban41,GooglePlay,2,0,0,2,0,0,0,0,Galaxy Tab 2 7.0,Android,4.1,2012_april,Chrome Mobile
+Samsung,GT-P3100,samsung_gt_p3100_ver1_suban41_subuachrome,samsung_gt_p3100_ver1_suban41,SMS_WAP,1,0,0,1,0,0,0,0,Galaxy Tab 2 7.0,Android,4.1,2012_april,Chrome Mobile
+Samsung,GT-P5100,samsung_gt_p5100_ver1_subuachrome,samsung_gt_p5100_ver1,GooglePlay,2,0,0,2,0,0,0,0,Galaxy Tab 2 10.1,Android,4.0,2012_april,Chrome Mobile
+Samsung,GT-S7562,samsung_gt_s7562_ver1_subuachrome,samsung_gt_s7562_ver1,GooglePlay,2,0,0,2,0,0,0,0,Galaxy S Duos,Android,4.0,2012_august,Chrome Mobile
+Samsung,GT-S7562,samsung_gt_s7562_ver1_subuachrome,samsung_gt_s7562_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Galaxy S Duos,Android,4.0,2012_august,Chrome Mobile
+SonyEricsson,LT22i,sonyericsson_lt22i_ver1_subua40_subuachrome,sonyericsson_lt22i_ver1_subua40,GooglePlay,1,0,0,1,0,0,0,0,Xperia P LT22i,Android,4.0,2012_may,Chrome Mobile
+SonyEricsson,LT22i,sonyericsson_lt22i_ver1_subua40_subuachrome,sonyericsson_lt22i_ver1_subua40,,1,1,1,0,0,0,0,0,Xperia P LT22i,Android,4.0,2012_may,Chrome Mobile
+SonyEricsson,LT22i,sonyericsson_lt22i_ver1_subua40_subuachrome,sonyericsson_lt22i_ver1_subua40,SMS_WAP,1,1,0,1,0,0,0,0,Xperia P LT22i,Android,4.0,2012_may,Chrome Mobile
+SonyEricsson,LT26i,sonyericsson_lt26i_ver1_suban40nose_subuachrome,sonyericsson_lt26i_ver1_suban40nose,GooglePlay,2,0,0,2,0,0,0,0,Xperia Arc HD,Android,4.0,2011_december,Chrome Mobile
+Sony,LT30p,sonyericsson_lt30p_ver1_subuanosony_subuachrome,sonyericsson_lt30p_ver1_subuanosony,GooglePlay,1,0,0,1,0,0,0,0,Xperia T,Android,4.0,2012_october,Chrome Mobile
+QMobile,A2,qmobile_a2_ver1,generic_android_ver2_3,GooglePlay,7,0,0,7,0,0,0,0,Noir,Android,2.3,2012_august,Android Webkit
+SonyEricsson,C6603,sonyericsson_c6603_ver1_subuanose,sonyericsson_c6603_ver1,GooglePlay,2,0,0,2,0,0,0,0,Xperia Z,Android,4.1,2012_october,Android Webkit
+Google,Nexus 7,google_nexus7_ver1_suban42,google_nexus7_ver1,GooglePlay,4,0,0,4,0,0,0,0,,Android,4.2,2012_july,Chrome Mobile
+RIM,PlayBook,rim_playbook_ver1_subos21,rim_playbook_ver1,WAPPIN,1,0,0,1,0,0,0,0,,RIM Tablet OS,2.1,2011_may,Safari
+SonyEricsson,ST17i,sonyericsson_st17_ver1_suban40i,sonyericsson_st17_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia Active,Android,4.0,2011_june,Android Webkit
+Google,Chrome,google_chrome_25,google_chrome_24,CLICKTAG,2,0,0,2,0,0,0,0,,Desktop,0,2012_november,
+Mozilla,Firefox,firefox_18_0,firefox_17_0,CLICKTAG,1,0,0,1,0,0,0,0,,Desktop,,2012_november,Firefox Desktop
+Mozilla,Firefox,firefox_19_0,firefox_18_0,CLICKTAG,1,0,0,1,0,0,0,0,,Desktop,,2012_november,Firefox Desktop
+Google,Nexus 4,lg_nexus4_ver1_subuachrome,lg_nexus4_ver1,GooglePlay,1,0,0,1,0,0,0,0,,Android,4.2,2012_june,Chrome Mobile
+Samsung,GT-S5302,samsung_gt_s5302_ver1_subuauc,samsung_gt_s5302_ver1,GooglePlay,2,0,0,2,0,0,0,0,Galaxy Pocket Duos,Android,2.3,2012_october,UCWeb
+Coby,MID7042,coby_mid7042_ver1,generic_android_ver4,SMS_WAP,1,0,0,1,0,0,0,0,Kyros MID7042,Android,4.0,2012_april,Android Webkit
+Nokia,309,nokia_309_ver1,nokia_generic_series40_ovibrosr,CLICKTAG,11,2,0,11,0,0,0,0,Asha 309,,,2012_november,Nokia Proxy Browser
+Nokia,309,nokia_309_ver1,nokia_generic_series40_ovibrosr,,1,1,1,0,0,0,0,0,Asha 309,,,2012_november,Nokia Proxy Browser
+Nokia,309,nokia_309_ver1,nokia_generic_series40_ovibrosr,SMS_WAP,1,1,0,1,0,0,0,0,Asha 309,,,2012_november,Nokia Proxy Browser
+Nokia,309,nokia_309_ver1_subuanomoz,nokia_309_ver1,CLICKTAG,1,0,0,1,0,0,0,0,Asha 309,,,2012_november,Nokia Proxy Browser
+Nokia,305,nokia_305_ver1_subuamoz,nokia_305_ver1,,1,1,1,0,0,0,0,0,,,,2012_september,Nokia Proxy Browser
+Nokia,305,nokia_305_ver1_subuamoz,nokia_305_ver1,CLICKTAG,17,0,0,17,0,0,0,0,,,,2012_september,Nokia Proxy Browser
+Samsung,GT-N7105,samsung_gt_n7100_ver1_subua5nosam,samsung_gt_n7100_ver1,,1,1,1,0,0,0,0,0,Galaxy Note II,Android,4.1,2012_september,Android Webkit
+Samsung,SGH-T999,samsung_gt_i9300_ver1_suban41tmobile,samsung_gt_i9300_ver1,GooglePlay,1,0,0,1,0,0,0,0,Galaxy SIII,Android,4.1,2012_may,Android Webkit
+Samsung,SGH-T999,samsung_gt_i9300_ver1_suban41tmobile,samsung_gt_i9300_ver1,,2,2,2,0,0,0,0,0,Galaxy SIII,Android,4.1,2012_may,Android Webkit
+Motorola,MB865,motorola_mb865_ver1_suban40,motorola_mb865_ver1,GooglePlay,3,0,0,3,0,0,0,0,Atrix 2,Android,4.0,2010_november,Android Webkit
+Nokia,306,nokia_306_ver1_subuamoz,nokia_306_ver1,CLICKTAG,16,1,0,16,0,0,0,0,,,,2012_october,Nokia Proxy Browser
+Nokia,306,nokia_306_ver1_subuamoz,nokia_306_ver1,,5,5,5,0,0,0,0,0,,,,2012_october,Nokia Proxy Browser
+Nokia,N73,nokia_n73_ver1_subuaucweb,nokia_n73_ver1,CLICKTAG,12,0,0,12,0,0,0,0,,Symbian OS,9.1,2005_november,UCWeb
+Nokia,N73,nokia_n73_ver1_subuaucweb,nokia_n73_ver1,,1,1,1,0,0,0,0,0,,Symbian OS,9.1,2005_november,UCWeb
+Nokia,N73,nokia_n73_ver1_subuaucweb,nokia_n73_ver1,SMS_WAP,3,0,0,3,0,0,0,0,,Symbian OS,9.1,2005_november,UCWeb
+Nokia,5800i,nokia_5800i_ver1_subuaucweb,nokia_5800i_ver1,CLICKTAG,35,1,0,35,0,0,0,0,XpressMusic,Symbian OS,,2008_january,UCWeb
+Nokia,5800i,nokia_5800i_ver1_subuaucweb,nokia_5800i_ver1,SMS_WAP,11,0,0,11,0,0,0,0,XpressMusic,Symbian OS,,2008_january,UCWeb
+Nokia,5800i,nokia_5800i_ver1_subuaucweb,nokia_5800i_ver1,,3,3,3,0,0,0,0,0,XpressMusic,Symbian OS,,2008_january,UCWeb
+Nokia,C5-05,nokia_c5_05_ver1_subuaucweb,nokia_c5_05_ver1,CLICKTAG,2,0,0,2,0,0,0,0,,Symbian OS,9.4,2011_october,UCWeb
+Nokia,112,nokia_112_ver1_subuaovibrsr,nokia_112_ver1,,7,7,7,0,0,0,0,0,,,,2012_october,Nokia Proxy Browser
+Nokia,112,nokia_112_ver1_subuaovibrsr,nokia_112_ver1,CLICKTAG,50,1,0,50,0,0,0,0,,,,2012_october,Nokia Proxy Browser
+Nokia,112,nokia_112_ver1_subuaovibrsr,nokia_112_ver1,SMS_WAP,3,3,0,3,0,0,0,0,,,,2012_october,Nokia Proxy Browser
+Nokia,C5-03,nokia_c5_03_ver1_subuaucweb,nokia_c5_03_ver1,CLICKTAG,17,0,0,17,0,0,0,0,C5,Symbian OS,9.4,2010_october,UCWeb
+Nokia,C5-03,nokia_c5_03_ver1_subuaucweb,nokia_c5_03_ver1,SMS_WAP,7,0,0,7,0,0,0,0,C5,Symbian OS,9.4,2010_october,UCWeb
+Sony,C1605,sony_c1605_ver1,generic_android_ver4,GooglePlay,1,0,0,1,0,0,0,0,Xperia E Dual,Android,4.0,2012_december,Android Webkit
+Sony,C1605,sony_c1605_ver1,generic_android_ver4,SMS_WAP,1,0,0,1,0,0,0,0,Xperia E Dual,Android,4.0,2012_december,Android Webkit
+HTC,Windows Phone 8X,htc_8x_ver1,generic_ms_phone_os8,CLICKTAG,7,0,0,7,0,0,0,0,,Windows Phone OS,8,2012_november,IEMobile
+HTC,8S,htc_8s_ver1,generic_ms_phone_os8,CLICKTAG,9,0,0,9,0,0,0,0,,Windows Phone OS,8,2012_november,IEMobile
+HTC,PJ83100,htc_one_x_ver1_suban41,htc_one_x_ver1,SMS_WAP,2,0,0,2,0,0,0,0,One X,Android,4.1,2011_october,Android Webkit
+HTC,PJ83100,htc_one_x_ver1_suban41,htc_one_x_ver1,GooglePlay,6,0,0,6,0,0,0,0,One X,Android,4.1,2011_october,Android Webkit
+HTC,PJ83100,htc_one_x_ver1_suban41,htc_one_x_ver1,,1,1,1,0,0,0,0,0,One X,Android,4.1,2011_october,Android Webkit
+Sony,LT25i,sony_lt25i_ver1_suban41,sony_lt25i_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia V,Android,4.1,2012_august,Android Webkit
+Sony,SGP311,sony_xperia_tablet_z_ver1_subuasgp311,sony_xperia_tablet_z_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia Tablet Z,Android,4.1,2013_march,Android Webkit
+Nokia,E7-00,nokia_e7_00_ver1_subua53nobuild,nokia_e7_00_ver1,JAVA_APP,6,0,0,6,0,0,0,0,,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,E7-00,nokia_e7_00_ver1_subua53nobuild,nokia_e7_00_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,Symbian OS,S3,2010_september,Nokia BrowserNG
+Nokia,E7-00,nokia_e7_00_ver1_subua53nobuild,nokia_e7_00_ver1,,2,2,2,0,0,0,0,0,,Symbian OS,S3,2010_september,Nokia BrowserNG
+RIM,BlackBerry 9790,blackberry9790_ver1_subos71,blackberry9790_ver1,SMS_WAP,6,0,0,6,0,0,0,0,BlackBerry Bold 9790,RIM OS,7.0,2012_february,BlackBerry
+RIM,BlackBerry 9790,blackberry9790_ver1_subos71,blackberry9790_ver1,CLICKTAG,53,1,0,53,0,0,0,0,BlackBerry Bold 9790,RIM OS,7.0,2012_february,BlackBerry
+RIM,BlackBerry 9790,blackberry9790_ver1_subos71,blackberry9790_ver1,,4,4,4,0,0,0,0,0,BlackBerry Bold 9790,RIM OS,7.0,2012_february,BlackBerry
+LG,E975,lg_e975_ver1_suban41,lg_e975_ver1,GooglePlay,2,0,0,2,1,1,0.5,0.5,Optimus G,Android,4.1,2012_november,Chrome Mobile
+Samsung,GT-S7562L,samsung_gt_s7562_ver1_subual,samsung_gt_s7562_ver1,GooglePlay,1,0,0,1,0,0,0,0,Galaxy S Duos,Android,4.0,2012_august,Android Webkit
+HTC,PM63100,htc_one_x_plus_ver1_suban41plus,htc_one_x_plus_ver1,,2,2,2,0,0,0,0,0,One X+,Android,4.1,2011_october,Android Webkit
+LG,E615,lg_e615_ver1,generic_android_ver4,GooglePlay,2,0,0,2,0,0,0,0,Optimus L5 Dual,Android,4.0,2012_september,Android Webkit
+LG,E615,lg_e615_ver1,generic_android_ver4,SMS_WAP,1,0,0,1,0,0,0,0,Optimus L5 Dual,Android,4.0,2012_september,Android Webkit
+Samsung,SC-02E,samsung_gt_n7100_ver1_subuasc02e,samsung_gt_n7100_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Galaxy Note II,Android,4.1,2012_september,Android Webkit
+Coby,MID7048,coby_mid7048_ver1,generic_android_ver4,SMS_WAP,1,0,0,1,0,0,0,0,Kyros MID7048,Android,4.0,2012_september,Android Webkit
+Nokia,5230,nokia_5230_ver1_subuaucweb,nokia_5230_ver1,,1,1,1,0,0,0,0,0,Nuron,Symbian OS,9.4,2009_august,UCWeb
+Nokia,5230,nokia_5230_ver1_subuaucweb,nokia_5230_ver1,JAVA_APP,21,0,0,21,0,0,0,0,Nuron,Symbian OS,9.4,2009_august,UCWeb
+Nokia,206,nokia_206_ver1,nokia_generic_series40_ovibrosr,CLICKTAG,46,0,0,46,0,0,0,0,,,,2012_november,Nokia Proxy Browser
+Nokia,206,nokia_206_ver1,nokia_generic_series40_ovibrosr,,2,2,2,0,0,0,0,0,,,,2012_november,Nokia Proxy Browser
+Nokia,206,nokia_206_ver1_subuadot1,nokia_206_ver1,CLICKTAG,11,0,0,11,0,0,0,0,,,,2012_november,Nokia Proxy Browser
+Samsung,GT-P5113,samsung_gt_p5100_ver1_suban41p5113,samsung_gt_p5100_ver1,GooglePlay,8,0,0,8,0,0,0,0,Galaxy Tab 2 10.1,Android,4.1,2012_april,Android Webkit
+Samsung,GT-P5113,samsung_gt_p5100_ver1_suban41p5113,samsung_gt_p5100_ver1,SMS_WAP,4,0,0,4,0,0,0,0,Galaxy Tab 2 10.1,Android,4.1,2012_april,Android Webkit
+Samsung,GT-P3113,samsung_gt_p3100_ver1_suban41p3113,samsung_gt_p3100_ver1,SMS_WAP,4,1,0,4,0,0,0,0,Galaxy Tab 2 7.0,Android,4.1,2012_april,Android Webkit
+Samsung,GT-P3113,samsung_gt_p3100_ver1_suban41p3113,samsung_gt_p3100_ver1,GooglePlay,20,0,0,20,0,0,0,0,Galaxy Tab 2 7.0,Android,4.1,2012_april,Android Webkit
+Lenovo,A2107A-H,lenovo_ideatab_a2107a_ver1,generic_android_ver4,SMS_WAP,3,1,0,3,0,0,0,0,IdeaTab A2107A-H,Android,4.0,2012_october,Android Webkit
+Lenovo,A2107A-H,lenovo_ideatab_a2107a_ver1,generic_android_ver4,,3,3,3,0,0,0,0,0,IdeaTab A2107A-H,Android,4.0,2012_october,Android Webkit
+Lenovo,A2107A-H,lenovo_ideatab_a2107a_ver1,generic_android_ver4,GooglePlay,23,1,0,23,0,0,0,0,IdeaTab A2107A-H,Android,4.0,2012_october,Android Webkit
+SonyEricsson,C6602,sonyericsson_c6603_ver1_subuac6602,sonyericsson_c6603_ver1,GooglePlay,24,0,0,24,0,0,0,0,Xperia Z,Android,4.1,2012_october,Android Webkit
+SonyEricsson,C6602,sonyericsson_c6603_ver1_subuac6602,sonyericsson_c6603_ver1,,1,1,1,0,0,0,0,0,Xperia Z,Android,4.1,2012_october,Android Webkit
+SonyEricsson,C6602,sonyericsson_c6603_ver1_subuac6602,sonyericsson_c6603_ver1,SMS_WAP,4,0,0,4,0,0,0,0,Xperia Z,Android,4.1,2012_october,Android Webkit
+Alcatel,OT-903D,alcatel_ot903_ver1_subuad,alcatel_ot903_ver1,GooglePlay,2,0,0,2,0,0,0,0,One Touch 903D,Android,2.3,2012_july,Android Webkit
+HTC,PN07120,htc_m7_ver1_subuachrome,htc_m7_ver1,GooglePlay,2,0,0,2,0,0,0,0,One,Android,4.1,2013_february,Chrome Mobile
+Android,SDK,android_sdk_ver2_3,generic_android_ver2_3,GooglePlay,1,0,0,1,0,0,0,0,,Android,2.3,2010_november,Android Webkit
+Samsung,GT-N8010,samsung_gt_n8000_ver1_suban41n8010,samsung_gt_n8000_ver1,GooglePlay,1,0,0,1,0,0,0,0,Galaxy Note 10.1,Android,4.1,2012_april,Android Webkit
+Samsung,GT-S5301,samsung_gt_s5301_ver1,generic_android_ver4,,2,2,2,0,0,0,0,0,Galaxy Pocket Plus,Android,4.0,2013_january,Android Webkit
+Samsung,GT-S5301,samsung_gt_s5301_ver1,generic_android_ver4,SMS_WAP,15,0,0,15,0,0,0,0,Galaxy Pocket Plus,Android,4.0,2013_january,Android Webkit
+Samsung,GT-S5301,samsung_gt_s5301_ver1,generic_android_ver4,GooglePlay,86,1,0,86,1,1,0.0116279069767442,0.0116279069767442,Galaxy Pocket Plus,Android,4.0,2013_january,Android Webkit
+Samsung,GT-I9070P,samsung_gt_i9070_ver1_suban41romp,samsung_gt_i9070_ver1,GooglePlay,7,1,0,7,0,0,0,0,Galaxy S Advance,Android,4.1,2012_may,Android Webkit
+Samsung,GT-I9070P,samsung_gt_i9070_ver1_suban41romp,samsung_gt_i9070_ver1,SMS_WAP,1,1,0,1,0,0,0,0,Galaxy S Advance,Android,4.1,2012_may,Android Webkit
+BlackBerry,Z10,blackberry_z10_ver1_subuald10010,blackberry_z10_ver1,CLICKTAG,8,0,0,8,0,0,0,0,,RIM OS,10.0,2013_january,BlackBerry
+BlackBerry,Z10,blackberry_z10_ver1_subuald101,blackberry_z10_ver1,CLICKTAG,7,0,0,7,0,0,0,0,,RIM OS,10.1,2013_january,BlackBerry
+Sony,ST23i,sony_st23i_ver1_subuanose,sony_st23i_ver1,GooglePlay,11,0,0,11,0,0,0,0,Xperia miro,Android,4.0,2012_july,Android Webkit
+Samsung,GT-P5100,samsung_gt_p5100_ver1_suban41p5110,samsung_gt_p5100_ver1,,1,1,1,0,0,0,0,0,Galaxy Tab 2 10.1,Android,4.1,2012_april,Android Webkit
+Samsung,GT-P5100,samsung_gt_p5100_ver1_suban41p5110,samsung_gt_p5100_ver1,GooglePlay,1,0,0,1,0,0,0,0,Galaxy Tab 2 10.1,Android,4.1,2012_april,Android Webkit
+Nokia,Lumia 620,nokia_lumia_620_ver1,generic_ms_phone_os8,,2,2,2,0,0,0,0,0,,Windows Phone OS,8,2012_october,IEMobile
+Nokia,Lumia 620,nokia_lumia_620_ver1,generic_ms_phone_os8,CLICKTAG,42,1,0,42,0,0,0,0,,Windows Phone OS,8,2012_october,IEMobile
+Nokia,Lumia 620,nokia_lumia_620_ver1,generic_ms_phone_os8,SMS_WAP,12,0,0,12,0,0,0,0,,Windows Phone OS,8,2012_october,IEMobile
+Samsung,GT-S6012,samsung_gt_s6010_ver1_subua6012,samsung_gt_s6010_ver1,GooglePlay,5,0,0,5,0,0,0,0,Galaxy Music Duos,Android,4.0,2012_october,Android Webkit
+Karbonn,A15,karbonn_a15_ver1,generic_android_ver4,GooglePlay,1,0,0,1,0,0,0,0,,Android,4.0,2012_november,Android Webkit
+Apple,iPhone,apple_iphone_ver6_1,apple_iphone_ver6,SMS_WAP,15,0,0,15,0,0,0,0,,iOS,6.1,2012_july,Safari
+Apple,iPhone,apple_iphone_ver6_1,apple_iphone_ver6,,5,5,5,0,0,0,0,0,,iOS,6.1,2012_july,Safari
+Apple,iPhone,apple_iphone_ver6_1,apple_iphone_ver6,WAPPIN,100,1,0,100,3,0,0,0,,iOS,6.1,2012_july,Safari
+Apple,iPad,apple_ipad_ver1_sub61,apple_ipad_ver1_sub6,,75,75,75,0,0,0,0,0,,iOS,6.0,2012_march,Safari
+Apple,iPad,apple_ipad_ver1_sub61,apple_ipad_ver1_sub6,SMS_WAP,213,1,0,213,0,0,0,0,,iOS,6.0,2012_march,Safari
+Apple,iPad,apple_ipad_ver1_sub61,apple_ipad_ver1_sub6,WAPPIN,1416,5,0,1416,6,0,0,0,,iOS,6.0,2012_march,Safari
+Samsung,GT-I9300,samsung_gt_i9300_ver1_suban42,samsung_gt_i9300_ver1,GooglePlay,7,0,0,7,0,0,0,0,Galaxy SIII,Android,4.2,2012_may,Android Webkit
+Samsung,GT-I9300,samsung_gt_i9300_ver1_suban42,samsung_gt_i9300_ver1,,1,1,1,0,0,0,0,0,Galaxy SIII,Android,4.2,2012_may,Android Webkit
+SonyEricsson,MT25i,sonyericsson_mt25i_ver1_subuanose,sonyericsson_mt25i_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia neo L,Android,4.0,2011_october,Android Webkit
+Sony,ST26i,sony_st26i_ver1_subuanose,sony_st26i_ver1,GooglePlay,6,0,0,6,0,0,0,0,Xperia J,Android,4.0,2012_july,Android Webkit
+Nokia,205,nokia_205_ver1,nokia_generic_series40_ovibrosr,CLICKTAG,23,1,0,23,0,0,0,0,Asha 205,,,2012_november,Nokia Proxy Browser
+Nokia,205,nokia_205_ver1,nokia_generic_series40_ovibrosr,,4,4,4,0,0,0,0,0,Asha 205,,,2012_november,Nokia Proxy Browser
+Nokia,205,nokia_205_ver1_subuanomoz,nokia_205_ver1,CLICKTAG,5,0,0,5,0,0,0,0,Asha 205,,,2012_november,Nokia Proxy Browser
+Alcatel,OT-992D,alcatel_ot992_ver1,generic_android_ver4,SMS_WAP,1,0,0,1,0,0,0,0,One Touch 992D,Android,4.0,2013_february,Android Webkit
+Alcatel,OT-992D,alcatel_ot992_ver1,generic_android_ver4,GooglePlay,1,0,0,1,0,0,0,0,One Touch 992D,Android,4.0,2013_february,Android Webkit
+Samsung,GT-I9082,samsung_gt_i9082_ver1,generic_android_ver4_1,GooglePlay,228,5,0,228,3,3,0.0131578947368421,0.0131578947368421,Galaxy Grand Duos,Android,4.1,2013_february,Android Webkit
+Samsung,GT-I9082,samsung_gt_i9082_ver1,generic_android_ver4_1,SMS_WAP,47,1,0,47,0,0,0,0,Galaxy Grand Duos,Android,4.1,2013_february,Android Webkit
+Samsung,GT-I9082,samsung_gt_i9082_ver1,generic_android_ver4_1,,12,12,12,0,0,0,0,0,Galaxy Grand Duos,Android,4.1,2013_february,Android Webkit
+QMobile,A10,qmobile_a10_ver1,generic_android_ver4,SMS_WAP,2,0,0,2,0,0,0,0,Noir A10,Android,4.0,2012_december,Android Webkit
+QMobile,A10,qmobile_a10_ver1,generic_android_ver4,GooglePlay,6,0,0,6,0,0,0,0,Noir A10,Android,4.0,2012_december,Android Webkit
+HTC,PJ83100,htc_one_x_ver1_suban41nouscore,htc_one_x_ver1,GooglePlay,2,0,0,2,1,1,0.5,0.5,One X,Android,4.1,2011_october,Android Webkit
+Samsung,GT-I9105P,samsung_gt_i9105_ver1_suban41p,samsung_gt_i9105_ver1,SMS_WAP,20,3,0,20,0,0,0,0,Galaxy SII Plus,Android,4.1,2013_january,Android Webkit
+Samsung,GT-I9105P,samsung_gt_i9105_ver1_suban41p,samsung_gt_i9105_ver1,,9,9,9,0,0,0,0,0,Galaxy SII Plus,Android,4.1,2013_january,Android Webkit
+Samsung,GT-I9105P,samsung_gt_i9105_ver1_suban41p,samsung_gt_i9105_ver1,GooglePlay,148,3,0,148,1,1,0.00675675675675676,0.00675675675675676,Galaxy SII Plus,Android,4.1,2013_january,Android Webkit
+Huawei,U9510E,huawei_u9508_ver1,generic_android_ver4,SMS_WAP,2,0,0,2,0,0,0,0,Honor 2,Android,4.0,2012_november,Android Webkit
+SonyEricsson,LT26i,sonyericsson_lt26i_ver1_suban41ii,sonyericsson_lt26i_ver1,GooglePlay,1,0,0,1,0,0,0,0,Xperia Arc HD,Android,4.1,2011_december,Android Webkit
+HTC,PJ401,htc_one_s_ver1_suban41,htc_one_s_ver1,GooglePlay,1,0,0,1,0,0,0,0,One S,Android,4.1,2012_march,Android Webkit
+SonyEricsson,LT26i,sonyericsson_lt26i_ver1_suban41w,sonyericsson_lt26i_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Xperia Arc HD,Android,4.1,2011_december,Android Webkit
+SonyEricsson,LT26i,sonyericsson_lt26i_ver1_suban41w,sonyericsson_lt26i_ver1,GooglePlay,4,0,0,4,0,0,0,0,Xperia Arc HD,Android,4.1,2011_december,Android Webkit
+SonyEricsson,LT26i,sonyericsson_lt26i_ver1_suban41sony,sonyericsson_lt26i_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Xperia Arc HD,Android,4.1,2011_december,Android Webkit
+SonyEricsson,LT26i,sonyericsson_lt26i_ver1_suban41sony,sonyericsson_lt26i_ver1,GooglePlay,4,0,0,4,0,0,0,0,Xperia Arc HD,Android,4.1,2011_december,Android Webkit
+Micromax,A27,micromax_a27_ver1,generic_android_ver2_3,GooglePlay,1,0,0,1,0,0,0,0,,Android,2.3,2013_february,Android Webkit
+Micromax,A89,micromax_a89_ver1,generic_android_ver4,GooglePlay,1,0,0,1,0,0,0,0,A89 Ninja,Android,4.0,2013_january,Android Webkit
+Karbonn,A11,karbonn_a11_ver1,generic_android_ver4,,1,1,1,0,0,0,0,0,,Android,4.0,2012_october,Android Webkit
+HTC,T328E,htc_desire_x_ver1_subuanofirm,htc_desire_x_ver1,GooglePlay,1,0,0,1,0,0,0,0,Desire X,Android,4.0,2012_october,Android Webkit
+Mozilla,Firefox,firefox_21_0,firefox_20_0,CLICKTAG,4,0,0,4,0,0,0,0,,Desktop,,2012_november,Firefox Desktop
+Mozilla,Firefox,firefox_21_0,firefox_20_0,,1,1,1,0,0,0,0,0,,Desktop,,2012_november,Firefox Desktop
+Mozilla,Firefox,firefox_22_0,firefox_21_0,CLICKTAG,2,0,0,2,0,0,0,0,,Desktop,,2012_november,Firefox Desktop
+Samsung,GT-I9500,samsung_gt_i9500_ver1,generic_android_ver4_2,GooglePlay,101,0,0,101,0,0,0,0,Galaxy S4,Android,4.2,2013_march,Android Webkit
+Samsung,GT-I9500,samsung_gt_i9500_ver1,generic_android_ver4_2,SMS_WAP,11,1,0,11,0,0,0,0,Galaxy S4,Android,4.2,2013_march,Android Webkit
+Samsung,GT-I9500,samsung_gt_i9500_ver1,generic_android_ver4_2,,2,2,2,0,0,0,0,0,Galaxy S4,Android,4.2,2013_march,Android Webkit
+Samsung,GT-N5100,samsung_gt_n5100_ver1,generic_android_ver4_1,GooglePlay,13,1,0,13,1,1,0.0769230769230769,0.0769230769230769,Galaxy Note 8.0,Android,4.1,2013_february,Android Webkit
+Samsung,GT-N5100,samsung_gt_n5100_ver1,generic_android_ver4_1,SMS_WAP,3,0,0,3,0,0,0,0,Galaxy Note 8.0,Android,4.1,2013_february,Android Webkit
+HTC,PJ401,htc_one_s_ver1_suban41nouscore,htc_one_s_ver1,SMS_WAP,1,0,0,1,0,0,0,0,One S,Android,4.1,2012_march,Android Webkit
+HTC,PJ401,htc_one_s_ver1_suban41nouscore,htc_one_s_ver1,GooglePlay,1,0,0,1,0,0,0,0,One S,Android,4.1,2012_march,Android Webkit
+Samsung,GT-N7000,samsung_gt_n7000_ver1_suban41rom,samsung_gt_n7000_ver1,,3,3,3,0,0,0,0,0,Galaxy Note,Android,4.1,2011_december,Android Webkit
+Samsung,GT-N7000,samsung_gt_n7000_ver1_suban41rom,samsung_gt_n7000_ver1,GooglePlay,36,0,0,36,0,0,0,0,Galaxy Note,Android,4.1,2011_december,Android Webkit
+Samsung,GT-N7000,samsung_gt_n7000_ver1_suban41rom,samsung_gt_n7000_ver1,SMS_WAP,10,0,0,10,0,0,0,0,Galaxy Note,Android,4.1,2011_december,Android Webkit
+Ainol,Novo7 Legend,ainol_novo7_legend_ver1,generic_android_ver4,GooglePlay,4,0,0,4,0,0,0,0,,Android,4.0,2011_october,Android Webkit
+Huawei,MediaPad 7 Lite,huawei_mediapad_7_lite_ver1,generic_android_ver4,GooglePlay,31,0,0,31,0,0,0,0,,Android,4.0,2011_october,Android Webkit
+Huawei,MediaPad 7 Lite,huawei_mediapad_7_lite_ver1,generic_android_ver4,SMS_WAP,9,1,0,9,0,0,0,0,,Android,4.0,2011_october,Android Webkit
+Huawei,MediaPad 7 Lite,huawei_mediapad_7_lite_ver1,generic_android_ver4,,5,5,5,0,0,0,0,0,,Android,4.0,2011_october,Android Webkit
+Acer,B1-A71,acer_b1_a71_ver1,generic_android_ver4_1,GooglePlay,8,0,0,8,0,0,0,0,Iconia B1-A71,Android,4.1,2013_january,Android Webkit
+Acer,B1-A71,acer_b1_a71_ver1,generic_android_ver4_1,SMS_WAP,3,0,0,3,0,0,0,0,Iconia B1-A71,Android,4.1,2013_january,Android Webkit
+Diyomate,A6,diyomate_a6_ver1,generic_android_ver4,GooglePlay,2,0,0,2,0,0,0,0,,Android,4.0,2012_april,Android Webkit
+Sony,SGP321,sony_xperia_tablet_z_ver1_subuanosony,sony_xperia_tablet_z_ver1,GooglePlay,2,0,0,2,0,0,0,0,Xperia Tablet Z LTE,Android,4.1,2013_march,Android Webkit
+Samsung,GT-I9505,samsung_gt_i9500_ver1_subua9505,samsung_gt_i9500_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Galaxy S4,Android,4.2,2013_march,Android Webkit
+Samsung,GT-I9505,samsung_gt_i9500_ver1_subua9505,samsung_gt_i9500_ver1,GooglePlay,4,0,0,4,0,0,0,0,Galaxy S4,Android,4.2,2013_march,Android Webkit
+Samsung,GT-S7562,samsung_gt_s7562_ver1_subuauc,samsung_gt_s7562_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Galaxy S Duos,Android,4.0,2012_august,UCWeb
+Samsung,GT-S7562,samsung_gt_s7562_ver1_subuauc,samsung_gt_s7562_ver1,GooglePlay,2,0,0,2,0,0,0,0,Galaxy S Duos,Android,4.0,2012_august,UCWeb
+RIM,BlackBerry Torch 9860,blackberry9860_ver1_subos71,blackberry9860_ver1,CLICKTAG,4,0,0,4,0,0,0,0,Monza,RIM OS,7.1,2011_april,Safari
+BlackBerry,KBD,blackberry_q10_ver1_subos101,blackberry_q10_ver1,SMS_WAP,1,0,0,1,0,0,0,0,,RIM OS,10.1,2013_january,BlackBerry
+BlackBerry,KBD,blackberry_q10_ver1_subos101,blackberry_q10_ver1,CLICKTAG,27,0,0,27,0,0,0,0,,RIM OS,10.1,2013_january,BlackBerry
+Nokia,5800 XpressMusic,nokia_5800d_ver1_subuauc,nokia_5800d_ver1,CLICKTAG,26,0,0,26,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,UCWeb
+Nokia,5800 XpressMusic,nokia_5800d_ver1_subuauc,nokia_5800d_ver1,SMS_WAP,8,1,0,8,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,UCWeb
+Nokia,5800 XpressMusic,nokia_5800d_ver1_subuauc,nokia_5800d_ver1,,2,2,2,0,0,0,0,0,XpressMusic,Symbian OS,9.4,2008_october,UCWeb
+Nokia,N73,nokia_n73_ver1_subuauc,nokia_n73_ver1,CLICKTAG,10,0,0,10,0,0,0,0,,Symbian OS,9.1,2005_november,UCWeb
+Nokia,N73,nokia_n73_ver1_subuauc,nokia_n73_ver1,,2,2,2,0,0,0,0,0,,Symbian OS,9.1,2005_november,UCWeb
+Samsung,GT-P5100,samsung_gt_p5100_ver1_suban41sam,samsung_gt_p5100_ver1,,1,1,1,0,0,0,0,0,Galaxy Tab 2 10.1,Android,4.1,2012_april,Android Webkit
+Sony,ST26i,sony_st26i_ver1_suban41,sony_st26i_ver1,,2,2,2,0,0,0,0,0,Xperia J,Android,4.1,2012_july,Android Webkit
+Sony,ST26i,sony_st26i_ver1_suban41,sony_st26i_ver1,GooglePlay,9,0,0,9,0,0,0,0,Xperia J,Android,4.1,2012_july,Android Webkit
+Sony,ST26i,sony_st26i_ver1_suban41sony,sony_st26i_ver1,GooglePlay,3,0,0,3,0,0,0,0,Xperia J,Android,4.1,2012_july,Android Webkit
+Samsung,GT-C3262,samsung_gt_c3262_ver1,generic_netfront_ver4_1,CLICKTAG,1,0,0,1,0,0,0,0,,,,2013_april,Access Netfront
+Samsung,GT-C3262,samsung_gt_c3262_ver1,generic_netfront_ver4_1,,1,1,1,0,0,0,0,0,,,,2013_april,Access Netfront
+Lenco,CoolTab-70,lenco_cooltab_70_ver1,generic_android_ver4,GooglePlay,3,0,0,3,0,0,0,0,,Android,4.0,2013_january,Android Webkit
+Lenco,CoolTab-70,lenco_cooltab_70_ver1,generic_android_ver4,SMS_WAP,4,0,0,4,0,0,0,0,,Android,4.0,2013_january,Android Webkit
+Nokia,Lumia 520,nokia_lumia_520_ver1,generic_ms_phone_os8,CLICKTAG,10,1,0,10,0,0,0,0,,Windows Phone OS,8,2013_february,IEMobile
+Nokia,Lumia 520,nokia_lumia_520_ver1,generic_ms_phone_os8,SMS_WAP,4,0,0,4,0,0,0,0,,Windows Phone OS,8,2013_february,IEMobile
+Google,Chrome,google_chrome_26,google_chrome_25,CLICKTAG,2,0,0,2,0,0,0,0,,Desktop,0,2012_november,
+Google,Chrome,google_chrome_27,google_chrome_26,,3,3,3,0,0,0,0,0,,Desktop,0,2012_november,
+Google,Chrome,google_chrome_27,google_chrome_26,CLICKTAG,25,0,0,25,0,0,0,0,,Desktop,0,2012_november,
+Google,Chrome,google_chrome_27,google_chrome_26,SMS_WAP,5,0,0,5,0,0,0,0,,Desktop,0,2012_november,
+Google,Chrome,google_chrome_28,google_chrome_27,CLICKTAG,3,0,0,3,0,0,0,0,,Desktop,0,2012_november,
+Mozilla,Firefox,firefox_23_0,firefox_22_0,CLICKTAG,1,0,0,1,0,0,0,0,,Desktop,,2012_november,Firefox Desktop
+Mozilla,Firefox,firefox_23_0,firefox_22_0,SMS_WAP,1,0,0,1,0,0,0,0,,Desktop,,2012_november,Firefox Desktop
+Samsung,GT-S7500,samsung_gt_s7500_ver1_subuauc,samsung_gt_s7500_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Galaxy Ace Plus,Android,2.3,2012_march,UCWeb
+Samsung,GT-S7500,samsung_gt_s7500_ver1_subuauc,samsung_gt_s7500_ver1,GooglePlay,2,0,0,2,0,0,0,0,Galaxy Ace Plus,Android,2.3,2012_march,UCWeb
+Samsung,GT-I9505,samsung_gt_i9500_ver1_subua9505sam,samsung_gt_i9500_ver1,SMS_WAP,1,0,0,1,0,0,0,0,Galaxy S4,Android,4.2,2013_march,Chrome Mobile
+Samsung,GT-I9505,samsung_gt_i9500_ver1_subua9505sam,samsung_gt_i9500_ver1,GooglePlay,11,1,0,11,0,0,0,0,Galaxy S4,Android,4.2,2013_march,Chrome Mobile
+Samsung,GT-I9500,samsung_gt_i9500_ver1_subua9500sam,samsung_gt_i9500_ver1,,2,2,2,0,0,0,0,0,Galaxy S4,Android,4.2,2013_march,Chrome Mobile
+Samsung,GT-I9500,samsung_gt_i9500_ver1_subua9500sam,samsung_gt_i9500_ver1,SMS_WAP,21,0,0,21,0,0,0,0,Galaxy S4,Android,4.2,2013_march,Chrome Mobile
+Samsung,GT-I9500,samsung_gt_i9500_ver1_subua9500sam,samsung_gt_i9500_ver1,GooglePlay,158,0,0,158,0,0,0,0,Galaxy S4,Android,4.2,2013_march,Chrome Mobile
+Samsung,GT-S5303,samsung_gt_s5303_ver1,generic_android_ver4,GooglePlay,2,0,0,2,1,1,0.5,0.5,Galaxy Y Plus,Android,4.0,2013_march,Android Webkit
+Samsung,GT-S6312,samsung_gt_s6312_ver1,generic_android_ver4_1,,1,1,1,0,0,0,0,0,Galaxy Young,Android,4.1,2013_april,Android Webkit
+Samsung,GT-S6312,samsung_gt_s6312_ver1,generic_android_ver4_1,GooglePlay,2,0,0,2,1,1,0.5,0.5,Galaxy Young,Android,4.1,2013_april,Android Webkit
+Samsung,GT-S6312,samsung_gt_s6312_ver1,generic_android_ver4_1,SMS_WAP,5,0,0,5,0,0,0,0,Galaxy Young,Android,4.1,2013_april,Android Webkit
+Samsung,GT-S6810P,samsung_gt_s6810_ver1,generic_android_ver4_1,SMS_WAP,2,0,0,2,0,0,0,0,Galaxy Fame,Android,4.1,2013_april,Android Webkit
+Samsung,GT-S6810P,samsung_gt_s6810_ver1,generic_android_ver4_1,,1,1,1,0,0,0,0,0,Galaxy Fame,Android,4.1,2013_april,Android Webkit
+Samsung,GT-S6810P,samsung_gt_s6810_ver1,generic_android_ver4_1,GooglePlay,4,0,0,4,0,0,0,0,Galaxy Fame,Android,4.1,2013_april,Android Webkit
+Huawei,U8950-1,huawei_c8950d_ver1_subuau89501,huawei_c8950d_ver1,,2,2,2,0,0,0,0,0,Ascend G600,Android,4.0,2012_september,Android Webkit
+Huawei,U8950-1,huawei_c8950d_ver1_subuau89501,huawei_c8950d_ver1,SMS_WAP,12,0,0,12,0,0,0,0,Ascend G600,Android,4.0,2012_september,Android Webkit
+Huawei,U8950-1,huawei_c8950d_ver1_subuau89501,huawei_c8950d_ver1,GooglePlay,10,0,0,10,0,0,0,0,Ascend G600,Android,4.0,2012_september,Android Webkit
+LG,P715,lg_p710_ver1_subua715,lg_p710_ver1,GooglePlay,1,0,0,1,0,0,0,0,Optimus L7 II Dual,Android,4.1,2013_april,Android Webkit
+Huawei,U9202L-1,huawei_u9202l_ver1,generic_android_ver4,GooglePlay,3,0,0,3,0,0,0,0,Ascend P1,Android,4.0,2013_april,Android Webkit
+Micromax,A110,micromax_a110_ver1_suban41,micromax_a110_ver1,GooglePlay,1,0,0,1,0,0,0,0,Superfone Canvas 2,Android,4.0,2012_november,Android Webkit
+HTC,M7,htc_m7_ver1_subuaone,htc_m7_ver1,GooglePlay,13,0,0,13,0,0,0,0,One,Android,4.1,2013_february,Android Webkit
+HTC,M7,htc_m7_ver1_subuaoneuscore,htc_m7_ver1,,1,1,1,0,0,0,0,0,One,Android,4.1,2013_february,Android Webkit
+HTC,M7,htc_m7_ver1_subuaoneuscore,htc_m7_ver1,GooglePlay,4,0,0,4,0,0,0,0,One,Android,4.1,2013_february,Android Webkit
+Huawei,Y210-0100,huawei_y210_ver1_subua0100,huawei_y210_ver1,SMS_WAP,2,0,0,2,0,0,0,0,Ascend Y210,Android,2.3,2012_december,Android Webkit
+Huawei,Y210-0100,huawei_y210_ver1_subua0100,huawei_y210_ver1,,2,2,2,0,0,0,0,0,Ascend Y210,Android,2.3,2012_december,Android Webkit
+Huawei,Y210-0100,huawei_y210_ver1_subua0100,huawei_y210_ver1,GooglePlay,21,3,0,21,0,0,0,0,Ascend Y210,Android,2.3,2012_december,Android Webkit
+Huawei,Y300,huawei_y300_ver1,generic_android_ver4_1,,4,4,4,0,0,0,0,0,Ascend Y 300,Android,4.1,2013_april,Android Webkit
+Huawei,Y300,huawei_y300_ver1,generic_android_ver4_1,GooglePlay,18,1,0,18,0,0,0,0,Ascend Y 300,Android,4.1,2013_april,Android Webkit
+Huawei,Y300,huawei_y300_ver1,generic_android_ver4_1,SMS_WAP,4,1,0,4,0,0,0,0,Ascend Y 300,Android,4.1,2013_april,Android Webkit
+Huawei,S7-301w,huawei_mediapad10_link_ver1,generic_android_ver4,GooglePlay,10,0,0,10,0,0,0,0,MediaPad 10 Link,Android,4.0,2013_april,Android Webkit
+Huawei,S7-301w,huawei_mediapad10_link_ver1,generic_android_ver4,SMS_WAP,4,0,0,4,0,0,0,0,MediaPad 10 Link,Android,4.0,2013_april,Android Webkit
+Huawei,S7-301w,huawei_mediapad10_link_ver1_suban41,huawei_mediapad10_link_ver1,SMS_WAP,1,0,0,1,0,0,0,0,MediaPad 10 Link,Android,4.1,2013_april,Android Webkit
+Huawei,S7-301w,huawei_mediapad10_link_ver1_suban41,huawei_mediapad10_link_ver1,GooglePlay,7,0,0,7,0,0,0,0,MediaPad 10 Link,Android,4.1,2013_april,Android Webkit
+SonyEricsson,LT22i,sonyericsson_lt22i_ver1_suban41,sonyericsson_lt22i_ver1,SMS_WAP,1,1,0,1,0,0,0,0,Xperia P LT22i,Android,4.1,2012_may,Android Webkit
+SonyEricsson,LT22i,sonyericsson_lt22i_ver1_suban41,sonyericsson_lt22i_ver1,GooglePlay,8,0,0,8,0,0,0,0,Xperia P LT22i,Android,4.1,2012_may,Android Webkit
+Alcatel,OT-4030D,alcatel_ot4030d_ver1,generic_android_ver4_1,GooglePlay,2,0,0,2,0,0,0,0,S-POP,Android,4.1,2013_march,Android Webkit
+Nokia,206,nokia_206_ver1_subuadot1moz,nokia_206_ver1,CLICKTAG,4,0,0,4,0,0,0,0,,,,2012_november,Nokia Proxy Browser
+Apple,iPod Touch,apple_ipod_touch_ver6_1,apple_ipod_touch_ver6,WAPPIN,336,3,0,336,8,0,0,0,,iOS,6.1,2011_october,Safari
+Apple,iPod Touch,apple_ipod_touch_ver6_1,apple_ipod_touch_ver6,SMS_WAP,64,0,0,64,0,0,0,0,,iOS,6.1,2011_october,Safari
+Apple,iPod Touch,apple_ipod_touch_ver6_1,apple_ipod_touch_ver6,,9,9,9,0,0,0,0,0,,iOS,6.1,2011_october,Safari
+Asus,ME371MG,asus_fonepad_me371mg_ver1,generic_android_ver4_1,GooglePlay,7,0,0,7,0,0,0,0,Fonepad ME371MG,Android,4.1,2013_may,Android Webkit
+Opera,Mobi for Android,uabait_opera_mobi_android_4_1_ver11,generic_android_ver4_1_opera_mobi,GooglePlay,3,0,0,3,0,0,0,0,,Android,4.1,2011_december,Opera Mobi
+Opera,Mobi for Android,uabait_opera_mobi_android_4_0_ver12,generic_android_ver4_0_opera_mobi,GooglePlay,1,0,0,1,0,0,0,0,,Android,4.0,2011_november,Opera Mobi
+Opera,Mobi for Android,uabait_opera_mobi_android_4_0_ver11,generic_android_ver4_0_opera_mobi,GooglePlay,3,0,0,3,1,1,0.333333333333333,0.333333333333333,,Android,4.0,2011_november,Opera Mobi
+Opera,Mobi for Android,uabait_opera_mobi_android_4_0_ver11,generic_android_ver4_0_opera_mobi,,1,1,1,0,0,0,0,0,,Android,4.0,2011_november,Opera Mobi
+Opera,Mobi for Android,uabait_opera_mobi_android_4_0_ver11,generic_android_ver4_0_opera_mobi,SMS_WAP,1,0,0,1,0,0,0,0,,Android,4.0,2011_november,Opera Mobi
+Opera,Mobi for Android,uabait_opera_mobi_android_2_3_ver12,generic_android_ver2_3_opera_mobi,GooglePlay,4,0,0,4,0,0,0,0,,Android,2.3,2010_november,Opera Mobi
+Opera,Mobi for Android,uabait_opera_mobi_android_2_3_ver11,generic_android_ver2_3_opera_mobi,GooglePlay,1,0,0,1,0,0,0,0,,Android,2.3,2010_november,Opera Mobi
+Opera,Tablet on Android,uabait_opera_tablet_android_4_1_ver12,generic_android_ver4_1_opera_tablet,GooglePlay,2,0,0,2,0,0,0,0,,Android,4.1,2011_december,Opera Tablet
+Opera,Tablet on Android,uabait_opera_tablet_android_4_0_ver11,generic_android_ver4_0_opera_tablet,GooglePlay,1,0,0,1,0,0,0,0,,Android,4.0,2011_october,Opera Tablet
+Opera,Tablet on Android,uabait_opera_tablet_android_2_2_ver11,generic_android_ver2_2_opera_tablet,GooglePlay,2,0,0,2,0,0,0,0,,Android,2.2,2011_october,Opera Tablet
+Opera,Opera Mini for S60,uabait_opera_mini_nokia_series60_ver5,nokia_generic_series60,CLICKTAG,2,0,0,2,0,0,0,0,,Symbian OS,,2011_january,Opera Mini
+Opera,Mini 1,uabait_opera_mini_v10_op98,generic_opera_mini_version1,CLICKTAG,1,0,0,1,0,0,0,0,,,,2006_january,Opera Mini
+Opera,Mini 1,uabait_opera_mini_v10_op98,generic_opera_mini_version1,,1,1,1,0,0,0,0,0,,,,2006_january,Opera Mini
+Opera,Mini 1,uabait_opera_mini_v12_op80,generic_opera_mini_version1,WAPPIN,1,0,0,1,0,0,0,0,,,,2006_january,Opera Mini
+Opera,Mini 2,uabait_opera_mini_v20_op80,generic_opera_mini_version2,WAPPIN,4,2,0,4,0,0,0,0,,,,2006_january,Opera Mini
+Opera,Tablet on Android,uabait_opera_tablet_android_2_2_1,uabait_opera_tablet_android_2_2,GooglePlay,1,0,0,1,0,0,0,0,,Android,2.2,2011_october,Opera Tablet
+Opera,Mini 4,uabait_opera_mini_v42_op98,generic_opera_mini_version4,WAPPIN,3,0,0,3,0,0,0,0,,,,2006_january,Opera Mini
+Opera,Mini 4,uabait_opera_mini_v42_op98,generic_opera_mini_version4,,1,1,1,0,0,0,0,0,,,,2006_january,Opera Mini
+Opera,Mini 4,uabait_opera_mini_v45_op98,generic_opera_mini_version4,CLICKTAG,1,0,0,1,0,0,0,0,,,,2006_january,Opera Mini
+Opera,Mini 5,uabait_opera_mini_v55_op98,generic_opera_mini_version5,WAPPIN,2,0,0,2,0,0,0,0,,,,2009_september,Opera Mini
+Opera,Mini 5,uabait_opera_mini_blackberry_v50_op98,generic_opera_mini_blackberry_version5,CLICKTAG,6,5,0,6,0,0,0,0,,,,2009_september,Opera Mini
+Opera,Mini 5,uabait_opera_mini_blackberry_v50_op98,generic_opera_mini_blackberry_version5,SMS_WAP,1,1,0,1,0,0,0,0,,,,2009_september,Opera Mini
+Opera,Mini 5,uabait_opera_mini_blackberry_v50_op98,generic_opera_mini_blackberry_version5,,10,10,10,0,0,0,0,0,,,,2009_september,Opera Mini

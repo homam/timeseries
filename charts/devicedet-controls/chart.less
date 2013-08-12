@@ -1,0 +1,168 @@
+body {
+  font-family: Helvetica, Calibri, sans-serif;
+  position: relative;
+  background: black;
+  color:#ffffff;
+}
+h1 {
+  text-align:left;
+  opacity: .5;
+  margin-bottom: 1em;
+}
+
+
+#chart {
+  svg {
+    background-color: black;
+  }
+  .node {
+    border: solid 1px white;
+    font: 10px sans-serif;
+    line-height: 12px;
+    overflow: hidden;
+    position: absolute;
+    text-indent: 2px;
+    text-shadow: 0px 1px 4px white;
+
+    &.bad {
+      rect {
+        fill: #51FC00 !important;
+        stroke: yellow;
+      }
+
+      text {
+        //fill: #702101 !important;
+      }
+    }
+  }
+
+
+  text {
+    cursor: default;
+  }
+}
+
+#submethodDevice-conv-chart, #submethodDevice-visits-chart, #device-visits-bysubmethods-chart {
+  line.dev {
+    stroke: rgba(255,255,255,.5);
+    stroke-width: 2px;
+  }
+  rect.dev {
+    fill: rgba(255,255,255,.5);
+    //stroke: rgba(0,0,0,.3);
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #fff;
+    shape-rendering: crispEdges;
+  }
+  text{
+    fill:white;
+    font-size: 12px;
+  }
+}
+
+
+
+[data-tooltip] {
+  text-align: left;
+  min-width: 200px;
+  //height: 28px;
+  padding: 10px 10px;
+  font: 1em;
+  color:black;
+  background: #deded5;
+  border: 0px;
+  border-radius: 8px;
+}
+
+
+
+
+.sortable-list {
+  /*
+    user-select prevents the contents of your
+    list items from being selectable by the cursor
+  */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  li {
+    padding: 6px;
+    //width: 200px;
+    float: left;
+    margin-right: 25px;
+  }
+}
+
+#chart {
+  width:1200px;
+}
+
+.controls {
+  width:1200px;
+  text-align: left;
+  border-bottom: solid 1px silver;
+  padding-bottom: .5em;
+  margin-bottom: .5em;
+  &:after{
+    content: ' ';
+    display: block;
+    clear: both;
+    float: none;
+  }
+  select {
+    float:left;
+    display: inline-block;
+  }
+
+  > div {
+    float:left;
+  }
+
+  .groupby {
+    float: left;
+    display: inline-block;
+    background-color: rgba(54, 16, 1, 0.83);
+    border-radius: 20px;
+
+
+    #groupbys-bin, #groupbys {
+      height: 20px;
+      padding: 0 0 0 1px;
+      margin: 0;
+      font-size: .7em;
+      width: 193px;
+      float: left;
+      li {
+        margin: .2em .2em;
+        float: left;
+        list-style-type: none;
+        background-color: #361001;
+        padding: 0px 8px 0 0;
+        line-height: 1.5em;
+        text-align: center;
+        display: inline-block;
+        min-width: 77px;
+        border-radius: 3px;
+        &:before {
+          content: '>';
+          padding: 0 8px;
+          background-color: #4b1601;
+          display: inline-block;
+          text-align: left;
+          padding-right: 8px;
+          border-radius: 3px;
+        }
+      }
+    }
+    #groupbys-bin{
+      border-left: dashed 1px silver;
+    }
+  }
+}
