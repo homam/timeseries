@@ -4,7 +4,8 @@ define [], () ->
       _value: null
     set: (value)->
       this._value = value
-      this._onSet(value)
+      if !!this._onSet
+        this._onSet(value)
     get: () ->
       this._value
     reset: () ->

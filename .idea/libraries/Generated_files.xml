@@ -4,11 +4,19 @@
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/charts/devicedet-controls/treemap-zoomable.js" />
         <item url="file://$PROJECT_DIR$/charts/devicedet-controls/chart.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/timeseries/test.js" />
+        <item url="file://$PROJECT_DIR$/charts/line-bar/line-bar-time-series-chart.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/timeseries/chart.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/common/property.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/charts/devicedet-controls/treemap-zoomable.js" />
       <root url="file://$PROJECT_DIR$/charts/devicedet-controls/chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/line-bar/line-bar-time-series-chart.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/timeseries/test.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/timeseries/chart.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/common/property.js" />
     </CLASSES>
     <SOURCES />
   </library>

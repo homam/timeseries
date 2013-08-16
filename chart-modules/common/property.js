@@ -13,7 +13,9 @@
 
       Property.prototype.set = function(value) {
         this._value = value;
-        return this._onSet(value);
+        if (!!this._onSet) {
+          return this._onSet(value);
+        }
       };
 
       Property.prototype.get = function() {
