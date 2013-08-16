@@ -294,7 +294,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
     cached = null
     cachedKey = null
     makeCacheKey = (f,t,c) -> c + f.valueOf() + t.valueOf()
-    getCache = (fromDate, toDate, country) ->  if makeCacheKey(fromDate,toDate,country) == cachedKey then cached else null
+    getCache = (fromDate, toDate, country) -> null# if makeCacheKey(fromDate,toDate,country) == cachedKey then cached else null
     saveCache = (fromDate, toDate, country,value) ->
       cachedKey = makeCacheKey(fromDate,toDate,country)
       cached = value
@@ -308,8 +308,15 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
         timezone = new Date().getTimezoneOffset() * -60*1000;
         dates = (toDate.valueOf()-fromDate.valueOf())/ (1000*60*60*24)
         gets = [0..dates-1].map((i) -> fromDate.valueOf() + (i*(1000*60*60*24)) + timezone).map((d) -> {date:d, dateName: new Date(d).toISOString().split('T')[0]}).map (d) -> {date:d.date,dateName:d.dateName,def:$.get('charts/devicedet-controls/data/'+country+'-'+d.dateName+'.csv')}
-        $.when.apply(this,gets.map (d) -> d.def).done () ->
-          items = _.chain(Array.prototype.slice.call(arguments, 0).map (d) -> d3.csv.parse d[0]).flatten().groupBy('wurfl_device_id').map((deviceArr) ->
+
+        $.when.apply($,gets.map (d) -> d.def).done () ->
+          items =null
+          if (gets.length > 1)
+            items = _.chain(Array.prototype.slice.call(arguments, 0).map (d) -> d3.csv.parse d[0]).flatten()
+          else
+            items = _.chain d3.csv.parse arguments[0]
+
+          items = items.groupBy('wurfl_device_id').map((deviceArr) ->
             _.chain(deviceArr).groupBy('Method').map((arr, method) ->
               visits = sum arr.map (d) -> +d.Visits
               subscribers = sum arr.map (d) ->  +d.Subscribers
@@ -331,6 +338,29 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
   fromDate = new Date(2013,6,1) # July 1
   toDate = new Date(2013,6,15)
   country = 'om'
+
+  ['ae','sa','om', 'iq','jo', 'lk'].sort().forEach (c) -> $("select[name=country]").append $("<option />").text(c)
+
+  $('#fromDate').val d3.time.format('%Y-%m-%d') fromDate
+  $('#toDate').val d3.time.format('%Y-%m-%d') new Date(toDate.valueOf() - (1000*60*60*24))
+  $("select[name=country]").val(country)
+
+  $("input[type=date]").on 'change', () ->
+    $this = $(this)
+    if 'fromDate' == $this.attr("id")
+      fromDate = new Date($this.val())
+    if 'toDate' == $this.attr("id")
+      toDate = new Date($this.val())
+      toDate = new Date(toDate.valueOf() + (1000*60*60*24))
+
+
+    redraw(false)
+
+  $("select[name=country]").change () ->
+    country = $("select[name=country]").val()
+    redraw(true)
+
+
 
 
 
@@ -380,6 +410,8 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
   redraw(true)
 
+  window.redraw = redraw
+
 
   $ () ->
 
@@ -395,11 +427,9 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
     chart.zoomed (node) -> redrawSubMethodDeviceChart(node)
 
 
-    ['ae','sa','om', 'iq','jo', 'lk'].sort().forEach (c) -> $("select[name=country]").append $("<option />").text(c)
 
-    $("select[name=country]").change () ->
-      country = $("select[name=country]").val()
-      redraw(true)
+
+
 
 
 
