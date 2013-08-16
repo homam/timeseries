@@ -15,29 +15,28 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 , (barChart, barGroupsChart, pieChart, tooltip, reduceLongTail, sum) ->
 
 
+  reduceLongTail = do () ->
 
+    sumVisitsWithChildren = (d) ->
+      #return d.visits
+      if !!d.children and d.children.length > 0
+        return (d.visits||0) + d.children.map((c) -> sumVisitsWithChildren(c)).reduce (a,b)->a+b
+      else
+        return (d.visits||0)
 
-  sumVisitsWithChildren = (d) ->
-    #return d.visits
-    if !!d.children and d.children.length > 0
-      return (d.visits||0) + d.children.map((c) -> sumVisitsWithChildren(c)).reduce (a,b)->a+b
-    else
-      return (d.visits||0)
-
-
-  reduceLongTail = _.partial reduceLongTail, ((v) -> sumVisitsWithChildren(v)<=100), (tail) ->
-    visits = sum(tail.map (v)->v.visits)
-    subs = sum(tail.map (v) -> v.subscribers)
-    children: []
-    wurfl_fall_back: tail[0].wurfl_fall_back # todo: fall_back, brand_name and device_os have to be the common thing in the tail, need to know the last group by
-    wurfl_device_id: 'more...'
-    brand_name: tail[0].brand_name
-    model_name: '..'
-    device_os :tail[0].device_os
-    visits: visits
-    subscribers: subs
-    conv : subs/visits
-    collected_children: tail
+    _.partial reduceLongTail, ((v) -> sumVisitsWithChildren(v)<=100), (tail) ->
+      visits = sum(tail.map (v)->v.visits)
+      subs = sum(tail.map (v) -> v.subscribers)
+      children: []
+      wurfl_fall_back: tail[0].wurfl_fall_back # todo: fall_back, brand_name and device_os have to be the common thing in the tail, need to know the last group by
+      wurfl_device_id: 'more...'
+      brand_name: tail[0].brand_name
+      model_name: '..'
+      device_os :tail[0].device_os
+      visits: visits
+      subscribers: subs
+      conv : subs/visits
+      collected_children: tail
 
 
 
@@ -52,29 +51,28 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
   visitsBySubMethodsPieChart = pieChart()
 
   drawSubMethodDeviceChart = (node, data, compareConvWithOnlyConvertingDevices) ->
-    zip = (n) ->
-      zipped = (n.children.map (c) -> zip(c))
-      if (n.collected_children)
-        zipped = zipped.concat(n.collected_children.map (c) -> zip c)
-      visits = if zipped.length == 0 then 0 else zipped.map((d)->d.visits).reduce (a,b)->a+b
-      subscribers = if zipped.length == 0 then 0 else zipped.map((d)->d.subscribers).reduce (a,b)->a+b
-      wurflIds = _.flatten zipped.map (c) ->c.wurflIds
+    # node: the root node (and it's children) for which we're making this chart for
+    # data: all the data
 
-      if !!n.wurfl_device_id
-        wurflIds.push(n.wurfl_device_id)
-      if !!n.collected_children
-        for c in n.collected_children
-          wurflIds.push c.wurfl_device_id
+    allWurlfIds = (n, r) ->
+      if n.wurfl_device_id
+        r.push n.wurfl_device_id
+      if n.children and n.children.length >0
+        for m in n.children
+          allWurlfIds(m , r)
+      if n.collected_children and n.collected_children.length >0
+        for m in n.collected_children
+          allWurlfIds(m, r)
 
-      visits: (n.visits||0) + visits
-      subscribers: (n.subscribers||0) + subscribers
-      wurflIds: wurflIds
+      r
 
-    zipped= zip node
+    allWids = _.flatten allWurlfIds(node, [])
 
-    rootName = node.wurfl_device_id or zipped.wurflIds[0]
+    rootName = node.wurfl_device_id or allWids[0]
 
-    convHierarchy = createSubMethodDeviceHierarchy(data, zipped.wurflIds, rootName, (sarr, skey) ->
+
+
+    convHierarchy = createSubMethodDeviceHierarchy(data, allWids, rootName, (sarr, skey) ->
       if compareConvWithOnlyConvertingDevices
         sarr = sarr.filter (d) -> d.subscribers >0
       subGroupVisits = sum(sarr.map (a) -> a.visits)
@@ -86,7 +84,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
     d3.select('#submethodDevice-conv-chart').datum(convHierarchy).call subMethodDeviceConvChart
 
 
-    visitsHierarchy = createSubMethodDeviceHierarchy(data, zipped.wurflIds, rootName, (sarr, skey, marr, raw) ->
+    visitsHierarchy = createSubMethodDeviceHierarchy(data, allWids, rootName, (sarr, skey, marr, raw) ->
       majorVisits = sum raw.filter((d) ->d.device == skey).map((d) -> d.visits)
       mainGroupVisits = sum(marr.map (d) -> d.visits)
       subGroupVisits = sum(sarr.map (a) -> a.visits)
@@ -100,7 +98,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
     allSubMethods = convHierarchy.map (c) ->c.name
 
-    targetDevices = data.filter((d) -> zipped.wurflIds.indexOf(d.wurfl_device_id) >-1)
+    targetDevices = data.filter((d) -> allWids.indexOf(d.wurfl_device_id) >-1)
     visitsData = _.chain(targetDevices).groupBy((d) -> d.method).map( (arr, key) ->
       name: key
       value: sum arr.map((a) -> a.visits)
@@ -120,6 +118,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
   # barMaker = (arr, key) -> {name:key, value: #avg(arr), stdev: #stdev(arr)}
   createSubMethodDeviceHierarchy = (data, wurflIds, name, barMaker) ->
+    console.log data
     data = data.map (d) ->
       method: d.method,
       device: (if wurflIds.indexOf(d.wurfl_device_id)>-1  then name else 'Everything Else'),
@@ -214,7 +213,8 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
     # adds the root of tree back to the tree
     addBack = (root) ->
       if(root.children.length > 0)
-        root.children.forEach addBack
+        [0..root.children.length-1].forEach (i) ->
+          addBack(root.children[i])
         root.children.push
           children: []
           wurfl_device_id: root.wurfl_device_id
@@ -243,13 +243,15 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
 
     return (cutLongTail, data) ->
-      [0..data.length-1].forEach (i) ->
+      length = data.length
+      [0..length-1].forEach (i) ->
         d = data[i]
         #if !!d && 'archos_80g9_ver1' == d.wurfl_fall_back
         #  debugger
         if(!!d)
           data = pack data[i], data, cutLongTail
-        data = data.filter (d) -> d != null
+
+      data = data.filter (d) -> d != null
 
       [0..data.length-1].forEach (i) ->
         addBack(data[i])
