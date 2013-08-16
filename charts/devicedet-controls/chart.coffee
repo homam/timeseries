@@ -118,7 +118,6 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
   # barMaker = (arr, key) -> {name:key, value: #avg(arr), stdev: #stdev(arr)}
   createSubMethodDeviceHierarchy = (data, wurflIds, name, barMaker) ->
-    console.log data
     data = data.map (d) ->
       method: d.method,
       device: (if wurflIds.indexOf(d.wurfl_device_id)>-1  then name else 'Everything Else'),
@@ -191,6 +190,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
     chartData = chartDataMap(chartData)
 
+
     window.chartData = chartData
 
     tree =
@@ -210,51 +210,35 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
   makeTreeByParentId = do () ->
 
-    # adds the root of tree back to the tree
-    addBack = (root) ->
-      if(root.children.length > 0)
-        [0..root.children.length-1].forEach (i) ->
-          addBack(root.children[i])
-        root.children.push
-          children: []
-          wurfl_device_id: root.wurfl_device_id
-          wurfl_fall_back: root.wurfl_fall_back
-          brand_name: root.brand_name
-          model_name: root.model_name
-          conv: root.conv
-          device_os :root.device_os
-          visits: root.visits
-          subscribers: root.subscribers
-        root.visits = 0
-        root.subscribers = 0
-        root.conv = 0
-
-    # convers the data array to a tree starting from root
-    pack = (root, data, cutLongTail) ->
-      data.forEach (d,i) ->
-        if(d != null && d.wurfl_fall_back == root.wurfl_device_id)
-          data = pack d, data, cutLongTail
-          root.children.push d
-          if cutLongTail
-            root.children = reduceLongTail root.children
-          data[i] = null
-      data
-
-
-
     return (cutLongTail, data) ->
-      length = data.length
-      [0..length-1].forEach (i) ->
-        d = data[i]
-        #if !!d && 'archos_80g9_ver1' == d.wurfl_fall_back
-        #  debugger
-        if(!!d)
-          data = pack data[i], data, cutLongTail
+      data = _.clone(data)
+      root = {children: []}
 
-      data = data.filter (d) -> d != null
+      findParent = (node, children) ->
+        parent = _.find(children, (d) -> d.wurfl_device_id == node.wurfl_fall_back)
+        if(!!parent)
+          return parent
 
-      [0..data.length-1].forEach (i) ->
-        addBack(data[i])
+        for c in children
+          parent = findParent(node, c.children)
+          if(!!parent)
+            parent
+
+        null
+
+
+      addToParent = (node) ->
+        parent = findParent(node, data)
+        if(!!parent)
+          parent.children.push node
+        else
+          root.children.push node
+
+      for d in data
+        addToParent d
+
+      data = root.children
+
 
       return if cutLongTail then reduceLongTail data else data
 
@@ -393,11 +377,11 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
 
   lastTree = null
-  redrawSubMethodDeviceChart = (tree = null) ->
-    fresh().done (data) ->
-      tree = tree or lastTree
-      lastTree = tree
-      drawSubMethodDeviceChart tree, data, $('#onlyConvertingDevices')[0].checked
+  lastData = null
+  redrawSubMethodDeviceChart = (tree = null, data = null) ->
+    lastTree = tree or lastTree
+    lastData = data or lastData
+    drawSubMethodDeviceChart lastTree, lastData, $('#onlyConvertingDevices')[0].checked
 
   # how to call draw: draw subMethods[0],(makeGroupByFunction ['brand_name', 'device_os'], true, true)
   redraw = (countryChanged) ->
@@ -405,10 +389,10 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       if(countryChanged)
         populateSubMethodsSelect data
       groupBys = ($('#groupbys-bin').find('li').map () -> $(this).attr('data-groupby')).get()
-      setTimeout () ->
-        tree = draw data, $("#submethods").val(),(makeGroupByFunction groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked)
-        redrawSubMethodDeviceChart(tree)
-      ,10 # first update the select then render the graph
+      #setTimeout () ->
+      tree = draw data, $("#submethods").val(),(makeGroupByFunction groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked)
+      redrawSubMethodDeviceChart(tree, data)
+      #,10 # first update the select then render the graph
 
   redraw(true)
 

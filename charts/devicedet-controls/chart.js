@@ -11,7 +11,7 @@
   });
 
   require(['chart-modules/bar/chart', 'chart-modules/bar-groups/chart', 'chart-modules/pie/chart', 'chart-modules/common/d3-tooltip', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum'], function(barChart, barGroupsChart, pieChart, tooltip, reduceLongTail, sum) {
-    var chart, chartId, country, createSubMethodDeviceHierarchy, draw, drawSubMethodDeviceChart, fresh, fromDate, groupBy, lastTree, makeGroupByFunction, makeTreeByParentId, populateSubMethodsSelect, query, redraw, redrawSubMethodDeviceChart, subMethodDeviceConvChart, subMethodDeviceVisitsChart, toDate, visitsBySubMethodsChart, visitsBySubMethodsPieChart;
+    var chart, chartId, country, createSubMethodDeviceHierarchy, draw, drawSubMethodDeviceChart, fresh, fromDate, groupBy, lastData, lastTree, makeGroupByFunction, makeTreeByParentId, populateSubMethodsSelect, query, redraw, redrawSubMethodDeviceChart, subMethodDeviceConvChart, subMethodDeviceVisitsChart, toDate, visitsBySubMethodsChart, visitsBySubMethodsPieChart;
 
     reduceLongTail = (function() {
       var sumVisitsWithChildren;
@@ -172,7 +172,6 @@
     createSubMethodDeviceHierarchy = function(data, wurflIds, name, barMaker) {
       var allSubKeys, byDevices, byMethods, hierarchy, mainValueMap, subNameMap;
 
-      console.log(data);
       data = data.map(function(d) {
         return {
           method: d.method,
@@ -287,74 +286,46 @@
       return tree;
     };
     makeTreeByParentId = (function() {
-      var addBack, pack;
-
-      addBack = function(root) {
-        var _i, _ref, _results;
-
-        if (root.children.length > 0) {
-          (function() {
-            _results = [];
-            for (var _i = 0, _ref = root.children.length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; 0 <= _ref ? _i++ : _i--){ _results.push(_i); }
-            return _results;
-          }).apply(this).forEach(function(i) {
-            return addBack(root.children[i]);
-          });
-          root.children.push({
-            children: [],
-            wurfl_device_id: root.wurfl_device_id,
-            wurfl_fall_back: root.wurfl_fall_back,
-            brand_name: root.brand_name,
-            model_name: root.model_name,
-            conv: root.conv,
-            device_os: root.device_os,
-            visits: root.visits,
-            subscribers: root.subscribers
-          });
-          root.visits = 0;
-          root.subscribers = 0;
-          return root.conv = 0;
-        }
-      };
-      pack = function(root, data, cutLongTail) {
-        data.forEach(function(d, i) {
-          if (d !== null && d.wurfl_fall_back === root.wurfl_device_id) {
-            data = pack(d, data, cutLongTail);
-            root.children.push(d);
-            if (cutLongTail) {
-              root.children = reduceLongTail(root.children);
-            }
-            return data[i] = null;
-          }
-        });
-        return data;
-      };
       return function(cutLongTail, data) {
-        var length, _i, _j, _ref, _ref1, _results, _results1;
+        var addToParent, d, findParent, root, _i, _len;
 
-        length = data.length;
-        (function() {
-          _results = [];
-          for (var _i = 0, _ref = length - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; 0 <= _ref ? _i++ : _i--){ _results.push(_i); }
-          return _results;
-        }).apply(this).forEach(function(i) {
-          var d;
+        data = _.clone(data);
+        root = {
+          children: []
+        };
+        findParent = function(node, children) {
+          var c, parent, _i, _len;
 
-          d = data[i];
-          if (!!d) {
-            return data = pack(data[i], data, cutLongTail);
+          parent = _.find(children, function(d) {
+            return d.wurfl_device_id === node.wurfl_fall_back;
+          });
+          if (!!parent) {
+            return parent;
           }
-        });
-        data = data.filter(function(d) {
-          return d !== null;
-        });
-        (function() {
-          _results1 = [];
-          for (var _j = 0, _ref1 = data.length - 1; 0 <= _ref1 ? _j <= _ref1 : _j >= _ref1; 0 <= _ref1 ? _j++ : _j--){ _results1.push(_j); }
-          return _results1;
-        }).apply(this).forEach(function(i) {
-          return addBack(data[i]);
-        });
+          for (_i = 0, _len = children.length; _i < _len; _i++) {
+            c = children[_i];
+            parent = findParent(node, c.children);
+            if (!!parent) {
+              parent;
+            }
+          }
+          return null;
+        };
+        addToParent = function(node) {
+          var parent;
+
+          parent = findParent(node, data);
+          if (!!parent) {
+            return parent.children.push(node);
+          } else {
+            return root.children.push(node);
+          }
+        };
+        for (_i = 0, _len = data.length; _i < _len; _i++) {
+          d = data[_i];
+          addToParent(d);
+        }
+        data = root.children;
         if (cutLongTail) {
           return reduceLongTail(data);
         } else {
@@ -552,19 +523,21 @@
       });
     };
     lastTree = null;
-    redrawSubMethodDeviceChart = function(tree) {
+    lastData = null;
+    redrawSubMethodDeviceChart = function(tree, data) {
       if (tree == null) {
         tree = null;
       }
-      return fresh().done(function(data) {
-        tree = tree || lastTree;
-        lastTree = tree;
-        return drawSubMethodDeviceChart(tree, data, $('#onlyConvertingDevices')[0].checked);
-      });
+      if (data == null) {
+        data = null;
+      }
+      lastTree = tree || lastTree;
+      lastData = data || lastData;
+      return drawSubMethodDeviceChart(lastTree, lastData, $('#onlyConvertingDevices')[0].checked);
     };
     redraw = function(countryChanged) {
       return fresh().done(function(data) {
-        var groupBys;
+        var groupBys, tree;
 
         if (countryChanged) {
           populateSubMethodsSelect(data);
@@ -572,12 +545,8 @@
         groupBys = ($('#groupbys-bin').find('li').map(function() {
           return $(this).attr('data-groupby');
         })).get();
-        return setTimeout(function() {
-          var tree;
-
-          tree = draw(data, $("#submethods").val(), makeGroupByFunction(groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked));
-          return redrawSubMethodDeviceChart(tree);
-        }, 10);
+        tree = draw(data, $("#submethods").val(), makeGroupByFunction(groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked));
+        return redrawSubMethodDeviceChart(tree, data);
       });
     };
     redraw(true);
