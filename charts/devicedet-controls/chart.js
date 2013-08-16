@@ -419,7 +419,11 @@
         return c + f.valueOf() + t.valueOf();
       };
       getCache = function(fromDate, toDate, country) {
-        return null;
+        if (makeCacheKey(fromDate, toDate, country) === cachedKey) {
+          return cached;
+        } else {
+          return null;
+        }
       };
       saveCache = function(fromDate, toDate, country, value) {
         cachedKey = makeCacheKey(fromDate, toDate, country);

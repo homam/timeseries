@@ -294,7 +294,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
     cached = null
     cachedKey = null
     makeCacheKey = (f,t,c) -> c + f.valueOf() + t.valueOf()
-    getCache = (fromDate, toDate, country) -> null# if makeCacheKey(fromDate,toDate,country) == cachedKey then cached else null
+    getCache = (fromDate, toDate, country) -> if makeCacheKey(fromDate,toDate,country) == cachedKey then cached else null
     saveCache = (fromDate, toDate, country,value) ->
       cachedKey = makeCacheKey(fromDate,toDate,country)
       cached = value
@@ -342,7 +342,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
   ['ae','sa','om', 'iq','jo', 'lk'].sort().forEach (c) -> $("select[name=country]").append $("<option />").text(c)
 
   $('#fromDate').val d3.time.format('%Y-%m-%d') fromDate
-  $('#toDate').val d3.time.format('%Y-%m-%d') new Date(toDate.valueOf() - (1000*60*60*24))
+  $('#toDate').val d3.time.format('%Y-%m-%d') new Date(toDate.valueOf() - (1000*60*60*24)) # UI shows including toDate
   $("select[name=country]").val(country)
 
   $("input[type=date]").on 'change', () ->
@@ -351,7 +351,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       fromDate = new Date($this.val())
     if 'toDate' == $this.attr("id")
       toDate = new Date($this.val())
-      toDate = new Date(toDate.valueOf() + (1000*60*60*24))
+      toDate = new Date(toDate.valueOf() + (1000*60*60*24)) # UI shows including toDate
 
 
     redraw(false)
