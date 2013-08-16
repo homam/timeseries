@@ -65,7 +65,11 @@
       }).yB(function(d) {
         return d.subs;
       });
+      chart.mouseover(function(d) {
+        return document.getElementById("mouse-val").innerHTML = d.date + ':' + d.visits;
+      });
       d3.select('#chart').datum(groups['wap p11']).call(chart);
+      return;
       return setTimeout(function() {
         chart.yDomain(d3.extent);
         return d3.select('#chart').datum(groups['wap p155']).call(chart);

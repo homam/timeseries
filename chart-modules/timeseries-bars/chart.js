@@ -2,7 +2,7 @@
 (function() {
   define(['../common/property'], function(Property) {
     return function() {
-      var chart, height, margin, properties, width, x, xAxis, xB, y, yAxis, yB, yBAxis;
+      var chart, dispatch, height, margin, properties, width, x, xAxis, xB, y, yAxis, yB, yBAxis;
 
       margin = {
         top: 20,
@@ -54,9 +54,10 @@
         return [0, d3.max(ys)];
       });
       properties.transitionDuration.set(500);
+      dispatch = d3.dispatch('mouseover', 'mouseout');
       chart = function(selection) {
         return selection.each(function(data) {
-          var $g, $gEnter, $selection, $svg, $xAxis, $yAxis, $yBAxis, line, transitionDuration, xMap, yBMap, yMap;
+          var $g, $gEnter, $selection, $svg, $xAxis, $yAxis, $yBAxis, bisect, line, transitionDuration, xMap, yBMap, yMap;
 
           xMap = properties.x.get();
           yMap = properties.y.get();
@@ -85,6 +86,16 @@
           $g.selectAll('rect.bar').attr('width', xB.rangeBand()).transition().duration(transitionDuration).ease("sin-in-out").attr('x', _.compose(x, xMap)).attr('y', _.compose(yB, yBMap)).attr('height', function(d) {
             return height - _.compose(yB, yBMap)(d);
           });
+          bisect = d3.bisector(xMap).right;
+          $gEnter.append("rect").attr("class", "tooltip-overlay").attr("width", width).attr("height", height).on("mouseout", function() {
+            return dispatch.mouseout();
+          }).on("mousemove", function() {
+            var val, x0;
+
+            x0 = x.invert(d3.mouse(this)[0]);
+            val = bisect(data, x0);
+            return dispatch.mouseover(data[val]);
+          });
           $xAxis.transition().duration(transitionDuration).call(xAxis);
           $yAxis.transition().duration(transitionDuration).call(yAxis);
           $yBAxis.transition().duration(transitionDuration).call(yBAxis);
@@ -93,6 +104,9 @@
       };
       null;
       chart = Property.expose(chart, properties);
+      chart.mouseover = function(handler) {
+        return dispatch.on('mouseover', handler);
+      };
       return chart;
     };
   });

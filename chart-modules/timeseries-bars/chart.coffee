@@ -65,7 +65,7 @@ define ['../common/property'], (Property) ->
 
 
 
-    #dispatch = d3.dispatch('mouseover', 'mouseout')
+    dispatch = d3.dispatch('mouseover', 'mouseout')
 
     chart = (selection) ->
       selection.each (data) ->
@@ -120,6 +120,20 @@ define ['../common/property'], (Property) ->
         .attr('y', _.compose(yB, yBMap))
         .attr('height', (d) -> height - _.compose(yB, yBMap)(d))
 
+        #tooltip
+        bisect = d3.bisector(xMap).right;
+        $gEnter.append("rect")
+        .attr("class", "tooltip-overlay")
+        .attr("width", width)
+        .attr("height", height)
+        #.on("mouseover", function() { focus.style("display", null); })
+        .on("mouseout", () -> dispatch.mouseout())
+        .on("mousemove", () ->
+            x0 = x.invert(d3.mouse(this)[0])
+            val = bisect(data,x0)
+            dispatch.mouseover data[val]
+        );
+
 
         $xAxis.transition().duration(transitionDuration).call(xAxis)
         $yAxis.transition().duration(transitionDuration).call(yAxis)
@@ -134,6 +148,6 @@ define ['../common/property'], (Property) ->
     # expose the properties
 
     chart = Property.expose(chart, properties)
-    #chart.mouseover = (handler) -> dispatch.on('mouseover', handler)
+    chart.mouseover = (handler) -> dispatch.on('mouseover', handler)
 
     return chart
