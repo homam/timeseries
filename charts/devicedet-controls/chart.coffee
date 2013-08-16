@@ -16,7 +16,6 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
 
   reduceLongTail = do () ->
-
     sumVisitsWithChildren = (d) ->
       #return d.visits
       if !!d.children and d.children.length > 0
@@ -39,8 +38,6 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       collected_children: tail
 
 
-
-
   # bar charts
 
   subMethodDeviceConvChart = barGroupsChart().yAxisTickFormat(d3.format('.1%'))
@@ -50,106 +47,107 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
   visitsBySubMethodsChart = barChart().tooltip(tooltip().text (d) -> JSON.stringify(d))
   visitsBySubMethodsPieChart = pieChart()
 
-  drawSubMethodDeviceChart = (node, data, compareConvWithOnlyConvertingDevices) ->
-    # node: the root node (and it's children) for which we're making this chart for
-    # data: all the data
-
-    allWurlfIds = (n, r) ->
-      if n.wurfl_device_id
-        r.push n.wurfl_device_id
-      if n.children and n.children.length >0
-        for m in n.children
-          allWurlfIds(m , r)
-      if n.collected_children and n.collected_children.length >0
-        for m in n.collected_children
-          allWurlfIds(m, r)
-
-      r
-
-    allWids = _.flatten allWurlfIds(node, [])
-
-    rootName = node.wurfl_device_id or allWids[0]
+  drawSubMethodDeviceChart = do () ->
+    # barMaker = (arr, key) -> {name:key, value: #avg(arr), stdev: #stdev(arr)}
+    createSubMethodDeviceHierarchy = (data, wurflIds, name, barMaker) ->
+      data = data.map (d) ->
+        method: d.method,
+        device: (if wurflIds.indexOf(d.wurfl_device_id)>-1  then name else 'Everything Else'),
+        visits: d.visits
+        subscribers: d.subscribers
+        conv: d.conv
 
 
+      byMethods = _(data).groupBy((d)->d.method)
+      byDevices = _(data).groupBy((d)->d.device)
 
-    convHierarchy = createSubMethodDeviceHierarchy(data, allWids, rootName, (sarr, skey) ->
-      if compareConvWithOnlyConvertingDevices
-        sarr = sarr.filter (d) -> d.subscribers >0
-      subGroupVisits = sum(sarr.map (a) -> a.visits)
-      mu = if sarr.length ==0 then 0 else sum(sarr.map (a) -> a.subscribers)/subGroupVisits
-      name: skey
-      value: mu
-      stdev: if sarr.length <2 then 0 else sum( sarr.map (d) -> Math.sqrt(Math.pow(d.conv-mu,2)) *d.visits/subGroupVisits)
-    )
-    d3.select('#submethodDevice-conv-chart').datum(convHierarchy).call subMethodDeviceConvChart
+      hierarchy = _(byMethods).map (arr, key) ->
+        name: key
+        value: _.chain(arr).groupBy((d)->d.device)
+        .map((sarr, skey) ->barMaker(sarr, skey, arr, data)).value()
 
 
-    visitsHierarchy = createSubMethodDeviceHierarchy(data, allWids, rootName, (sarr, skey, marr, raw) ->
-      majorVisits = sum raw.filter((d) ->d.device == skey).map((d) -> d.visits)
-      mainGroupVisits = sum(marr.map (d) -> d.visits)
-      subGroupVisits = sum(sarr.map (a) -> a.visits)
-      #mu = if sarr.length ==0 then 0 else sum(sarr.map (a) -> a.subscribers)/subGroupVisits
-      name: skey
-      value: subGroupVisits/majorVisits
-      stdev: 0 # if sarr.length <2 then 0 else sum( sarr.map (d) -> Math.sqrt(Math.pow(d.conv-mu,2)) *d.visits/subGroupVisits)
-    )
-    d3.select('#submethodDevice-visits-chart').datum(visitsHierarchy).call subMethodDeviceVisitsChart
+      # add missing values
+
+      mainValueMap = (v) ->v.value
+      subNameMap = (v)->v.name
+      allSubKeys = _.uniq _.flatten hierarchy.map((d) -> mainValueMap(d).map subNameMap)
 
 
-    allSubMethods = convHierarchy.map (c) ->c.name
+      hierarchy = hierarchy.map (h)->
+        allSubKeys.forEach (k,i) ->
+          if !h.value[i] or h.value[i].name != k
+            h.value.splice i,0,{name:k,value:0,stdev:0}
 
-    targetDevices = data.filter((d) -> allWids.indexOf(d.wurfl_device_id) >-1)
-    visitsData = _.chain(targetDevices).groupBy((d) -> d.method).map( (arr, key) ->
-      name: key
-      value: sum arr.map((a) -> a.visits)
-    ).value()
+        h
 
-    existingSubMethods = visitsData.map (c) ->c.name
-    for m in allSubMethods.filter((s) -> existingSubMethods.indexOf(s)<0)
-      visitsData.push {name: m, value: 0}
-
-    totalVisits = sum visitsData.map (v) ->v.value
-
-    d3.select('#device-visits-bysubmethods-pie').datum(visitsData).call visitsBySubMethodsPieChart
-
-    visitsBySubMethodsChart.tooltip().text (d) ->d.name + ' : ' + d3.format('%') d.value/totalVisits
-    d3.select('#device-visits-bysubmethods-chart').datum(_(visitsData).sortBy((a)->a.name)).call visitsBySubMethodsChart
+      return _(hierarchy).sortBy (v) ->v.name
 
 
-  # barMaker = (arr, key) -> {name:key, value: #avg(arr), stdev: #stdev(arr)}
-  createSubMethodDeviceHierarchy = (data, wurflIds, name, barMaker) ->
-    data = data.map (d) ->
-      method: d.method,
-      device: (if wurflIds.indexOf(d.wurfl_device_id)>-1  then name else 'Everything Else'),
-      visits: d.visits
-      subscribers: d.subscribers
-      conv: d.conv
+    return (node, data, compareConvWithOnlyConvertingDevices) ->
+      # node: the root node (and it's children) for which we're making this chart for
+      # data: all the data
+      allWurlfIds = (n, r) ->
+        if n.wurfl_device_id
+          r.push n.wurfl_device_id
+        if n.children and n.children.length >0
+          for m in n.children
+            allWurlfIds(m , r)
+        if n.collected_children and n.collected_children.length >0
+          for m in n.collected_children
+            allWurlfIds(m, r)
+
+        r
+
+      allWids = _.flatten allWurlfIds(node, [])
+
+      rootName = node.wurfl_device_id or allWids[0]
 
 
-    byMethods = _(data).groupBy((d)->d.method)
-    byDevices = _(data).groupBy((d)->d.device)
 
-    hierarchy = _(byMethods).map (arr, key) ->
-      name: key
-      value: _.chain(arr).groupBy((d)->d.device)
-      .map((sarr, skey) ->barMaker(sarr, skey, arr, data)).value()
-
-
-    # add missing values
-
-    mainValueMap = (v) ->v.value
-    subNameMap = (v)->v.name
-    allSubKeys = _.uniq _.flatten hierarchy.map((d) -> mainValueMap(d).map subNameMap)
+      convHierarchy = createSubMethodDeviceHierarchy(data, allWids, rootName, (sarr, skey) ->
+        if compareConvWithOnlyConvertingDevices
+          sarr = sarr.filter (d) -> d.subscribers >0
+        subGroupVisits = sum(sarr.map (a) -> a.visits)
+        mu = if sarr.length ==0 then 0 else sum(sarr.map (a) -> a.subscribers)/subGroupVisits
+        name: skey
+        value: mu
+        stdev: if sarr.length <2 then 0 else sum( sarr.map (d) -> Math.sqrt(Math.pow(d.conv-mu,2)) *d.visits/subGroupVisits)
+      )
+      d3.select('#submethodDevice-conv-chart').datum(convHierarchy).call subMethodDeviceConvChart
 
 
-    hierarchy = hierarchy.map (h)->
-      allSubKeys.forEach (k,i) ->
-        if !h.value[i] or h.value[i].name != k
-          h.value.splice i,0,{name:k,value:0,stdev:0}
+      visitsHierarchy = createSubMethodDeviceHierarchy(data, allWids, rootName, (sarr, skey, marr, raw) ->
+        majorVisits = sum raw.filter((d) ->d.device == skey).map((d) -> d.visits)
+        mainGroupVisits = sum(marr.map (d) -> d.visits)
+        subGroupVisits = sum(sarr.map (a) -> a.visits)
+        #mu = if sarr.length ==0 then 0 else sum(sarr.map (a) -> a.subscribers)/subGroupVisits
+        name: skey
+        value: subGroupVisits/majorVisits
+        stdev: 0 # if sarr.length <2 then 0 else sum( sarr.map (d) -> Math.sqrt(Math.pow(d.conv-mu,2)) *d.visits/subGroupVisits)
+      )
+      d3.select('#submethodDevice-visits-chart').datum(visitsHierarchy).call subMethodDeviceVisitsChart
 
-      h
 
-    return _(hierarchy).sortBy (v) ->v.name
+      allSubMethods = convHierarchy.map (c) ->c.name
+
+      targetDevices = data.filter((d) -> allWids.indexOf(d.wurfl_device_id) >-1)
+      visitsData = _.chain(targetDevices).groupBy((d) -> d.method).map( (arr, key) ->
+        name: key
+        value: sum arr.map((a) -> a.visits)
+      ).value()
+
+      existingSubMethods = visitsData.map (c) ->c.name
+      for m in allSubMethods.filter((s) -> existingSubMethods.indexOf(s)<0)
+        visitsData.push {name: m, value: 0}
+
+      totalVisits = sum visitsData.map (v) ->v.value
+
+      d3.select('#device-visits-bysubmethods-pie').datum(visitsData).call visitsBySubMethodsPieChart
+
+      visitsBySubMethodsChart.tooltip().text (d) ->d.name + ' : ' + d3.format('%') d.value/totalVisits
+      d3.select('#device-visits-bysubmethods-chart').datum(_(visitsData).sortBy((a)->a.name)).call visitsBySubMethodsChart
+
 
   #end bar charts
 
@@ -209,7 +207,6 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
   #end treemap
 
   makeTreeByParentId = do () ->
-
     return (cutLongTail, data) ->
       data = _.clone(data)
       root = {children: []}
@@ -242,65 +239,81 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
       return if cutLongTail then reduceLongTail data else data
 
+  makeGroupByFunction = do () ->
+    groupBy = (childrenMap, what, data) ->
+      groups = _(data).groupBy what
+
+      _(groups).map (darr) ->
+
+        groupVisits = darr.map((d) -> d.visits).reduce((a,b)->a+b)
+        groupSubs = darr.map((d) -> d.subscribers).reduce((a,b)->a+b)
+        groupAverageConv = groupSubs / groupVisits
+        groupStdevConversion = darr.map((g) ->
+          Math.sqrt(Math.pow((g.conv-groupAverageConv), 2)) * g.visits / groupVisits
+        )
+        .reduce((a,b) -> a+b)
+
+        return {
+          averageConversion: groupAverageConv
+          stdevConversion: groupStdevConversion
+          children: childrenMap darr
+        }
 
 
-  groupBy = (childrenMap, what, data) ->
-    groups = _(data).groupBy what
-
-    _(groups).map (darr) ->
-
-      groupVisits = darr.map((d) -> d.visits).reduce((a,b)->a+b)
-      groupSubs = darr.map((d) -> d.subscribers).reduce((a,b)->a+b)
-      groupAverageConv = groupSubs / groupVisits
-      groupStdevConversion = darr.map((g) ->
-        Math.sqrt(Math.pow((g.conv-groupAverageConv), 2)) * g.visits / groupVisits
-      )
-      .reduce((a,b) -> a+b)
-
-      return {
-        averageConversion: groupAverageConv
-        stdevConversion: groupStdevConversion
-        children: childrenMap darr
-      }
-
-
-  makeGroupByFunction = (order, treefy, cutLongTail) ->
-    order = _(order).reverse()
-    t = if treefy then _.partial(makeTreeByParentId, cutLongTail) else _.identity
-    l = if cutLongTail and not treefy then reduceLongTail else _.identity
-    lastF = _.compose(t,l)
-    order.forEach (p) ->
-      lastF = _.partial groupBy, lastF, (d) -> d[p]
-    lastF
-
-
+    return (order, treefy, cutLongTail) ->
+      order = _(order).reverse()
+      t = if treefy then _.partial(makeTreeByParentId, cutLongTail) else _.identity
+      l = if cutLongTail and not treefy then reduceLongTail else _.identity
+      lastF = _.compose(t,l)
+      order.forEach (p) ->
+        lastF = _.partial groupBy, lastF, (d) -> d[p]
+      lastF
 
   query = do () ->
 
+    parseDataItem = (d) ->
+      # d : a row of CSV
+      visits: +d.Visits
+      subscribers: +d.Subscribers
+      wurfl_device_id: d.wurfl_device_id
+      method : d.Method
+      conv : +d.Subscribers/+d.Visits
+
     cached = null
+    cachedTimeSeries = null
     cachedKey = null
     makeCacheKey = (f,t,c) -> c + f.valueOf() + t.valueOf()
     getCache = (fromDate, toDate, country) -> if makeCacheKey(fromDate,toDate,country) == cachedKey then cached else null
-    saveCache = (fromDate, toDate, country,value) ->
+    saveCache = (fromDate, toDate, country,aggregatedByWurflId, timeseries) ->
       cachedKey = makeCacheKey(fromDate,toDate,country)
-      cached = value
+      cached = aggregatedByWurflId
+      cachedTimeSeries = timeseries
 
 
     return (fromDate, toDate, country) ->
       p = $.Deferred()
       if getCache(fromDate,toDate,country)
-        p.resolve cached
+        p.resolve {reduced: cached, overtime: cachedTimeSeries}
       else
         timezone = new Date().getTimezoneOffset() * -60*1000;
         dates = (toDate.valueOf()-fromDate.valueOf())/ (1000*60*60*24)
-        gets = [0..dates-1].map((i) -> fromDate.valueOf() + (i*(1000*60*60*24)) + timezone).map((d) -> {date:d, dateName: new Date(d).toISOString().split('T')[0]}).map (d) -> {date:d.date,dateName:d.dateName,def:$.get('charts/devicedet-controls/data/'+country+'-'+d.dateName+'.csv')}
+        gets = [0..dates-1].map((i) -> fromDate.valueOf() + (i*(1000*60*60*24)) + timezone)
+        .map((d) -> {date:d, dateName: new Date(d).toISOString().split('T')[0]})
+        .map (d) -> {date:d.date,dateName:d.dateName,def:$.ajax('charts/devicedet-controls/data/'+country+'-'+d.dateName+'.csv', {context:d})}
 
         $.when.apply($,gets.map (d) -> d.def).done () ->
+
           items =null
+          timeSeries = null
           if (gets.length > 1)
-            items = _.chain(Array.prototype.slice.call(arguments, 0).map (d) -> d3.csv.parse d[0]).flatten()
+            csvs = Array.prototype.slice.call(arguments, 0).map (d) -> d3.csv.parse d[0]
+            timeSeries = _.zip(this, csvs.map( (csv) -> csv.map parseDataItem))
+            items = _.chain(csvs).flatten()
           else
-            items = _.chain d3.csv.parse arguments[0]
+            csv = d3.csv.parse arguments[0]
+            items = _.chain csv
+            timeSeries = _.zip([this], [ csv.map parseDataItem])
+
 
           items = items.groupBy('wurfl_device_id').map((deviceArr) ->
             _.chain(deviceArr).groupBy('Method').map((arr, method) ->
@@ -317,9 +330,10 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
               conv : subscribers/visits
             ).value()
           ).flatten().value()
-          p.resolve items
-          saveCache(fromDate,toDate,country, items)
+          saveCache(fromDate,toDate,country, items, timeSeries)
+          p.resolve({reduced: items, overtime: timeSeries})
       return p
+
 
   fromDate = new Date(2013,6,1) # July 1
   toDate = new Date(2013,6,15)
@@ -351,7 +365,8 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
 
   fresh = () ->
-    query(fromDate,toDate,country).done (items) ->
+    query(fromDate,toDate,country).done (obj) ->
+      items = obj.reduced
       _.chain(items).map((i) ->
         i.children = []
         return i
@@ -385,7 +400,9 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
   # how to call draw: draw subMethods[0],(makeGroupByFunction ['brand_name', 'device_os'], true, true)
   redraw = (countryChanged) ->
-    fresh().done (data) ->
+    fresh().done (obj) ->
+      data = obj.reduced
+      overtime  = obj.overtime
       if(countryChanged)
         populateSubMethodsSelect data
       groupBys = ($('#groupbys-bin').find('li').map () -> $(this).attr('data-groupby')).get()
