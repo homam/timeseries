@@ -42,45 +42,71 @@ h1 {
   }
 }
 
-#submethodDevice-conv-chart, #submethodDevice-visits-chart, #device-visits-bysubmethods-chart {
-  line.dev {
-    stroke: rgba(255,255,255,.5);
-    stroke-width: 2px;
-  }
-  rect.dev {
-    fill: rgba(255,255,255,.5);
-    //stroke: rgba(0,0,0,.3);
+#overalls {
+  float:left;
+  #submethodDevice-conv-chart, #submethodDevice-visits-chart, #device-visits-bysubmethods-chart {
+    line.dev {
+      stroke: rgba(255,255,255,.5);
+      stroke-width: 2px;
+    }
+    rect.dev {
+      fill: rgba(255,255,255,.5);
+      //stroke: rgba(0,0,0,.3);
+    }
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #fff;
+      shape-rendering: crispEdges;
+    }
+    text{
+      fill:white;
+      font-size: 12px;
+    }
   }
 
-  .axis path,
-  .axis line {
-    fill: none;
-    stroke: #fff;
-    shape-rendering: crispEdges;
-  }
-  text{
-    fill:white;
-    font-size: 12px;
-  }
 }
 
-#visitsAndSubsOvertime-chart, #visitsAndSubsOvertime-charts .chart {
-  .axis {
-    fill: silver;
-  }
-  rect.bar, {
-    fill:rgba(13, 118, 41, 0.33);
-  }
-  .line {
-    stroke: green;
-    fill: rgba(0,0,0,0)
-  }
-  text {
-    fill: gray;
-    font-size: 10px;
-  }
-  .tick line {
-    stroke: gray;
+#timeseries {
+  float:right;
+  width:800px;
+
+  #visitsAndSubsOvertime-chart, #visitsAndSubsOvertime-charts .chart {
+    position: relative;
+    h3 {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      -webkit-transform: translate(50%,13px) rotateZ(90deg) translate(51px,12px);
+      color: rgba(126, 126, 126, 0.69)
+    }
+
+    .axis {
+      text {
+        fill: rgba(192, 192, 192, 1);
+      }
+      path {
+        stroke: rgba(192, 192, 192, 1);
+      }
+    }
+    rect.bar, {
+      fill:rgba(13, 118, 41, 0.33);
+    }
+    .line {
+      stroke: green;
+      fill: rgba(0,0,0,0)
+    }
+    text {
+      fill: gray;
+      font-size: 10px;
+    }
+    .tick line {
+      stroke: rgba(128, 128, 128, 0.43);
+    }
   }
 }
 
@@ -124,6 +150,7 @@ h1 {
   width:1200px;
 }
 
+// top controls
 .controls {
   width:1200px;
   text-align: left;

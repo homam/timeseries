@@ -51,7 +51,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
     cache = {}
     return (method) ->
       if(!cache[method])
-        cache[method] = totalVisitsSubsTimeSeriesChart = timeSeriesBars().width(800).margin({right:70,left:70,bottom:50})
+        cache[method] = totalVisitsSubsTimeSeriesChart = timeSeriesBars().width(800).height(120).margin({right:70,left:70,bottom:0,top:20})
         .x((d) -> d.date).y((d) -> d.visits).yB((d) -> d.subscribers)
       return cache[method]
 
@@ -168,18 +168,16 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       d3.select('#visitsAndSubsOvertime-chart').datum(tsData).call totalVisitsSubsTimeSeriesChart
 
       #console.log _.chain(filteredTimeSeries.map (d)->d[1]).flatten().groupBy((d) ->d.method).map((arr,method) -> {method:method, visits: sum arr.map((d) -> d.visits)}).value()
-      methods = _.chain(filteredTimeSeries.map (d)->d[1]).flatten().groupBy((d) ->d.method).map((arr,method) -> method).value()
+      methods = _.chain(filteredTimeSeries.map (d)->d[1]).flatten().groupBy((d) ->d.method).map((arr,method) -> {method:method, visits: sum arr.map((d) -> d.visits)}).sortBy((d) -> -d.visits).map((d) ->d.method).value()
       $charts =d3.select('#visitsAndSubsOvertime-charts').selectAll('div.chart').data(methods)
       $charts.enter().append("div").attr('class', (d) -> d+' chart').append("h3")
       $charts.style('display','none')
-      #$charts.exit().remove()
       for method in methods
         filteredMethodTimeSeries = timeSeriesData.map((tuple) -> [tuple[0], (tuple[1].filter (d) -> method == d.method and allWids.indexOf(d.wurfl_device_id)>-1)])
         ftsData = filteredMethodTimeSeries.map (tuple) ->
           date: new Date(tuple[0].date)
           visits:sum(tuple[1].map((d) -> d.visits))
           subscribers:sum tuple[1].map((d) -> d.subscribers)
-        console.log method, sum ftsData.map (d) ->d.visits
         $chart = d3.select('#visitsAndSubsOvertime-charts').select('.'+method)
         $chart.style('display','block')
         $chart.select('h3').text(method)

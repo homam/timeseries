@@ -71,10 +71,11 @@
       cache = {};
       return function(method) {
         if (!cache[method]) {
-          cache[method] = totalVisitsSubsTimeSeriesChart = timeSeriesBars().width(800).margin({
+          cache[method] = totalVisitsSubsTimeSeriesChart = timeSeriesBars().width(800).height(120).margin({
             right: 70,
             left: 70,
-            bottom: 50
+            bottom: 0,
+            top: 20
           }).x(function(d) {
             return d.date;
           }).y(function(d) {
@@ -280,7 +281,16 @@
         })).flatten().groupBy(function(d) {
           return d.method;
         }).map(function(arr, method) {
-          return method;
+          return {
+            method: method,
+            visits: sum(arr.map(function(d) {
+              return d.visits;
+            }))
+          };
+        }).sortBy(function(d) {
+          return -d.visits;
+        }).map(function(d) {
+          return d.method;
         }).value();
         $charts = d3.select('#visitsAndSubsOvertime-charts').selectAll('div.chart').data(methods);
         $charts.enter().append("div").attr('class', function(d) {
@@ -308,9 +318,6 @@
               }))
             };
           });
-          console.log(method, sum(ftsData.map(function(d) {
-            return d.visits;
-          })));
           $chart = d3.select('#visitsAndSubsOvertime-charts').select('.' + method);
           $chart.style('display', 'block');
           $chart.select('h3').text(method);

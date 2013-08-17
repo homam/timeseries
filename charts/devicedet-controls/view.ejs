@@ -50,24 +50,29 @@
     <div id="chart-container">
 
     </div>
-    <section id="visitsAndSubsOvertime-chart">
 
-    </section>
-    <section id="visitsAndSubsOvertime-charts">
+    <section id="timeseries">
+        <section id="visitsAndSubsOvertime-chart">
 
+        </section>
+        <section id="visitsAndSubsOvertime-charts">
+
+        </section>
     </section>
 
-    <section id="submethodDevice-conv-chart">
-        <h2>Conversion Comparison</h2>
-        <div class="controls">
-            <input type="checkbox" id="onlyConvertingDevices" />
-            <label for="onlyConvertingDevices">Compare with only converting devices</label>
-        </div>
-    </section>
-    <section id="device-visits-bysubmethods-pie"></section>
-    <section id="device-visits-bysubmethods-chart"></section>
-    <section id="submethodDevice-visits-chart">
-        <h2>Visits Comparison</h2>
+    <section id="overalls">
+        <section id="submethodDevice-conv-chart">
+            <h2>Conversion Comparison</h2>
+            <div class="overall-controls">
+                <input type="checkbox" id="onlyConvertingDevices" />
+                <label for="onlyConvertingDevices">Compare with only converting devices</label>
+            </div>
+        </section>
+        <section id="device-visits-bysubmethods-pie"></section>
+        <section id="device-visits-bysubmethods-chart"></section>
+        <section id="submethodDevice-visits-chart">
+            <h2>Visits Comparison</h2>
+        </section>
     </section>
 
     <script src="charts/devicedet-controls/chart.js"></script>

@@ -28,54 +28,80 @@ h1 {
 #chart text {
   cursor: default;
 }
-#submethodDevice-conv-chart line.dev,
-#submethodDevice-visits-chart line.dev,
-#device-visits-bysubmethods-chart line.dev {
+#overalls {
+  float: left;
+}
+#overalls #submethodDevice-conv-chart line.dev,
+#overalls #submethodDevice-visits-chart line.dev,
+#overalls #device-visits-bysubmethods-chart line.dev {
   stroke: rgba(255, 255, 255, 0.5);
   stroke-width: 2px;
 }
-#submethodDevice-conv-chart rect.dev,
-#submethodDevice-visits-chart rect.dev,
-#device-visits-bysubmethods-chart rect.dev {
+#overalls #submethodDevice-conv-chart rect.dev,
+#overalls #submethodDevice-visits-chart rect.dev,
+#overalls #device-visits-bysubmethods-chart rect.dev {
   fill: rgba(255, 255, 255, 0.5);
 }
-#submethodDevice-conv-chart .axis path,
-#submethodDevice-visits-chart .axis path,
-#device-visits-bysubmethods-chart .axis path,
-#submethodDevice-conv-chart .axis line,
-#submethodDevice-visits-chart .axis line,
-#device-visits-bysubmethods-chart .axis line {
+#overalls #submethodDevice-conv-chart .axis path,
+#overalls #submethodDevice-visits-chart .axis path,
+#overalls #device-visits-bysubmethods-chart .axis path,
+#overalls #submethodDevice-conv-chart .axis line,
+#overalls #submethodDevice-visits-chart .axis line,
+#overalls #device-visits-bysubmethods-chart .axis line {
   fill: none;
   stroke: #fff;
   shape-rendering: crispEdges;
 }
-#submethodDevice-conv-chart text,
-#submethodDevice-visits-chart text,
-#device-visits-bysubmethods-chart text {
+#overalls #submethodDevice-conv-chart text,
+#overalls #submethodDevice-visits-chart text,
+#overalls #device-visits-bysubmethods-chart text {
   fill: white;
   font-size: 12px;
 }
-#visitsAndSubsOvertime-chart .axis,
-#visitsAndSubsOvertime-charts .chart .axis {
-  fill: silver;
+#timeseries {
+  float: right;
+  width: 800px;
 }
-#visitsAndSubsOvertime-chart rect.bar,
-#visitsAndSubsOvertime-charts .chart rect.bar {
+#timeseries #visitsAndSubsOvertime-chart,
+#timeseries #visitsAndSubsOvertime-charts .chart {
+  position: relative;
+}
+#timeseries #visitsAndSubsOvertime-chart h3,
+#timeseries #visitsAndSubsOvertime-charts .chart h3 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  -webkit-transform: translate(50%, 13px) rotateZ(90deg) translate(51px, 12px);
+  color: rgba(126, 126, 126, 0.69);
+}
+#timeseries #visitsAndSubsOvertime-chart .axis text,
+#timeseries #visitsAndSubsOvertime-charts .chart .axis text {
+  fill: #c0c0c0;
+}
+#timeseries #visitsAndSubsOvertime-chart .axis path,
+#timeseries #visitsAndSubsOvertime-charts .chart .axis path {
+  stroke: #c0c0c0;
+}
+#timeseries #visitsAndSubsOvertime-chart rect.bar,
+#timeseries #visitsAndSubsOvertime-charts .chart rect.bar {
   fill: rgba(13, 118, 41, 0.33);
 }
-#visitsAndSubsOvertime-chart .line,
-#visitsAndSubsOvertime-charts .chart .line {
+#timeseries #visitsAndSubsOvertime-chart .line,
+#timeseries #visitsAndSubsOvertime-charts .chart .line {
   stroke: green;
   fill: rgba(0, 0, 0, 0);
 }
-#visitsAndSubsOvertime-chart text,
-#visitsAndSubsOvertime-charts .chart text {
+#timeseries #visitsAndSubsOvertime-chart text,
+#timeseries #visitsAndSubsOvertime-charts .chart text {
   fill: gray;
   font-size: 10px;
 }
-#visitsAndSubsOvertime-chart .tick line,
-#visitsAndSubsOvertime-charts .chart .tick line {
-  stroke: gray;
+#timeseries #visitsAndSubsOvertime-chart .tick line,
+#timeseries #visitsAndSubsOvertime-charts .chart .tick line {
+  stroke: rgba(128, 128, 128, 0.43);
 }
 [data-tooltip] {
   text-align: left;
