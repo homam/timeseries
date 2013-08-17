@@ -1,3 +1,4 @@
+#pie
 define ['../common/property'], (Property) ->
   () ->
     # configs
@@ -13,7 +14,7 @@ define ['../common/property'], (Property) ->
 
     legend = true
 
-    color = d3.scale.category10()
+    #color = d3.scale.category10()
 
     formatNumber = d3.format(',f')
 
@@ -44,6 +45,8 @@ define ['../common/property'], (Property) ->
 
       names : new Property (value) -> nameMap = value
 
+      colors : new Property
+
       values : new Property (value) ->
         valueMap = value
         pie.value(value);
@@ -55,6 +58,8 @@ define ['../common/property'], (Property) ->
 
     chart = (selection) ->
       selection.each (data) ->
+
+        color = properties.colors.get() || d3.scale.category10()
 
         $selection = d3.select(this)
 
@@ -89,7 +94,7 @@ define ['../common/property'], (Property) ->
           .attr("width", radius * 2)
           .attr("height", radius * 2)
           .selectAll("g")
-          .data(color.domain().slice().reverse())
+          .data(data.map nameMap)
           .enter().append("g")
           .attr("transform", (d, i) -> "translate(0," + i * 20 + ")")
 

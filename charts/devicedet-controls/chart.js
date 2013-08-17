@@ -11,8 +11,21 @@
   });
 
   require(['chart-modules/bar/chart', 'chart-modules/bar-groups/chart', 'chart-modules/pie/chart', 'chart-modules/timeseries-bars/chart', 'chart-modules/common/d3-tooltip', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum'], function(barChart, barGroupsChart, pieChart, timeSeriesBars, tooltip, reduceLongTail, sum) {
-    var chart, chartId, country, draw, drawSubMethodDeviceChart, fresh, fromDate, lastData, lastTimeSeriesData, lastTree, makeGroupByFunction, makeTreeByParentId, methodVisitsSubsTimeSeriesChart, populateSubMethodsSelect, query, redraw, redrawSubMethodDeviceChart, subMethodDeviceConvChart, subMethodDeviceVisitsChart, toDate, totalVisitsSubsTimeSeriesChart, visitsBySubMethodsChart, visitsBySubMethodsPieChart;
+    var chart, chartId, country, draw, drawSubMethodDeviceChart, fresh, fromDate, lastData, lastTimeSeriesData, lastTree, makeGroupByFunction, makeTreeByParentId, methodColor, methodVisitsSubsTimeSeriesChart, populateSubMethodsSelect, query, redraw, redrawSubMethodDeviceChart, subMethodDeviceConvChart, subMethodDeviceVisitsChart, toDate, totalVisitsSubsTimeSeriesChart, visitsBySubMethodsChart, visitsBySubMethodsPieChart;
 
+    methodColor = (function() {
+      var colors, i, map;
+
+      colors = ['#e55dcd', '#aa55e1', '#514cde', '#4496db', '#3cd7c5', '#35d466', '#58d12d', '#b2ce26', '#ca841f', '#c71b18'].reverse();
+      i = -1;
+      map = {};
+      return function(method) {
+        if (!map[method]) {
+          map[method] = colors[++i];
+        }
+        return map[method];
+      };
+    })();
     reduceLongTail = (function() {
       var sumVisitsWithChildren;
 
@@ -71,7 +84,7 @@
       cache = {};
       return function(method) {
         if (!cache[method]) {
-          cache[method] = totalVisitsSubsTimeSeriesChart = timeSeriesBars().width(800).height(120).margin({
+          cache[method] = timeSeriesBars().width(800).height(120).margin({
             right: 70,
             left: 70,
             bottom: 0,
@@ -90,7 +103,7 @@
     visitsBySubMethodsChart = barChart().tooltip(tooltip().text(function(d) {
       return JSON.stringify(d);
     }));
-    visitsBySubMethodsPieChart = pieChart();
+    visitsBySubMethodsPieChart = pieChart().colors(methodColor);
     drawSubMethodDeviceChart = (function() {
       var createSubMethodDeviceHierarchy;
 
@@ -148,7 +161,7 @@
         });
       };
       return function(node, data, timeSeriesData, compareConvWithOnlyConvertingDevices) {
-        var $chart, $charts, allSubMethods, allWids, allWurlfIds, convHierarchy, existingSubMethods, filteredMethodTimeSeries, filteredTimeSeries, ftsData, m, method, methods, rootName, targetDevices, totalVisits, tsData, visitsData, visitsHierarchy, _i, _j, _len, _len1, _ref, _results;
+        var $chart, $charts, allSubMethods, allWids, allWurlfIds, convHierarchy, existingSubMethods, filteredMethodTimeSeries, filteredTimeSeries, ftsData, m, method, rootName, targetDevices, totalVisits, tsData, visitsData, visitsHierarchy, _i, _j, _len, _len1, _ref, _results;
 
         allWurlfIds = function(n, r) {
           var m, _i, _j, _len, _len1, _ref, _ref1;
@@ -212,15 +225,36 @@
             return a.visits;
           }));
           return {
+            visits: subGroupVisits + mainGroupVisits,
             name: skey,
             value: subGroupVisits / majorVisits,
             stdev: 0
           };
         });
         d3.select('#submethodDevice-visits-chart').datum(visitsHierarchy).call(subMethodDeviceVisitsChart);
-        allSubMethods = convHierarchy.map(function(c) {
-          return c.name;
+        filteredTimeSeries = timeSeriesData.map(function(tuple) {
+          return [
+            tuple[0], tuple[1].filter(function(d) {
+              return allWids.indexOf(d.wurfl_device_id) > -1;
+            })
+          ];
         });
+        allSubMethods = _.chain(filteredTimeSeries.map(function(d) {
+          return d[1];
+        })).flatten().groupBy(function(d) {
+          return d.method;
+        }).map(function(arr, method) {
+          return {
+            method: method,
+            visits: sum(arr.map(function(d) {
+              return d.visits;
+            }))
+          };
+        }).sortBy(function(d) {
+          return -d.visits;
+        }).map(function(d) {
+          return d.method;
+        }).value();
         targetDevices = data.filter(function(d) {
           return allWids.indexOf(d.wurfl_device_id) > -1;
         });
@@ -257,13 +291,6 @@
         d3.select('#device-visits-bysubmethods-chart').datum(_(visitsData).sortBy(function(a) {
           return a.name;
         })).call(visitsBySubMethodsChart);
-        filteredTimeSeries = timeSeriesData.map(function(tuple) {
-          return [
-            tuple[0], tuple[1].filter(function(d) {
-              return allWids.indexOf(d.wurfl_device_id) > -1;
-            })
-          ];
-        });
         tsData = filteredTimeSeries.map(function(tuple) {
           return {
             date: new Date(tuple[0].date),
@@ -276,30 +303,28 @@
           };
         });
         d3.select('#visitsAndSubsOvertime-chart').datum(tsData).call(totalVisitsSubsTimeSeriesChart);
-        methods = _.chain(filteredTimeSeries.map(function(d) {
-          return d[1];
-        })).flatten().groupBy(function(d) {
-          return d.method;
-        }).map(function(arr, method) {
-          return {
-            method: method,
-            visits: sum(arr.map(function(d) {
-              return d.visits;
-            }))
-          };
-        }).sortBy(function(d) {
-          return -d.visits;
-        }).map(function(d) {
-          return d.method;
-        }).value();
-        $charts = d3.select('#visitsAndSubsOvertime-charts').selectAll('div.chart').data(methods);
+        console.log(JSON.stringify(timeSeriesData.map(function(tuple) {
+          return [
+            tuple[0], _.chain(tuple[1].filter(function(d) {
+              return allWids.indexOf(d.wurfl_device_id) > -1;
+            })).groupBy(function(d) {
+              return d.method;
+            }).map(function(arr, key) {
+              return {
+                method: key,
+                data: arr
+              };
+            }).value()
+          ];
+        })));
+        $charts = d3.select('#visitsAndSubsOvertime-charts').selectAll('div.chart').data(allSubMethods);
         $charts.enter().append("div").attr('class', function(d) {
           return d + ' chart';
         }).append("h3");
         $charts.style('display', 'none');
         _results = [];
-        for (_j = 0, _len1 = methods.length; _j < _len1; _j++) {
-          method = methods[_j];
+        for (_j = 0, _len1 = allSubMethods.length; _j < _len1; _j++) {
+          method = allSubMethods[_j];
           filteredMethodTimeSeries = timeSeriesData.map(function(tuple) {
             return [
               tuple[0], tuple[1].filter(function(d) {
@@ -321,7 +346,9 @@
           $chart = d3.select('#visitsAndSubsOvertime-charts').select('.' + method);
           $chart.style('display', 'block');
           $chart.select('h3').text(method);
-          _results.push($chart.datum(ftsData).call(methodVisitsSubsTimeSeriesChart(method)));
+          $chart.datum(ftsData).call(methodVisitsSubsTimeSeriesChart(method));
+          $chart.selectAll('rect.bar').style('fill', methodColor(method));
+          _results.push($chart.selectAll('path.line').style('stroke', methodColor(method)));
         }
         return _results;
       };

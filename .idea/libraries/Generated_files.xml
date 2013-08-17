@@ -6,10 +6,15 @@
         <item url="file://$PROJECT_DIR$/chart-modules/timeseries-bars/chart.js" />
         <item url="file://$PROJECT_DIR$/charts/devicedet-controls/chart.js" />
         <item url="file://$PROJECT_DIR$/chart-modules/timeseries-bars/test.js" />
-        <item url="file://$PROJECT_DIR$/chart-modules/timeseries/test.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/stacked/chart.js" />
         <item url="file://$PROJECT_DIR$/charts/line-bar/line-bar-time-series-chart.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/stacked/test.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/pie/chart.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/pie/test.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/timeseries/test.js" />
         <item url="file://$PROJECT_DIR$/chart-modules/timeseries/chart.js" />
         <item url="file://$PROJECT_DIR$/chart-modules/common/property.js" />
+        <item url="file://$PROJECT_DIR$/charts/page-perf/chart-area.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
@@ -18,8 +23,13 @@
       <root url="file://$PROJECT_DIR$/charts/devicedet-controls/chart.js" />
       <root url="file://$PROJECT_DIR$/chart-modules/timeseries-bars/test.js" />
       <root url="file://$PROJECT_DIR$/charts/line-bar/line-bar-time-series-chart.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/stacked/chart.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/stacked/test.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/pie/chart.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/pie/test.js" />
       <root url="file://$PROJECT_DIR$/chart-modules/timeseries/test.js" />
       <root url="file://$PROJECT_DIR$/chart-modules/timeseries/chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/page-perf/chart-area.js" />
       <root url="file://$PROJECT_DIR$/chart-modules/common/property.js" />
     </CLASSES>
     <SOURCES />

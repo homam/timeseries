@@ -2,7 +2,7 @@
 (function() {
   define(['../common/property'], function(Property) {
     return function() {
-      var arc, chart, color, formatNumber, height, legend, margin, nameMap, pie, properties, radius, valueMap, width;
+      var arc, chart, formatNumber, height, legend, margin, nameMap, pie, properties, radius, valueMap, width;
 
       margin = {
         right: 50
@@ -17,7 +17,6 @@
         return d.value;
       };
       legend = true;
-      color = d3.scale.category10();
       formatNumber = d3.format(',f');
       arc = d3.svg.arc().outerRadius(radius).innerRadius(0);
       pie = d3.layout.pie().sort(null).value(valueMap);
@@ -40,6 +39,7 @@
         names: new Property(function(value) {
           return nameMap = value;
         }),
+        colors: new Property,
         values: new Property(function(value) {
           valueMap = value;
           return pie.value(value);
@@ -49,8 +49,9 @@
       properties.height.set(height);
       chart = function(selection) {
         return selection.each(function(data) {
-          var $arc, $arcEnter, $g, $gEnter, $legend, $selection, $svg;
+          var $arc, $arcEnter, $g, $gEnter, $legend, $selection, $svg, color;
 
+          color = properties.colors.get() || d3.scale.category10();
           $selection = d3.select(this);
           $svg = $selection.selectAll('svg').data([data]);
           $gEnter = $svg.enter().append('svg').append('g');
@@ -73,7 +74,7 @@
           });
           if (legend) {
             $gEnter.append('g').attr('class', 'legend');
-            $legend = $g.select('.legend').attr("transform", "translate(" + (width / 2) + "," + (-height / 2) + ")").attr("class", "legend").attr("width", radius * 2).attr("height", radius * 2).selectAll("g").data(color.domain().slice().reverse()).enter().append("g").attr("transform", function(d, i) {
+            $legend = $g.select('.legend').attr("transform", "translate(" + (width / 2) + "," + (-height / 2) + ")").attr("class", "legend").attr("width", radius * 2).attr("height", radius * 2).selectAll("g").data(data.map(nameMap)).enter().append("g").attr("transform", function(d, i) {
               return "translate(0," + i * 20 + ")";
             });
             $legend.append("rect").attr("width", 18).attr("height", 18).style("fill", color);

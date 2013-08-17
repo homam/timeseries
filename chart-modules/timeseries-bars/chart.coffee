@@ -1,3 +1,4 @@
+#timeseries bars
 define ['../common/property'], (Property) ->
   () ->
     # configs

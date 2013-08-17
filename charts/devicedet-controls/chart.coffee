@@ -14,6 +14,16 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
          'chart-modules/common/d3-tooltip', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum']
 , (barChart, barGroupsChart, pieChart, timeSeriesBars, tooltip, reduceLongTail, sum) ->
 
+  methodColor = do () ->
+    colors = ['#e55dcd', '#aa55e1', '#514cde', '#4496db', '#3cd7c5', '#35d466', '#58d12d', '#b2ce26', '#ca841f', '#c71b18'].reverse()
+    i = -1;
+    map = {}
+    return (method) ->
+      if !map[method]
+        map[method] = colors[++i]
+      return map[method]
+
+
 
   reduceLongTail = do () ->
     sumVisitsWithChildren = (d) ->
@@ -51,12 +61,12 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
     cache = {}
     return (method) ->
       if(!cache[method])
-        cache[method] = totalVisitsSubsTimeSeriesChart = timeSeriesBars().width(800).height(120).margin({right:70,left:70,bottom:0,top:20})
+        cache[method] = timeSeriesBars().width(800).height(120).margin({right:70,left:70,bottom:0,top:20})
         .x((d) -> d.date).y((d) -> d.visits).yB((d) -> d.subscribers)
       return cache[method]
 
   visitsBySubMethodsChart = barChart().tooltip(tooltip().text (d) -> JSON.stringify(d))
-  visitsBySubMethodsPieChart = pieChart()
+  visitsBySubMethodsPieChart = pieChart().colors(methodColor)
 
   drawSubMethodDeviceChart = do () ->
     # barMaker = (arr, key) -> {name:key, value: #avg(arr), stdev: #stdev(arr)}
@@ -133,6 +143,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
         mainGroupVisits = sum(marr.map (d) -> d.visits)
         subGroupVisits = sum(sarr.map (a) -> a.visits)
         #mu = if sarr.length ==0 then 0 else sum(sarr.map (a) -> a.subscribers)/subGroupVisits
+        visits: subGroupVisits+mainGroupVisits
         name: skey
         value: subGroupVisits/majorVisits
         stdev: 0 # if sarr.length <2 then 0 else sum( sarr.map (d) -> Math.sqrt(Math.pow(d.conv-mu,2)) *d.visits/subGroupVisits)
@@ -140,7 +151,9 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       d3.select('#submethodDevice-visits-chart').datum(visitsHierarchy).call subMethodDeviceVisitsChart
 
 
-      allSubMethods = convHierarchy.map (c) ->c.name
+      filteredTimeSeries = timeSeriesData.map((tuple) -> [tuple[0], (tuple[1].filter (d) -> allWids.indexOf(d.wurfl_device_id)>-1)])
+      allSubMethods = _.chain(filteredTimeSeries.map (d)->d[1]).flatten().groupBy((d) ->d.method).map((arr,method) -> {method:method, visits: sum arr.map((d) -> d.visits)}).sortBy((d) -> -d.visits).map((d) ->d.method).value()
+
 
       targetDevices = data.filter((d) -> allWids.indexOf(d.wurfl_device_id) >-1)
       visitsData = _.chain(targetDevices).groupBy((d) -> d.method).map( (arr, key) ->
@@ -154,13 +167,17 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
       totalVisits = sum visitsData.map (v) ->v.value
 
+      # pie chart: visits by method
       d3.select('#device-visits-bysubmethods-pie').datum(visitsData).call visitsBySubMethodsPieChart
 
+      # bars chart: same pie chart data of visits by method on bars
       visitsBySubMethodsChart.tooltip().text (d) ->d.name + ' : ' + d3.format('%') d.value/totalVisits
       d3.select('#device-visits-bysubmethods-chart').datum(_(visitsData).sortBy((a)->a.name)).call visitsBySubMethodsChart
 
-      # total visits and subs overtime
-      filteredTimeSeries = timeSeriesData.map((tuple) -> [tuple[0], (tuple[1].filter (d) -> allWids.indexOf(d.wurfl_device_id)>-1)])
+
+      # right side timeseries charts:
+
+
       tsData = filteredTimeSeries.map (tuple) ->
         date: new Date(tuple[0].date)
         visits:sum(tuple[1].map((d) -> d.visits))
@@ -168,11 +185,13 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       d3.select('#visitsAndSubsOvertime-chart').datum(tsData).call totalVisitsSubsTimeSeriesChart
 
       #console.log _.chain(filteredTimeSeries.map (d)->d[1]).flatten().groupBy((d) ->d.method).map((arr,method) -> {method:method, visits: sum arr.map((d) -> d.visits)}).value()
-      methods = _.chain(filteredTimeSeries.map (d)->d[1]).flatten().groupBy((d) ->d.method).map((arr,method) -> {method:method, visits: sum arr.map((d) -> d.visits)}).sortBy((d) -> -d.visits).map((d) ->d.method).value()
-      $charts =d3.select('#visitsAndSubsOvertime-charts').selectAll('div.chart').data(methods)
+
+      console.log JSON.stringify timeSeriesData.map((tuple) -> [tuple[0], _.chain(tuple[1].filter (d) -> allWids.indexOf(d.wurfl_device_id)>-1).groupBy((d) -> d.method).map((arr,key)->{method:key, data:arr}).value()])
+
+      $charts =d3.select('#visitsAndSubsOvertime-charts').selectAll('div.chart').data(allSubMethods)
       $charts.enter().append("div").attr('class', (d) -> d+' chart').append("h3")
       $charts.style('display','none')
-      for method in methods
+      for method in allSubMethods
         filteredMethodTimeSeries = timeSeriesData.map((tuple) -> [tuple[0], (tuple[1].filter (d) -> method == d.method and allWids.indexOf(d.wurfl_device_id)>-1)])
         ftsData = filteredMethodTimeSeries.map (tuple) ->
           date: new Date(tuple[0].date)
@@ -182,6 +201,8 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
         $chart.style('display','block')
         $chart.select('h3').text(method)
         $chart.datum(ftsData).call methodVisitsSubsTimeSeriesChart(method)
+        $chart.selectAll('rect.bar').style('fill', methodColor(method))
+        $chart.selectAll('path.line').style('stroke', methodColor(method))
 
 
 

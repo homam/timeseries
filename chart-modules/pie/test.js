@@ -27,7 +27,7 @@
     ];
     chart = chartMaker().margin({
       right: 120
-    }).width(400);
+    }).width(400).colors(d3.scale.category20b());
     d3.select('#chart').datum(testData).call(chart);
     return setTimeout(function() {
       var newData;
