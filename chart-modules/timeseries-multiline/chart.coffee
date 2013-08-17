@@ -16,12 +16,8 @@ define ['../common/property'], (Property) ->
     y = d3.scale.linear()
 
 
-
-
     xAxis = d3.svg.axis().scale(x).orient('bottom').tickFormat(d3.time.format("%b %d"))
     yAxis = d3.svg.axis().scale(y).orient('left')
-
-
 
     # configurable properties
 
@@ -48,10 +44,6 @@ define ['../common/property'], (Property) ->
 
       key :  new Property
       keyFilter : new Property
-      stackOffset : new Property
-
-      #todo: add colorMap to properties
-
 
       transitionDuration:  new Property
 
@@ -60,7 +52,6 @@ define ['../common/property'], (Property) ->
 
     properties.width.set(width)
     properties.height.set(height)
-    properties.stackOffset.set('zero')
     properties.transitionDuration.set(500)
     properties.keyFilter.set(() -> true)
 
@@ -69,7 +60,7 @@ define ['../common/property'], (Property) ->
     dispatch = d3.dispatch('mouseover', 'mouseout', 'mousemove')
 
     chart = (selection) ->
-      selection.each (data) ->
+      selection.each (raw) ->
 
 
         xMap = properties.x.get()
@@ -77,32 +68,26 @@ define ['../common/property'], (Property) ->
         keyMap = properties.key.get()
         valuesMap = properties.values.get()
         keyFilter = properties.keyFilter.get()
-        stackOffset = properties.stackOffset.get()
         transitionDuration = properties.transitionDuration.get()
 
-        area = d3.svg.area().x((d) -> x(xMap(d))).y0((d) -> y(d.y0)).y1((d) -> y(d.y0 + d.y))
 
+        data = raw.map (g) ->
+          key: keyMap g
+          color: g.color #todo use colorMap
+          values: (valuesMap g).map (d) -> [xMap(d), yMap(d)]
 
-        stack = d3.layout.stack()
-        .offset(stackOffset)
-        .x(xMap).y(yMap)
-        .order((sdata) ->
-            m = sdata.map (d,i) -> {v: d.map((a) -> a[1]).reduce((a,b)->a+b), i:i}
-            m = _(m).sortBy (d) -> d.v
-            return _(m).map (d) -> d.i
-          )
-        .values(valuesMap)
+        keys = data.map((g) -> g.key).filter(keyFilter)
 
-        layers = stack(data)
+        line = d3.svg.line().interpolate('basis')
+        .x((d) -> x d[0]).y((d) -> y d[1])
 
-        keys = data.map(keyMap).filter(keyFilter)
-
+        layers = data
 
         # set the y and y0 position of filtered out keys to 0, so keep the path for animation purpose but its area will be 0
         layers = layers.map (layer) ->
-          if keys.indexOf(keyMap layer) < 0
-            (valuesMap layer).map (d) ->
-              d.y = d.y0 = 0
+          if keys.indexOf(layer.key) < 0
+            layer.values.map (d) ->
+              d[1] = 0
               d
           layer
 
@@ -110,10 +95,10 @@ define ['../common/property'], (Property) ->
 
 
 
-        x.domain d3.extent valuesMap(layers[0]), xMap
+        x.domain d3.extent layers[0].values.map((d) -> d[0])
 
-        scaleLayers = stack(data.filter (d) -> keyFilter keyMap d)
-        y.domain [0, d3.max(scaleLayers, (l) -> d3.max(valuesMap(l), (d) -> d.y0+d.y))]
+        scaleLayers = (data.filter (g) -> keys.indexOf(g.key) >-1)
+        y.domain [0, d3.max(scaleLayers, (g) -> d3.max(g.values, (d) -> d[1]))]
 
 
         $selection = d3.select(this)
@@ -125,35 +110,16 @@ define ['../common/property'], (Property) ->
         $g = $svg.select('g').attr('transform', "translate(" + margin.left + "," + margin.top + ")")
 
 
-        # how to use bisect, here mousemove is being fired on $layer
 
-#        $gEnter.append("rect")
-#        .attr("class", "overlay")
-#        .attr("width", width)
-#        .attr("height", height).style('opacity',0)
-#        .on "mousemove", () ->
-#            date = x.invert(d3.mouse(this)[0])
-#            dispatch.mousemove(date)
-#            #i = d3.bisector((d) -> d.date).left(data, date, 1)
-
-
-        $layer = $g.selectAll('.layer').data(layers)
-        $layer.enter().append('g').attr('class', 'layer')
-        .on('mouseover', (d) -> dispatch.mouseover keyMap(d))
-        .on('mouseout', (d) -> dispatch.mouseout keyMap(d) )
-        .on "mousemove", () ->
-            date = x.invert(d3.mouse(this)[0])
-            dispatch.mousemove(date)
-        $layer.attr('data-key', (d) -> keyMap d).style('fill', (d) ->d.color)
-        .transition().duration(500).ease("sin-in-out").delay(200)
-        .style('opacity', (d) -> if (keys.indexOf(keyMap(d))<0) then 0 else 1)
-
-        $path = $layer.selectAll('path.area').data((d) -> [valuesMap(d)])
-        $path.enter().append('path').attr('class', 'area')
-        $path.style('fill', (d) -> d.color)
-        $path.transition().duration(1000).ease("sin-in-out")
-        .attr('d', area)
-
+        $line = $g.selectAll('.data.line').data(layers)
+        $line.enter().append('path').attr('class', 'data line')
+        $line.attr('data-key', (d) -> d.key).style('stroke', (d) ->d.color)
+        .on('mouseover', (d) -> mouseEvents.mouseover d.key )
+        .on('mouseout', (d) -> mouseEvents.mouseout d.key )
+        $line.transition().duration(500).attr('d', (d) -> line(d.values))
+        .style('opacity', (d) ->
+            if (keys.indexOf(d.key)<0) then 0 else 1
+          )
 
 
         # x axis

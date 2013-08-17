@@ -184,9 +184,9 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
         subscribers:sum tuple[1].map((d) -> d.subscribers)
       d3.select('#visitsAndSubsOvertime-chart').datum(tsData).call totalVisitsSubsTimeSeriesChart
 
-      #console.log _.chain(filteredTimeSeries.map (d)->d[1]).flatten().groupBy((d) ->d.method).map((arr,method) -> {method:method, visits: sum arr.map((d) -> d.visits)}).value()
 
-      console.log JSON.stringify timeSeriesData.map((tuple) -> [tuple[0], _.chain(tuple[1].filter (d) -> allWids.indexOf(d.wurfl_device_id)>-1).groupBy((d) -> d.method).map((arr,key)->{method:key, data:arr}).value()])
+      #todo: use timeSeriesData to draw stacked visits and multiline conv charts
+      #console.log JSON.stringify timeSeriesData.map((tuple) -> [tuple[0], _.chain(tuple[1].filter (d) -> allWids.indexOf(d.wurfl_device_id)>-1).groupBy((d) -> d.method).map((arr,key)->{method:key, data:arr}).value()])
 
       $charts =d3.select('#visitsAndSubsOvertime-charts').selectAll('div.chart').data(allSubMethods)
       $charts.enter().append("div").attr('class', (d) -> d+' chart').append("h3")

@@ -303,20 +303,6 @@
           };
         });
         d3.select('#visitsAndSubsOvertime-chart').datum(tsData).call(totalVisitsSubsTimeSeriesChart);
-        console.log(JSON.stringify(timeSeriesData.map(function(tuple) {
-          return [
-            tuple[0], _.chain(tuple[1].filter(function(d) {
-              return allWids.indexOf(d.wurfl_device_id) > -1;
-            })).groupBy(function(d) {
-              return d.method;
-            }).map(function(arr, key) {
-              return {
-                method: key,
-                data: arr
-              };
-            }).value()
-          ];
-        })));
         $charts = d3.select('#visitsAndSubsOvertime-charts').selectAll('div.chart').data(allSubMethods);
         $charts.enter().append("div").attr('class', function(d) {
           return d + ' chart';
