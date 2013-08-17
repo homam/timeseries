@@ -55,21 +55,26 @@ h1 {
   fill: white;
   font-size: 12px;
 }
-#visitsAndSubsOvertime-chart .axis {
+#visitsAndSubsOvertime-chart .axis,
+#visitsAndSubsOvertime-charts .chart .axis {
   fill: silver;
 }
-#visitsAndSubsOvertime-chart rect.bar {
+#visitsAndSubsOvertime-chart rect.bar,
+#visitsAndSubsOvertime-charts .chart rect.bar {
   fill: rgba(13, 118, 41, 0.33);
 }
-#visitsAndSubsOvertime-chart .line {
+#visitsAndSubsOvertime-chart .line,
+#visitsAndSubsOvertime-charts .chart .line {
   stroke: green;
   fill: rgba(0, 0, 0, 0);
 }
-#visitsAndSubsOvertime-chart text {
+#visitsAndSubsOvertime-chart text,
+#visitsAndSubsOvertime-charts .chart text {
   fill: gray;
   font-size: 10px;
 }
-#visitsAndSubsOvertime-chart .tick line {
+#visitsAndSubsOvertime-chart .tick line,
+#visitsAndSubsOvertime-charts .chart .tick line {
   stroke: gray;
 }
 [data-tooltip] {

@@ -45,8 +45,15 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
   subMethodDeviceVisitsChart = barGroupsChart().yAxisTickFormat(d3.format('.1%'))
 
   totalVisitsSubsTimeSeriesChart = timeSeriesBars().width(800).margin({right:70,left:70,bottom:50})
-  .tooltip(tooltip().text((d) -> JSON.stringify(d)))
   .x((d) -> d.date).y((d) -> d.visits).yB((d) -> d.subscribers)
+
+  methodVisitsSubsTimeSeriesChart = do () ->
+    cache = {}
+    return (method) ->
+      if(!cache[method])
+        cache[method] = totalVisitsSubsTimeSeriesChart = timeSeriesBars().width(800).margin({right:70,left:70,bottom:50})
+        .x((d) -> d.date).y((d) -> d.visits).yB((d) -> d.subscribers)
+      return cache[method]
 
   visitsBySubMethodsChart = barChart().tooltip(tooltip().text (d) -> JSON.stringify(d))
   visitsBySubMethodsPieChart = pieChart()
@@ -152,12 +159,34 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       visitsBySubMethodsChart.tooltip().text (d) ->d.name + ' : ' + d3.format('%') d.value/totalVisits
       d3.select('#device-visits-bysubmethods-chart').datum(_(visitsData).sortBy((a)->a.name)).call visitsBySubMethodsChart
 
-
-
-
-      tsData = timeSeriesData.map( (tuple) -> {date: new Date(tuple[0].date), visits:sum(tuple[1].map((d) -> d.visits)), subscribers:sum tuple[1].map((d) -> d.subscribers)})
-
+      # total visits and subs overtime
+      filteredTimeSeries = timeSeriesData.map((tuple) -> [tuple[0], (tuple[1].filter (d) -> allWids.indexOf(d.wurfl_device_id)>-1)])
+      tsData = filteredTimeSeries.map (tuple) ->
+        date: new Date(tuple[0].date)
+        visits:sum(tuple[1].map((d) -> d.visits))
+        subscribers:sum tuple[1].map((d) -> d.subscribers)
       d3.select('#visitsAndSubsOvertime-chart').datum(tsData).call totalVisitsSubsTimeSeriesChart
+
+      #console.log _.chain(filteredTimeSeries.map (d)->d[1]).flatten().groupBy((d) ->d.method).map((arr,method) -> {method:method, visits: sum arr.map((d) -> d.visits)}).value()
+      methods = _.chain(filteredTimeSeries.map (d)->d[1]).flatten().groupBy((d) ->d.method).map((arr,method) -> method).value()
+      $charts =d3.select('#visitsAndSubsOvertime-charts').selectAll('div.chart').data(methods)
+      $charts.enter().append("div").attr('class', (d) -> d+' chart').append("h3")
+      $charts.style('display','none')
+      #$charts.exit().remove()
+      for method in methods
+        filteredMethodTimeSeries = timeSeriesData.map((tuple) -> [tuple[0], (tuple[1].filter (d) -> method == d.method and allWids.indexOf(d.wurfl_device_id)>-1)])
+        ftsData = filteredMethodTimeSeries.map (tuple) ->
+          date: new Date(tuple[0].date)
+          visits:sum(tuple[1].map((d) -> d.visits))
+          subscribers:sum tuple[1].map((d) -> d.subscribers)
+        console.log method, sum ftsData.map (d) ->d.visits
+        $chart = d3.select('#visitsAndSubsOvertime-charts').select('.'+method)
+        $chart.style('display','block')
+        $chart.select('h3').text(method)
+        $chart.datum(ftsData).call methodVisitsSubsTimeSeriesChart(method)
+
+
+
 
 
   #end bar charts
@@ -282,12 +311,12 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
   query = do () ->
 
-    parseDataItem = (d) ->
+    parseTimeSeriesDataItem = (d) ->
       # d : a row of CSV
       visits: +d.Visits
       subscribers: +d.Subscribers
       wurfl_device_id: d.wurfl_device_id
-      method : d.Method
+      method : if d.Method.length > 0 then d.Method else 'Null'
       conv : +d.Subscribers/+d.Visits
 
     cached = null
@@ -318,12 +347,12 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
           timeSeries = null
           if (gets.length > 1)
             csvs = Array.prototype.slice.call(arguments, 0).map (d) -> d3.csv.parse d[0]
-            timeSeries = _.zip(this, csvs.map( (csv) -> csv.map parseDataItem))
+            timeSeries = _.zip(this, csvs.map( (csv) -> csv.map parseTimeSeriesDataItem))
             items = _.chain(csvs).flatten()
           else
             csv = d3.csv.parse arguments[0]
             items = _.chain csv
-            timeSeries = _.zip([this], [ csv.map parseDataItem])
+            timeSeries = _.zip([this], [ csv.map parseTimeSeriesDataItem])
 
 
           items = items.groupBy('wurfl_device_id').map((deviceArr) ->
@@ -337,7 +366,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
               device_os :arr[0].device_os
               visits : visits
               subscribers : subscribers
-              method : method
+              method : if method.length > 0 then method else 'Null'
               conv : subscribers/visits
             ).value()
           ).flatten().value()

@@ -11,7 +11,7 @@
   });
 
   require(['chart-modules/bar/chart', 'chart-modules/bar-groups/chart', 'chart-modules/pie/chart', 'chart-modules/timeseries-bars/chart', 'chart-modules/common/d3-tooltip', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum'], function(barChart, barGroupsChart, pieChart, timeSeriesBars, tooltip, reduceLongTail, sum) {
-    var chart, chartId, country, draw, drawSubMethodDeviceChart, fresh, fromDate, lastData, lastTimeSeriesData, lastTree, makeGroupByFunction, makeTreeByParentId, populateSubMethodsSelect, query, redraw, redrawSubMethodDeviceChart, subMethodDeviceConvChart, subMethodDeviceVisitsChart, toDate, totalVisitsSubsTimeSeriesChart, visitsBySubMethodsChart, visitsBySubMethodsPieChart;
+    var chart, chartId, country, draw, drawSubMethodDeviceChart, fresh, fromDate, lastData, lastTimeSeriesData, lastTree, makeGroupByFunction, makeTreeByParentId, methodVisitsSubsTimeSeriesChart, populateSubMethodsSelect, query, redraw, redrawSubMethodDeviceChart, subMethodDeviceConvChart, subMethodDeviceVisitsChart, toDate, totalVisitsSubsTimeSeriesChart, visitsBySubMethodsChart, visitsBySubMethodsPieChart;
 
     reduceLongTail = (function() {
       var sumVisitsWithChildren;
@@ -58,15 +58,34 @@
       right: 70,
       left: 70,
       bottom: 50
-    }).tooltip(tooltip().text(function(d) {
-      return JSON.stringify(d);
-    })).x(function(d) {
+    }).x(function(d) {
       return d.date;
     }).y(function(d) {
       return d.visits;
     }).yB(function(d) {
       return d.subscribers;
     });
+    methodVisitsSubsTimeSeriesChart = (function() {
+      var cache;
+
+      cache = {};
+      return function(method) {
+        if (!cache[method]) {
+          cache[method] = totalVisitsSubsTimeSeriesChart = timeSeriesBars().width(800).margin({
+            right: 70,
+            left: 70,
+            bottom: 50
+          }).x(function(d) {
+            return d.date;
+          }).y(function(d) {
+            return d.visits;
+          }).yB(function(d) {
+            return d.subscribers;
+          });
+        }
+        return cache[method];
+      };
+    })();
     visitsBySubMethodsChart = barChart().tooltip(tooltip().text(function(d) {
       return JSON.stringify(d);
     }));
@@ -128,7 +147,7 @@
         });
       };
       return function(node, data, timeSeriesData, compareConvWithOnlyConvertingDevices) {
-        var allSubMethods, allWids, allWurlfIds, convHierarchy, existingSubMethods, m, rootName, targetDevices, totalVisits, tsData, visitsData, visitsHierarchy, _i, _len, _ref;
+        var $chart, $charts, allSubMethods, allWids, allWurlfIds, convHierarchy, existingSubMethods, filteredMethodTimeSeries, filteredTimeSeries, ftsData, m, method, methods, rootName, targetDevices, totalVisits, tsData, visitsData, visitsHierarchy, _i, _j, _len, _len1, _ref, _results;
 
         allWurlfIds = function(n, r) {
           var m, _i, _j, _len, _len1, _ref, _ref1;
@@ -237,7 +256,14 @@
         d3.select('#device-visits-bysubmethods-chart').datum(_(visitsData).sortBy(function(a) {
           return a.name;
         })).call(visitsBySubMethodsChart);
-        tsData = timeSeriesData.map(function(tuple) {
+        filteredTimeSeries = timeSeriesData.map(function(tuple) {
+          return [
+            tuple[0], tuple[1].filter(function(d) {
+              return allWids.indexOf(d.wurfl_device_id) > -1;
+            })
+          ];
+        });
+        tsData = filteredTimeSeries.map(function(tuple) {
           return {
             date: new Date(tuple[0].date),
             visits: sum(tuple[1].map(function(d) {
@@ -248,7 +274,49 @@
             }))
           };
         });
-        return d3.select('#visitsAndSubsOvertime-chart').datum(tsData).call(totalVisitsSubsTimeSeriesChart);
+        d3.select('#visitsAndSubsOvertime-chart').datum(tsData).call(totalVisitsSubsTimeSeriesChart);
+        methods = _.chain(filteredTimeSeries.map(function(d) {
+          return d[1];
+        })).flatten().groupBy(function(d) {
+          return d.method;
+        }).map(function(arr, method) {
+          return method;
+        }).value();
+        $charts = d3.select('#visitsAndSubsOvertime-charts').selectAll('div.chart').data(methods);
+        $charts.enter().append("div").attr('class', function(d) {
+          return d + ' chart';
+        }).append("h3");
+        $charts.style('display', 'none');
+        _results = [];
+        for (_j = 0, _len1 = methods.length; _j < _len1; _j++) {
+          method = methods[_j];
+          filteredMethodTimeSeries = timeSeriesData.map(function(tuple) {
+            return [
+              tuple[0], tuple[1].filter(function(d) {
+                return method === d.method && allWids.indexOf(d.wurfl_device_id) > -1;
+              })
+            ];
+          });
+          ftsData = filteredMethodTimeSeries.map(function(tuple) {
+            return {
+              date: new Date(tuple[0].date),
+              visits: sum(tuple[1].map(function(d) {
+                return d.visits;
+              })),
+              subscribers: sum(tuple[1].map(function(d) {
+                return d.subscribers;
+              }))
+            };
+          });
+          console.log(method, sum(ftsData.map(function(d) {
+            return d.visits;
+          })));
+          $chart = d3.select('#visitsAndSubsOvertime-charts').select('.' + method);
+          $chart.style('display', 'block');
+          $chart.select('h3').text(method);
+          _results.push($chart.datum(ftsData).call(methodVisitsSubsTimeSeriesChart(method)));
+        }
+        return _results;
       };
     })();
     chartId = 'chart';
@@ -411,14 +479,14 @@
       };
     })();
     query = (function() {
-      var cached, cachedKey, cachedTimeSeries, getCache, makeCacheKey, parseDataItem, saveCache;
+      var cached, cachedKey, cachedTimeSeries, getCache, makeCacheKey, parseTimeSeriesDataItem, saveCache;
 
-      parseDataItem = function(d) {
+      parseTimeSeriesDataItem = function(d) {
         return {
           visits: +d.Visits,
           subscribers: +d.Subscribers,
           wurfl_device_id: d.wurfl_device_id,
-          method: d.Method,
+          method: d.Method.length > 0 ? d.Method : 'Null',
           conv: +d.Subscribers / +d.Visits
         };
       };
@@ -484,13 +552,13 @@
                 return d3.csv.parse(d[0]);
               });
               timeSeries = _.zip(this, csvs.map(function(csv) {
-                return csv.map(parseDataItem);
+                return csv.map(parseTimeSeriesDataItem);
               }));
               items = _.chain(csvs).flatten();
             } else {
               csv = d3.csv.parse(arguments[0]);
               items = _.chain(csv);
-              timeSeries = _.zip([this], [csv.map(parseDataItem)]);
+              timeSeries = _.zip([this], [csv.map(parseTimeSeriesDataItem)]);
             }
             items = items.groupBy('wurfl_device_id').map(function(deviceArr) {
               return _.chain(deviceArr).groupBy('Method').map(function(arr, method) {
@@ -510,7 +578,7 @@
                   device_os: arr[0].device_os,
                   visits: visits,
                   subscribers: subscribers,
-                  method: method,
+                  method: method.length > 0 ? method : 'Null',
                   conv: subscribers / visits
                 };
               }).value();
