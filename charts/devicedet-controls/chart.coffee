@@ -44,7 +44,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
   subMethodDeviceVisitsChart = barGroupsChart().yAxisTickFormat(d3.format('.1%'))
 
-  totalVisitsSubsTimeSeriesChart = timeSeriesBars().width(800).margin({right:70,left:70})
+  totalVisitsSubsTimeSeriesChart = timeSeriesBars().width(800).margin({right:70,left:70,bottom:50})
   .tooltip(tooltip().text((d) -> JSON.stringify(d)))
   .x((d) -> d.date).y((d) -> d.visits).yB((d) -> d.subscribers)
 

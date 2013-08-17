@@ -56,7 +56,8 @@
     subMethodDeviceVisitsChart = barGroupsChart().yAxisTickFormat(d3.format('.1%'));
     totalVisitsSubsTimeSeriesChart = timeSeriesBars().width(800).margin({
       right: 70,
-      left: 70
+      left: 70,
+      bottom: 50
     }).tooltip(tooltip().text(function(d) {
       return JSON.stringify(d);
     })).x(function(d) {

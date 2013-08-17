@@ -11,7 +11,7 @@ define ['../common/property'], (Property) ->
 
     #yBMap = (d) -> d[1]
 
-    x = d3.time.scale()
+    #x = d3.time.scale()
     y = d3.scale.linear()
 
     yB = d3.scale.linear()
@@ -19,7 +19,7 @@ define ['../common/property'], (Property) ->
 
 
 
-    xAxis = d3.svg.axis().scale(x).orient('bottom')
+    xAxis = d3.svg.axis().scale(xB).orient('bottom').tickFormat(d3.time.format("%b %d"))
     yAxis = d3.svg.axis().scale(y).orient('left')
 
     yBAxis = d3.svg.axis().scale(yB).orient('right')
@@ -31,8 +31,9 @@ define ['../common/property'], (Property) ->
       width: new Property (value) ->
         width = value - margin.left-margin.right
         yAxis.tickSize(-width,0,0)
-        x.range([0,width])
+        #x.range([0,width])
         xB.rangeRoundBands([0,width],.1)
+        xAxis.scale(xB)
 
       height: new Property (value) ->
         height = value - margin.top-margin.bottom
@@ -70,9 +71,10 @@ define ['../common/property'], (Property) ->
     chart = (selection) ->
       selection.each (data) ->
 
+
         xMap = properties.x.get()
         yMap = properties.y.get()
-        x.domain(d3.extent data.map xMap)
+        #x.domain(d3.extent data.map xMap)
         y.domain(properties.yDomain.get() data.map yMap)
 
         yBMap = properties.yB.get()
@@ -91,26 +93,33 @@ define ['../common/property'], (Property) ->
         # x axis
         $gEnter.append('g').attr('class', 'x axis')
         $xAxis = $svg.select('.x.axis').attr("transform", "translate(0," + (height)+ ")")
+        $xAxis.transition().duration(transitionDuration).call(xAxis)
+        .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", ".15em")
+        .attr("transform","rotate(-90)")
 
-        # line axis
+        # y line axis
         $gEnter.append('g').attr('class', 'y axis')
         $yAxis = $svg.select('.y.axis')
-        #.attr("transform", "translate(" + (-xB.rangeBand()/2) + ",0)")
+        $yAxis.transition().duration(transitionDuration).call(yAxis)
 
-        # bar axis
+        # y bar axis
         $gEnter.append('g').attr('class', 'y axis bar')
         $yBAxis = $svg.select('.y.axis.bar')
-        .attr('transform', 'translate(' + ((width)+(0*xB.rangeBand()/2)) + ',0)')
+        .attr('transform', 'translate(' + (width) + ',0)')
         .attr('opacity', 1)
         $yBAxis.append('text').attr('transform', 'translate(0,0) rotate(90)')
         .attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start')
         .text('Y')
+        $yBAxis.transition().duration(transitionDuration).call(yBAxis)
 
 
         transitionDuration = properties.transitionDuration.get()
 
         # line
-        line = d3.svg.line().interpolate('basis').x(_.compose(x, xMap)).y(_.compose(y, yMap))
+        line = d3.svg.line().interpolate('basis').x((d) -> _.compose(xB, xMap)(d) + xB.rangeBand()/2).y(_.compose(y, yMap))
         $g.selectAll('path.line').data([data]).enter().append('path').attr('class', 'line')
         $g.selectAll('path.line').transition().duration(transitionDuration).ease("sin-in-out").attr('d', line)
 
@@ -120,30 +129,15 @@ define ['../common/property'], (Property) ->
         $g.selectAll('rect.bar')
         .attr('width', xB.rangeBand())
         .transition().duration(transitionDuration).ease("sin-in-out")
-        .attr('x', (d) -> _.compose(x, xMap)(d) - xB.rangeBand()/2)
+        .attr('x', _.compose(xB, xMap))
         .attr('y', _.compose(yB, yBMap))
         .attr('height', (d) -> height - _.compose(yB, yBMap)(d))
 
         $rects.exit().remove()
 
-        #tooltip
-        bisect = d3.bisector(xMap).right;
-        $gEnter.append("rect")
-        .attr("class", "tooltip-overlay").style("opacity", 0)
-        .attr("width", width)
-        .attr("height", height)
-        #.on("mouseover", function() { focus.style("display", null); })
-        .on("mouseout", () -> dispatch.mouseout())
-        .on("mousemove", () ->
-            x0 = x.invert(d3.mouse(this)[0])
-            val = bisect(data,x0)
-            dispatch.mouseover data[val]
-        );
 
 
-        $xAxis.transition().duration(transitionDuration).call(xAxis)
-        $yAxis.transition().duration(transitionDuration).call(yAxis)
-        $yBAxis.transition().duration(transitionDuration).call(yBAxis)
+
 
         null # selection.each()
     null # chart()

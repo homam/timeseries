@@ -56,7 +56,8 @@
       });
       chart = chartMaker().width(800).margin({
         right: 60,
-        left: 70
+        left: 70,
+        bottom: 50
       }).tooltip(tooltip().text(function(d) {
         return JSON.stringify(d);
       })).x(function(d) {
@@ -72,12 +73,13 @@
         }
       });
       d3.select('#chart').datum(groups['wap p11'].filter(function(d, i) {
-        return i < 5;
+        return i < 15;
       })).call(chart);
-      return;
       return setTimeout(function() {
         chart.yDomain(d3.extent);
-        return d3.select('#chart').datum(groups['wap p155']).call(chart);
+        return d3.select('#chart').datum(groups['wap p155'].filter(function(d, i) {
+          return i < 5;
+        })).call(chart);
       }, 2000);
     });
   });
