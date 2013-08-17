@@ -10,8 +10,8 @@
     }
   });
 
-  require(['chart-modules/bar/chart', 'chart-modules/bar-groups/chart', 'chart-modules/pie/chart', 'chart-modules/common/d3-tooltip', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum'], function(barChart, barGroupsChart, pieChart, tooltip, reduceLongTail, sum) {
-    var chart, chartId, country, draw, drawSubMethodDeviceChart, fresh, fromDate, lastData, lastTree, makeGroupByFunction, makeTreeByParentId, populateSubMethodsSelect, query, redraw, redrawSubMethodDeviceChart, subMethodDeviceConvChart, subMethodDeviceVisitsChart, toDate, visitsBySubMethodsChart, visitsBySubMethodsPieChart;
+  require(['chart-modules/bar/chart', 'chart-modules/bar-groups/chart', 'chart-modules/pie/chart', 'chart-modules/timeseries-bars/chart', 'chart-modules/common/d3-tooltip', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum'], function(barChart, barGroupsChart, pieChart, timeSeriesBars, tooltip, reduceLongTail, sum) {
+    var chart, chartId, country, draw, drawSubMethodDeviceChart, fresh, fromDate, lastData, lastTimeSeriesData, lastTree, makeGroupByFunction, makeTreeByParentId, populateSubMethodsSelect, query, redraw, redrawSubMethodDeviceChart, subMethodDeviceConvChart, subMethodDeviceVisitsChart, toDate, totalVisitsSubsTimeSeriesChart, visitsBySubMethodsChart, visitsBySubMethodsPieChart;
 
     reduceLongTail = (function() {
       var sumVisitsWithChildren;
@@ -54,6 +54,18 @@
     })();
     subMethodDeviceConvChart = barGroupsChart().yAxisTickFormat(d3.format('.1%'));
     subMethodDeviceVisitsChart = barGroupsChart().yAxisTickFormat(d3.format('.1%'));
+    totalVisitsSubsTimeSeriesChart = timeSeriesBars().width(800).margin({
+      right: 70,
+      left: 70
+    }).tooltip(tooltip().text(function(d) {
+      return JSON.stringify(d);
+    })).x(function(d) {
+      return d.date;
+    }).y(function(d) {
+      return d.visits;
+    }).yB(function(d) {
+      return d.subscribers;
+    });
     visitsBySubMethodsChart = barChart().tooltip(tooltip().text(function(d) {
       return JSON.stringify(d);
     }));
@@ -114,8 +126,8 @@
           return v.name;
         });
       };
-      return function(node, data, compareConvWithOnlyConvertingDevices) {
-        var allSubMethods, allWids, allWurlfIds, convHierarchy, existingSubMethods, m, rootName, targetDevices, totalVisits, visitsData, visitsHierarchy, _i, _len, _ref;
+      return function(node, data, timeSeriesData, compareConvWithOnlyConvertingDevices) {
+        var allSubMethods, allWids, allWurlfIds, convHierarchy, existingSubMethods, m, rootName, targetDevices, totalVisits, tsData, visitsData, visitsHierarchy, _i, _len, _ref;
 
         allWurlfIds = function(n, r) {
           var m, _i, _j, _len, _len1, _ref, _ref1;
@@ -221,9 +233,21 @@
         visitsBySubMethodsChart.tooltip().text(function(d) {
           return d.name + ' : ' + d3.format('%')(d.value / totalVisits);
         });
-        return d3.select('#device-visits-bysubmethods-chart').datum(_(visitsData).sortBy(function(a) {
+        d3.select('#device-visits-bysubmethods-chart').datum(_(visitsData).sortBy(function(a) {
           return a.name;
         })).call(visitsBySubMethodsChart);
+        tsData = timeSeriesData.map(function(tuple) {
+          return {
+            date: new Date(tuple[0].date),
+            visits: sum(tuple[1].map(function(d) {
+              return d.visits;
+            })),
+            subscribers: sum(tuple[1].map(function(d) {
+              return d.subscribers;
+            }))
+          };
+        });
+        return d3.select('#visitsAndSubsOvertime-chart').datum(tsData).call(totalVisitsSubsTimeSeriesChart);
       };
     })();
     chartId = 'chart';
@@ -561,16 +585,21 @@
     };
     lastTree = null;
     lastData = null;
-    redrawSubMethodDeviceChart = function(tree, data) {
+    lastTimeSeriesData = null;
+    redrawSubMethodDeviceChart = function(tree, data, timeSeriesData) {
       if (tree == null) {
         tree = null;
       }
       if (data == null) {
         data = null;
       }
+      if (timeSeriesData == null) {
+        timeSeriesData = null;
+      }
       lastTree = tree || lastTree;
       lastData = data || lastData;
-      return drawSubMethodDeviceChart(lastTree, lastData, $('#onlyConvertingDevices')[0].checked);
+      lastTimeSeriesData = timeSeriesData || lastTimeSeriesData;
+      return drawSubMethodDeviceChart(lastTree, lastData, lastTimeSeriesData, $('#onlyConvertingDevices')[0].checked);
     };
     redraw = function(countryChanged) {
       return fresh().done(function(obj) {
@@ -585,7 +614,7 @@
           return $(this).attr('data-groupby');
         })).get();
         tree = draw(data, $("#submethods").val(), makeGroupByFunction(groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked));
-        return redrawSubMethodDeviceChart(tree, data);
+        return redrawSubMethodDeviceChart(tree, data, overtime);
       });
     };
     redraw(true);

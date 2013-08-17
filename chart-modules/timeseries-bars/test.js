@@ -55,7 +55,8 @@
         return _results;
       });
       chart = chartMaker().width(800).margin({
-        right: 40
+        right: 60,
+        left: 70
       }).tooltip(tooltip().text(function(d) {
         return JSON.stringify(d);
       })).x(function(d) {
@@ -66,9 +67,13 @@
         return d.subs;
       });
       chart.mouseover(function(d) {
-        return document.getElementById("mouse-val").innerHTML = d.date + ':' + d.visits;
+        if (!!d) {
+          return document.getElementById("mouse-val").innerHTML = d.date + ':' + d.visits;
+        }
       });
-      d3.select('#chart').datum(groups['wap p11']).call(chart);
+      d3.select('#chart').datum(groups['wap p11'].filter(function(d, i) {
+        return i < 5;
+      })).call(chart);
       return;
       return setTimeout(function() {
         chart.yDomain(d3.extent);

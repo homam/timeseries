@@ -42,11 +42,13 @@ require ['chart.js', '../common/d3-tooltip.js'], (chartMaker, tooltip) ->
 
 
     chart = chartMaker()
-    .width(800).margin({right:40})
+    .width(800).margin({right:60,left:70})
     .tooltip(tooltip().text((d) -> JSON.stringify(d)))
     .x((d) -> d.date).y((d) -> d.visits).yB((d) -> d.subs)
-    chart.mouseover (d) -> document.getElementById("mouse-val").innerHTML = d.date+':'+ d.visits
-    d3.select('#chart').datum(groups['wap p11']).call chart
+    chart.mouseover (d) ->
+      if(!!d)
+        document.getElementById("mouse-val").innerHTML = d.date+':'+ d.visits
+    d3.select('#chart').datum(groups['wap p11'].filter((d,i) -> i<5)).call chart
 
 
     return

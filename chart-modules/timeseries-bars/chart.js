@@ -24,7 +24,7 @@
           width = value - margin.left - margin.right;
           yAxis.tickSize(-width, 0, 0);
           x.range([0, width]);
-          return xB.rangeRoundBands([0, width], .2);
+          return xB.rangeRoundBands([0, width], .1);
         }),
         height: new Property(function(value) {
           height = value - margin.top - margin.bottom;
@@ -57,7 +57,7 @@
       dispatch = d3.dispatch('mouseover', 'mouseout');
       chart = function(selection) {
         return selection.each(function(data) {
-          var $g, $gEnter, $selection, $svg, $xAxis, $yAxis, $yBAxis, bisect, line, transitionDuration, xMap, yBMap, yMap;
+          var $g, $gEnter, $rects, $selection, $svg, $xAxis, $yAxis, $yBAxis, bisect, line, transitionDuration, xMap, yBMap, yMap;
 
           xMap = properties.x.get();
           yMap = properties.y.get();
@@ -76,18 +76,22 @@
           $gEnter.append('g').attr('class', 'y axis');
           $yAxis = $svg.select('.y.axis');
           $gEnter.append('g').attr('class', 'y axis bar');
-          $yBAxis = $svg.select('.y.axis.bar').attr('transform', 'translate(' + width + ',0)').attr('opacity', 1);
+          $yBAxis = $svg.select('.y.axis.bar').attr('transform', 'translate(' + (width + (0 * xB.rangeBand() / 2)) + ',0)').attr('opacity', 1);
           $yBAxis.append('text').attr('transform', 'translate(0,0) rotate(90)').attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start').text('Y');
           transitionDuration = properties.transitionDuration.get();
           line = d3.svg.line().interpolate('basis').x(_.compose(x, xMap)).y(_.compose(y, yMap));
           $g.selectAll('path.line').data([data]).enter().append('path').attr('class', 'line');
           $g.selectAll('path.line').transition().duration(transitionDuration).ease("sin-in-out").attr('d', line);
-          $g.selectAll('rect.bar').data(data).enter().append('rect').attr('class', 'bar');
-          $g.selectAll('rect.bar').attr('width', xB.rangeBand()).transition().duration(transitionDuration).ease("sin-in-out").attr('x', _.compose(x, xMap)).attr('y', _.compose(yB, yBMap)).attr('height', function(d) {
+          $rects = $g.selectAll('rect.bar').data(data);
+          $rects.enter().append('rect').attr('class', 'bar');
+          $g.selectAll('rect.bar').attr('width', xB.rangeBand()).transition().duration(transitionDuration).ease("sin-in-out").attr('x', function(d) {
+            return _.compose(x, xMap)(d) - xB.rangeBand() / 2;
+          }).attr('y', _.compose(yB, yBMap)).attr('height', function(d) {
             return height - _.compose(yB, yBMap)(d);
           });
+          $rects.exit().remove();
           bisect = d3.bisector(xMap).right;
-          $gEnter.append("rect").attr("class", "tooltip-overlay").attr("width", width).attr("height", height).on("mouseout", function() {
+          $gEnter.append("rect").attr("class", "tooltip-overlay").style("opacity", 0).attr("width", width).attr("height", height).on("mouseout", function() {
             return dispatch.mouseout();
           }).on("mousemove", function() {
             var val, x0;

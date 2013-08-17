@@ -10,9 +10,9 @@ require.config({
 
 
 # this too works: /modules-test/modules/hello/module.js
-require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-modules/pie/chart',
+require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-modules/pie/chart', 'chart-modules/timeseries-bars/chart'
          'chart-modules/common/d3-tooltip', 'chart-modules/utils/reduceLongTail', 'chart-modules/utils/sum']
-, (barChart, barGroupsChart, pieChart, tooltip, reduceLongTail, sum) ->
+, (barChart, barGroupsChart, pieChart, timeSeriesBars, tooltip, reduceLongTail, sum) ->
 
 
   reduceLongTail = do () ->
@@ -43,6 +43,10 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
   subMethodDeviceConvChart = barGroupsChart().yAxisTickFormat(d3.format('.1%'))
 
   subMethodDeviceVisitsChart = barGroupsChart().yAxisTickFormat(d3.format('.1%'))
+
+  totalVisitsSubsTimeSeriesChart = timeSeriesBars().width(800).margin({right:70,left:70})
+  .tooltip(tooltip().text((d) -> JSON.stringify(d)))
+  .x((d) -> d.date).y((d) -> d.visits).yB((d) -> d.subscribers)
 
   visitsBySubMethodsChart = barChart().tooltip(tooltip().text (d) -> JSON.stringify(d))
   visitsBySubMethodsPieChart = pieChart()
@@ -84,7 +88,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       return _(hierarchy).sortBy (v) ->v.name
 
 
-    return (node, data, compareConvWithOnlyConvertingDevices) ->
+    return (node, data, timeSeriesData, compareConvWithOnlyConvertingDevices) ->
       # node: the root node (and it's children) for which we're making this chart for
       # data: all the data
       allWurlfIds = (n, r) ->
@@ -147,6 +151,13 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
       visitsBySubMethodsChart.tooltip().text (d) ->d.name + ' : ' + d3.format('%') d.value/totalVisits
       d3.select('#device-visits-bysubmethods-chart').datum(_(visitsData).sortBy((a)->a.name)).call visitsBySubMethodsChart
+
+
+
+
+      tsData = timeSeriesData.map( (tuple) -> {date: new Date(tuple[0].date), visits:sum(tuple[1].map((d) -> d.visits)), subscribers:sum tuple[1].map((d) -> d.subscribers)})
+
+      d3.select('#visitsAndSubsOvertime-chart').datum(tsData).call totalVisitsSubsTimeSeriesChart
 
 
   #end bar charts
@@ -393,10 +404,13 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
   lastTree = null
   lastData = null
-  redrawSubMethodDeviceChart = (tree = null, data = null) ->
+  lastTimeSeriesData = null
+  redrawSubMethodDeviceChart = (tree = null, data = null, timeSeriesData = null) ->
     lastTree = tree or lastTree
     lastData = data or lastData
-    drawSubMethodDeviceChart lastTree, lastData, $('#onlyConvertingDevices')[0].checked
+    lastTimeSeriesData = timeSeriesData or lastTimeSeriesData
+
+    drawSubMethodDeviceChart lastTree, lastData, lastTimeSeriesData , $('#onlyConvertingDevices')[0].checked
 
   # how to call draw: draw subMethods[0],(makeGroupByFunction ['brand_name', 'device_os'], true, true)
   redraw = (countryChanged) ->
@@ -408,7 +422,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       groupBys = ($('#groupbys-bin').find('li').map () -> $(this).attr('data-groupby')).get()
       #setTimeout () ->
       tree = draw data, $("#submethods").val(),(makeGroupByFunction groupBys, $('#treefy')[0].checked, $('#collectLongTail')[0].checked)
-      redrawSubMethodDeviceChart(tree, data)
+      redrawSubMethodDeviceChart(tree, data, overtime)
       #,10 # first update the select then render the graph
 
   redraw(true)

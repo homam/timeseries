@@ -32,7 +32,7 @@ define ['../common/property'], (Property) ->
         width = value - margin.left-margin.right
         yAxis.tickSize(-width,0,0)
         x.range([0,width])
-        xB.rangeRoundBands([0,width],.2)
+        xB.rangeRoundBands([0,width],.1)
 
       height: new Property (value) ->
         height = value - margin.top-margin.bottom
@@ -88,17 +88,20 @@ define ['../common/property'], (Property) ->
         $svg.attr('width', width+margin.left+margin.right).attr('height', height+margin.top+margin.bottom)
         $g = $svg.select('g').attr('transform', "translate(" + margin.left + "," + margin.top + ")")
 
-
+        # x axis
         $gEnter.append('g').attr('class', 'x axis')
         $xAxis = $svg.select('.x.axis').attr("transform", "translate(0," + (height)+ ")")
 
         # line axis
         $gEnter.append('g').attr('class', 'y axis')
         $yAxis = $svg.select('.y.axis')
+        #.attr("transform", "translate(" + (-xB.rangeBand()/2) + ",0)")
 
         # bar axis
         $gEnter.append('g').attr('class', 'y axis bar')
-        $yBAxis = $svg.select('.y.axis.bar').attr('transform', 'translate(' + (width) + ',0)').attr('opacity', 1)
+        $yBAxis = $svg.select('.y.axis.bar')
+        .attr('transform', 'translate(' + ((width)+(0*xB.rangeBand()/2)) + ',0)')
+        .attr('opacity', 1)
         $yBAxis.append('text').attr('transform', 'translate(0,0) rotate(90)')
         .attr('y', 6).attr('dy', '.71em').style('text-anchor', 'start')
         .text('Y')
@@ -112,18 +115,21 @@ define ['../common/property'], (Property) ->
         $g.selectAll('path.line').transition().duration(transitionDuration).ease("sin-in-out").attr('d', line)
 
         # bars
-        $g.selectAll('rect.bar').data(data).enter().append('rect').attr('class', 'bar')
+        $rects = $g.selectAll('rect.bar').data(data)
+        $rects.enter().append('rect').attr('class', 'bar')
         $g.selectAll('rect.bar')
         .attr('width', xB.rangeBand())
         .transition().duration(transitionDuration).ease("sin-in-out")
-        .attr('x', _.compose(x, xMap))
+        .attr('x', (d) -> _.compose(x, xMap)(d) - xB.rangeBand()/2)
         .attr('y', _.compose(yB, yBMap))
         .attr('height', (d) -> height - _.compose(yB, yBMap)(d))
+
+        $rects.exit().remove()
 
         #tooltip
         bisect = d3.bisector(xMap).right;
         $gEnter.append("rect")
-        .attr("class", "tooltip-overlay")
+        .attr("class", "tooltip-overlay").style("opacity", 0)
         .attr("width", width)
         .attr("height", height)
         #.on("mouseover", function() { focus.style("display", null); })

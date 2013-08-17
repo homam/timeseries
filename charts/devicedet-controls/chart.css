@@ -55,6 +55,23 @@ h1 {
   fill: white;
   font-size: 12px;
 }
+#visitsAndSubsOvertime-chart .axis {
+  fill: silver;
+}
+#visitsAndSubsOvertime-chart rect.bar {
+  fill: rgba(13, 118, 41, 0.33);
+}
+#visitsAndSubsOvertime-chart .line {
+  stroke: green;
+  fill: rgba(0, 0, 0, 0);
+}
+#visitsAndSubsOvertime-chart text {
+  fill: gray;
+  font-size: 10px;
+}
+#visitsAndSubsOvertime-chart .tick line {
+  stroke: gray;
+}
 [data-tooltip] {
   text-align: left;
   min-width: 200px;
