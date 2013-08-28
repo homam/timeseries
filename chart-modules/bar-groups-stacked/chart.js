@@ -5,7 +5,7 @@
       var chart, color, colorMap, dispatch, height, mainNameMap, mainValuesMap, margin, properties, subNameMap, subValueMap, tooltip, width, x, xAxis, y, yAxis;
 
       margin = {
-        top: 20,
+        top: 60,
         right: 0,
         bottom: 20,
         left: 70
@@ -62,7 +62,7 @@
         subValues: new Property(function(value) {
           return subValueMap = value;
         }),
-        stackOffset: new Property,
+        normalized: new Property,
         transitionDuration: new Property,
         tooltip: new Property(function(value) {
           return tooltip = value;
@@ -70,12 +70,14 @@
       };
       properties.width.set(width);
       properties.height.set(height);
-      properties.stackOffset.set('zero');
+      properties.normalized.set(false);
       properties.transitionDuration.set(500);
       chart = function(selection) {
         return selection.each(function(data) {
-          var $g, $gEnter, $legend, $legendEnter, $main, $selection, $svg, $xAxis, $yAxis, allMainKeys, allSubKeys;
+          var $g, $gEnter, $label, $legend, $legendEnter, $main, $rect, $selection, $svg, $xAxis, $yAxis, allMainKeys, allSubKeys, normalzied, transitionDuration;
 
+          transitionDuration = properties.transitionDuration.get();
+          normalzied = properties.normalized.get();
           allSubKeys = _.uniq(_.flatten(data.map(function(d) {
             return mainValuesMap(d).map(function(i) {
               return subNameMap(i);
@@ -91,14 +93,29 @@
                 y0: y0,
                 y1: y0 += subValueMap(mainValuesMap(d).filter(function(a) {
                   return subNameMap(a) === name;
+                })[0]),
+                value: subValueMap(mainValuesMap(d).filter(function(a) {
+                  return subNameMap(a) === name;
                 })[0])
               };
             });
+            if (normalzied) {
+              d._children.forEach(function(d) {
+                d.y0 /= y0;
+                return d.y1 /= y0;
+              });
+            }
             return d._total = _.last(d._children).y1;
           });
-          data.sort(function(a, b) {
-            return b._total - a._total;
-          });
+          if (normalzied) {
+            data.sort(function(a, b) {
+              return a._children[0].y1 - b._children[0].y1;
+            });
+          } else {
+            data.sort(function(a, b) {
+              return b._total - a._total;
+            });
+          }
           allMainKeys = _.flatten(data.map(mainNameMap));
           x.domain(allMainKeys);
           y.domain([
@@ -115,17 +132,30 @@
           $xAxis = $svg.select('.x.axis').attr("transform", "translate(0," + height + ")");
           $gEnter.append('g').attr('class', 'y axis');
           $yAxis = $svg.select('.y.axis');
-          $main = $g.selectAll(".main").data(data).enter().append("g").attr("class", "main").attr("transform", function(d) {
+          $main = $g.selectAll(".main").data(data);
+          $main.enter().append("g").attr("class", "main");
+          $main.attr("transform", function(d) {
             return "translate(" + x(mainNameMap(d)) + ",0)";
           });
-          $main.selectAll("rect").data(function(d) {
+          $rect = $main.selectAll("rect").data(function(d) {
             return d._children;
-          }).enter().append("rect").attr("width", x.rangeBand()).attr("y", function(d) {
+          });
+          $rect.enter().append("rect");
+          $rect.transition().duration(transitionDuration).attr("width", x.rangeBand()).attr("y", function(d) {
             return y(d.y1);
           }).attr("height", function(d) {
             return y(d.y0) - y(d.y1);
           }).style("fill", function(d) {
             return colorMap(subNameMap(d));
+          });
+          $label = $main.selectAll('text').data(function(d) {
+            return d._children;
+          });
+          $label.enter().append('text');
+          $label.attr('transform', function(d) {
+            return 'translate(' + (x.rangeBand() / 2 - 6) + ', ' + ((y(d.y0) - y(d.y1)) / 2 + y(d.y1)) + ') rotate(90) ';
+          }).text(function(d) {
+            return d3.format(',')(subValueMap(d));
           });
           $xAxis.transition().duration(200).call(xAxis);
           $yAxis.transition().duration(200).call(yAxis);

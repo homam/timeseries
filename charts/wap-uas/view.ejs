@@ -6,10 +6,26 @@
         <script src="/javascript/libs/jquery2.js"></script>
         <script src="/javascript/libs/d3.js"></script>
         <script src="/javascript/libs/underscore.js"></script>
-        <script src="/charts/wap-uas/wap-uas.js"></script>
+        <style>
+
+           body {
+               font-family:Helvetica;
+           }
+           div {
+               text-align: center;
+
+               margin-bottom: 50px;
+           }
+
+        </style>
+
     </head>
 <body>
     <h1><%= title %></h1>
+    <div id="barChart"></div>
+    <div id="pieChart"></div>
 
+
+    <script src="/charts/wap-uas/wap-uas.js"></script>
 </body>
 </html>

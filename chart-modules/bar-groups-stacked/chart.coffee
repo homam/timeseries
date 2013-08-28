@@ -4,7 +4,7 @@ define ['../common/property'], (Property) ->
   () ->
     # configs
     margin =
-      top: 20
+      top: 60
       right: 0
       bottom: 20
       left: 70
@@ -65,7 +65,7 @@ define ['../common/property'], (Property) ->
 
       subValues : new Property (value) ->subValueMap = value
 
-      stackOffset : new Property
+      normalized : new Property
 
       transitionDuration:  new Property
 
@@ -74,13 +74,16 @@ define ['../common/property'], (Property) ->
 
     properties.width.set(width)
     properties.height.set(height)
-    properties.stackOffset.set('zero')
+    properties.normalized.set(false)
     properties.transitionDuration.set(500)
+
 
 
     chart = (selection) ->
       selection.each (data) ->
 
+        transitionDuration = properties.transitionDuration.get()
+        normalzied = properties.normalized.get()
 
         allSubKeys = _.uniq _.flatten data.map((d) -> mainValuesMap(d).map((i) -> subNameMap(i)))
 
@@ -90,9 +93,16 @@ define ['../common/property'], (Property) ->
             name: name
             y0: y0
             y1: y0 += subValueMap mainValuesMap(d).filter((a) -> subNameMap(a) == name)[0]
+            value: subValueMap mainValuesMap(d).filter((a) -> subNameMap(a) == name)[0]
+          if normalzied
+            d._children.forEach((d) -> d.y0 /= y0; d.y1 /= y0)
           d._total = _.last(d._children).y1
 
-        data.sort((a, b) -> b._total - a._total)
+        if normalzied
+          data.sort((a, b) ->  a._children[0].y1 - b._children[0].y1)
+        else
+          data.sort((a, b) -> b._total - a._total)
+
 
 
         allMainKeys = _.flatten data.map mainNameMap
@@ -121,22 +131,25 @@ define ['../common/property'], (Property) ->
 
         $main = $g.selectAll(".main")
         .data(data)
-        .enter().append("g")
+        $main.enter().append("g")
         .attr("class", "main")
-        .attr("transform", (d) ->  "translate(" + x(mainNameMap(d)) + ",0)");
+        $main.attr("transform", (d) ->  "translate(" + x(mainNameMap(d)) + ",0)");
 
 
-        $main.selectAll("rect")
+        $rect = $main.selectAll("rect")
         .data((d) -> d._children)
-        .enter().append("rect")
+        $rect.enter().append("rect")
+        $rect.transition().duration(transitionDuration)
         .attr("width", x.rangeBand())
         .attr("y", (d) -> y(d.y1))
         .attr("height", (d) -> y(d.y0) - y(d.y1))
         .style("fill", (d) -> colorMap(subNameMap(d)));
 
-
-
-
+        $label = $main.selectAll('text').data((d) -> d._children)
+        $label.enter().append('text')
+        $label.attr('transform', (d) -> 'translate(' + (x.rangeBand()/2 - 6) + ', ' +  ((y(d.y0) - y(d.y1))/2 + y(d.y1)) + ') rotate(90) ')
+        #$label.attr('y', (d) -> (y(d.y0) - y(d.y1))/2 + y(d.y1)  )
+        .text((d) -> d3.format(',') subValueMap(d))
 
 
 
