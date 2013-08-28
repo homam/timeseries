@@ -89,6 +89,7 @@
             });
           }).values(valuesMap);
           layers = stack(data);
+          console.log(layers);
           keys = data.map(keyMap).filter(keyFilter);
           layers = layers.map(function(layer) {
             if (keys.indexOf(keyMap(layer)) < 0) {

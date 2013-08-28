@@ -76,6 +76,8 @@ require ['chart.js', '../common/d3-tooltip.js', '../utils/sum.js'], (chartMaker,
       )
 
 
+      #[{color,method,visits,values:[{day,visits}]}]
+      console.log JSON.parse JSON.stringify chartData
 
       d3.select('#chart').datum(chartData).call chart
     #end plot

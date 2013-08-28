@@ -116,6 +116,7 @@
           g.color = colors(i);
           return g;
         });
+        console.log(JSON.parse(JSON.stringify(chartData)));
         return d3.select('#chart').datum(chartData).call(chart);
       };
       plot(new Date(2013, 6, 14));

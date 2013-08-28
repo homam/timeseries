@@ -219,6 +219,8 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
   d3.select('#'+chartId).call chart
 
 
+  # *** draw the charts ***
+
   draw = (data, method, chartDataMap) ->
     chartData = null
     if !method
@@ -231,13 +233,16 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
         item.subscribers = subscribers
         item.conv = subscribers/visits
         item.method = method
+        # fro analysis only
+        #item.perMethod = _.chain(arr).groupBy((i) -> i.method).map((a,k) -> {method:k, visits:a[0].visits, subscribers: a[0].subscribers} ).value()
         item
+      window.cdata= chartData
     else
       chartData = data.filter ((d) -> method == d.method)
 
 
-    totalVisits= chartData.map((d) -> d.visits).reduce((a,b)->a+b)
-    totalSubs = chartData.map((d) -> d.subscribers).reduce((a,b)->a+b)
+    totalVisits= sum chartData.map((d) -> d.visits)
+    totalSubs = sum chartData.map((d) -> d.subscribers)
     totalConv= totalSubs/totalVisits
     totalStdevConv = chartData.map((g) ->
       Math.sqrt(Math.pow((g.conv-totalConv), 2)) * g.visits / totalVisits
@@ -246,6 +251,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
 
 
     chartData = chartDataMap(chartData)
+
 
 
     window.chartData = chartData
@@ -301,6 +307,8 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
   makeGroupByFunction = do () ->
     groupBy = (childrenMap, what, data) ->
       groups = _(data).groupBy what
+
+      #console.log 'makegrouByFunction', data
 
       _(groups).map (darr) ->
 
@@ -464,6 +472,7 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
   redraw = (countryChanged) ->
     fresh().done (obj) ->
       data = obj.reduced
+      console.log sum data.filter((d) -> 'Desktop' == d.device_os).map((d) -> d.visits)
       overtime  = obj.overtime
       if(countryChanged)
         populateSubMethodsSelect data

@@ -95,6 +95,8 @@ define ['../common/property'], (Property) ->
 
         layers = stack(data)
 
+        console.log layers
+
         keys = data.map(keyMap).filter(keyFilter)
 
 

@@ -367,21 +367,18 @@
           item.method = method;
           return item;
         });
+        window.cdata = chartData;
       } else {
         chartData = data.filter((function(d) {
           return method === d.method;
         }));
       }
-      totalVisits = chartData.map(function(d) {
+      totalVisits = sum(chartData.map(function(d) {
         return d.visits;
-      }).reduce(function(a, b) {
-        return a + b;
-      });
-      totalSubs = chartData.map(function(d) {
+      }));
+      totalSubs = sum(chartData.map(function(d) {
         return d.subscribers;
-      }).reduce(function(a, b) {
-        return a + b;
-      });
+      }));
       totalConv = totalSubs / totalVisits;
       totalStdevConv = chartData.map(function(g) {
         return Math.sqrt(Math.pow(g.conv - totalConv, 2)) * g.visits / totalVisits;
@@ -695,6 +692,11 @@
         var data, groupBys, overtime, tree;
 
         data = obj.reduced;
+        console.log(sum(data.filter(function(d) {
+          return 'Desktop' === d.device_os;
+        }).map(function(d) {
+          return d.visits;
+        })));
         overtime = obj.overtime;
         if (countryChanged) {
           populateSubMethodsSelect(data);
