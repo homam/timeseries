@@ -74,7 +74,7 @@
       properties.transitionDuration.set(500);
       chart = function(selection) {
         return selection.each(function(data) {
-          var $g, $gEnter, $label, $legend, $legendEnter, $main, $rect, $selection, $svg, $xAxis, $yAxis, allMainKeys, allSubKeys, normalzied, transitionDuration;
+          var $g, $gEnter, $legend, $legendEnter, $main, $mainEnter, $rect, $selection, $svg, $xAxis, $yAxis, allMainKeys, allSubKeys, normalzied, transitionDuration;
 
           transitionDuration = properties.transitionDuration.get();
           normalzied = properties.normalized.get();
@@ -133,7 +133,7 @@
           $gEnter.append('g').attr('class', 'y axis');
           $yAxis = $svg.select('.y.axis');
           $main = $g.selectAll(".main").data(data);
-          $main.enter().append("g").attr("class", "main");
+          $mainEnter = $main.enter().append("g").attr("class", "main");
           $main.attr("transform", function(d) {
             return "translate(" + x(mainNameMap(d)) + ",0)";
           });
@@ -148,14 +148,11 @@
           }).style("fill", function(d) {
             return colorMap(subNameMap(d));
           });
-          $label = $main.selectAll('text').data(function(d) {
-            return d._children;
-          });
-          $label.enter().append('text');
-          $label.attr('transform', function(d) {
-            return 'translate(' + (x.rangeBand() / 2 - 6) + ', ' + ((y(d.y0) - y(d.y1)) / 2 + y(d.y1)) + ') rotate(90) ';
-          }).text(function(d) {
-            return d3.format(',')(subValueMap(d));
+          $mainEnter.append('text');
+          $main.select('text').attr('transform', 'translate(' + (x.rangeBand() / 2 - 6) + ', ' + (height * .9) + ') rotate(90) ').attr('text-anchor', 'end').text(function(d) {
+            return d3.format(',')(d._children.map(subValueMap).reduce(function(a, b) {
+              return a + b;
+            }));
           });
           $xAxis.transition().duration(200).call(xAxis);
           $yAxis.transition().duration(200).call(yAxis);

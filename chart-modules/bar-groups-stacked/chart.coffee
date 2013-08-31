@@ -131,8 +131,7 @@ define ['../common/property'], (Property) ->
 
         $main = $g.selectAll(".main")
         .data(data)
-        $main.enter().append("g")
-        .attr("class", "main")
+        $mainEnter = $main.enter().append("g").attr("class", "main")
         $main.attr("transform", (d) ->  "translate(" + x(mainNameMap(d)) + ",0)");
 
 
@@ -145,11 +144,18 @@ define ['../common/property'], (Property) ->
         .attr("height", (d) -> y(d.y0) - y(d.y1))
         .style("fill", (d) -> colorMap(subNameMap(d)));
 
-        $label = $main.selectAll('text').data((d) -> d._children)
-        $label.enter().append('text')
-        $label.attr('transform', (d) -> 'translate(' + (x.rangeBand()/2 - 6) + ', ' +  ((y(d.y0) - y(d.y1))/2 + y(d.y1)) + ') rotate(90) ')
+        #$label = $main.selectAll('text')#.data((d) -> d._children)
+        #$label.enter().append('text')
+        #$label.attr('transform', (d) -> 'translate(' + (x.rangeBand()/2 - 6) + ', ' +  ((y(d.y0) - y(d.y1))/2 + y(d.y1)) + ') rotate(90) ')
         #$label.attr('y', (d) -> (y(d.y0) - y(d.y1))/2 + y(d.y1)  )
-        .text((d) -> d3.format(',') subValueMap(d))
+        #.text((d) -> d3.format(',') subValueMap(d))
+        $mainEnter.append('text')
+        $main.select('text')
+        .attr('transform', 'translate(' + (x.rangeBand()/2 - 6) + ', ' +  (height*.9) + ') rotate(90) ')
+        .attr('text-anchor','end')
+        .text((d) ->
+          d3.format(',') d._children.map(subValueMap).reduce((a,b) -> a+b)
+        )
 
 
 
