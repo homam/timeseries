@@ -610,8 +610,8 @@
         return p;
       };
     })();
-    fromDate = new Date(2013, 6, 1);
-    toDate = new Date(2013, 6, 15);
+    fromDate = new Date(2013, 8, 30);
+    toDate = new Date(2013, 9, 4);
     country = 'om';
     ['ae', 'sa', 'om', 'iq', 'jo', 'lk'].sort().forEach(function(c) {
       return $("select[name=country]").append($("<option />").text(c));

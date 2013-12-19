@@ -2,35 +2,19 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/chart-modules/timeseries-multiline/chart.js" />
-        <item url="file://$PROJECT_DIR$/routes/index.js" />
-        <item url="file://$PROJECT_DIR$/charts/devicedet-controls/chart.js" />
         <item url="file://$PROJECT_DIR$/charts/devicedet-controls/treemap-zoomable.js" />
-        <item url="file://$PROJECT_DIR$/chart-modules/pie/test.js" />
-        <item url="file://$PROJECT_DIR$/charts/wap-uas/wap-uas.js" />
-        <item url="file://$PROJECT_DIR$/chart-modules/stacked/test.js" />
-        <item url="file://$PROJECT_DIR$/chart-modules/stacked/chart.js" />
+        <item url="file://$PROJECT_DIR$/charts/devicedet-controls/chart.js" />
         <item url="file://$PROJECT_DIR$/chart-modules/bar-groups/test.js" />
-        <item url="file://$PROJECT_DIR$/chart-modules/bar-groups/chart.js" />
-        <item url="file://$PROJECT_DIR$/chart-modules/bar-groups-stacked/test.js" />
-        <item url="file://$PROJECT_DIR$/chart-modules/bar-groups-stacked/chart.js" />
-        <item url="file://$PROJECT_DIR$/chart-modules/timeseries-multiline/test.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/stacked/chart.js" />
+        <item url="file://$PROJECT_DIR$/chart-modules/stacked/test.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/chart-modules/timeseries-multiline/chart.js" />
-      <root url="file://$PROJECT_DIR$/charts/devicedet-controls/chart.js" />
-      <root url="file://$PROJECT_DIR$/routes/index.js" />
       <root url="file://$PROJECT_DIR$/charts/devicedet-controls/treemap-zoomable.js" />
-      <root url="file://$PROJECT_DIR$/chart-modules/pie/test.js" />
-      <root url="file://$PROJECT_DIR$/charts/wap-uas/wap-uas.js" />
-      <root url="file://$PROJECT_DIR$/chart-modules/stacked/test.js" />
-      <root url="file://$PROJECT_DIR$/chart-modules/stacked/chart.js" />
+      <root url="file://$PROJECT_DIR$/charts/devicedet-controls/chart.js" />
       <root url="file://$PROJECT_DIR$/chart-modules/bar-groups/test.js" />
-      <root url="file://$PROJECT_DIR$/chart-modules/bar-groups/chart.js" />
-      <root url="file://$PROJECT_DIR$/chart-modules/bar-groups-stacked/test.js" />
-      <root url="file://$PROJECT_DIR$/chart-modules/bar-groups-stacked/chart.js" />
-      <root url="file://$PROJECT_DIR$/chart-modules/timeseries-multiline/test.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/stacked/chart.js" />
+      <root url="file://$PROJECT_DIR$/chart-modules/stacked/test.js" />
     </CLASSES>
     <SOURCES />
   </library>

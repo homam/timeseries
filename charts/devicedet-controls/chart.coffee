@@ -402,8 +402,8 @@ require ['chart-modules/bar/chart', 'chart-modules/bar-groups/chart' , 'chart-mo
       return p
 
 
-  fromDate = new Date(2013,6,1) # July 1
-  toDate = new Date(2013,6,15)
+  fromDate = new Date(2013,8,30) # July 1
+  toDate = new Date(2013,9,4)
   country = 'om'
 
   ['ae','sa','om', 'iq','jo', 'lk'].sort().forEach (c) -> $("select[name=country]").append $("<option />").text(c)
